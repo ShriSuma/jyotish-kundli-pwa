@@ -1,0 +1,23 @@
+[
+  { "name": "Dadar", "districtCode": "MH-MUM", "lat": 19.0178, "lng": 72.8478, "pincode": "400014" },
+  { "name": "Andheri East", "districtCode": "MH-MUM", "lat": 19.1136, "lng": 72.8697, "pincode": "400069" },
+  { "name": "Powai", "districtCode": "MH-MUM", "lat": 19.1197, "lng": 72.9051, "pincode": "400076" },
+  { "name": "Shivajinagar", "districtCode": "MH-PUN", "lat": 18.5314, "lng": 73.8446, "pincode": "411005" },
+  { "name": "Kothrud", "districtCode": "MH-PUN", "lat": 18.5074, "lng": 73.8077, "pincode": "411038" },
+  { "name": "Hinjawadi", "districtCode": "MH-PUN", "lat": 18.5912, "lng": 73.7389, "pincode": "411057" },
+  { "name": "Banashankari", "districtCode": "KA-BLR", "lat": 12.9255, "lng": 77.5468, "pincode": "560070" },
+  { "name": "Whitefield", "districtCode": "KA-BLR", "lat": 12.9698, "lng": 77.75, "pincode": "560066" },
+  { "name": "Malleswaram", "districtCode": "KA-BLR", "lat": 13.0035, "lng": 77.5713, "pincode": "560003" },
+  { "name": "T Nagar", "districtCode": "TN-CHE", "lat": 13.0418, "lng": 80.2341, "pincode": "600017" },
+  { "name": "Velachery", "districtCode": "TN-CHE", "lat": 12.9791, "lng": 80.2182, "pincode": "600042" },
+  { "name": "Tambaram", "districtCode": "TN-CHE", "lat": 12.9249, "lng": 80.1000, "pincode": "600045" },
+  { "name": "Banjara Hills", "districtCode": "TG-HYD", "lat": 17.4177, "lng": 78.4386, "pincode": "500034" },
+  { "name": "Gachibowli", "districtCode": "TG-HYD", "lat": 17.4435, "lng": 78.3772, "pincode": "500032" },
+  { "name": "Secunderabad", "districtCode": "TG-HYD", "lat": 17.4399, "lng": 78.4983, "pincode": "500003" },
+  { "name": "Connaught Place", "districtCode": "DL-ND", "lat": 28.6315, "lng": 77.2167, "pincode": "110001" },
+  { "name": "Dwarka", "districtCode": "DL-NW", "lat": 28.5921, "lng": 77.0460, "pincode": "110075" },
+  { "name": "Rohini", "districtCode": "DL-NW", "lat": 28.7495, "lng": 77.0565, "pincode": "110085" },
+  { "name": "Park Street", "districtCode": "WB-KOL", "lat": 22.5534, "lng": 88.3525, "pincode": "700016" },
+  { "name": "Salt Lake", "districtCode": "WB-KOL", "lat": 22.5867, "lng": 88.4172, "pincode": "700091" },
+  { "name": "Howrah Maidan", "districtCode": "WB-HWH", "lat": 22.5863, "lng": 88.3123, "pincode": "711101" }
+]

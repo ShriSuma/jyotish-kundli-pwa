@@ -1,0 +1,183 @@
+{
+  "app": { "title": "జ్యోతిష్ కుండలి", "subtitle": "ఆఫ్‌లైన్-ఫస్ట్ వైదిక జ్యోతిష సహచారి" },
+  "nav": { "home": "హోమ్", "kundli": "కుండలి", "predictions": "ఫలితాలు", "settings": "సెట్టింగ్స్" },
+  "layout": { "offlineMode": "మీరు ఆఫ్‌లైన్‌లో ఉన్నారు. సేవ్ చేసిన కుండలి మరియు క్యాష్ పంచాంగం పనిచేస్తాయి." },
+  "home": {
+    "todayPanchang": "ఈరోజు పంచాంగం",
+    "rahuKaal": "రాహుకాలం",
+    "refresh": "రిఫ్రెష్",
+    "placeForCalc": "లెక్కలకు స్థలం",
+    "useDeviceLocation": "ఈ పరికర స్థానం వాడండి",
+    "deviceLocationLabel": "ప్రస్తుత పరికర స్థలం",
+    "sunTimes": "ఈరోజు సూర్యుడు (సేవ్ చేసిన స్థలం)",
+    "morningTithiNote": "సూర్యోదయానికి ముందు చాలామంది పంచాంగ తిథిని గమనిస్తారు:",
+    "weekdayCardTitle": "ఈరోజుకు మృదువైన సందేశం",
+    "locationGateTitle": "ముందుగా మీ స్థలాన్ని సెట్ చేయండి",
+    "locationGateBody": "పంచాంగం మరియు సూర్యోదయ సమయాలు అక్షాంశం మరియు రేఖాంశంపై ఆధారపడతాయి. మీరు ఉన్న చోటును ఎంచుకోండి.",
+    "openMapPicker": "మ్యాప్ ఎంపిక",
+    "goToKundli": "కుండలికి వెళ్లండి"
+  },
+  "weekday": {
+    "0": "ఆదివారం సూర్యుడితో ముడిపడి ఉంటుంది. నెమ్మది మరియు కృతజ్ఞత మంచిది.",
+    "1": "సోమవారం శివునికి ప్రియమైన రోజు — ప్రశాంత భక్తి మరియు దయ.",
+    "2": "మంగళవారం ధైర్యానికి సంబంధించింది; ఓపిక మరియు స్థిర ప్రయత్నం సహాయకం.",
+    "3": "బుధవారం గణేశుని రోజు — స్పష్టమైన మనస్తో ప్రారంభం సులభం.",
+    "4": "గురువారం గురు (బృహస్పతి) రోజు; నేర్చుకోవడం, బోధించడం, ఉదారత.",
+    "5": "శుక్రవారం లక్ష్మి మృదువైన రోజు — అందం, సామరస్యం, సంరక్షణ.",
+    "6": "శనివారం శని నెమ్మది జ్ఞానం — విశ్రాంతి, సేవా, సరళత శాంతి."
+  },
+  "kundli": {
+    "formTitle": "కుండలి రూపొందించండి",
+    "subtitle": "జన్మ వివరాలు నింపండి మరియు జాబితా నుండి స్థలం ఎంచుకోండి.",
+    "name": "పేరు",
+    "birthDate": "జన్మ తేదీ",
+    "birthTime": "జన్మ సమయం",
+    "birthPlace": "జన్మ స్థలం",
+    "gothra": "గోత్రం (ఐచ్ఛికం)",
+    "pincodeOptional": "పిన్ కోడ్ (ఐచ్ఛికం, భారతదేశం)",
+    "homePlaceName": "ఇల్లు / ప్రాంతం పేరు (ఐచ్ఛికం)",
+    "openMap": "మ్యాప్‌లో ఎంచుకోండి",
+    "mapPickerTitle": "మ్యాప్‌లో జన్మ స్థలం ఎంచుకోండి",
+    "mapPickerPrivacy": "ఈ పికర్ తెరిచినప్పుడు Google కి మ్యాప్ పరస్పర చర్యలు వెళ్లవచ్చు.",
+    "mapPickerNoKey": "మ్యాప్ కోసం VITE_GOOGLE_MAPS_API_KEY జోడించండి.",
+    "generate": "కుండలి రూపొందించండి",
+    "save": "సేవ్ చేసిన చార్ట్ నవీకరించండి",
+    "download": "PNG డౌన్‌లోడ్",
+    "downloadPdf": "PDF డౌన్‌లోడ్",
+    "share": "చార్ట్ షేర్",
+    "requiredFields": "దయచేసి అన్ని అవసరమైన ఫీల్డ్‌లు నింపండి.",
+    "savedPrefix": "సేవ్ చేయబడింది",
+    "todayPrediction": "ఈరోజు చదువు",
+    "dashaTitle": "దశ సంక్షిప్తం",
+    "viewPredictions": "ఫలితాలు చూడండి",
+    "detailsAboutMe": "నా గురించి వివరాలు",
+    "detailsLoading": "కథనం సిద్ధమవుతోంది…",
+    "detailsError": "కథనం లోడ్ కాలేదు.",
+    "detailsConsentHint": "సెట్టింగ్స్‌లో “ఆన్‌లైన్ కథనం” ప్రారంభించి VITE_NARRATIVE_API_URL సెట్ చేయండి.",
+    "syllableHintTitle": "పేరు ధ్వనులు (ఐచ్ఛికం)",
+    "syllableHintBody": "జనాదరణ పొందిన సంప్రదాయాల నుండి సాధారణ సూచనలు — నియమం కాదు.",
+    "southChartAria": "దక్షిణ భారతీయ శైలి జన్మ చార్ట్",
+    "lagnaMark": "ల",
+    "centerRashi": "రాశి (చంద్రుడు)",
+    "centerNakshatra": "నక్షత్రం",
+    "centerGothra": "గోత్రం",
+    "centerLagna": "లగ్నం",
+    "pada": "పాదం",
+    "maandi": "మాండి (గులిక)",
+    "planetTable": {
+      "planet": "గ్రహం",
+      "degree": "అంశం",
+      "rashi": "రాశి",
+      "nakshatra": "నక్షత్రం",
+      "house": "భావం"
+    }
+  },
+  "predictions": {
+    "daily": "ఈరోజు",
+    "weekly": "ఈ వారం",
+    "monthly": "ఈ నెల",
+    "career": "వృత్తి",
+    "finance": "ఆర్థికం",
+    "health": "ఆరోగ్యం",
+    "relationships": "సంబంధాలు",
+    "luckyLabel": "అదృష్టం",
+    "emptyTitle": "ముందుగా కుండలి చేయండి",
+    "emptyBody": "మీ జన్మ డేటాకు అనుగుణంగా చదవడానికి కుండలి రూపొందించండి (చార్ట్ స్వయంచాలకంగా సేవ్ అవుతుంది).",
+    "goToKundli": "కుండలికి వెళ్లండి",
+    "rating": "మొత్తం భావం",
+    "seeker": "అన్వేషకుడు",
+    "focus": { "moonTransit": "చంద్ర గమనం", "sunTransit": "సూర్య గమనం" },
+    "lucky": {
+      "positive": { "color": "ఆకుపచ్చ", "direction": "తూర్పు" },
+      "neutral": { "color": "నీలం", "direction": "ఉత్తరం" },
+      "caution": { "color": "కాషాయం", "direction": "దక్షిణం" }
+    },
+    "tones": {
+      "positive": {
+        "title": "అధిక ఉత్సాహ రోజు",
+        "summary": "{{name}}, your {{moonRashi}} rhythms align kindly with {{planet}} — lean into clarity rather than noise.",
+        "career": "This is a strong window for decisive moves and crisp presentations. Finish one priority chain before opening another so energy does not scatter. A short written plan before meetings keeps everyone aligned.",
+        "finance": "Steady gains are possible when you keep receipts and numbers in one place. Review subscriptions and small recurring charges before lunch. If an offer feels rushed, sleep on it once before saying yes.",
+        "health": "Light walking, water, and regular meals stabilise your rhythm today. Avoid stacking caffeine on top of poor sleep. Stretch shoulders and neck if you work at a screen for long stretches.",
+        "relationships": "Conversations warm up when you name feelings calmly and invite the other person to do the same. Assume goodwill first, then ask gentle questions. Small acts of appreciation land better than grand promises."
+      },
+      "neutral": {
+        "title": "సమతుల్య రోజు",
+        "summary": "{{name}}, keep a measured pace while {{planet}} colours your {{moonRashi}} mood — steady beats flashy.",
+        "career": "Finish pending tasks before starting brand-new threads; tidy inboxes and tickets first. If a deadline shifts, communicate early so trust stays intact. Batch similar chores to protect deep-focus blocks.",
+        "finance": "Avoid impulsive purchases and track small expenses for a week to spot leaks. Move savings automatically if you can. A calm spreadsheet review beats a dramatic portfolio shuffle today.",
+        "health": "Maintain routine sleep and meal timing even if the day feels ordinary. Short breaks every ninety minutes help focus. Choose a lighter dinner if lunch was heavy.",
+        "relationships": "Listen patiently before reacting; repeat back what you heard to reduce misunderstandings. Give space where someone seems overwhelmed. Humour helps only when it is kind, not sharp."
+      },
+      "caution": {
+        "title": "జాగ్రత్త రోజు",
+        "summary": "{{name}}, {{planet}} asks for gentle discipline around {{moonRashi}} choices — small pauses prevent big regrets.",
+        "career": "Double-check details, attachments, and names before you sign or send. Avoid rushed commitments that rely on verbal assurances alone. If tempers rise, reschedule the hard topic rather than forcing closure.",
+        "finance": "Delay major spending and review budgets calmly with fresh eyes. Watch for hidden fees in contracts. If cash flow feels tight, list essentials before optional comforts.",
+        "health": "Take breaks and reduce stress-heavy activities where you can. Notice jaw and shoulder tension and soften them. Prefer steady pacing over heroic all-nighters.",
+        "relationships": "Choose calm words and avoid assumptions about motives. Ask one honest question instead of stacking accusations. Repair matters more than winning the point."
+      }
+    }
+  },
+  "settings": {
+    "language": "భాష",
+    "langName_en": "English",
+    "langName_hi": "हिन्दी",
+    "langName_kn": "ಕನ್ನಡ",
+    "langName_te": "తెలుగు",
+    "langName_ta": "தமிழ்",
+    "chartStyle": "చార్ట్ శైలి",
+    "chartNorth": "ఉత్తర భారతీయ",
+    "chartSouth": "దక్షిణ భారతీయ",
+    "notifications": "నోటిఫికేషన్లు",
+    "notifyPanchang": "రోజువారీ పంచాంగ జ్ఞాపకం",
+    "notifyPanchangHelp": "~7:00 వద్ద మృదువైన ఉదయ జ్ఞాపకం, సేవ్ చేసిన అక్షాంశాలు వాడుతుంది.",
+    "notifyRahu": "రాహుకాల హెచ్చరిక",
+    "notifyRahuHelp": "మీ స్థలానికి రాహుకాలానికి ముందు చిన్న గుర్తు.",
+    "enableNotifications": "నోటిఫికేషన్లను ప్రారంభించండి",
+    "notificationsHint": "జ్ఞాపకాలు కుండలి నుండి సేవ్ చేసిన స్థలాన్ని (రాష్ట్రం / జిల్లా / గ్రామం) వాడుతాయి.",
+    "savedPlace": "సేవ్ చేసిన స్థలం",
+    "permissionLabel": "నోటిఫికేషన్ అనుమతి",
+    "permissionGranted": "అందింది",
+    "permissionDenied": "నిరోధించబడింది — సెట్టింగ్‌లలో అనుమతించండి.",
+    "permissionDefault": "ఇంకా అడగలేదు",
+    "version": "వెర్షన్",
+    "build": "బిల్డ్",
+    "about": "ఆఫ్‌లైన్-ఫస్ట్ వైదిక జ్యోతిష్ టూల్‌కిట్. మీ జన్మ డేటా ఈ పరికరంలోనే ఉంటుంది.",
+    "privacyPolicy": "గోప్యతా విధానం",
+    "narrativeTitle": "ఆన్‌లైన్ కథనం (ఐచ్ఛికం)",
+    "narrativeHelp": "ప్రారంభించినప్పుడు “నా గురించి వివరాలు” చార్ట్ సారాంశాన్ని మీ API కి పంపవచ్చు (README చూడండి).",
+    "narrativeAllow": "ఆన్‌లైన్ కథనానికి అనుమతి"
+  },
+  "panchang": {
+    "tithi": "తిథి", "nakshatra": "నక్షత్రం", "yoga": "యోగం", "karana": "కరణం", "paksha": "పక్షం", "sunrise": "సూర్యోదయం", "sunset": "సూర్యాస్తమయం"
+  },
+  "rahuKaal": {
+    "active": "ఇప్పుడు యాక్టివ్",
+    "inactive": "యాక్టివ్ కాదు",
+    "warning": "రాహుకాలంలో కొత్త ప్రారంభాలను చాలామంది తప్పుకుంటారు; భయం కాదు, మృదువైన విరామం."
+  },
+  "planets": { "Sun": "సూర్యుడు", "Moon": "చంద్రుడు", "Mars": "కుజుడు", "Mercury": "బుధుడు", "Jupiter": "గురుడు", "Venus": "శుక్రుడు", "Saturn": "శని", "Rahu": "రాహు", "Ketu": "కేతు" },
+  "rashis": { "Mesha": "మేషం", "Vrishabha": "వృషభం", "Mithuna": "మిథునం", "Karka": "కర్కాటకం", "Simha": "సింహం", "Kanya": "కన్య", "Tula": "తుల", "Vrischika": "వృశ్చికం", "Dhanu": "ధనుస్సు", "Makara": "మకరం", "Kumbha": "కుంభం", "Meena": "మీనం" },
+  "nakshatras": {
+    "Ashwini": "అశ్విని", "Bharani": "భరణి", "Krittika": "కృత్తిక", "Rohini": "రోహిణి", "Mrigashirsha": "మృగశిర", "Ardra": "ఆర్ద్ర",
+    "Punarvasu": "పునర్వసు", "Pushya": "పుష్యమి", "Ashlesha": "ఆశ్లేష", "Magha": "మఖ", "PurvaPhalguni": "పుబ్బ",
+    "UttaraPhalguni": "ఉత్తర", "Hasta": "హస్త", "Chitra": "చిత్త", "Swati": "స్వాతి", "Vishakha": "విశాఖ",
+    "Anuradha": "అనూరాధ", "Jyeshtha": "జ్యేష్ఠ", "Mula": "మూల", "PurvaAshadha": "పూర్వాషాఢ", "UttaraAshadha": "ఉత్తరాషాఢ",
+    "Shravana": "శ్రవణం", "Dhanishtha": "ధనిష్ఠ", "Shatabhisha": "శతభిషం", "PurvaBhadrapada": "పూర్వాభాద్ర", "UttaraBhadrapada": "ఉత్తరాభాద్ర", "Revati": "రేవతి"
+  },
+  "common": { "loading": "లోడ్ అవుతోంది...", "error": "ఏదో తప్పు జరిగింది", "save": "సేవ్", "cancel": "రద్దు", "confirm": "నిర్ధారించు" },
+  "consent": {
+    "title": "గోప్యత ముందుగా",
+    "message": "మీ జన్మ వివరాలు మరియు కుండలి ఈ పరికరంలోనే ఉంటాయి. అంగీకరిస్తే స్థానిక అనామక వినియోగ లెక్కలు మాత్రమే.",
+    "accept": "అంగీకరించు",
+    "decline": "తిరస్కరించు"
+  },
+  "install": {
+    "title": "యాప్ ఇన్‌స్టాల్",
+    "message": "రోజువారీ పంచాంగం మరియు మృదువైన జ్ఞాపకాల కోసం జ్యోతిష్ కుండలి ఇన్‌స్టాల్ చేయండి.",
+    "install": "ఇన్‌స్టాల్",
+    "dismiss": "వదిలేయి"
+  },
+  "location": { "loading": "స్థలాలు లోడ్ అవుతున్నాయి…" }
+}

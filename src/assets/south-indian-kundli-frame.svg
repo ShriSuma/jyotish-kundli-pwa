@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368 368" fill="none" aria-hidden="true">
+  <!-- South Indian 4×4 grid with 2×2 centre merged; m=28, cell=78 (matches southIndianLayout.ts) -->
+  <g stroke="#991b1b" stroke-width="2.4" stroke-linecap="square" stroke-linejoin="miter">
+    <rect x="28" y="28" width="312" height="312" />
+    <line x1="28" y1="106" x2="340" y2="106" />
+    <line x1="28" y1="262" x2="340" y2="262" />
+    <line x1="106" y1="28" x2="106" y2="106" />
+    <line x1="184" y1="28" x2="184" y2="106" />
+    <line x1="262" y1="28" x2="262" y2="106" />
+    <line x1="106" y1="340" x2="106" y2="262" />
+    <line x1="184" y1="340" x2="184" y2="262" />
+    <line x1="262" y1="340" x2="262" y2="262" />
+    <line x1="28" y1="184" x2="106" y2="184" />
+    <line x1="262" y1="184" x2="340" y2="184" />
+    <line x1="106" y1="106" x2="106" y2="262" />
+    <line x1="262" y1="106" x2="262" y2="262" />
+    <line x1="106" y1="106" x2="262" y2="106" />
+    <line x1="106" y1="262" x2="262" y2="262" />
+  </g>
+  <g stroke="#b91c1c" stroke-width="1.2" stroke-opacity="0.45">
+    <rect x="29" y="29" width="310" height="310" />
+  </g>
+</svg>

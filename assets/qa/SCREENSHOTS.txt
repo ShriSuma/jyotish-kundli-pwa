@@ -1,0 +1,9 @@
+QA screenshots (hybrid devotional PWA) — captured 2026-05-09 against dev server http://127.0.0.1:5174/
+
+00-privacy-consent-and-home.png — Privacy consent modal over Home / Panchang
+01-home-after-consent.png — Home: weekday note, SunCalc times, Panchang card, Rahu Kaal
+02-kundli-page.png — Kundli: form, location cascade, chart style controls
+03-predictions-empty.png — Predictions empty state (no saved Kundli)
+04-settings.png — Settings: languages, chart style, notifications, footer
+
+Offline banner: not captured (would require toggling browser offline in your environment).

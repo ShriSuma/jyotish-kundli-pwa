@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --jk-page-bg-start: #fff8f0;
+  --jk-page-bg-mid: #e8e4f5;
+  --jk-page-bg-end: #c9d4f0;
+  --jk-card-bg: #fffdf8;
+  --jk-card-fg: #1e1b4b;
+  --jk-card-border: rgba(120, 83, 30, 0.12);
+  --jk-card-shadow: 0 10px 40px rgba(30, 27, 75, 0.08);
+  --jk-accent: #b45309;
+  --jk-accent-soft: rgba(180, 83, 9, 0.12);
+  --jk-nav-bg: rgba(255, 253, 248, 0.92);
+  --jk-nav-border: rgba(30, 27, 75, 0.08);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(165deg, var(--jk-page-bg-start) 0%, var(--jk-page-bg-mid) 45%, var(--jk-page-bg-end) 100%);
+  color: var(--jk-card-fg);
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.jk-btn {
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.jk-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(30, 27, 75, 0.1);
+}
+
+.jk-btn:active:not(:disabled) {
+  transform: translateY(0);
+}

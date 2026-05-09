@@ -1,0 +1,183 @@
+{
+  "app": { "title": "ஜோதிடக் குண்டலி", "subtitle": "ஆஃப்லைன்-ஃபர்ஸ்ட் வேத ஜோதிட துணை" },
+  "nav": { "home": "முகப்பு", "kundli": "குண்டலி", "predictions": "பலன்கள்", "settings": "அமைப்புகள்" },
+  "layout": { "offlineMode": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சேமித்த குண்டலி மற்றும் பஞ்சாங்கத் தேக்கம் வேலை செய்யும்." },
+  "home": {
+    "todayPanchang": "இன்றைய பஞ்சாங்கம்",
+    "rahuKaal": "ராகு காலம்",
+    "refresh": "புதுப்பி",
+    "placeForCalc": "கணக்கீட்டிற்கான இடம்",
+    "useDeviceLocation": "இந்தச் சாதன இருப்பிடத்தைப் பயன்படுத்து",
+    "deviceLocationLabel": "தற்போதைய சாதன இருப்பிடம்",
+    "sunTimes": "இன்றைய சூரியன் (சேமித்த இடம்)",
+    "morningTithiNote": "சூரியோதயத்திற்கு முன் பலர் பஞ்சாங்க திதியை சிந்திக்கிறார்கள்:",
+    "weekdayCardTitle": "இன்றைக்கான மென்மையான குறிப்பு",
+    "locationGateTitle": "முதலில் உங்கள் இடத்தை அமைக்கவும்",
+    "locationGateBody": "பஞ்சாங்கமும் சூரியோதய நேரங்களும் அட்சரேகை மற்றும் தீர்க்கரேகையைச் சார்ந்தவை. நீங்கள் இருக்கும் இடத்தைத் தேர்ந்தெடுக்கவும்.",
+    "openMapPicker": "வரைபடத்தில் தேர்வு",
+    "goToKundli": "குண்டலிக்குச் செல்"
+  },
+  "weekday": {
+    "0": "ஞாயிறு சூரியனுடன் தொடர்புடையது. மெதுவும் நன்றியுணர்வும் நல்லது.",
+    "1": "திங்கள் சிவனுக்கு உகந்த நாள் — அமைதியான பக்தியும் தயவும்.",
+    "2": "செவ்வாய் துணிச்சலுடன் தொடர்பு; பொறுமையும் நிலையான முயற்சியும் உதவும்.",
+    "3": "புதன் வினாயகரின் நாள் — தெளிவான மனத்துடன் தொடக்கம் எளிது.",
+    "4": "வியாழன் குரு (வியாழன்) நாள்; கற்றல், கற்பித்தல், உதாரியம்.",
+    "5": "வெள்ளி இலக்குமியின் மென்மையான நாள் — அழகு, இசைவு, பராமரிப்பு.",
+    "6": "சனி சனியின் மெதுவான ஞானம் — ஓய்வு, சேவை, எளிமை அமைதி."
+  },
+  "kundli": {
+    "formTitle": "குண்டலி உருவாக்கு",
+    "subtitle": "பிறப்பு விவரங்களை நிரப்பி பட்டியலிலிருந்து இடத்தைத் தேர்ந்தெடுக்கவும்.",
+    "name": "பெயர்",
+    "birthDate": "பிறந்த தேதி",
+    "birthTime": "பிறந்த நேரம்",
+    "birthPlace": "பிறந்த இடம்",
+    "gothra": "கோத்திரம் (விருப்பம்)",
+    "pincodeOptional": "பின் குறியீடு (விருப்பம், இந்தியா)",
+    "homePlaceName": "வீடு / பகுதி பெயர் (விருப்பம்)",
+    "openMap": "வரைபடத்தில் தேர்வு",
+    "mapPickerTitle": "வரைபடத்தில் பிறந்த இடத்தைத் தேர்ந்தெடு",
+    "mapPickerPrivacy": "இந்தத் தேர்வி திறந்திருக்கும்போது Google க்கு வரைபட தொடர்புகள் செல்லலாம்.",
+    "mapPickerNoKey": "வரைபடத்திற்கு VITE_GOOGLE_MAPS_API_KEY சேர்க்கவும்.",
+    "generate": "குண்டலி உருவாக்கு",
+    "save": "சேமித்த வரைபடத்தைப் புதுப்பி",
+    "download": "PNG பதிவிறக்கு",
+    "downloadPdf": "PDF பதிவிறக்கு",
+    "share": "வரைபடம் பகிர்",
+    "requiredFields": "தயவுசெய்து அனைத்து தேவையான புலங்களையும் நிரப்பவும்.",
+    "savedPrefix": "சேமிக்கப்பட்டது",
+    "todayPrediction": "இன்றைய வாசிப்பு",
+    "dashaTitle": "தசை சுருக்கம்",
+    "viewPredictions": "பலன்களைக் காண்க",
+    "detailsAboutMe": "என்னைப் பற்றிய விவரங்கள்",
+    "detailsLoading": "கதை தயாராகிறது…",
+    "detailsError": "கதை ஏற்ற முடியவில்லை.",
+    "detailsConsentHint": "அமைப்புகளில் “ஆன்லைன் கதை” இயக்கி VITE_NARRATIVE_API_URL அமைக்கவும்.",
+    "syllableHintTitle": "பெயர் ஒலிகள் (விருப்பம்)",
+    "syllableHintBody": "பொதுவான பரிந்துரைகள் பல பாரம்பரியங்களில் — விதி அல்ல.",
+    "southChartAria": "தென்னிந்திய பாணி பிறப்பு வரைபடம்",
+    "lagnaMark": "ல",
+    "centerRashi": "ராசி (சந்திரன்)",
+    "centerNakshatra": "நட்சத்திரம்",
+    "centerGothra": "கோத்திரம்",
+    "centerLagna": "லக்னம்",
+    "pada": "பாதம்",
+    "maandi": "மாண்டி (குலிக)",
+    "planetTable": {
+      "planet": "கிரகம்",
+      "degree": "அம்சம்",
+      "rashi": "ராசி",
+      "nakshatra": "நட்சத்திரம்",
+      "house": "பாவம்"
+    }
+  },
+  "predictions": {
+    "daily": "இன்று",
+    "weekly": "இந்த வாரம்",
+    "monthly": "இந்த மாதம்",
+    "career": "தொழில்",
+    "finance": "நிதி",
+    "health": "ஆரோக்கியம்",
+    "relationships": "உறவுகள்",
+    "luckyLabel": "அதிர்ஷ்டம்",
+    "emptyTitle": "முதலில் குண்டலி உருவாக்கவும்",
+    "emptyBody": "உங்கள் பிறப்புத் தரவிற்கேற்ப பலன்களுக்கு குண்டலி உருவாக்கவும் (வரைபடம் தானாகச் சேமிக்கப்படும்).",
+    "goToKundli": "குண்டலிக்குச் செல்",
+    "rating": "ஒட்டுமொத்த உணர்வு",
+    "seeker": "தேடுபவர்",
+    "focus": { "moonTransit": "சந்திர பெயர்ச்சி", "sunTransit": "சூரிய பெயர்ச்சி" },
+    "lucky": {
+      "positive": { "color": "பச்சை", "direction": "கிழக்கு" },
+      "neutral": { "color": "நீலம்", "direction": "வடக்கு" },
+      "caution": { "color": "மஞ்சள் சிவப்பு", "direction": "தெற்கு" }
+    },
+    "tones": {
+      "positive": {
+        "title": "உயர் உந்துதல் நாள்",
+        "summary": "{{name}}, your {{moonRashi}} rhythms align kindly with {{planet}} — lean into clarity rather than noise.",
+        "career": "This is a strong window for decisive moves and crisp presentations. Finish one priority chain before opening another so energy does not scatter. A short written plan before meetings keeps everyone aligned.",
+        "finance": "Steady gains are possible when you keep receipts and numbers in one place. Review subscriptions and small recurring charges before lunch. If an offer feels rushed, sleep on it once before saying yes.",
+        "health": "Light walking, water, and regular meals stabilise your rhythm today. Avoid stacking caffeine on top of poor sleep. Stretch shoulders and neck if you work at a screen for long stretches.",
+        "relationships": "Conversations warm up when you name feelings calmly and invite the other person to do the same. Assume goodwill first, then ask gentle questions. Small acts of appreciation land better than grand promises."
+      },
+      "neutral": {
+        "title": "சமநிலை நாள்",
+        "summary": "{{name}}, keep a measured pace while {{planet}} colours your {{moonRashi}} mood — steady beats flashy.",
+        "career": "Finish pending tasks before starting brand-new threads; tidy inboxes and tickets first. If a deadline shifts, communicate early so trust stays intact. Batch similar chores to protect deep-focus blocks.",
+        "finance": "Avoid impulsive purchases and track small expenses for a week to spot leaks. Move savings automatically if you can. A calm spreadsheet review beats a dramatic portfolio shuffle today.",
+        "health": "Maintain routine sleep and meal timing even if the day feels ordinary. Short breaks every ninety minutes help focus. Choose a lighter dinner if lunch was heavy.",
+        "relationships": "Listen patiently before reacting; repeat back what you heard to reduce misunderstandings. Give space where someone seems overwhelmed. Humour helps only when it is kind, not sharp."
+      },
+      "caution": {
+        "title": "கவனமான நாள்",
+        "summary": "{{name}}, {{planet}} asks for gentle discipline around {{moonRashi}} choices — small pauses prevent big regrets.",
+        "career": "Double-check details, attachments, and names before you sign or send. Avoid rushed commitments that rely on verbal assurances alone. If tempers rise, reschedule the hard topic rather than forcing closure.",
+        "finance": "Delay major spending and review budgets calmly with fresh eyes. Watch for hidden fees in contracts. If cash flow feels tight, list essentials before optional comforts.",
+        "health": "Take breaks and reduce stress-heavy activities where you can. Notice jaw and shoulder tension and soften them. Prefer steady pacing over heroic all-nighters.",
+        "relationships": "Choose calm words and avoid assumptions about motives. Ask one honest question instead of stacking accusations. Repair matters more than winning the point."
+      }
+    }
+  },
+  "settings": {
+    "language": "மொழி",
+    "langName_en": "English",
+    "langName_hi": "हिन्दी",
+    "langName_kn": "ಕನ್ನಡ",
+    "langName_te": "తెలుగు",
+    "langName_ta": "தமிழ்",
+    "chartStyle": "வரைபட பாணி",
+    "chartNorth": "வட இந்திய",
+    "chartSouth": "தென் இந்திய",
+    "notifications": "அறிவிப்புகள்",
+    "notifyPanchang": "தினசரி பஞ்சாங்க நினைவூட்டல்",
+    "notifyPanchangHelp": "~7:00-க்கு அருகில் மென்மையான காலை நினைவூட்டல், சேமித்த அட்சரேகைகளைப் பயன்படுத்துகிறது.",
+    "notifyRahu": "ராகு கால எச்சரிக்கை",
+    "notifyRahuHelp": "உங்கள் இடத்திற்கான ராகு காலத்திற்கு முன் குறுகிய அறிவிப்பு.",
+    "enableNotifications": "அறிவிப்புகளை இயக்கு",
+    "notificationsHint": "நினைவூட்டல்கள் குண்டலியிலிருந்து சேமித்த இடத்தை (மாநிலம் / மாவட்டம் / கிராமம்) பயன்படுத்துகின்றன.",
+    "savedPlace": "சேமித்த இடம்",
+    "permissionLabel": "அறிவிப்பு அனுமதி",
+    "permissionGranted": "வழங்கப்பட்டது",
+    "permissionDenied": "தடுக்கப்பட்டது — அமைப்புகளில் அனுமதிக்கவும்.",
+    "permissionDefault": "இன்னும் கேட்கவில்லை",
+    "version": "பதிப்பு",
+    "build": "கட்டுமானம்",
+    "about": "ஆஃப்லைன்-ஃபர்ஸ்ட் வேத ஜோதிடக் கருவிப்பெட்டி. உங்கள் பிறப்புத் தரவு இச்சாதனத்திலேயே உள்ளது.",
+    "privacyPolicy": "தனியுரிமைக் கொள்கை",
+    "narrativeTitle": "ஆன்லைன் கதை (விருப்பம்)",
+    "narrativeHelp": "இயக்கப்பட்டால் “என்னைப் பற்றிய விவரங்கள்” சுருக்க வரைபடத்தை உங்கள் API க்கு அனுப்பலாம் (README பார்க்க).",
+    "narrativeAllow": "ஆன்லைன் கதைக்கு அனுமதி"
+  },
+  "panchang": {
+    "tithi": "திதி", "nakshatra": "நட்சத்திரம்", "yoga": "யோகம்", "karana": "கரணம்", "paksha": "பக்ஷம்", "sunrise": "சூரியோதயம்", "sunset": "சூரியாஸ்தமனம்"
+  },
+  "rahuKaal": {
+    "active": "இப்போது செயலில்",
+    "inactive": "செயலில் இல்லை",
+    "warning": "ராகு காலத்தில் புதிய தொடக்கங்களை பலர் தவிர்க்கிறார்கள்; இது அச்சமல்ல, மென்மையான இடைவெளி."
+  },
+  "planets": { "Sun": "சூரியன்", "Moon": "சந்திரன்", "Mars": "செவ்வாய்", "Mercury": "புதன்", "Jupiter": "குரு", "Venus": "சுக்கிரன்", "Saturn": "சனி", "Rahu": "ராகு", "Ketu": "கேது" },
+  "rashis": { "Mesha": "மேஷம்", "Vrishabha": "ரிஷபம்", "Mithuna": "மிதுனம்", "Karka": "கடகம்", "Simha": "சிம்மம்", "Kanya": "கன்னி", "Tula": "துலாம்", "Vrischika": "விருச்சிகம்", "Dhanu": "தனுசு", "Makara": "மகரம்", "Kumbha": "கும்பம்", "Meena": "மீனம்" },
+  "nakshatras": {
+    "Ashwini": "அஸ்வினி", "Bharani": "பரணி", "Krittika": "கிருத்திகை", "Rohini": "ரோகிணி", "Mrigashirsha": "மிருகசீரிஷம்", "Ardra": "திருவாதிரை",
+    "Punarvasu": "புனர்பூசம்", "Pushya": "பூசம்", "Ashlesha": "ஆயில்யம்", "Magha": "மகம்", "PurvaPhalguni": "பூரம்",
+    "UttaraPhalguni": "உத்திரம்", "Hasta": "ஹஸ்தம்", "Chitra": "சித்திரை", "Swati": "சுவாதி", "Vishakha": "விசாகம்",
+    "Anuradha": "அனுஷம்", "Jyeshtha": "கேட்டை", "Mula": "மூலம்", "PurvaAshadha": "பூராடம்", "UttaraAshadha": "உத்திராடம்",
+    "Shravana": "திருவோணம்", "Dhanishtha": "அவிட்டம்", "Shatabhisha": "சதயம்", "PurvaBhadrapada": "பூரட்டாதி", "UttaraBhadrapada": "உத்திரட்டாதி", "Revati": "ரேவதி"
+  },
+  "common": { "loading": "ஏற்றுகிறது...", "error": "பிழை ஏற்பட்டது", "save": "சேமி", "cancel": "ரத்து", "confirm": "உறுதி" },
+  "consent": {
+    "title": "தனியுரிமை முதலில்",
+    "message": "உங்கள் பிறப்பு விவரங்களும் குண்டலியும் இச்சாதனத்திலேயே உள்ளன. ஏற்றால் உள்ளூர் அநாமதேய பயன்பாட்டு எண்ணிக்கை மட்டும்.",
+    "accept": "ஏற்று",
+    "decline": "நிராகரி"
+  },
+  "install": {
+    "title": "ஆப் நிறுவு",
+    "message": "தினசரி பஞ்சாங்கம் மற்றும் மென்மையான நினைவூட்டல்களுக்கு ஜோதிடக் குண்டலி நிறுவவும்.",
+    "install": "நிறுவு",
+    "dismiss": "மூடு"
+  },
+  "location": { "loading": "இடங்கள் ஏற்றுகின்றன…" }
+}

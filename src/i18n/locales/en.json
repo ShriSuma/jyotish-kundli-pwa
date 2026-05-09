@@ -1,0 +1,255 @@
+{
+  "app": {
+    "title": "Jyotish Kundli",
+    "subtitle": "Offline-first Vedic astrology companion"
+  },
+  "nav": {
+    "home": "Home",
+    "kundli": "Kundli",
+    "predictions": "Predictions",
+    "settings": "Settings"
+  },
+  "layout": {
+    "offlineMode": "You are offline. Saved charts and cached Panchang still work."
+  },
+  "home": {
+    "todayPanchang": "Today's Panchang",
+    "rahuKaal": "Rahu Kaal",
+    "refresh": "Refresh",
+    "placeForCalc": "Place for calculations",
+    "useDeviceLocation": "Use this device’s location",
+    "deviceLocationLabel": "Current device location",
+    "sunTimes": "Sun today (your saved place)",
+    "morningTithiNote": "Before sunrise, many families reflect on the Panchang tithi:",
+    "weekdayCardTitle": "A gentle note for today",
+    "locationGateTitle": "Set your place first",
+    "locationGateBody": "Panchang and sunrise times depend on latitude and longitude. Choose your place so readings match where you are.",
+    "openMapPicker": "Open map picker",
+    "goToKundli": "Go to Kundli"
+  },
+  "weekday": {
+    "0": "Sunday is associated with Surya (the Sun). A calm pace and gratitude suit the day.",
+    "1": "Monday is dear to Shiva in many traditions — quiet devotion and kindness go well today.",
+    "2": "Tuesday is linked with strength and courage; steady effort and patience are kind allies.",
+    "3": "Wednesday welcomes Ganesha in many homes — beginnings go smoother with a clear mind.",
+    "4": "Thursday honours Guru (Jupiter); learning, teaching, and generosity uplift the heart.",
+    "5": "Friday is gentle Lakshmi’s day for many — beauty, harmony, and care for others shine.",
+    "6": "Saturday reminds us of Shani’s slow wisdom — rest, service, and simplicity bring peace."
+  },
+  "kundli": {
+    "formTitle": "Create Kundli",
+    "subtitle": "Enter birth details and choose birth place from the list.",
+    "name": "Name",
+    "birthDate": "Birth Date",
+    "birthTime": "Birth Time",
+    "birthPlace": "Birth Place",
+    "gothra": "Gotra (optional)",
+    "pincodeOptional": "PIN code (optional, India)",
+    "homePlaceName": "Home or area label (optional)",
+    "openMap": "Pick on map",
+    "mapPickerTitle": "Choose birth place on map",
+    "mapPickerPrivacy": "Google receives map interactions when this picker is open. Use only if you are comfortable sharing approximate location with Google.",
+    "mapPickerNoKey": "Add VITE_GOOGLE_MAPS_API_KEY to your environment to enable the map.",
+    "generate": "Generate Kundli",
+    "save": "Update saved chart",
+    "download": "Download PNG",
+    "downloadPdf": "Download PDF",
+    "share": "Share Chart",
+    "requiredFields": "Please fill all required fields.",
+    "savedPrefix": "Saved",
+    "todayPrediction": "Today’s reading",
+    "dashaTitle": "Dasha snapshot",
+    "viewPredictions": "View predictions",
+    "detailsAboutMe": "Details about me",
+    "detailsLoading": "Preparing your narrative…",
+    "detailsError": "Could not load narrative.",
+    "detailsConsentHint": "Turn on “Allow online narrative” in Settings and set VITE_NARRATIVE_API_URL.",
+    "syllableHintTitle": "Name sounds (optional)",
+    "syllableHintBody": "Common suggestions from popular traditions — not a rule. Many families follow different systems.",
+    "southChartAria": "South Indian style birth chart",
+    "lagnaMark": "L",
+    "centerRashi": "Rashi (Moon)",
+    "centerNakshatra": "Nakshatra",
+    "centerGothra": "Gotra",
+    "centerLagna": "Lagna",
+    "pada": "Pada",
+    "maandi": "Maandi (Gulika)",
+    "planetTable": {
+      "planet": "Planet",
+      "degree": "Degree",
+      "rashi": "Sign",
+      "nakshatra": "Nakshatra",
+      "house": "House"
+    }
+  },
+  "predictions": {
+    "daily": "Today",
+    "weekly": "This Week",
+    "monthly": "This Month",
+    "career": "Career",
+    "finance": "Finance",
+    "health": "Health",
+    "relationships": "Relationships",
+    "luckyLabel": "Lucky",
+    "emptyTitle": "Create your Kundli first",
+    "emptyBody": "Generate a chart to see readings tuned to your birth data (charts save automatically).",
+    "goToKundli": "Go to Kundli",
+    "rating": "Overall tone",
+    "seeker": "Seeker",
+    "focus": {
+      "moonTransit": "Moon transit",
+      "sunTransit": "Sun transit"
+    },
+    "lucky": {
+      "positive": { "color": "Green", "direction": "East" },
+      "neutral": { "color": "Blue", "direction": "North" },
+      "caution": { "color": "Saffron", "direction": "South" }
+    },
+    "tones": {
+      "positive": {
+        "title": "High momentum day",
+        "summary": "{{name}}, your {{moonRashi}} rhythms align kindly with {{planet}} — lean into clarity rather than noise.",
+        "career": "This is a strong window for decisive moves and crisp presentations. Finish one priority chain before opening another so energy does not scatter. A short written plan before meetings keeps everyone aligned.",
+        "finance": "Steady gains are possible when you keep receipts and numbers in one place. Review subscriptions and small recurring charges before lunch. If an offer feels rushed, sleep on it once before saying yes.",
+        "health": "Light walking, water, and regular meals stabilise your rhythm today. Avoid stacking caffeine on top of poor sleep. Stretch shoulders and neck if you work at a screen for long stretches.",
+        "relationships": "Conversations warm up when you name feelings calmly and invite the other person to do the same. Assume goodwill first, then ask gentle questions. Small acts of appreciation land better than grand promises."
+      },
+      "neutral": {
+        "title": "Balanced day",
+        "summary": "{{name}}, keep a measured pace while {{planet}} colours your {{moonRashi}} mood — steady beats flashy.",
+        "career": "Finish pending tasks before starting brand-new threads; tidy inboxes and tickets first. If a deadline shifts, communicate early so trust stays intact. Batch similar chores to protect deep-focus blocks.",
+        "finance": "Avoid impulsive purchases and track small expenses for a week to spot leaks. Move savings automatically if you can. A calm spreadsheet review beats a dramatic portfolio shuffle today.",
+        "health": "Maintain routine sleep and meal timing even if the day feels ordinary. Short breaks every ninety minutes help focus. Choose a lighter dinner if lunch was heavy.",
+        "relationships": "Listen patiently before reacting; repeat back what you heard to reduce misunderstandings. Give space where someone seems overwhelmed. Humour helps only when it is kind, not sharp."
+      },
+      "caution": {
+        "title": "Mindful day",
+        "summary": "{{name}}, {{planet}} asks for gentle discipline around {{moonRashi}} choices — small pauses prevent big regrets.",
+        "career": "Double-check details, attachments, and names before you sign or send. Avoid rushed commitments that rely on verbal assurances alone. If tempers rise, reschedule the hard topic rather than forcing closure.",
+        "finance": "Delay major spending and review budgets calmly with fresh eyes. Watch for hidden fees in contracts. If cash flow feels tight, list essentials before optional comforts.",
+        "health": "Take breaks and reduce stress-heavy activities where you can. Notice jaw and shoulder tension and soften them. Prefer steady pacing over heroic all-nighters.",
+        "relationships": "Choose calm words and avoid assumptions about motives. Ask one honest question instead of stacking accusations. Repair matters more than winning the point."
+      }
+    }
+  },
+  "settings": {
+    "language": "Language",
+    "langName_en": "English",
+    "langName_hi": "हिन्दी",
+    "langName_kn": "ಕನ್ನಡ",
+    "langName_te": "తెలుగు",
+    "langName_ta": "தமிழ்",
+    "chartStyle": "Chart Style",
+    "chartNorth": "North Indian",
+    "chartSouth": "South Indian",
+    "notifications": "Notifications",
+    "notifyPanchang": "Daily Panchang reminder",
+    "notifyPanchangHelp": "A soft morning reminder around 7:00, using your saved latitude and longitude.",
+    "notifyRahu": "Rahu Kaal alert",
+    "notifyRahuHelp": "A short heads-up before Rahu Kaal for your saved place.",
+    "enableNotifications": "Enable notifications",
+    "notificationsHint": "Reminders use the place saved from Kundli (state / district / village). You can change it anytime there.",
+    "savedPlace": "Saved place",
+    "permissionLabel": "Notification permission",
+    "permissionGranted": "Granted",
+    "permissionDenied": "Blocked in browser — open site settings to allow notifications.",
+    "permissionDefault": "Not yet requested",
+    "version": "Version",
+    "build": "Build",
+    "about": "Offline-first Vedic astrology toolkit. Your birth data stays on this device unless you choose otherwise.",
+    "privacyPolicy": "Privacy Policy",
+    "narrativeTitle": "Online narrative (optional)",
+    "narrativeHelp": "When enabled, “Details about me” can send a short chart summary to your configured API (see README). Never upload scans of documents.",
+    "narrativeAllow": "Allow online narrative"
+  },
+  "panchang": {
+    "tithi": "Tithi",
+    "nakshatra": "Nakshatra",
+    "yoga": "Yoga",
+    "karana": "Karana",
+    "paksha": "Paksha",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset"
+  },
+  "rahuKaal": {
+    "active": "Active now",
+    "inactive": "Not active now",
+    "warning": "Many people avoid starting brand-new ventures during Rahu Kaal; use this as a gentle pause, not fear."
+  },
+  "planets": {
+    "Sun": "Sun",
+    "Moon": "Moon",
+    "Mars": "Mars",
+    "Mercury": "Mercury",
+    "Jupiter": "Jupiter",
+    "Venus": "Venus",
+    "Saturn": "Saturn",
+    "Rahu": "Rahu",
+    "Ketu": "Ketu"
+  },
+  "rashis": {
+    "Mesha": "Aries (Mesha)",
+    "Vrishabha": "Taurus (Vrishabha)",
+    "Mithuna": "Gemini (Mithuna)",
+    "Karka": "Cancer (Karka)",
+    "Simha": "Leo (Simha)",
+    "Kanya": "Virgo (Kanya)",
+    "Tula": "Libra (Tula)",
+    "Vrischika": "Scorpio (Vrischika)",
+    "Dhanu": "Sagittarius (Dhanu)",
+    "Makara": "Capricorn (Makara)",
+    "Kumbha": "Aquarius (Kumbha)",
+    "Meena": "Pisces (Meena)"
+  },
+  "nakshatras": {
+    "Ashwini": "Ashwini",
+    "Bharani": "Bharani",
+    "Krittika": "Krittika",
+    "Rohini": "Rohini",
+    "Mrigashirsha": "Mrigashirsha",
+    "Ardra": "Ardra",
+    "Punarvasu": "Punarvasu",
+    "Pushya": "Pushya",
+    "Ashlesha": "Ashlesha",
+    "Magha": "Magha",
+    "PurvaPhalguni": "Purva Phalguni",
+    "UttaraPhalguni": "Uttara Phalguni",
+    "Hasta": "Hasta",
+    "Chitra": "Chitra",
+    "Swati": "Swati",
+    "Vishakha": "Vishakha",
+    "Anuradha": "Anuradha",
+    "Jyeshtha": "Jyeshtha",
+    "Mula": "Mula",
+    "PurvaAshadha": "Purva Ashadha",
+    "UttaraAshadha": "Uttara Ashadha",
+    "Shravana": "Shravana",
+    "Dhanishtha": "Dhanishtha",
+    "Shatabhisha": "Shatabhisha",
+    "PurvaBhadrapada": "Purva Bhadrapada",
+    "UttaraBhadrapada": "Uttara Bhadrapada",
+    "Revati": "Revati"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "consent": {
+    "title": "Privacy first",
+    "message": "Your birth details and Kundli stay on this device. If you accept, we only store anonymous usage counts locally to improve the app. No ad trackers.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "install": {
+    "title": "Install app",
+    "message": "Install Jyotish Kundli for daily Panchang and gentle reminders.",
+    "install": "Install",
+    "dismiss": "Dismiss"
+  },
+  "location": {
+    "loading": "Loading places…"
+  }
+}
