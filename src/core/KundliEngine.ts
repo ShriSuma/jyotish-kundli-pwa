@@ -5,40 +5,21 @@ import {
   type PlanetPosition
 } from "./AstroTypes";
 import {
+  ascendantTropicalDegrees,
+  meanObliquityDegrees,
+  siderealLongitudes
+} from "./EphemerisEngine";
+import {
   calculateLocalSiderealTime,
+  dateToJulianUt,
   degreeToNakshatra,
   degreeToNakshatraPada,
   degreeToRashi,
-  getAyanamsa,
-  normalizeDegree,
-  toJulianDate
+  normalizeDegree
 } from "./AstroMath";
 import { computeMaandi } from "./MaandiEngine";
 import { getNakshatraPadaHint } from "../data/nakshatraPadaHints";
-
-const planetPeriods: Record<PlanetName, number> = {
-  [PlanetName.Sun]: 365.25,
-  [PlanetName.Moon]: 27.32,
-  [PlanetName.Mars]: 686.98,
-  [PlanetName.Mercury]: 87.97,
-  [PlanetName.Jupiter]: 4332.59,
-  [PlanetName.Venus]: 224.7,
-  [PlanetName.Saturn]: 10759.22,
-  [PlanetName.Rahu]: 6798.38,
-  [PlanetName.Ketu]: 6798.38
-};
-
-const baseLongitudes: Record<PlanetName, number> = {
-  [PlanetName.Sun]: 280.5,
-  [PlanetName.Moon]: 218.3,
-  [PlanetName.Mars]: 145.0,
-  [PlanetName.Mercury]: 70.1,
-  [PlanetName.Jupiter]: 240.2,
-  [PlanetName.Venus]: 181.0,
-  [PlanetName.Saturn]: 310.4,
-  [PlanetName.Rahu]: 50.0,
-  [PlanetName.Ketu]: 230.0
-};
+import { wallClockBirthToUtc } from "./birthTime";
 
 const planetList = [
   PlanetName.Sun,
@@ -52,44 +33,58 @@ const planetList = [
   PlanetName.Ketu
 ] as const;
 
-const getPlanetDegree = (planet: PlanetName, jd: number, ayanamsa: number): number => {
-  if (planet === PlanetName.Ketu) {
-    const rahu = getPlanetDegree(PlanetName.Rahu, jd, ayanamsa);
-    return normalizeDegree(rahu + 180);
+const siderealDegreeFor = (
+  longs: ReturnType<typeof siderealLongitudes>,
+  planet: PlanetName
+): number => {
+  switch (planet) {
+    case PlanetName.Sun:
+      return longs.sun;
+    case PlanetName.Moon:
+      return longs.moon;
+    case PlanetName.Mars:
+      return longs.mars;
+    case PlanetName.Mercury:
+      return longs.mercury;
+    case PlanetName.Jupiter:
+      return longs.jupiter;
+    case PlanetName.Venus:
+      return longs.venus;
+    case PlanetName.Saturn:
+      return longs.saturn;
+    case PlanetName.Rahu:
+      return longs.rahu;
+    case PlanetName.Ketu:
+      return longs.ketu;
+    default:
+      return 0;
   }
-
-  const days = jd - 2451545.0;
-  const tropical = baseLongitudes[planet] + (days / planetPeriods[planet]) * 360;
-  return normalizeDegree(tropical - ayanamsa);
 };
 
-const ascendantFromLST = (lst: number, latitude: number): number => {
-  const latFactor = Math.sin((latitude * Math.PI) / 180) * 15;
-  return normalizeDegree(lst + latFactor);
-};
-
-const houseFromAsc = (ascendant: number, degree: number): number => {
+/** Bhāva (1–12) from whole-sign ascendant. */
+export const bhavaFromAscendant = (ascendant: number, degree: number): number => {
   const offset = normalizeDegree(degree - ascendant);
   return Math.floor(offset / 30) + 1;
 };
 
 export const calculateKundli = (input: KundliInput): KundliOutput => {
-  const birthDate = new Date(input.birthDate);
-  const jd = toJulianDate(birthDate, input.birthTime);
-  const ayanamsa = getAyanamsa(birthDate);
-  const combinedDate = new Date(`${input.birthDate}T${input.birthTime}:00.000Z`);
-  const lst = calculateLocalSiderealTime(combinedDate, input.longitude);
-  const ascendant = ascendantFromLST(lst, input.latitude);
+  const birthUtc = wallClockBirthToUtc(input.birthDate, input.birthTime, input.latitude, input.longitude);
+  const jd = dateToJulianUt(birthUtc);
+  const longs = siderealLongitudes(birthUtc);
+  const lst = calculateLocalSiderealTime(birthUtc, input.longitude);
+  const eps = meanObliquityDegrees(jd);
+  const ascTropical = ascendantTropicalDegrees(lst, input.latitude, eps);
+  const ascendant = normalizeDegree(ascTropical - longs.ayanamsa);
   const houses = Array.from({ length: 12 }, (_, i) => normalizeDegree(ascendant + i * 30));
 
   const planets: PlanetPosition[] = planetList.map((planet) => {
-    const degree = getPlanetDegree(planet, jd, ayanamsa);
+    const degree = siderealDegreeFor(longs, planet);
     return {
       name: planet,
       degree,
       rashi: degreeToRashi(degree),
       nakshatra: degreeToNakshatra(degree),
-      house: houseFromAsc(ascendant, degree)
+      house: bhavaFromAscendant(ascendant, degree)
     };
   });
 
@@ -101,10 +96,9 @@ export const calculateKundli = (input: KundliInput): KundliOutput => {
   const moonNak = moon?.nakshatra ?? degreeToNakshatra(moonDeg);
   const syllable = getNakshatraPadaHint(moonNak.english, moonPada);
 
-  const birthLocal = new Date(`${input.birthDate}T${input.birthTime}:00`);
   let maandi;
   try {
-    const m = computeMaandi(birthLocal, input.latitude, input.longitude);
+    const m = computeMaandi(birthUtc, input.latitude, input.longitude, input.pincode ?? "");
     maandi = { degree: m.degree, rashi: m.rashi, windowLabel: m.windowLabel };
   } catch {
     maandi = undefined;
@@ -122,4 +116,3 @@ export const calculateKundli = (input: KundliInput): KundliOutput => {
     maandi
   };
 };
-

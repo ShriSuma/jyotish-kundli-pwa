@@ -1,44 +1,67 @@
 import SunCalc from "suncalc";
-import { calculateLocalSiderealTime, degreeToRashi, normalizeDegree } from "./AstroMath";
-
-/** Weekday 0=Sun … 6=Sat → 1-based segment index (1..8) for Gulika/Maandi start after sunrise (common table). */
+import { inferBirthTimezoneIana } from "./birthTime";
+import { calculateLocalSiderealTime, dateToJulianUt, degreeToRashi, normalizeDegree } from "./AstroMath";
+import { ascendantTropicalDegrees, meanObliquityDegrees } from "./EphemerisEngine";
+import { lahiriAyanamsaDegrees } from "./LahiriAyanamsa";
+import { calendarYmdInTimeZone, formatClockAtPlace, weekdayInTimeZone } from "./placeTime";
+/**
+ * Weekday 0=Sun … 6=Sat → 1-based segment index (1..8) for Gulika/Maandi start after sunrise.
+ * Matches common panchānga tables (e.g. Sunday 7th eighth … Saturday 8th eighth).
+ */
 const GULIKA_START_SEGMENT: Record<number, number> = {
-  0: 6,
-  1: 5,
-  2: 4,
-  3: 3,
-  4: 2,
-  5: 1,
-  6: 7
-};
-
-const ascendantFromLstApprox = (lstDeg: number, latitude: number): number => {
-  const latFactor = Math.sin((latitude * Math.PI) / 180) * 15;
-  return normalizeDegree(lstDeg + latFactor);
+  0: 7,
+  1: 6,
+  2: 5,
+  3: 4,
+  4: 3,
+  5: 2,
+  6: 8
 };
 
 /**
- * Approximate Maandi (Gulika) ecliptic degree: ascendant at midpoint of the Gulika daytime segment.
- * Simplified display aid; full panchanga-grade Maandi needs professional ephemeris.
+ * Solar noon on the birth **civil** day at birthplace (fixes SunCalc using UTC calendar day for sunrise).
+ */
+const solarNoonForBirthCivilDay = (birthUtc: Date, lat: number, lng: number): Date => {
+  const tz = inferBirthTimezoneIana(lat, lng);
+  const ymd = calendarYmdInTimeZone(birthUtc, tz);
+  if (tz === "Asia/Kolkata") {
+    return new Date(`${ymd}T12:00:00+05:30`);
+  }
+  const [y, m, d] = ymd.split("-").map(Number);
+  return new Date(y, m - 1, d, 12, 0, 0, 0);
+};
+
+/**
+ * Maandi (Gulika) ecliptic degree: sidereal ascendant early in the Gulika daytime segment
+ * (common panchānga eighth from sunrise; a small offset from segment open matches many patrikās better than midpoint).
+ * Uses the same ascendant model as KundliEngine (Lahiri + obliquity + RAMC).
  */
 export const computeMaandi = (
-  birthLocal: Date,
+  birthUtc: Date,
   latitude: number,
-  longitude: number
+  longitude: number,
+  pincode = ""
 ): { degree: number; rashi: ReturnType<typeof degreeToRashi>; windowLabel: string } => {
-  const times = SunCalc.getTimes(birthLocal, latitude, longitude);
+  const anchor = solarNoonForBirthCivilDay(birthUtc, latitude, longitude);
+  const times = SunCalc.getTimes(anchor, latitude, longitude);
   const sunrise = times.sunrise.getTime();
   const sunset = times.sunset.getTime();
   const dayMs = Math.max(1, sunset - sunrise);
   const segMs = dayMs / 8;
-  const seg = GULIKA_START_SEGMENT[birthLocal.getDay()] ?? 1;
+  const wd = weekdayInTimeZone(birthUtc, inferBirthTimezoneIana(latitude, longitude));
+  const seg = GULIKA_START_SEGMENT[wd] ?? 1;
   const startMs = sunrise + (seg - 1) * segMs;
-  const midMs = startMs + segMs / 2;
-  const mid = new Date(midMs);
+  /** Ascendant early in Gulika segment (≈5% after open; midpoint overshoots many handwritten patrikās). */
+  const maandiMs = startMs + segMs * 0.008;
+  const mid = new Date(maandiMs);
+  const jd = dateToJulianUt(mid);
   const lst = calculateLocalSiderealTime(mid, longitude);
-  const deg = ascendantFromLstApprox(lst, latitude);
-  const startClock = new Date(startMs).toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
-  const endClock = new Date(startMs + segMs).toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+  const eps = meanObliquityDegrees(jd);
+  const ascTropical = ascendantTropicalDegrees(lst, latitude, eps);
+  const ayan = lahiriAyanamsaDegrees(jd);
+  const deg = normalizeDegree(ascTropical - ayan);
+  const startClock = formatClockAtPlace(new Date(startMs), "en-IN", latitude, longitude, pincode);
+  const endClock = formatClockAtPlace(new Date(startMs + segMs), "en-IN", latitude, longitude, pincode);
   return {
     degree: deg,
     rashi: degreeToRashi(deg),

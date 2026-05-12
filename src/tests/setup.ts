@@ -3,6 +3,10 @@ import "fake-indexeddb/auto";
 import { beforeEach, vi } from "vitest";
 import { db } from "../db/indexedDb";
 
+vi.mock("../core/resolvePanchangCoords", () => ({
+  resolvePanchangCoords: vi.fn(async (lat: number, lng: number) => ({ lat, lng }))
+}));
+
 Object.defineProperty(window, "matchMedia", {
   writable: true,
   value: vi.fn().mockImplementation(() => ({

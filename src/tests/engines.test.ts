@@ -19,9 +19,18 @@ describe("Astrology engines", () => {
   });
 
   it("PanchangEngine returns known structure", () => {
-    const p = calculatePanchang(new Date("2026-05-10T00:00:00Z"), 19.076, 72.8777);
+    const anchor = new Date("2026-05-10T12:00:00+05:30");
+    const p = calculatePanchang(anchor, 19.076, 72.8777, { locale: "en-IN" });
     expect(p.tithi.length).toBeGreaterThan(0);
     expect(p.nakshatra.length).toBeGreaterThan(0);
+  });
+
+  it("Panchang sunrise for Gokarna uses IST morning hours, not viewer default TZ", () => {
+    const anchor = new Date("2026-05-12T12:00:00+05:30");
+    const p = calculatePanchang(anchor, 14.55, 74.32, { locale: "en-IN" });
+    const [h] = p.sunrise.split(":").map(Number);
+    expect(h).toBeGreaterThanOrEqual(4);
+    expect(h).toBeLessThanOrEqual(9);
   });
 
   it("RahuKaalEngine Monday uses segment 2", () => {

@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 import { getSettings, saveSettings } from "../db/indexedDb";
 
 export type SupportedLanguage = "en" | "hi" | "kn" | "te" | "ta";
-export type AppPage = "home" | "kundli" | "predictions" | "settings";
+export type AppPage = "home" | "kundli" | "predictions" | "insights" | "settings";
 
 const DEFAULT_LAT = 19.076;
 const DEFAULT_LNG = 72.8777;

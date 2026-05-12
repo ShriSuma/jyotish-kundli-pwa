@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 type Props = {
   open: boolean;
@@ -37,16 +39,46 @@ const loadMapsScript = (apiKey: string): Promise<void> => {
   });
 };
 
+const reverseGeocodeOsm = async (lat: number, lng: number): Promise<string> => {
+  const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${encodeURIComponent(String(lat))}&lon=${encodeURIComponent(String(lng))}`;
+  try {
+    const res = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "JyotishKundliPWA/1.0 (offline-first astrology; local-app)"
+      }
+    });
+    if (!res.ok) return `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+    const data = (await res.json()) as { display_name?: string };
+    return data.display_name ?? `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+  } catch {
+    return `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
+  }
+};
+
 export default function MapLocationPicker({ open, onClose, onConfirm, defaultLat, defaultLng }: Props): JSX.Element | null {
   const { t } = useTranslation();
   const mapEl = useRef<HTMLDivElement>(null);
   const mapRef = useRef<google.maps.Map | null>(null);
   const markerRef = useRef<google.maps.Marker | null>(null);
+  const leafletMapRef = useRef<L.Map | null>(null);
+  const leafletMarkerRef = useRef<L.Marker | null>(null);
+  const leafletLayerRef = useRef<L.TileLayer | null>(null);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState("");
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
+  const useGoogle = Boolean(apiKey?.trim());
 
-  const initMap = useCallback(async () => {
+  const cleanupLeaflet = useCallback(() => {
+    if (leafletMapRef.current) {
+      leafletMapRef.current.remove();
+      leafletMapRef.current = null;
+    }
+    leafletMarkerRef.current = null;
+    leafletLayerRef.current = null;
+  }, []);
+
+  const initGoogle = useCallback(async () => {
     if (!apiKey || !mapEl.current) return;
     setError("");
     try {
@@ -68,37 +100,84 @@ export default function MapLocationPicker({ open, onClose, onConfirm, defaultLat
     }
   }, [apiKey, defaultLat, defaultLng]);
 
+  const initLeaflet = useCallback(() => {
+    if (!mapEl.current) return;
+    setError("");
+    cleanupLeaflet();
+    mapEl.current.innerHTML = "";
+    const map = L.map(mapEl.current, {
+      center: [defaultLat, defaultLng],
+      zoom: 11,
+      scrollWheelZoom: true
+    });
+    leafletMapRef.current = map;
+    const tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+    tiles.addTo(map);
+    leafletLayerRef.current = tiles;
+    const icon = L.divIcon({
+      className: "jk-leaflet-marker",
+      html: '<div class="jk-leaflet-marker-dot"></div>',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
+    });
+    const marker = L.marker([defaultLat, defaultLng], { draggable: true, icon }).addTo(map);
+    leafletMarkerRef.current = marker;
+    map.whenReady(() => {
+      map.invalidateSize();
+      setReady(true);
+    });
+  }, [cleanupLeaflet, defaultLat, defaultLng]);
+
   useEffect(() => {
     if (!open) {
       setReady(false);
       mapRef.current = null;
       markerRef.current = null;
+      cleanupLeaflet();
       return;
     }
-    if (!apiKey) {
-      setError("missing_key");
-      return;
-    }
-    void initMap();
-  }, [apiKey, initMap, open]);
+    setReady(false);
+    const t0 = window.setTimeout(() => {
+      if (useGoogle) void initGoogle();
+      else initLeaflet();
+    }, 0);
+    return () => {
+      window.clearTimeout(t0);
+    };
+  }, [cleanupLeaflet, initGoogle, initLeaflet, open, useGoogle]);
 
   if (!open) return null;
 
   const handleConfirm = () => {
-    const marker = markerRef.current;
-    const maps = typeof google !== "undefined" ? google.maps : undefined;
-    if (!marker || !maps) return;
-    const pos = marker.getPosition();
-    if (!pos) return;
-    const geocoder = new maps.Geocoder();
-    void geocoder.geocode({ location: pos }, (results, status) => {
-      const label =
-        status === google.maps.GeocoderStatus.OK && results?.[0]?.formatted_address
-          ? results[0].formatted_address
-          : `${pos.lat().toFixed(4)}, ${pos.lng().toFixed(4)}`;
-      onConfirm(pos.lat(), pos.lng(), label);
+    if (useGoogle) {
+      const marker = markerRef.current;
+      const maps = typeof google !== "undefined" ? google.maps : undefined;
+      if (!marker || !maps) return;
+      const pos = marker.getPosition();
+      if (!pos) return;
+      const geocoder = new maps.Geocoder();
+      void geocoder.geocode({ location: pos }, (results, status) => {
+        const label =
+          status === google.maps.GeocoderStatus.OK && results?.[0]?.formatted_address
+            ? results[0].formatted_address
+            : `${pos.lat().toFixed(4)}, ${pos.lng().toFixed(4)}`;
+        onConfirm(pos.lat(), pos.lng(), label);
+        onClose();
+      });
+      return;
+    }
+
+    const m = leafletMarkerRef.current;
+    const map = leafletMapRef.current;
+    if (!m || !map) return;
+    const ll = m.getLatLng();
+    void (async () => {
+      const label = await reverseGeocodeOsm(ll.lat, ll.lng);
+      onConfirm(ll.lat, ll.lng, label);
       onClose();
-    });
+    })();
   };
 
   return (
@@ -110,13 +189,10 @@ export default function MapLocationPicker({ open, onClose, onConfirm, defaultLat
             {t("common.cancel")}
           </button>
         </div>
-        <p className="px-4 pt-2 text-xs text-slate-600">{t("kundli.mapPickerPrivacy")}</p>
-        {!apiKey ? (
-          <p className="px-4 py-2 text-sm text-amber-800">{t("kundli.mapPickerNoKey")}</p>
-        ) : (
-          error &&
-          error !== "missing_key" && <p className="px-4 py-2 text-sm text-red-700">{error}</p>
-        )}
+        <p className="px-4 pt-2 text-xs text-slate-600">
+          {useGoogle ? t("kundli.mapPickerPrivacy") : t("kundli.mapPickerOsmPrivacy")}
+        </p>
+        {error ? <p className="px-4 py-2 text-sm text-red-700">{error}</p> : null}
         <div ref={mapEl} className="h-72 w-full bg-slate-100" />
         <div className="flex justify-end gap-2 border-t border-slate-200 px-4 py-3">
           <button type="button" className="rounded-lg border border-slate-200 px-3 py-1.5 text-sm" onClick={onClose}>

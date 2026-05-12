@@ -1,6 +1,8 @@
 import SunCalc from "suncalc";
+import * as Astronomy from "astronomy-engine";
 import { degreeToNakshatra, getAyanamsa, normalizeDegree } from "./AstroMath";
 import type { PanchangOutput } from "./AstroTypes";
+import { panchangClockTimeZone } from "./placeTime";
 
 const TITHIS = [
   "Pratipada",
@@ -67,16 +69,36 @@ const YOGAS = [
 
 const KARANAS = ["Bava", "Balava", "Kaulava", "Taitila", "Garaja", "Vanija", "Vishti"];
 
-const formatTime = (d?: Date): string => (d ? d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "--:--");
+export type PanchangCalcOptions = {
+  /** BCP 47 locale for numeric time formatting */
+  locale?: string;
+  /** IANA zone for sunrise/sunset labels (overrides auto when set) */
+  clockTimeZone?: string;
+  /** Indian PIN etc. — drives IST when postal lat/lng are missing */
+  pincode?: string;
+};
 
-export const calculatePanchang = (date: Date, lat: number, lng: number): PanchangOutput => {
+export const calculatePanchang = (date: Date, lat: number, lng: number, opts?: PanchangCalcOptions): PanchangOutput => {
+  const locale = opts?.locale ?? "en-IN";
+  const clockTz = opts?.clockTimeZone ?? panchangClockTimeZone(lat, lng, opts?.pincode ?? "");
+  const formatTime = (d?: Date): string =>
+    d
+      ? d.toLocaleTimeString(locale, {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+          timeZone: clockTz
+        })
+      : "--:--";
+
   const times = SunCalc.getTimes(date, lat, lng);
   const moonTimes = SunCalc.getMoonTimes(date, lat, lng);
   const ayanamsa = getAyanamsa(date);
-  const daysFromEpoch = (date.getTime() - Date.UTC(2000, 0, 1)) / 86400000;
 
-  const sunLong = normalizeDegree(280.46 + 0.9856474 * daysFromEpoch - ayanamsa);
-  const moonLong = normalizeDegree(218.316 + 13.176396 * daysFromEpoch - ayanamsa);
+  const sunTropical = normalizeDegree(Astronomy.SunPosition(date).elon);
+  const moonTropical = normalizeDegree(Astronomy.EclipticGeoMoon(date).lon);
+  const sunLong = normalizeDegree(sunTropical - ayanamsa);
+  const moonLong = normalizeDegree(moonTropical - ayanamsa);
 
   const tithiIdx = Math.floor(normalizeDegree(moonLong - sunLong) / 12) % 30;
   const yogaIdx = Math.floor(normalizeDegree(moonLong + sunLong) / (360 / 27)) % 27;
@@ -95,4 +117,3 @@ export const calculatePanchang = (date: Date, lat: number, lng: number): Panchan
     moonrise: formatTime(moonTimes.rise ?? undefined)
   };
 };
-

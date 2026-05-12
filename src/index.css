@@ -37,6 +37,25 @@ body {
   box-shadow: 0 6px 16px rgba(30, 27, 75, 0.1);
 }
 
+/* Leaflet map picker (no Google key) */
+.jk-leaflet-marker {
+  background: transparent !important;
+  border: none !important;
+}
+.jk-leaflet-marker-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: #b45309;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Traditional patrike: “blue ink” fill on cream paper */
+.jk-patrika-ink {
+  color: #1565c0;
+}
+
 .jk-btn:active:not(:disabled) {
   transform: translateY(0);
 }

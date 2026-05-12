@@ -88,6 +88,12 @@ export type PredictionOutput = {
     direction: string;
   };
   rating: number;
+  /** Optional Vimshottari context (localized). */
+  dashaLine?: string;
+  /** Optional transit / timing note (localized). */
+  timingLine?: string;
+  /** Longer synthesized reading (transits + dasha + tone), localized. */
+  integratedReading?: string;
 };
 
 export const RASHIS: Rashi[] = [

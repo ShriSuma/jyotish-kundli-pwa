@@ -3,6 +3,9 @@ import SunCalc from "suncalc";
 import { useTranslation } from "react-i18next";
 import { calculatePanchang } from "../core/PanchangEngine";
 import { calculateRahuKaal } from "../core/RahuKaalEngine";
+import { calendarYmdForPanchangPin, panchangClockTimeZone, panchangSolarAnchorDate } from "../core/placeTime";
+import { applySunTimesToPanchang, fetchSunriseSunsetUtc } from "../core/sunriseSunsetApi";
+import { resolvePanchangCoords } from "../core/resolvePanchangCoords";
 import { getPermissionStatus } from "../core/NotificationManager";
 import { scheduleDailyPanchang, scheduleRahuKaal } from "../core/NotificationScheduler";
 import { useAppStore, type AppPage } from "../stores/appStore";
@@ -19,7 +22,7 @@ const TabButton = ({ page, icon, label }: { page: AppPage; icon: string; label: 
   return (
     <button
       type="button"
-      className={`jk-btn flex flex-1 flex-col items-center py-2.5 text-xs font-medium ${
+      className={`jk-btn flex min-w-[4.25rem] shrink-0 flex-col items-center py-2.5 text-[11px] font-medium sm:text-xs ${
         active ? "text-[color:var(--jk-accent)]" : "text-slate-600"
       }`}
       onClick={() => setPage(page)}
@@ -35,6 +38,8 @@ export default function Layout({ children }: Props): JSX.Element {
   const notifications = useAppStore((s) => s.notifications);
   const defaultLat = useAppStore((s) => s.defaultLat);
   const defaultLng = useAppStore((s) => s.defaultLng);
+  const pincode = useAppStore((s) => s.pincode);
+  const placeLabel = useAppStore((s) => s.placeLabel);
   const [online, setOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -53,14 +58,26 @@ export default function Layout({ children }: Props): JSX.Element {
       if (getPermissionStatus() !== "granted") return;
       if (!notifications.dailyPanchang && !notifications.rahuKaal) return;
       const now = new Date();
-      const panchang = calculatePanchang(now, defaultLat, defaultLng);
-      const times = SunCalc.getTimes(now, defaultLat, defaultLng);
-      const rahu = calculateRahuKaal(now, times.sunrise, times.sunset);
+      const { lat, lng } = await resolvePanchangCoords(defaultLat, defaultLng, pincode, placeLabel);
+      const anchor = panchangSolarAnchorDate(now, lat, lng, pincode);
+      const ymd = calendarYmdForPanchangPin(now, lat, lng, pincode);
+      let panchang = calculatePanchang(anchor, lat, lng, {
+        locale: "en-IN",
+        pincode
+      });
+      const apiTimes = await fetchSunriseSunsetUtc(lat, lng, ymd);
+      const scTimes = SunCalc.getTimes(anchor, lat, lng);
+      const times = apiTimes ?? { sunrise: scTimes.sunrise, sunset: scTimes.sunset };
+      panchang = applySunTimesToPanchang(panchang, times, "en-IN", lat, lng, pincode);
+      const rahu = calculateRahuKaal(now, times.sunrise, times.sunset, {
+        locale: "en-IN",
+        clockTimeZone: panchangClockTimeZone(lat, lng, pincode)
+      });
       if (notifications.dailyPanchang) await scheduleDailyPanchang(panchang);
       if (notifications.rahuKaal) await scheduleRahuKaal(rahu);
     };
     void run();
-  }, [notifications.dailyPanchang, notifications.rahuKaal, defaultLat, defaultLng]);
+  }, [notifications.dailyPanchang, notifications.rahuKaal, defaultLat, defaultLng, pincode, placeLabel]);
 
   return (
     <div className="min-h-screen pb-24 text-[color:var(--jk-card-fg)]">
@@ -80,10 +97,11 @@ export default function Layout({ children }: Props): JSX.Element {
         <InstallPrompt />
         {children}
       </div>
-      <nav className="fixed bottom-0 left-0 right-0 z-40 flex border-t border-[color:var(--jk-nav-border)] bg-[color:var(--jk-nav-bg)] pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_24px_rgba(30,27,75,0.06)] backdrop-blur-md">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 flex overflow-x-auto border-t border-[color:var(--jk-nav-border)] bg-[color:var(--jk-nav-bg)] pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_24px_rgba(30,27,75,0.06)] backdrop-blur-md">
         <TabButton page="home" icon="⌂" label={t("nav.home")} />
         <TabButton page="kundli" icon="◈" label={t("nav.kundli")} />
         <TabButton page="predictions" icon="✦" label={t("nav.predictions")} />
+        <TabButton page="insights" icon="☍" label={t("nav.insights")} />
         <TabButton page="settings" icon="⚙" label={t("nav.settings")} />
       </nav>
     </div>

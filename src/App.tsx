@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import KundliPage from "./pages/KundliPage";
 import PredictionsPage from "./pages/PredictionsPage";
 import SettingsPage from "./pages/SettingsPage";
+import InsightsPage from "./pages/InsightsPage";
 import { useAppStore } from "./stores/appStore";
 
 export default function App(): JSX.Element {
@@ -37,6 +38,7 @@ export default function App(): JSX.Element {
         {currentPage === "home" && <HomePage />}
         {currentPage === "kundli" && <KundliPage />}
         {currentPage === "predictions" && <PredictionsPage />}
+        {currentPage === "insights" && <InsightsPage />}
         {currentPage === "settings" && <SettingsPage />}
       </Layout>
     </ErrorBoundary>

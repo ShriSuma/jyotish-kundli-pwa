@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from "vitest";
+import * as SunApi from "../core/sunriseSunsetApi";
 import HomePage from "../pages/HomePage";
 import KundliPage from "../pages/KundliPage";
 import PredictionsPage from "../pages/PredictionsPage";
@@ -10,7 +11,13 @@ import { useAppStore } from "../stores/appStore";
 import { db } from "../db/indexedDb";
 
 describe("UI pages", () => {
+  let sunSpy: MockInstance;
+
   beforeEach(async () => {
+    sunSpy = vi.spyOn(SunApi, "fetchSunriseSunsetUtc").mockResolvedValue({
+      sunrise: new Date("2026-05-12T00:34:45+00:00"),
+      sunset: new Date("2026-05-12T13:23:25+00:00")
+    });
     await db.settings.clear();
     await db.kundlis.clear();
     await db.panchangCache.clear();
@@ -26,10 +33,14 @@ describe("UI pages", () => {
       defaultLat: 19.076,
       defaultLng: 72.8777,
       placeLabel: "Mumbai",
-      pincode: "",
+      pincode: "400001",
       locationConfirmed: true,
       narrativeConsent: false
     });
+  });
+
+  afterEach(() => {
+    sunSpy?.mockRestore();
   });
 
   it("HomePage renders Panchang card", async () => {

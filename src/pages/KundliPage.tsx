@@ -9,12 +9,16 @@ import { analytics } from "../core/analytics";
 import { saveKundli } from "../db/indexedDb";
 import { useAppStore } from "../stores/appStore";
 import KundliChart from "../components/kundli/KundliChart";
+import TraditionalSouthPatrika from "../components/kundli/TraditionalSouthPatrika";
+import { DashaBhuktiExplorer, LifetimeDashaBar } from "../components/kundli/DashaLifetimeChart";
 import DatePicker from "../components/DatePicker";
 import TimePicker from "../components/TimePicker";
 import LocationSelector, { type SelectedLocation } from "../components/LocationSelector";
 import MapLocationPicker from "../components/MapLocationPicker";
 import Card from "../components/ui/Card";
 import { buildNarrativeSummary, fetchKundliNarrative, NarrativeApiError } from "../services/kundliNarrativeApi";
+import { formatPickerDateLocalYmd, formatPickerTimeLocalHm } from "../core/birthTime";
+import { formatRashiAmsha } from "../core/localeNumbers";
 
 export default function KundliPage(): JSX.Element {
   const { t, i18n } = useTranslation();
@@ -61,24 +65,28 @@ export default function KundliPage(): JSX.Element {
     void setDefaultLocation(lat, lng, label, pin && /^\d{6}$/.test(pin) ? pin : "");
   };
 
+  /** Sync map coords from saved settings only — never touch PIN here (avoids fighting the input + LocationSelector). */
   useEffect(() => {
     setForm((f) => ({
       ...f,
       latitude: defaultLat,
-      longitude: defaultLng,
-      pincode: pincodeStore || f.pincode
+      longitude: defaultLng
     }));
-    setLocationCore(pincodeStore ? `${placeLabelStore} (${pincodeStore})` : placeLabelStore);
-  }, [defaultLat, defaultLng, placeLabelStore, pincodeStore]);
+    setLocationCore(placeLabelStore);
+  }, [defaultLat, defaultLng, placeLabelStore]);
 
   const onGenerate = async () => {
     if (!form.name || !birthDatePicker || !birthTimePicker) {
       setError(t("kundli.requiredFields"));
       return;
     }
+    if (!form.pincode || !/^[1-9]\d{5}$/.test(form.pincode.trim())) {
+      setError(t("kundli.pincodeRequired"));
+      return;
+    }
 
-    const birthDate = birthDatePicker.toISOString().slice(0, 10);
-    const birthTime = birthTimePicker.toTimeString().slice(0, 5);
+    const birthDate = formatPickerDateLocalYmd(birthDatePicker);
+    const birthTime = formatPickerTimeLocalHm(birthTimePicker);
     const payload: KundliInput = {
       ...form,
       birthDate,
@@ -89,8 +97,15 @@ export default function KundliPage(): JSX.Element {
     setError("");
     const output = calculateKundli(payload);
     setResult(output);
-    setDailyPrediction(getDailyPrediction(output, new Date(), t, form.name).summary);
-    setDasha(generateDashaTimeline(output).slice(0, 8));
+    const birthCtx = {
+      birthDate,
+      birthTime,
+      latitude: form.latitude,
+      longitude: form.longitude
+    };
+    const dp = getDailyPrediction(output, new Date(), t, form.name, birthCtx);
+    setDailyPrediction([dp.summary, dp.dashaLine, dp.timingLine].filter(Boolean).join("\n\n"));
+    setDasha(generateDashaTimeline(output));
     const id = await saveKundli(payload, output);
     setSavedId(id);
     setNarrative("");
@@ -100,8 +115,12 @@ export default function KundliPage(): JSX.Element {
 
   const summaryText = useMemo(() => {
     if (!result) return "";
-    return `Kundli for ${form.name}\nAscendant: ${result.ascendant.toFixed(2)}\nMoon: ${result.moonSign.english}\nGenerated using Jyotish Kundli`;
-  }, [form.name, result]);
+    return t("kundli.shareSummary", {
+      name: form.name,
+      asc: result.ascendant.toFixed(2),
+      moon: t(`rashis.${result.moonSign.sanskrit}` as "rashis.Mesha")
+    });
+  }, [form.name, result, t]);
 
   const narrativeUrlConfigured = Boolean(import.meta.env.VITE_NARRATIVE_API_URL);
 
@@ -114,8 +133,8 @@ export default function KundliPage(): JSX.Element {
     setNarrativeLoading(true);
     setNarrativeError("");
     try {
-      const birthDate = birthDatePicker.toISOString().slice(0, 10);
-      const birthTime = birthTimePicker.toTimeString().slice(0, 5);
+      const birthDate = formatPickerDateLocalYmd(birthDatePicker);
+      const birthTime = formatPickerTimeLocalHm(birthTimePicker);
       const body = buildNarrativeSummary({ name: form.name, birthDate, birthTime }, result, i18n.language);
       const text = await fetchKundliNarrative(body);
       setNarrative(text);
@@ -147,14 +166,17 @@ export default function KundliPage(): JSX.Element {
         <DatePicker selected={birthDatePicker} onChange={setBirthDatePicker} placeholderText={t("kundli.birthDate")} />
         <TimePicker selected={birthTimePicker} onChange={setBirthTimePicker} />
         <input
-          placeholder={t("kundli.pincodeOptional")}
+          required
+          aria-required
+          placeholder={t("kundli.pincodePlaceholder")}
           className="min-h-11 rounded-xl border border-slate-200 bg-white px-3 py-2 text-indigo-950 shadow-sm"
           inputMode="numeric"
           maxLength={6}
+          autoComplete="postal-code"
           value={form.pincode ?? ""}
           onChange={(e) => {
             const v = e.target.value.replace(/\D/g, "").slice(0, 6);
-            setForm({ ...form, pincode: v || undefined });
+            setForm({ ...form, pincode: v.length ? v : undefined });
           }}
         />
         <div className="flex min-h-11 items-center rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm text-slate-800">
@@ -168,6 +190,7 @@ export default function KundliPage(): JSX.Element {
           onBlur={() => pushPlaceToStore(form.latitude, form.longitude, locationCore, form.pincode)}
         />
       </div>
+      <p className="mt-2 text-xs leading-relaxed text-slate-600">{t("kundli.pincodeHint")}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
           type="button"
@@ -213,8 +236,12 @@ export default function KundliPage(): JSX.Element {
           className="jk-btn rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-indigo-950"
           onClick={async () => {
             if (!result || !birthDatePicker || !birthTimePicker) return;
-            const birthDate = birthDatePicker.toISOString().slice(0, 10);
-            const birthTime = birthTimePicker.toTimeString().slice(0, 5);
+            if (!form.pincode || !/^[1-9]\d{5}$/.test(form.pincode.trim())) {
+              setError(t("kundli.pincodeRequired"));
+              return;
+            }
+            const birthDate = formatPickerDateLocalYmd(birthDatePicker);
+            const birthTime = formatPickerTimeLocalHm(birthTimePicker);
             const payload: KundliInput = {
               ...form,
               birthDate,
@@ -284,13 +311,22 @@ export default function KundliPage(): JSX.Element {
         </p>
       )}
       {result && (
-        <button
-          type="button"
-          className="jk-btn mt-2 text-sm font-medium text-[color:var(--jk-accent)] underline-offset-2 hover:underline"
-          onClick={() => setPage("predictions")}
-        >
-          {t("kundli.viewPredictions")}
-        </button>
+        <div className="mt-2 flex flex-wrap gap-3">
+          <button
+            type="button"
+            className="jk-btn text-sm font-medium text-[color:var(--jk-accent)] underline-offset-2 hover:underline"
+            onClick={() => setPage("predictions")}
+          >
+            {t("kundli.viewPredictions")}
+          </button>
+          <button
+            type="button"
+            className="jk-btn text-sm font-medium text-[color:var(--jk-accent)] underline-offset-2 hover:underline"
+            onClick={() => setPage("insights")}
+          >
+            {t("kundli.viewInsights")}
+          </button>
+        </div>
       )}
       <div ref={svgHostRef} className="mt-4">
         <KundliChart
@@ -300,6 +336,19 @@ export default function KundliPage(): JSX.Element {
           gothra={form.gothra}
         />
       </div>
+      {result && chartStyle === "south" && birthDatePicker && birthTimePicker ? (
+        <TraditionalSouthPatrika
+          kundli={result}
+          personName={form.name}
+          gothra={form.gothra}
+          birthDate={formatPickerDateLocalYmd(birthDatePicker)}
+          birthTime={formatPickerTimeLocalHm(birthTimePicker)}
+          latitude={form.latitude}
+          longitude={form.longitude}
+          placeLabel={placeDisplay}
+          pincode={form.pincode}
+        />
+      ) : null}
       {result && (
         <div className="mt-4 space-y-2">
           <button
@@ -328,24 +377,30 @@ export default function KundliPage(): JSX.Element {
           <p className="mt-1">{dailyPrediction}</p>
         </div>
       )}
-      {dasha.length > 0 && (
-        <div className="mt-4 rounded-xl border border-amber-100 bg-amber-50/60 p-3 text-sm text-slate-800">
-          <p className="mb-2 font-semibold text-indigo-950">{t("kundli.dashaTitle")}</p>
+      {dasha.length > 0 && result ? (
+        <div className="mt-4 space-y-4 rounded-xl border border-amber-100 bg-amber-50/60 p-3 text-sm text-slate-800">
+          <p className="font-semibold text-indigo-950">{t("kundli.dashaTitle")}</p>
+          <LifetimeDashaBar kundli={result} maxAge={120} />
+          {birthDatePicker && birthTimePicker ? (
+            <DashaBhuktiExplorer kundli={result} maxAge={120} />
+          ) : null}
           <div className="grid gap-1 md:grid-cols-2">
             {dasha.map((entry) => (
               <p key={`${entry.planet}-${entry.startAge}`}>
-                {entry.planet}: {entry.startAge}y - {entry.endAge}y
+                {t(`planets.${entry.planet}` as "planets.Sun")}: {entry.startAge.toFixed(2)} – {entry.endAge.toFixed(2)}{" "}
+                {t("kundli.dashaYearsUnit")}
               </p>
             ))}
           </div>
         </div>
-      )}
+      ) : null}
       {result && (
         <table className="mt-4 w-full text-left text-xs text-slate-800">
           <thead className="text-indigo-950">
             <tr>
               <th className="py-1 pr-2">{t("kundli.planetTable.planet")}</th>
               <th className="py-1 pr-2">{t("kundli.planetTable.degree")}</th>
+              <th className="py-1 pr-2">{t("kundli.planetTable.amsha")}</th>
               <th className="py-1 pr-2">{t("kundli.planetTable.rashi")}</th>
               <th className="py-1 pr-2">{t("kundli.planetTable.nakshatra")}</th>
               <th className="py-1">{t("kundli.planetTable.house")}</th>
@@ -356,6 +411,7 @@ export default function KundliPage(): JSX.Element {
               <tr key={planet.name}>
                 <td>{t(`planets.${planet.name}` as "planets.Sun")}</td>
                 <td>{planet.degree.toFixed(2)}</td>
+                <td>{formatRashiAmsha(planet.degree, i18n.language)}</td>
                 <td>{t(`rashis.${planet.rashi.sanskrit}` as "rashis.Mesha")}</td>
                 <td>{t(`nakshatras.${planet.nakshatra.sanskrit.replace(/\s+/g, "")}` as "nakshatras.Ashwini")}</td>
                 <td>{planet.house}</td>

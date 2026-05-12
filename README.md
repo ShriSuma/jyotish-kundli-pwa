@@ -32,6 +32,18 @@ Create a `.env.local` in the project root (Vite reads `VITE_*` variables):
 
 Online narrative runs only if the user enables **Allow online narrative** in Settings and the URL is configured.
 
+## Astrology calculations
+
+Charts and Panchang use **geocentric ecliptic longitudes** from [`astronomy-engine`](https://github.com/cosinekitty/astronomy) (Sun, Moon, and major planets), converted to the **sidereal zodiac** with **Lahiri (Chitrapaksha) ayanamsa** (linear model anchored at J2000, within a few hundredths of a degree of Swiss Ephemeris LAHIRI for modern dates).
+
+- **Lagna (ascendant)** uses mean obliquity, local sidereal time from UT + longitude, and the standard ecliptic ascendant formula, then subtracts the same Lahiri ayanamsa.
+- **Houses** are **whole sign from sidereal lagna** (each rāśi = one house).
+- **Rahu** uses the **mean lunar node** (Meeus); **Ketu** is Rahu + 180°. Many commercial apps use the **true** node; values can differ by ~1–2°. A future option can switch to true node via moon-node search.
+- **Birth time**: for birth places inside India (rough bounding box), date and time from the form are read as **Asia/Kolkata (IST)** civil time. Outside that box they are read as **UTC** until a timezone control is added—convert non-IST births before comparing to desktop software.
+- **Panchang** tithi / yoga / nakṣatra at “now” use the same sidereal Sun/Moon; sunrise/sunset use SunCalc at the saved coordinates.
+
+For **legal-grade** agreement with a given desktop program (e.g. Astrosage), match their **ayanamsa**, **node type**, **house system**, and **timezone**; this app documents its choices above.
+
 ## 🔄 Development Workflow (MANDATORY)
 
 Every code change MUST follow this process:

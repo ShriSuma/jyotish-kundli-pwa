@@ -3,6 +3,9 @@ import SunCalc from "suncalc";
 import { useTranslation } from "react-i18next";
 import { calculatePanchang } from "../core/PanchangEngine";
 import { calculateRahuKaal } from "../core/RahuKaalEngine";
+import { calendarYmdForPanchangPin, civilTimeZoneForPanchangHeader, panchangClockTimeZone, panchangSolarAnchorDate, weekdayInTimeZone } from "../core/placeTime";
+import { applySunTimesToPanchang, fetchSunriseSunsetUtc } from "../core/sunriseSunsetApi";
+import { resolvePanchangCoords } from "../core/resolvePanchangCoords";
 import { analytics } from "../core/analytics";
 import { getPanchangCache, savePanchangCache } from "../db/indexedDb";
 import type { PanchangOutput, RahuKaalOutput } from "../core/AstroTypes";
@@ -28,8 +31,18 @@ export default function HomePage(): JSX.Element {
   const [sunset, setSunset] = useState<Date | null>(null);
   const [mapOpen, setMapOpen] = useState(false);
 
-  const todayKey = useMemo(() => new Date().toISOString().slice(0, 10), []);
-  const weekdayIdx = new Date().getDay();
+  const pincodeStore = useAppStore((s) => s.pincode);
+
+  const [panchangDayAnchor, setPanchangDayAnchor] = useState<Date | null>(null);
+  const [displayLat, setDisplayLat] = useState(defaultLat);
+  const [displayLng, setDisplayLng] = useState(defaultLng);
+
+  const validIndianPin = (pc: string) => /^[1-9]\d{5}$/.test((pc ?? "").trim());
+
+  const pinCivilTz = useMemo(
+    () => civilTimeZoneForPanchangHeader(defaultLat, defaultLng, pincodeStore),
+    [defaultLat, defaultLng, pincodeStore]
+  );
 
   const localeTag = useMemo(() => {
     const base = i18n.resolvedLanguage ?? i18n.language ?? "en";
@@ -41,24 +54,56 @@ export default function HomePage(): JSX.Element {
     return base;
   }, [i18n.language, i18n.resolvedLanguage]);
 
-  const formatTime = (d: Date) => d.toLocaleTimeString(localeTag, { hour: "2-digit", minute: "2-digit", hour12: false });
+  const formatTimeAtPlace = (d: Date, lat: number, lng: number) => {
+    const tz = panchangClockTimeZone(lat, lng, pincodeStore);
+    return d.toLocaleTimeString(localeTag, {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: tz
+    });
+  };
 
-  const formatHeaderDate = (d: Date) =>
-    d.toLocaleDateString(localeTag, { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+  const formatHeaderDateAtPin = (d: Date) =>
+    d.toLocaleDateString(localeTag, {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: pinCivilTz
+    });
 
-  const loadData = async (lat: number, lng: number) => {
+  const weekdayIdx = panchangDayAnchor ? weekdayInTimeZone(panchangDayAnchor, pinCivilTz) : new Date().getDay();
+
+  const loadData = async (latIn: number, lngIn: number) => {
     setLoading(true);
     setError(null);
     try {
-      const cacheKey = `${lat.toFixed(2)},${lng.toFixed(2)}`;
-      const cached = await getPanchangCache(todayKey, cacheKey);
-      const p = cached ?? calculatePanchang(new Date(), lat, lng);
-      if (!cached) {
-        await savePanchangCache(todayKey, cacheKey, p);
-      }
+      const { lat, lng } = await resolvePanchangCoords(latIn, lngIn, pincodeStore, placeLabel);
+      setDisplayLat(lat);
+      setDisplayLng(lng);
+      const ymd = calendarYmdForPanchangPin(new Date(), lat, lng, pincodeStore);
+      const anchor = panchangSolarAnchorDate(new Date(), lat, lng, pincodeStore);
+      const cacheKey = `${ymd}_${lat.toFixed(2)},${lng.toFixed(2)},v5`;
+      const cached = await getPanchangCache(ymd, cacheKey);
+      let p =
+        cached ??
+        calculatePanchang(anchor, lat, lng, {
+          locale: localeTag,
+          pincode: pincodeStore
+        });
 
-      const times = SunCalc.getTimes(new Date(), lat, lng);
-      const r = calculateRahuKaal(new Date(), times.sunrise, times.sunset);
+      const apiTimes = await fetchSunriseSunsetUtc(lat, lng, ymd);
+      const scTimes = SunCalc.getTimes(anchor, lat, lng);
+      const times = apiTimes ?? { sunrise: scTimes.sunrise, sunset: scTimes.sunset };
+      p = applySunTimesToPanchang(p, times, localeTag, lat, lng, pincodeStore);
+      await savePanchangCache(ymd, cacheKey, p);
+
+      const r = calculateRahuKaal(new Date(), times.sunrise, times.sunset, {
+        locale: localeTag,
+        clockTimeZone: panchangClockTimeZone(lat, lng, pincodeStore)
+      });
+      setPanchangDayAnchor(anchor);
       setPanchang(p);
       setRahu(r);
       setSunrise(times.sunrise);
@@ -72,12 +117,17 @@ export default function HomePage(): JSX.Element {
   };
 
   useEffect(() => {
-    if (!locationConfirmed) {
+    setDisplayLat(defaultLat);
+    setDisplayLng(defaultLng);
+  }, [defaultLat, defaultLng]);
+
+  useEffect(() => {
+    if (!locationConfirmed || !validIndianPin(pincodeStore)) {
       setLoading(false);
       return;
     }
     void loadData(defaultLat, defaultLng);
-  }, [defaultLat, defaultLng, todayKey, locationConfirmed]);
+  }, [defaultLat, defaultLng, locationConfirmed, localeTag, pincodeStore, placeLabel]);
 
   const useDeviceLocation = () => {
     void new Promise<void>((resolve) => {
@@ -141,12 +191,41 @@ export default function HomePage(): JSX.Element {
     );
   }
 
+  if (!validIndianPin(pincodeStore)) {
+    return (
+      <Card>
+        <h1 className="text-2xl font-bold tracking-tight text-indigo-950 sm:text-3xl">{t("home.todayPanchang")}</h1>
+        <div className="mt-6 rounded-xl border border-amber-100 bg-amber-50/70 p-5 text-sm text-slate-800">
+          <p className="text-lg font-semibold text-indigo-950">{t("home.pincodeGateTitle")}</p>
+          <p className="mt-2 leading-relaxed">{t("home.pincodeGateBody")}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              className="jk-btn rounded-xl bg-[color:var(--jk-accent)] px-4 py-2 text-sm font-semibold text-white"
+              onClick={() => setPage("kundli")}
+            >
+              {t("home.goToKundli")}
+            </button>
+          </div>
+        </div>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <h1 className="text-2xl font-bold tracking-tight text-indigo-950 sm:text-3xl">{t("home.todayPanchang")}</h1>
-      <p className="mt-1 text-sm text-slate-600">{formatHeaderDate(new Date())}</p>
+      <p className="mt-1 text-sm text-slate-600">
+        {panchangDayAnchor ? formatHeaderDateAtPin(panchangDayAnchor) : formatHeaderDateAtPin(new Date())}
+      </p>
       <p className="mt-2 text-sm text-slate-700">
         <span className="font-medium text-indigo-900">{t("home.placeForCalc")}:</span> {placeLabel}
+        {validIndianPin(pincodeStore) ? (
+          <span className="text-slate-600">
+            {" "}
+            · {pincodeStore}
+          </span>
+        ) : null}
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
@@ -194,7 +273,8 @@ export default function HomePage(): JSX.Element {
         <div className="mt-4 rounded-xl border border-slate-200 bg-white/90 p-3 text-sm text-slate-800">
           <p className="font-medium text-indigo-950">{t("home.sunTimes")}</p>
           <p className="mt-1">
-            {t("panchang.sunrise")}: {formatTime(sunrise)} · {t("panchang.sunset")}: {formatTime(sunset)}
+            {t("panchang.sunrise")}: {formatTimeAtPlace(sunrise, displayLat, displayLng)} ·{" "}
+            {t("panchang.sunset")}: {formatTimeAtPlace(sunset, displayLat, displayLng)}
           </p>
           {beforeSunrise && panchang && (
             <p className="mt-2 text-xs text-slate-600">

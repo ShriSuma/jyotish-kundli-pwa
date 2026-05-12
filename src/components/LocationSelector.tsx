@@ -51,6 +51,8 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
   useEffect(() => {
     if (!filterPincode || !/^\d{6}$/.test(filterPincode)) {
       pinDriveRef.current = null;
+      setVillages([]);
+      setVillageName("");
       return;
     }
     let cancelled = false;
@@ -130,6 +132,7 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
   );
 
   useEffect(() => {
+    if (!filterPincode || !/^\d{6}$/.test(filterPincode)) return;
     if (!selectedVillage) return;
     const pushLocation = async () => {
       try {
@@ -155,7 +158,7 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
       }
     };
     void pushLocation();
-  }, [districtCode, districtLabel, selectedVillage, stateCode]);
+  }, [districtCode, districtLabel, selectedVillage, stateCode, filterPincode]);
 
   return (
     <div className="grid gap-2 md:grid-cols-3">

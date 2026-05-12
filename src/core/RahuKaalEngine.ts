@@ -1,4 +1,5 @@
 import type { RahuKaalOutput } from "./AstroTypes";
+import { weekdayInTimeZone } from "./placeTime";
 
 const segmentByDay: Record<number, number> = {
   0: 8,
@@ -10,10 +11,29 @@ const segmentByDay: Record<number, number> = {
   6: 3
 };
 
-const fmt = (date: Date): string => date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+export type RahuKaalCalcOptions = {
+  locale?: string;
+  /** Weekday + clock labels use this zone when set (e.g. Asia/Kolkata for Indian places). */
+  clockTimeZone?: string;
+};
 
-export const calculateRahuKaal = (date: Date, sunrise: Date, sunset: Date): RahuKaalOutput => {
-  const day = date.getDay();
+export const calculateRahuKaal = (
+  date: Date,
+  sunrise: Date,
+  sunset: Date,
+  opts?: RahuKaalCalcOptions
+): RahuKaalOutput => {
+  const locale = opts?.locale ?? "en-IN";
+  const clockTz = opts?.clockTimeZone;
+  const fmt = (d: Date): string =>
+    d.toLocaleTimeString(locale, {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      ...(clockTz ? { timeZone: clockTz } : {})
+    });
+
+  const day = clockTz ? weekdayInTimeZone(date, clockTz) : date.getDay();
   const seg = segmentByDay[day] ?? 8;
   const daylightMs = sunset.getTime() - sunrise.getTime();
   const segmentMs = daylightMs / 8;

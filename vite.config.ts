@@ -3,6 +3,18 @@ import react from "@vitejs/plugin-react-swc";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  server: {
+    proxy: {
+      "/api/sunrise-sunset": {
+        target: "https://api.sunrise-sunset.org",
+        changeOrigin: true,
+        rewrite: (path) => {
+          const q = path.includes("?") ? path.slice(path.indexOf("?")) : "";
+          return `/json${q}`;
+        }
+      }
+    }
+  },
   build: {
     sourcemap: "hidden",
     rollupOptions: {

@@ -13,6 +13,9 @@ import {
 } from "../core/NotificationScheduler";
 import { calculatePanchang } from "../core/PanchangEngine";
 import { calculateRahuKaal } from "../core/RahuKaalEngine";
+import { calendarYmdForPanchangPin, panchangClockTimeZone, panchangSolarAnchorDate } from "../core/placeTime";
+import { applySunTimesToPanchang, fetchSunriseSunsetUtc } from "../core/sunriseSunsetApi";
+import { resolvePanchangCoords } from "../core/resolvePanchangCoords";
 import { useAppStore, type SupportedLanguage } from "../stores/appStore";
 import Card from "../components/ui/Card";
 
@@ -48,9 +51,22 @@ export default function SettingsPage(): JSX.Element {
       await cancelAllNotifications(type);
       return;
     }
-    const p = calculatePanchang(new Date(), defaultLat, defaultLng);
-    const times = SunCalc.getTimes(new Date(), defaultLat, defaultLng);
-    const rahu = calculateRahuKaal(new Date(), times.sunrise, times.sunset);
+    const now = new Date();
+    const { lat, lng } = await resolvePanchangCoords(defaultLat, defaultLng, pincode, placeLabel);
+    const anchor = panchangSolarAnchorDate(now, lat, lng, pincode);
+    const ymd = calendarYmdForPanchangPin(now, lat, lng, pincode);
+    let p = calculatePanchang(anchor, lat, lng, {
+      locale: "en-IN",
+      pincode
+    });
+    const apiTimes = await fetchSunriseSunsetUtc(lat, lng, ymd);
+    const scTimes = SunCalc.getTimes(anchor, lat, lng);
+    const times = apiTimes ?? { sunrise: scTimes.sunrise, sunset: scTimes.sunset };
+    p = applySunTimesToPanchang(p, times, "en-IN", lat, lng, pincode);
+    const rahu = calculateRahuKaal(new Date(), times.sunrise, times.sunset, {
+      locale: "en-IN",
+      clockTimeZone: panchangClockTimeZone(lat, lng, pincode)
+    });
     if (type === "dailyPanchang") await scheduleDailyPanchang(p);
     if (type === "rahuKaal") await scheduleRahuKaal(rahu);
   };

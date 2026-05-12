@@ -1,23 +1,16 @@
 import { NAKSHATRAS, RASHIS, type Nakshatra, type Rashi } from "./AstroTypes";
+import { lahiriAyanamsaDegrees } from "./LahiriAyanamsa";
 
 export const normalizeDegree = (deg: number): number => {
   const value = deg % 360;
   return value < 0 ? value + 360 : value;
 };
 
-export const toJulianDate = (date: Date, time: string): number => {
-  const [hours, minutes] = time.split(":").map(Number);
-  const utcDate = new Date(
-    Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), hours, minutes, 0, 0)
-  );
-  return utcDate.getTime() / 86400000 + 2440587.5;
-};
+/** Julian Day (UT) from a JavaScript Date that represents a UTC instant. */
+export const dateToJulianUt = (d: Date): number => d.getTime() / 86400000 + 2440587.5;
 
-export const getAyanamsa = (date: Date): number => {
-  const year = date.getUTCFullYear();
-  const base = 23.85;
-  return base + (year - 2026) * 0.0139;
-};
+/** Lahiri ayanamsa (degrees) for the given UTC instant. */
+export const getAyanamsa = (date: Date): number => lahiriAyanamsaDegrees(dateToJulianUt(date));
 
 export const degreeToRashi = (deg: number): Rashi => {
   const normalized = normalizeDegree(deg);
@@ -41,7 +34,7 @@ export const degreeToNakshatraPada = (deg: number): 1 | 2 | 3 | 4 => {
 };
 
 export const calculateLocalSiderealTime = (date: Date, longitude: number): number => {
-  const jd = date.getTime() / 86400000 + 2440587.5;
+  const jd = dateToJulianUt(date);
   const t = (jd - 2451545.0) / 36525;
   const gst =
     280.46061837 +
@@ -50,4 +43,3 @@ export const calculateLocalSiderealTime = (date: Date, longitude: number): numbe
     (t * t * t) / 38710000;
   return normalizeDegree(gst + longitude);
 };
-

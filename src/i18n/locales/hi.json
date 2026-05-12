@@ -1,7 +1,18 @@
 {
-  "app": { "title": "ज्योतिष कुंडली", "subtitle": "ऑफलाइन-फर्स्ट वैदिक ज्योतिष साथी" },
-  "nav": { "home": "होम", "kundli": "कुंडली", "predictions": "भविष्यफल", "settings": "सेटिंग्स" },
-  "layout": { "offlineMode": "आप ऑफलाइन हैं। सहेजी कुंडली और कैश पंचांग काम करते रहेंगे।" },
+  "app": {
+    "title": "ज्योतिष कुंडली",
+    "subtitle": "ऑफलाइन-फर्स्ट वैदिक ज्योतिष साथी"
+  },
+  "nav": {
+    "home": "होम",
+    "kundli": "कुंडली",
+    "predictions": "भविष्यफल",
+    "insights": "Insights",
+    "settings": "सेटिंग्स"
+  },
+  "layout": {
+    "offlineMode": "आप ऑफलाइन हैं। सहेजी कुंडली और कैश पंचांग काम करते रहेंगे।"
+  },
   "home": {
     "todayPanchang": "आज का पंचांग",
     "rahuKaal": "राहु काल",
@@ -15,7 +26,9 @@
     "locationGateTitle": "पहले अपना स्थान सेट करें",
     "locationGateBody": "पंचांग और सूर्योदय समय अक्षांश व देशांतर पर निर्भर करते हैं। कृपया वह स्थान चुनें जहाँ आप हैं।",
     "openMapPicker": "मानचित्र पर चुनें",
-    "goToKundli": "कुंडली पर जाएं"
+    "goToKundli": "कुंडली पर जाएं",
+    "pincodeGateTitle": "Add your PIN code",
+    "pincodeGateBody": "Sunrise, sunset, and Panchang are aligned to India when you save a 6-digit PIN with your place. Open Kundli, enter your PIN, choose State → District → Village, then Generate once so your place is saved here too."
   },
   "weekday": {
     "0": "रविवार सूर्य से जुड़ा है। धीमी गति और कृतज्ञता अच्छी रहती है।",
@@ -35,21 +48,60 @@
     "birthPlace": "जन्म स्थान",
     "gothra": "गोत्र (वैकल्पिक)",
     "pincodeOptional": "पिन कोड (वैकल्पिक, भारत)",
+    "pincodePlaceholder": "PIN code (required, 6 digits)",
+    "pincodeRequired": "Enter a valid 6-digit Indian PIN code and pick your birth place from the list below.",
+    "pincodeHint": "Sunrise, Panchang, and saved location all use your PIN with the village you select. Enter six digits first; the lists will narrow.",
     "homePlaceName": "घर / क्षेत्र लेबल (वैकल्पिक)",
     "openMap": "मानचित्र पर चुनें",
     "mapPickerTitle": "मानचित्र पर जन्म स्थान चुनें",
     "mapPickerPrivacy": "यह पिकर खुला होने पर Google को मानचित्र इंटरैक्शन मिल सकते हैं। केवल तभी उपयोग करें जब आप सहमत हों।",
     "mapPickerNoKey": "मानचित्र के लिए अपने वातावरण में VITE_GOOGLE_MAPS_API_KEY जोड़ें।",
+    "mapPickerOsmPrivacy": "मानचित्र टाइल OpenStreetMap से; पता खोज OSM Nominatim (Google कुंजी आवश्यक नहीं)।",
+    "patrikaTitle": "पारंपरिक दक्षिण भारतीय जन्म पत्रिका",
+    "patrikaNote": "मुद्रण शैली; ग्रह स्थितियाँ इस ऐप की गणना पर आधारित हैं (हस्तलिखित पंचांग से थोड़ा भिन्न हो सकता है)।",
+    "patrikaSunsetSide": "सूर्यास्त (अनुमानित)",
+    "patrikaSunriseSide": "सूर्योदय (अनुमानित)",
+    "patrikaSolar": "सौर",
+    "patrikaMonth": "मास",
+    "patrikaBirthDate": "(जन्म तिथि)",
+    "patrikaYoni": "योनि",
+    "patrikaGana": "गण",
+    "patrikaNadi": "नाड़ी",
+    "patrikaName": "नाम",
+    "patrikaNakshatra": "नक्षत्र",
+    "patrikaRashi": "राशि",
+    "patrikaGotra": "गोत्र",
+    "patrikaPada": "पाद",
+    "patrikaBirthLine": "जन्म",
+    "patrikaPlace": "स्थान",
+    "patrikaLagna": "लग्न",
+    "patrikaDownloadPatrike": "पत्रिका डाउनलोड (PNG)",
     "generate": "कुंडली बनाएं",
     "save": "सहेजा चार्ट अपडेट करें",
     "download": "PNG डाउनलोड",
     "downloadPdf": "PDF डाउनलोड",
     "share": "चार्ट शेयर करें",
+    "shareSummary": "Kundli for {{name}}\nLagna degree: {{asc}}\nMoon sign: {{moon}}\nGenerated with Jyotish Kundli",
     "requiredFields": "कृपया सभी आवश्यक फ़ील्ड भरें।",
     "savedPrefix": "सहेजा गया",
     "todayPrediction": "आज का संक्षिप्त फल",
     "dashaTitle": "दशा झलक",
+    "dashaYearsUnit": "y",
+    "dashaLifetimeTitle": "Lifetime mahadashas (to age 120)",
+    "dashaLifetimeHint": "Bar width is proportional to each mahadasha length; colours follow the dasha lord.",
+    "dashaExplorerTitle": "Interactive Dasha–Bhukti",
+    "dashaExplorerAge": "Age",
+    "dashaMaha": "Mahadasha",
+    "dashaBhukti": "Antardasha (Bhukti)",
+    "dashaAntarSeries": "Antar dasha sequence in this mahadasha (Ketu→Venus→Sun→… cycle)",
+    "dashaTableToggle": "Mahadasha list",
+    "lagnaPatrika": "Lagna",
+    "rashiAmshaAbbr": "amsha",
+    "maandiShort": "Maandi",
+    "dashaBalanceAtBirth": "Dasha balance at birth:",
+    "dashaBalanceYmd": "{{years}} y, {{months}} m, {{days}} d (approx.)",
     "viewPredictions": "भविष्यफल देखें",
+    "viewInsights": "Chart insights & yogas",
     "detailsAboutMe": "मेरे बारे में विवरण",
     "detailsLoading": "कथा तैयार हो रही है…",
     "detailsError": "कथा लोड नहीं हो सकी।",
@@ -67,6 +119,7 @@
     "planetTable": {
       "planet": "ग्रह",
       "degree": "अंश",
+      "amsha": "राशि में अंश (1–30)",
       "rashi": "राशि",
       "nakshatra": "नक्षत्र",
       "house": "भाव"
@@ -85,15 +138,26 @@
     "emptyBody": "अपने जन्म डेटा के अनुसार फल देखने के लिए कुंडली बनाएं (चार्ट स्वतः सहेज जाते हैं)।",
     "goToKundli": "कुंडली पर जाएं",
     "rating": "सामान्य भाव",
+    "dashaContextLabel": "दशा और भुक्ति:",
+    "timingContextLabel": "समय टिप्पणी:",
     "seeker": "साधक",
     "focus": {
       "moonTransit": "चंद्र गोचर",
       "sunTransit": "सूर्य गोचर"
     },
     "lucky": {
-      "positive": { "color": "हरा", "direction": "पूर्व" },
-      "neutral": { "color": "नीला", "direction": "उत्तर" },
-      "caution": { "color": "केसरिया", "direction": "दक्षिण" }
+      "positive": {
+        "color": "हरा",
+        "direction": "पूर्व"
+      },
+      "neutral": {
+        "color": "नीला",
+        "direction": "उत्तर"
+      },
+      "caution": {
+        "color": "केसरिया",
+        "direction": "दक्षिण"
+      }
     },
     "tones": {
       "positive": {
@@ -120,6 +184,38 @@
         "health": "जहाँ हो सके विराम लें और तनाव वाली गतिविधियाँ कम करें। जबड़े और कंधों में तनाव देखकर उसे ढीला करें। रात भर जागने की बहादुरी से अच्छी स्थिर गति चुनें।",
         "relationships": "शांत शब्द चुनें और मकसद के बारे में धारणाओं से बचें। आरोप जोड़ने के बजाय एक ईमानदार सवाल पूछें। जीत से ज़्यादा सुधार मायने रखता है।"
       }
+    },
+    "dashaLineTemplate": "विंशोत्तरी: {{maha}} महादशा, {{bhukti}} अंतर्दशा।",
+    "timingFromTransits": "लगभग {{age}} वर्ष की उम्र में यह चरण स्थिर गति और विश्राम दोनों माँगता है।",
+    "dashaUnknown": "इस उम्र के लिए दशा सीमाएँ नहीं निकाली जा सकीं।",
+    "timingGeneric": "कोमल संकेत: बड़े वादों को छोटी, दोहराई जा सकने वाली क्रियाओं से जोड़ें।",
+    "weekTimingHint": "इस सप्ताह कई चंद्र लहरें मिलती हैं; सप्ताह के बीच अलग महसूस हो सकता है — बफर रखें।",
+    "monthTimingHint": "सौर मास {{month}}: गति बदलती है; विस्तार से पहले रखरखाव।",
+    "na": "—",
+    "periodToday": "आज",
+    "periodWeek": "इस सप्ताह",
+    "periodMonth": "इस माह",
+    "completeReadingLabel": "पूर्ण पठन (संश्लेषण)",
+    "apiHint": "वैकल्पिक: VITE_PREDICTION_API_URL सेट करें ताकि आपका बैकएंड समृद्ध पाठ लौटा सके (README देखें)। ऊपर के भाग अभी भी ऑफलाइन गोचर, विंशोत्तरी और चंद्र राशि मिलाते हैं।",
+    "integrated": {
+      "positive": "{{name}}, {{period}} आकाश सहायक है: दिन के स्वामी {{planet}} और {{transitMoon}} में चंद्र गोचर, जबकि आपकी {{moonRashi}} चंद्र राशि परिचित सुकून चाहती है। विंशोत्तरी {{maha}} महादशा और {{bhukti}} अंतर्दशा में है — बड़े अध्याय की आवाज़ तय करने दें; एक सार्थक जीत और एक कोमल सुधार करें।",
+      "neutral": "{{name}}, {{period}} मिश्रित है: {{planet}} दिन का रंग, चंद्र {{transitMoon}} में, और {{moonRashi}} कुंडली स्थिर गति माँगती है। {{maha}} / {{bhukti}} में सुधार — एक बातचीत स्पष्ट करें, नींद बचाएँ।",
+      "caution": "{{name}}, {{period}} कोमलता चाहिए: {{planet}} किनारे तेज कर सकता है, {{transitMoon}} चंद्र पुरानी कहानियाँ हिला सकता है, {{moonRashi}} संवेदनशीलता की रक्षा करें। {{maha}} / {{bhukti}} में रात देर से बहस से बचें; अपरिवर्तनीय निर्णय टालें यदि मन घुमे।"
+    }
+  },
+  "dashas": {
+    "explorerEmpty": "दशा अध्याय देखने के लिए उम्र स्लाइडर समायोजित करें।",
+    "bhuktiLayer": "चल रही {{bhukti}} अंतर्दशा बड़ी दशा की कहानी को सप्ताह दर सप्ताह नरम या तेज करती है — भावनाओं को आदेश नहीं, सूचना मानें।",
+    "mahaTheme": {
+      "Ketu": "केतु अध्याय सादगी से स्पष्टता माँगता है।",
+      "Venus": "शुक्र सामंजस्य और संबंध खोलता है।",
+      "Sun": "सूर्य अवधि दृश्यता और ऊर्जा पर जोर देती है।",
+      "Moon": "चंद्र भावना और घर के मामलों की लहरें लाता है।",
+      "Mars": "मंगल साहस और सीमाओं को जगाता है।",
+      "Rahu": "राहु नए क्षितिज की भूख जगाता है।",
+      "Jupiter": "गुरु वृद्धि और नैतिकता की ओर झुकता है।",
+      "Saturn": "शनि नियमितता और ईमानदार मरम्मत को पुरस्कृत करता है।",
+      "Mercury": "बुध संचार और अध्ययन का समय है।"
     }
   },
   "settings": {
@@ -167,20 +263,248 @@
     "warning": "कई लोग राहु काल में बिल्कुल नई शुरुआत से बचते हैं; इसे डर नहीं, एक कोमल विराम मानें।"
   },
   "planets": {
-    "Sun": "सूर्य", "Moon": "चंद्र", "Mars": "मंगल", "Mercury": "बुध", "Jupiter": "गुरु", "Venus": "शुक्र", "Saturn": "शनि", "Rahu": "राहु", "Ketu": "केतु"
+    "Sun": "सूर्य",
+    "Moon": "चंद्र",
+    "Mars": "मंगल",
+    "Mercury": "बुध",
+    "Jupiter": "गुरु",
+    "Venus": "शुक्र",
+    "Saturn": "शनि",
+    "Rahu": "राहु",
+    "Ketu": "केतु"
   },
   "rashis": {
-    "Mesha": "मेष", "Vrishabha": "वृषभ", "Mithuna": "मिथुन", "Karka": "कर्क", "Simha": "सिंह", "Kanya": "कन्या",
-    "Tula": "तुला", "Vrischika": "वृश्चिक", "Dhanu": "धनु", "Makara": "मकर", "Kumbha": "कुंभ", "Meena": "मीन"
+    "Mesha": "मेष",
+    "Vrishabha": "वृषभ",
+    "Mithuna": "मिथुन",
+    "Karka": "कर्क",
+    "Simha": "सिंह",
+    "Kanya": "कन्या",
+    "Tula": "तुला",
+    "Vrischika": "वृश्चिक",
+    "Dhanu": "धनु",
+    "Makara": "मकर",
+    "Kumbha": "कुंभ",
+    "Meena": "मीन"
   },
   "nakshatras": {
-    "Ashwini": "अश्विनी", "Bharani": "भरणी", "Krittika": "कृत्तिका", "Rohini": "रोहिणी", "Mrigashirsha": "मृगशीर्ष", "Ardra": "आर्द्रा",
-    "Punarvasu": "पुनर्वसु", "Pushya": "पुष्य", "Ashlesha": "आश्लेषा", "Magha": "मघा", "PurvaPhalguni": "पूर्वा फाल्गुनी",
-    "UttaraPhalguni": "उत्तरा फाल्गुनी", "Hasta": "हस्त", "Chitra": "चित्रा", "Swati": "स्वाती", "Vishakha": "विशाखा",
-    "Anuradha": "अनुराधा", "Jyeshtha": "ज्येष्ठा", "Mula": "मूल", "PurvaAshadha": "पूर्वाषाढ़ा", "UttaraAshadha": "उत्तराषाढ़ा",
-    "Shravana": "श्रवण", "Dhanishtha": "धनिष्ठा", "Shatabhisha": "शतभिषा", "PurvaBhadrapada": "पूर्वाभाद्रपद", "UttaraBhadrapada": "उत्तराभाद्रपद", "Revati": "रेवती"
+    "Ashwini": "अश्विनी",
+    "Bharani": "भरणी",
+    "Krittika": "कृत्तिका",
+    "Rohini": "रोहिणी",
+    "Mrigashirsha": "मृगशीर्ष",
+    "Ardra": "आर्द्रा",
+    "Punarvasu": "पुनर्वसु",
+    "Pushya": "पुष्य",
+    "Ashlesha": "आश्लेषा",
+    "Magha": "मघा",
+    "PurvaPhalguni": "पूर्वा फाल्गुनी",
+    "UttaraPhalguni": "उत्तरा फाल्गुनी",
+    "Hasta": "हस्त",
+    "Chitra": "चित्रा",
+    "Swati": "स्वाती",
+    "Vishakha": "विशाखा",
+    "Anuradha": "अनुराधा",
+    "Jyeshtha": "ज्येष्ठा",
+    "Mula": "मूल",
+    "PurvaAshadha": "पूर्वाषाढ़ा",
+    "UttaraAshadha": "उत्तराषाढ़ा",
+    "Shravana": "श्रवण",
+    "Dhanishtha": "धनिष्ठा",
+    "Shatabhisha": "शतभिषा",
+    "PurvaBhadrapada": "पूर्वाभाद्रपद",
+    "UttaraBhadrapada": "उत्तराभाद्रपद",
+    "Revati": "रेवती"
   },
-  "common": { "loading": "लोड हो रहा है...", "error": "कुछ गलत हुआ", "save": "सहेजें", "cancel": "रद्द करें", "confirm": "पुष्टि करें" },
+  "insights": {
+    "title": "कुंडली अंतर्दृष्टि",
+    "subtitle": "Classical-style rules coded in this app (whole-sign houses, Lahiri sidereal). For study and reflection — not a substitute for a qualified astrologer.",
+    "subtitleReader": "आपकी कुंडली से एक कोमल, सहायक पाठ — लेबल नहीं, साथ है।",
+    "disclaimerShort": "संवेदनशील निर्णय परिवार, परामर्शदाता या अनुभवी ज्योतिषी के साथ लें। यहाँ केवल शैक्षिक संकेत हैं।",
+    "segmentYogasTitle": "आपकी कुंडली में योग",
+    "segmentYogasEmpty": "हमारी सूची से कोई नामित योग नहीं मिला — फिर भी आपकी कुंडली में बल हो सकते हैं।",
+    "segmentYogasIntro": "इन {{count}} योगों को ध्यान से चुना गया है — ये आपके आकाश के कुछ रंग हैं, पूरी तस्वीर नहीं।",
+    "segmentSarpaTitle": "सर्प / कालसर्प अनुभूति",
+    "segmentAncestralTitle": "पितृ, आशीर्वाद व स्मरण",
+    "segmentMarriageTitle": "विवाह, स्नेह व साझेदारी",
+    "segmentTimingTitle": "विवाह-विषय कब प्रबल हो सकते हैं",
+    "segmentFamilyTitle": "परिवार, मूल व अपनापन",
+    "segmentCareerTitle": "कार्य, धर्म व नाम",
+    "segmentHealthTitle": "शरीर, श्वास व दिनचर्या",
+    "segmentLifePathTitle": "जीवन की विस्तृत यात्रा",
+    "yogaTapDetail": "अर्थ, इस कुंडली में क्यों, और संभावित प्रभाव — जानने के लिए टैप करें",
+    "narrativeSarpa": {
+      "none": "इस सरल नक्शे में सात ग्रह राहु-केतु की एक तरफ इतने नहीं फैले कि ‘सर्प’ जैसा कसाव महसूस हो — साँस लें; जीवन की लहरें कई दिशाओं से आती हैं।",
+      "partial": "कई ग्रह राहु-केतु की एक ओर झुकाव रखते हैं — कुछ परंपराएँ इसे आंशिक सर्प कहती हैं। भय नहीं, गुरुजन, विश्राम और सत्य का साथ अधिक मदद करता है।",
+      "full": "सातों ग्रह राहु-केतु रेखा की एक ओर हैं — कुछ ग्रंथ इसे गहन कर्म-सघन अवधि से जोड़ते हैं। धीरे निर्णय, ईमानदार देखभाल और शिक्षक का साथ सबसे बड़ा बल है।"
+    },
+    "narrativeAncestral": {
+      "none": "सूर्य व नवम भाव के संकेत अपेक्षाकृत खुले हैं — पूर्वज अक्सर हल्के आशीर्वाद जैसे महसूस होते हैं।",
+      "mild": "स्मरण की एक कोमल पुकार है — दीप, अन्नदान या बुजुर्गों का सम्मान मन को शांत कर सकता है।",
+      "moderate": "कुछ संकेत परिवार-कृतज्ञता की ओर आकर्षित करते हैं — यह डर नहीं, हृदय को विस्तार देने का निमंत्रण है।"
+    },
+    "lifePath": {
+      "open": "आपकी कुंडली सीखने, आस्था और कौशल के माध्यम से खुलकर बढ़ने का संकेत देती है — अच्छे गुरु स्वीकारें।",
+      "woven": "कार्य, प्रेम व कर्तव्य की परतें एक साथ चलती हैं — धैर्य से छोटे ईमानदार कदम बड़ी योजना से बेहतर हैं।",
+      "deep": "कुछ अध्याय धीमी, गंभीर गति के होते हैं — विश्राम, सीमाएँ और सच्चे मित्र सहारा बनते हैं; स्वयं पर दया रखें।"
+    },
+    "emptyTitle": "पहले कुंडली सहेजें",
+    "emptyBody": "कुंडली टैब पर चार्ट बनाएँ। यह पृष्ठ आपकी नवीनतम सहेजी कुंडली पढ़ता है।",
+    "goToKundli": "कुंडली पर जाएँ",
+    "disclaimer": "Many traditions and books describe grahas, yogas, Kaalsarpa, and pitṛkārya differently. This screen encodes widely used *approximate* checks so you can learn patterns from your own chart offline. Results are indicative only.",
+    "learnTitle": "Learn: grahas, friends & foes, yogas, Kaalsarpa, pitṛ",
+    "edu": {
+      "grahasTitle": "How grahas behave (short overview)",
+      "grahasBody": "Each graha has karakatwa (significations): Sun for vitality and authority, Moon for mind and nurture, Mars for courage and heat, Mercury for speech and skill, Jupiter for wisdom and grace, Venus for harmony and pleasure, Saturn for patience and limits, Rahu–Ketu for obsession and release. House placement and dignity colour how these themes show up in life.",
+      "mitraTitle": "Mitra graha and śatru graha",
+      "mitraBody": "Naisargika (natural) friendship is a fixed table between planets (e.g. Jupiter is friend to Sun, Moon, Mars). Mitra pairs tend to agree in effect; śatru pairs pull in different directions. Co-lordship, conjunction, and house strength modify this in real charts.",
+      "yogaTitle": "Yogas from the chart",
+      "yogaBody": "A yoga is a meaningful combination of grahas, houses, or dignities (Gajakesari, Mahāpuruṣa yogas, etc.). Texts list hundreds; here we detect a small set that can be inferred reliably from longitude and whole-sign houses.",
+      "kalasarTitle": "Kālasarpa / Kalasarpa",
+      "kalasarBody": "A common modern check: all seven classical planets lie on one side of the Rāhu–Ketu axis around the zodiac. Variants exist (partial, ascendant-based). We show a simple hemisphere test for learning.",
+      "pitruTitle": "Pitṛbādhā / pitṛkārya hints",
+      "pitruBody": "Remedial traditions link ancestors to the 9th house, the Sun, and Saturn. We flag *very rough* chart patterns (afflicted Sun, 9th lord in dusthāna) as conversation starters — not a verdict."
+    },
+    "sectionNatural": "Natural friendship table",
+    "sectionNaturalHint": "Rows = from-graha; columns = to-graha. Rāhu/Ketu use a simplified rule.",
+    "tableFrom": "From \\ To",
+    "sameSignTitle": "Co-tenants in the same sign (sample)",
+    "sectionYogas": "Yogas detected in your chart",
+    "yogasNone": "No named yoga from the small checklist matched — your chart can still hold many strengths.",
+    "yogaTitles": {
+      "gajakesari": "गजकेसरी योग",
+      "budhaditya": "बुधादित्य योग",
+      "ruchaka": "रुचक महापुरुष",
+      "bhadra": "भद्र महापुरुष",
+      "hamsa": "हंस महापुरुष",
+      "malavya": "मालव्य महापुरुष",
+      "sasha": "शश महापुरुष",
+      "chandra_mangala": "चंद्र-मंगल योग",
+      "kemadruma": "केमद्रुम संकेत"
+    },
+    "yogaDescs": {
+      "gajakesari": "चंद्र से केंद्र में बृहस्पति — अन्य ग्रह अनुकूल हों तो विवेक व सहायता का संकेत।",
+      "budhaditya": "सूर्य व बुध एक ही राशि में — वाणी व बुद्धि का संयोग।",
+      "ruchaka": "लग्न से केंद्र में बलवान मंगल — साहस व ऊर्जा (संतुलन जरूरी)।",
+      "bhadra": "लग्न से केंद्र में बलवान बुध — कौशल व लचीलापन।",
+      "hamsa": "लग्न से केंद्र में बलवान गुरु — मार्गदर्शन व विकास।",
+      "malavya": "लग्न से केंद्र में बलवान शुक्र — सौंदर्य व सामंजस्य।",
+      "sasha": "लग्न से केंद्र में बलवान शनि — अनुशासन व धीरज।",
+      "chandra_mangala": "चंद्र व मंगल एक राशि — भावनात्मक गति; खेल या कला से संतुलन।",
+      "kemadruma": "चंद्र के पड़ोसी राशियों में तारा ग्रह नहीं (सरल जाँच) — मन की एकांकिता जब तक ग्रंथों की छूट न लागू हों।"
+    },
+    "yogaDialog": {
+      "whyHeading": "यह कुंडली में क्यों दिखता है",
+      "impactHeading": "जीवन पर संभावित प्रभाव",
+      "gajakesari": {
+        "what": "गजकेसरी में चंद्र से गिने केंद्र में बृहस्पति होता है — मन व गुरु का मेल।",
+        "impact": "स्थिर विवेक, सहायक लोगों और भावनात्मक संतुलन से जोड़ा जाता है जब पापक न बाधें।",
+        "whyThis": "यहाँ चंद्र लग्न से घर {{moonHouse}} में है और बृहस्पति घर {{jupHouse}} में; ऐप पूर्ण-राशि घरों व चंद्र से केंद्र की सरल परिभाषा उपयोग करता है।"
+      },
+      "budhaditya": {
+        "what": "बुधादित्य: सूर्य व बुध एक राशि में।",
+        "impact": "सीखने, स्पष्ट भाषण और व्यावहारिक बुद्धि से जुड़ता है।",
+        "whyThis": "सूर्य घर {{sunHouse}} में, बुध घर {{merHouse}} में; दोनों एक राशि में हों तो योग सक्रिय होता है।"
+      },
+      "ruchaka": {
+        "what": "रुचक: लग्न से केंद्र में उच्च/स्वराशि मंगल।",
+        "impact": "साहस, स्थिरता व नेतृत्व क्षमता से जोड़ा जाता है।",
+        "whyThis": "मंगल लग्न से घर {{marsHouse}} में है और स्व/उच्च की जाँच पास हुई।"
+      },
+      "bhadra": {
+        "what": "भद्र: लग्न से केंद्र में बलवान बुध।",
+        "impact": "कौशल, लचीला मन व संवाद से जुड़ता है।",
+        "whyThis": "बुध लग्न से घर {{merHouse}} में है और स्व/उच्च की जाँच पास हुई।"
+      },
+      "hamsa": {
+        "what": "हंस: लग्न से केंद्र में बलवान गुरु।",
+        "impact": "नीति, वृद्धि व अवसरों से जोड़ा जाता है।",
+        "whyThis": "गुरु लग्न से घर {{jupHouse}} में है और स्व/उच्च की जाँच पास हुई।"
+      },
+      "malavya": {
+        "what": "मालव्य: लग्न से केंद्र में बलवान शुक्र।",
+        "impact": "सौंदर्य, संबंधों की मधुरता से जोड़ा जाता है।",
+        "whyThis": "शुक्र लग्न से घर {{venHouse}} में है और स्व/उच्च की जाँच पास हुई।"
+      },
+      "sasha": {
+        "what": "शश: लग्न से केंद्र में बलवान शनि।",
+        "impact": "अनुशासन, धीमी परिपक्वता व जिम्मेदारी से जोड़ा जाता है।",
+        "whyThis": "शनि लग्न से घर {{satHouse}} में है और स्व/उच्च की जाँच पास हुई।"
+      },
+      "chandra_mangala": {
+        "what": "चंद्र-मंगल एक राशि में।",
+        "impact": "भावनात्मक गति व ऊर्जा — शारीरिक गतिविधि से संतुलन।",
+        "whyThis": "चंद्र घर {{moonHouse}} में, मंगल घर {{marsHouse}} में; एक राशि में हों तो योग सक्रिय।"
+      },
+      "kemadruma": {
+        "what": "केमद्रुम (सरल): चंद्र के पड़ोसी राशियों में तारा ग्रह नहीं।",
+        "impact": "ग्रंथों में एकांकित या बेचैन मन बताया गया है।",
+        "whyThis": "चंद्र लग्न से घर {{moonHouse}} में; पड़ोस खाली पाए गए।"
+      }
+    },
+    "kaalsarpTitle": "Kālasarpa check",
+    "kaalsarp": {
+      "none": "No simple hemisphere clustering of all seven grahas on one side of the Rāhu–Ketu axis.",
+      "partial": "Several grahas cluster on one side of the axis — some texts call this partial; traditions disagree.",
+      "full": "All seven classical grahas fall on one open semicircle between Rāhu and Ketu in this simplified test — study calmly with a teacher; many charts still thrive."
+    },
+    "pitruCardTitle": "Pitṛ / ancestral hints",
+    "pitru": {
+      "none": "No strong pitṛ-style flag from the simple checklist.",
+      "mild": "One soft pattern (e.g. Sun with Saturn or 9th lord weak) — optional remembrance and ethical living matter more than fear.",
+      "moderate": "Multiple simple afflictions to Sun/9th themes — use as a prompt for gratitude and dharma, not anxiety."
+    },
+    "pitruReasons": {
+      "sun_with_rahu": "Sun and Rahu share a sign (eclipse symbolism — mixed visibility).",
+      "sun_with_saturn": "Sun and Saturn share a sign (duty vs vitality tension).",
+      "ninth_lord_dusthana": "Lord of the 9th occupies 6th, 8th, or 12th house.",
+      "sun_dusthana": "Sun occupies 6th, 8th, or 12th from lagna."
+    },
+    "sectionLife": "Life themes (very broad)",
+    "lifeMarriage": "Married life & partnership tone",
+    "lifeCareer": "Career & work tone",
+    "lifeFamily": "Family & home tone",
+    "lifeHealth": "Health & rhythm tone",
+    "life": {
+      "marriage": {
+        "uplift": "शुक्र/गुरु व सप्तमेश अनुकूल घरों में — विवाह में मित्रता व ईमानदार संवाद निभाएँ।",
+        "mixed": "विवाह घर में मिश्र संकेत — धैर्य, सीमाएँ व दिनचर्या से सफलता।",
+        "care": "शुक्र या सप्तमेश कठिन — प्रतिबद्धता में धीमे रहें; परामर्श उपयोगी।"
+      },
+      "career": {
+        "uplift": "सूर्य/बुध/गुरु दशम/केंद्र में — कौशल व प्रतिष्ठा बनाएँ।",
+        "mixed": "कार्यपथ बदल सकता है — कौशल विविध करें, आवेश में पुल न तोड़ें।",
+        "care": "दशम पर दबाव — स्थिर भूमिकाएँ, लिखित समझौते व एक शिल्प में गहराई।"
+      },
+      "family": {
+        "uplift": "चंद्र/गुरु परिवार घरों में अनुकूल — मिलन व बुजुर्ग पोषक।",
+        "mixed": "परिवार में गर्माहट व घर्षण — छोटे संस्कार व सुनवाई।",
+        "care": "चंद्र या चतुर्थ पर दबाव — विश्राम, दायित्व सरल करें।"
+      },
+      "health": {
+        "uplift": "चंद्र व शुभ अपेक्षाकृत साफ — नींद व भोजन नियमित रखें।",
+        "mixed": "ऊर्जा उतार-चढ़ाव — विश्राम व तनाव संभालें।",
+        "care": "षष्ठ/अष्टम/द्वादश पर पापक — नियमित जाँच व हल्का व्यायाम।"
+      }
+    },
+    "marriageTimingTitle": "When marriage may come into focus (Vimśottari hint)",
+    "marriageTimingBody": "आयु {{from}} से {{to}} वर्ष के बीच {{planet}} की महादशा विवाह/साझेदारी विषयों के लिए एक खिड़की मानी जाती है — यह नियत नहीं।",
+    "marriageTimingNone": "इस स्कैन में 100 वर्ष से पहले मेल खाता खंड नहीं मिला — जन्म समय की सटीकता जाँचें।",
+    "marriageTimingHint": "विवाह की सही आयु विभागीय चार्ट, गोचर और संस्कृति पर निर्भर करती है; यह केवल अध्ययन संकेत है।",
+    "relation": {
+      "mitra": "Friend",
+      "shatru": "Rival",
+      "sama": "Neutral"
+    }
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गलत हुआ",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "confirm": "पुष्टि करें",
+    "close": "बंद करें"
+  },
   "consent": {
     "title": "गोपनीयता पहले",
     "message": "आपका जन्म विवरण और कुंडली इस डिवाइस पर रहता है। स्वीकार करने पर हम केवल स्थानीय अनाम उपयोग गिनती सहेजते हैं। कोई विज्ञापन ट्रैकर नहीं।",
@@ -193,5 +517,7 @@
     "install": "इंस्टॉल",
     "dismiss": "बंद करें"
   },
-  "location": { "loading": "स्थान लोड हो रहे हैं…" }
+  "location": {
+    "loading": "स्थान लोड हो रहे हैं…"
+  }
 }

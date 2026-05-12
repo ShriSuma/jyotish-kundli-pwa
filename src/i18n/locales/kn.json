@@ -1,7 +1,18 @@
 {
-  "app": { "title": "ಜ್ಯೋತಿಷ ಕುಂಡಲಿ", "subtitle": "ಆಫ್‌ಲೈನ್-ಫರ್ಸ್ಟ್ ವೇದಿಕ ಜ್ಯೋತಿಷ ಸಹಚರ" },
-  "nav": { "home": "ಮುಖಪುಟ", "kundli": "ಕುಂಡಲಿ", "predictions": "ಭವಿಷ್ಯ", "settings": "ಸೆಟ್ಟಿಂಗ್ಸ್" },
-  "layout": { "offlineMode": "ನೀವು ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿದ್ದೀರಿ. ಉಳಿಸಿದ ಕುಂಡಲಿ ಮತ್ತು ಕ್ಯಾಶ್ ಪಂಚಾಂಗ ಕೆಲಸ ಮಾಡುತ್ತದೆ." },
+  "app": {
+    "title": "ಜ್ಯೋತಿಷ ಕುಂಡಲಿ",
+    "subtitle": "ಆಫ್‌ಲೈನ್-ಫರ್ಸ್ಟ್ ವೇದಿಕ ಜ್ಯೋತಿಷ ಸಹಚರ"
+  },
+  "nav": {
+    "home": "ಮುಖಪುಟ",
+    "kundli": "ಕುಂಡಲಿ",
+    "predictions": "ಭವಿಷ್ಯ",
+    "insights": "Insights",
+    "settings": "ಸೆಟ್ಟಿಂಗ್ಸ್"
+  },
+  "layout": {
+    "offlineMode": "ನೀವು ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿದ್ದೀರಿ. ಉಳಿಸಿದ ಕುಂಡಲಿ ಮತ್ತು ಕ್ಯಾಶ್ ಪಂಚಾಂಗ ಕೆಲಸ ಮಾಡುತ್ತದೆ."
+  },
   "home": {
     "todayPanchang": "ಇಂದಿನ ಪಂಚಾಂಗ",
     "rahuKaal": "ರಾಹುಕಾಲ",
@@ -15,7 +26,9 @@
     "locationGateTitle": "ಮೊದಲು ನಿಮ್ಮ ಸ್ಥಳ ಸೆಟ್ ಮಾಡಿ",
     "locationGateBody": "ಪಂಚಾಂಗ ಮತ್ತು ಸೂರ್ಯೋದಯ ಸಮಯ ಅಕ್ಷಾಂಶ ಮತ್ತು ರೇಖಾಂಶವನ್ನು ಅವಲಂಬಿಸುತ್ತದೆ. ನೀವು ಇರುವ ಸ್ಥಳವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
     "openMapPicker": "ನಕ್ಷೆ ಆಯ್ಕೆಮಾಡಿ",
-    "goToKundli": "ಕುಂಡಲಿಗೆ ಹೋಗಿ"
+    "goToKundli": "ಕುಂಡಲಿಗೆ ಹೋಗಿ",
+    "pincodeGateTitle": "Add your PIN code",
+    "pincodeGateBody": "Sunrise, sunset, and Panchang are aligned to India when you save a 6-digit PIN with your place. Open Kundli, enter your PIN, choose State → District → Village, then Generate once so your place is saved here too."
   },
   "weekday": {
     "0": "ಭಾನುವಾರ ಸೂರ್ಯನೊಂದಿಗೆ ಬೆರೆತಿದೆ. ನಿಧಾನ ಮತ್ತು ಕೃತಜ್ಞತೆ ಒಳ್ಳೆಯದು.",
@@ -35,21 +48,60 @@
     "birthPlace": "ಹುಟ್ಟಿದ ಸ್ಥಳ",
     "gothra": "ಗೋತ್ರ (ಐಚ್ಛಿಕ)",
     "pincodeOptional": "ಪಿನ್ ಕೋಡ್ (ಐಚ್ಛಿಕ, ಭಾರತ)",
+    "pincodePlaceholder": "PIN code (required, 6 digits)",
+    "pincodeRequired": "Enter a valid 6-digit Indian PIN code and pick your birth place from the list below.",
+    "pincodeHint": "Sunrise, Panchang, and saved location all use your PIN with the village you select. Enter six digits first; the lists will narrow.",
     "homePlaceName": "ಮನೆ / ಪ್ರದೇಶದ ಹೆಸರು (ಐಚ್ಛಿಕ)",
     "openMap": "ನಕ್ಷೆಯಲ್ಲಿ ಆಯ್ಕೆ",
     "mapPickerTitle": "ನಕ್ಷೆಯಲ್ಲಿ ಹುಟ್ಟಿದ ಸ್ಥಳ ಆಯ್ಕೆ",
     "mapPickerPrivacy": "ಈ ಪಿಕರ್ ತೆರೆದಿರುವಾಗ Google ಗೆ ನಕ್ಷೆ ಸಂವಹನಗಳು ಬಹುಶಃ ತಲುಪಬಹುದು.",
     "mapPickerNoKey": "ನಕ್ಷೆಗಾಗಿ VITE_GOOGLE_MAPS_API_KEY ಸೇರಿಸಿ.",
+    "mapPickerOsmPrivacy": "ನಕ್ಷೆ ಟೈಲ್‌ಗಳು OpenStreetMap; ವಿಳಾಸ ಹುಡುಕಾಟ OSM Nominatim (Google ಕೀ ಬೇಕಿಲ್ಲ).",
+    "patrikaTitle": "ಪಾರಂಪರಿಕ ದಕ್ಷಿಣ ಭಾರತೀಯ ಜನ್ಮ ಪತ್ರಿಕೆ",
+    "patrikaNote": "ಮುದ್ರಣ ಶೈಲಿ; ಗ್ರಹ ಸ್ಥಾನಗಳು ಈ ಅಪ್ಲಿಕೇಶನ್‌ನ ಗಣನೆಗಳನ್ನು ಅನುಸರಿಸುತ್ತವೆ (ಕೈಯಿಂದ ಬರೆದ ಪಂಚಾಂಗದಿಂದ ಸ್ವಲ್ಪ ಭಿನ್ನವಾಗಬಹುದು).",
+    "patrikaSunsetSide": "ಸೂ. ಅ. ಘಂಟೆ",
+    "patrikaSunriseSide": "ಸೂ. ಉ. ಘಂಟೆ",
+    "patrikaSolar": "ಸೌರ",
+    "patrikaMonth": "ಮಾಸ",
+    "patrikaBirthDate": "(ಜನ್ಮ ತಾರೀಖು)",
+    "patrikaYoni": "ಯೋನಿ",
+    "patrikaGana": "ಗಣ",
+    "patrikaNadi": "ನಾಡಿ",
+    "patrikaName": "ಹೆಸರು",
+    "patrikaNakshatra": "ನಕ್ಷತ್ರ",
+    "patrikaRashi": "ರಾಶಿ",
+    "patrikaGotra": "ಗೋತ್ರ",
+    "patrikaPada": "ಪಾದ",
+    "patrikaBirthLine": "ಜನ್ಮ",
+    "patrikaPlace": "ಸ್ಥಳ",
+    "patrikaLagna": "ಲಗ್ನ",
+    "patrikaDownloadPatrike": "ಪತ್ರಿಕೆ ಡೌನ್‌ಲೋಡ್ (PNG)",
     "generate": "ಕುಂಡಲಿ ರಚಿಸಿ",
     "save": "ಉಳಿಸಿದ ಚಾರ್ಟ್ ನವೀಕರಿಸಿ",
     "download": "PNG ಡೌನ್‌ಲೋಡ್",
     "downloadPdf": "PDF ಡೌನ್‌ಲೋಡ್",
     "share": "ಚಾರ್ಟ್ ಹಂಚಿಕೆ",
+    "shareSummary": "Kundli for {{name}}\nLagna degree: {{asc}}\nMoon sign: {{moon}}\nGenerated with Jyotish Kundli",
     "requiredFields": "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
     "savedPrefix": "ಉಳಿಸಲಾಗಿದೆ",
     "todayPrediction": "ಇಂದಿನ ಓದು",
-    "dashaTitle": "ದಶಾ ಸಂಕ್ಷಿಪ್ತ",
+    "dashaTitle": "ವಿಂಶೋತ್ತರಿ ಮಹಾದಶಾ",
+    "dashaYearsUnit": "ವ",
+    "dashaLifetimeTitle": "ಜೀವನಪರ್ಯಂತ ಮಹಾದಶಾ (೧೨೦ ವರ್ಷ ವರೆಗೆ)",
+    "dashaLifetimeHint": "ಪಟ್ಟಿಯ ಅಗಲ ಪ್ರತಿ ಮಹಾದಶಾ ಅವಧಿಗೆ ಅನುಪಾತಿಕ; ಬಣ್ಣಗಳು ದಶಾ ಸ್ವಾಮಿಗೆ ಹೊಂದಿಕೆಯಾಗಿವೆ.",
+    "dashaExplorerTitle": "ಸಂವೇದಿ ದಶಾ–ಭುಕ್ತಿ",
+    "dashaExplorerAge": "ವಯಸ್ಸು",
+    "dashaMaha": "ಮಹಾದಶಾ",
+    "dashaBhukti": "ಅಂತರ್ದಶಾ (ಭುಕ್ತಿ)",
+    "dashaAntarSeries": "Antar dasha sequence in this mahadasha (Ketu→Venus→Sun→… cycle)",
+    "dashaTableToggle": "ಮಹಾದಶಾ ಪಟ್ಟಿ",
+    "lagnaPatrika": "ಲಗ್ನ",
+    "rashiAmshaAbbr": "ಅಂಶ",
+    "maandiShort": "ಮಾಂಡಿ",
+    "dashaBalanceAtBirth": "ಜನ್ಮದಲ್ಲಿ ದಶಾ ಶೇಷ:",
+    "dashaBalanceYmd": "{{years}} ವ, {{months}} ತಿ, {{days}} ದಿ (ಸುಮಾರು)",
     "viewPredictions": "ಭವಿಷ್ಯ ವೀಕ್ಷಿಸಿ",
+    "viewInsights": "Chart insights & yogas",
     "detailsAboutMe": "ನನ್ನ ಬಗ್ಗೆ ವಿವರಗಳು",
     "detailsLoading": "ಕಥನ ಸಿದ್ಧವಾಗುತ್ತಿದೆ…",
     "detailsError": "ಕಥನ ಲೋಡ್ ಆಗಲಿಲ್ಲ.",
@@ -66,7 +118,8 @@
     "maandi": "ಮಾಂಡಿ (ಗುಲಿಕ)",
     "planetTable": {
       "planet": "ಗ್ರಹ",
-      "degree": "ಅಂಶ",
+      "degree": "ರೇಖಾಂಶ",
+      "amsha": "ರಾಶಿಯ ಅಂಶ (೧–೩೦)",
       "rashi": "ರಾಶಿ",
       "nakshatra": "ನಕ್ಷತ್ರ",
       "house": "ಭಾವ"
@@ -85,12 +138,26 @@
     "emptyBody": "ನಿಮ್ಮ ಹುಟ್ಟಿನ ಡೇಟಾಗೆ ಹೊಂದಿಸಿದ ಓದುಗಳಿಗೆ ಕುಂಡಲಿ ರಚಿಸಿ (ಚಾರ್ಟ್ ಸ್ವಯಂ ಉಳಿಸುತ್ತದೆ).",
     "goToKundli": "ಕುಂಡಲಿಗೆ ಹೋಗಿ",
     "rating": "ಒಟ್ಟಾರೆ ಭಾವ",
+    "dashaContextLabel": "ದಶಾ ಮತ್ತು ಭುಕ್ತಿ:",
+    "timingContextLabel": "ಸಮಯ ಟಿಪ್ಪಣಿ:",
     "seeker": "ಅನ್ವೇಷಕ",
-    "focus": { "moonTransit": "ಚಂದ್ರ ಗೋಚರ", "sunTransit": "ಸೂರ್ಯ ಗೋಚರ" },
+    "focus": {
+      "moonTransit": "ಚಂದ್ರ ಗೋಚರ",
+      "sunTransit": "ಸೂರ್ಯ ಗೋಚರ"
+    },
     "lucky": {
-      "positive": { "color": "ಹಸಿರು", "direction": "ಪೂರ್ವ" },
-      "neutral": { "color": "ನೀಲಿ", "direction": "ಉತ್ತರ" },
-      "caution": { "color": "ಕೇಸರಿ", "direction": "ದಕ್ಷಿಣ" }
+      "positive": {
+        "color": "ಹಸಿರು",
+        "direction": "ಪೂರ್ವ"
+      },
+      "neutral": {
+        "color": "ನೀಲಿ",
+        "direction": "ಉತ್ತರ"
+      },
+      "caution": {
+        "color": "ಕೇಸರಿ",
+        "direction": "ದಕ್ಷಿಣ"
+      }
     },
     "tones": {
       "positive": {
@@ -117,6 +184,38 @@
         "health": "ಸಾಧ್ಯವಾದಲ್ಲಿ ವಿರಾಮಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ ಮತ್ತು ಒತ್ತಡದ ಚಟುವಟಿಕೆಗಳನ್ನು ಕಡಿಮೆಮಾಡಿ. ದವಡೆ ಮತ್ತು ಭುಜದ ಒತ್ತಡವನ್ನು ಗಮನಿಸಿ ಮತ್ತು ಮೃದುಗೊಳಿಸಿ. ರಾತ್ರಿ ಮುಗಿವಿನ ಶೂರತೆಗಿಂತ ಸ್ಥಿರ ಗತಿಯನ್ನು ಆದ್ಯತೆ ನೀಡಿ.",
         "relationships": "ಶಾಂತ ಪದಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಉದ್ದೇಶಗಳ ಬಗ್ಗೆ ಊಹೆಗಳನ್ನು ತಪ್ಪಿಸಿ. ಆರೋಪಗಳನ್ನು ರಾಶಿ ಮಾಡುವ ಬದಲು ಒಂದು ಪ್ರಾಮಾಣಿಕ ಪ್ರಶ್ನೆ ಕೇಡಿ. ಗೆಲುವಿಗಿಂತ ಸರಿಪಡಿಸುವಿಕೆ ಮುಖ್ಯ."
       }
+    },
+    "dashaLineTemplate": "ವಿಂಶೋತ್ತರಿ: {{maha}} ಮಹಾದಶಾ, {{bhukti}} ಭುಕ್ತಿ.",
+    "timingFromTransits": "ಸುಮಾರು {{age}} ವರ್ಷ ವಯಸ್ಸಿನಲ್ಲಿ ಈ ಹಂತ ಶಾಂತ ಗತಿ ಮತ್ತು ವಿಶ್ರಾಂತೆ ಎರಡನ್ನೂ ಕೇಳುತ್ತದೆ.",
+    "dashaUnknown": "ಈ ವಯಸ್ಸಿಗೆ ದಶಾ ಮಿತಿಗಳನ್ನು ಲೆಕ್ಕ ಹಾಕಲಾಗಲಿಲ್ಲ.",
+    "timingGeneric": "ಸೌಮ್ಯ ಸೂಚನೆ: ದೊಡ್ಡ ವಾಗ್ದಾನಗಳನ್ನು ಚಿಕ್ಕ, ಪುನರಾವರ್ತಿತ ಕ್ರಿಯೆಗಳೊಂದಿಗೆ ಹೊಂದಿಸಿ.",
+    "weekTimingHint": "ಈ ವಾರ ಬಹಳ ಚಂದ್ರ ಭಾವಗಳ ಮಿಶ್ರಣ; ವಾರದ ಮಧ್ಯ ಬೇರೆ ಅನಿಸಬಹುದು — ಬಫರ್ ಇಡಿ.",
+    "monthTimingHint": "ಸೌರ ಮಾಸ {{month}}: ಗತಿ ಬದಲಾಗುತ್ತದೆ; ವಿಸ್ತರಣೆಗಿಂತ ನಿರ್ವಹಣೆಗೆ ಆದ್ಯತೆ.",
+    "na": "—",
+    "periodToday": "ಇಂದು",
+    "periodWeek": "ಈ ವಾರ",
+    "periodMonth": "ಈ ತಿಂಗಳು",
+    "completeReadingLabel": "ಪೂರ್ಣ ಓದು (ಸಂಶ್ಲೇಷಣೆ)",
+    "apiHint": "ಐಚ್ಛಿಕ: ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಧನೀಯ ಪಠ್ಯಕ್ಕೆ VITE_PREDICTION_API_URL ಹೊಂದಿಸಿ (README ನೋಡಿ). ಮೇಲಿನ ವಿಭಾಗಗಳು ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಗೋಚರ, ವಿಂಶೋತ್ತರಿ ಮತ್ತು ಚಂದ್ರ ರಾಶಿಯನ್ನು ಸೇರಿಸುತ್ತವೆ.",
+    "integrated": {
+      "positive": "{{name}}, {{period}} ಆಕಾಶ ಸಹಾಯಕ ಬಾಗುತ್ತದೆ: ವಾರದ ದಿನದ {{planet}} ಟೋನ್ ಮತ್ತು {{transitMoon}} ಗೆ ಚಂದ್ರ ಗೋಚರ, ನಿಮ್ಮ {{moonRashi}} ಚಂದ್ರ ಇನ್ನೂ ಪರಿಚಿತ ಸಮಾಧಾನವನ್ನು ಇಷ್ಟಪಡುತ್ತದೆ. ವಿಂಶೋತ್ತರಿಯಲ್ಲಿ {{maha}} ಮಹಾದಶಾ ಮತ್ತು {{bhukti}} ಭುಕ್ತಿ — ಆ ದೊಡ್ಡ ಅಧ್ಯಾಯ ಧ್ವನಿಯನ್ನು ನಿಗದಿಪಡಿಸಲು ಬಿಡಿ; ಒಂದು ಅರ್ಥಪೂರ್ಣ ಗೆಲುವು ಮತ್ತು ಒಂದು ಮೃದು ಸರಿಪಡಿಸುವಿಕೆ ಮಾಡಿ. ಭರವಸೆ ಪ್ರಾಯೋಗಿಕ: ಚಿಕ್ಕ ಕ್ರಿಯೆಗಳು ದೊಡ್ಡ ಪ್ರತಿಜ್ಞೆಗಳಿಗಿಂತ ಮೌಲ್ಯಯುತ.",
+      "neutral": "{{name}}, {{period}} ಮಿಶ್ರ ಸಹಿ: {{planet}} ವಾರದ ಬಣ್ಣ, ಚಂದ್ರ {{transitMoon}} ಮೂಲಕ ಸಂಚರಿಸುತ್ತಿದೆ, ನಿಮ್ಮ {{moonRashi}} ಪಟ್ಟಿಕೆ ನಾಯಕತ್ವಕ್ಕಿಂತ ಸ್ಥಿರ ಗತಿಯನ್ನು ಕೇಳುತ್ತದೆ. {{maha}} ಮಹಾದಶಾ ಮತ್ತು {{bhukti}} ಭುಕ್ತಿ — ಸೂಕ್ಷ್ಮೀಕರಣ: ಒಂದು ಸಂವಾದ ಸ್ಪಷ್ಟಪಡಿಸಿ, ನಿದ್ರೆ ರಕ್ಷಿಸಿ. ನಿರಪೇಕ್ಷತೆ ಖಾಲಿಯಲ್ಲ; ತಲೆ ಮತ್ತು ಹೃದಯ ಎರಡರಿಂದ ಆಯ್ಕೆಗೆ ಜಾಗ.",
+      "caution": "{{name}}, {{period}} ಮೃದತೆ ಬೇಕು: {{planet}} ಅಂಚುಗಳನ್ನು ತೀಕ್ಷಗೊಳಿಸಬಹುದು, {{transitMoon}} ಚಂದ್ರ ಹಳೆಯ ಕಥೆಗಳನ್ನು ಎಬ್ಬಿಸಬಹುದು, {{moonRashi}} ಸೂಕ್ಷ್ಮತೆ ರಕ್ಷಣೆ ಬೇಕು. {{maha}} / {{bhukti}} ವಿಂಶೋತ್ತರಿಯಲ್ಲಿ ರಾತ್ರಿ ವಾದ ಮಾಡಬೇಡಿ; ತಲೆಸುತ್ತು ಇದ್ದರೆ ತಿರುಗಲಾಗದ ನಿರ್ಧಾರಗಳನ್ನು ಮುಂದೂಡಿ. ಎಲೆಗಳು, ನೀರು, ಪ್ರಾಮಾಣಿಕ ವೇಗ — ಧೈರ್ಯ \"ಇನ್ನೂ ಅಲ್ಲ\" ಎಂದು ಹೇಳುವುದೂ ಆಗಬಹುದು."
+    }
+  },
+  "dashas": {
+    "explorerEmpty": "ವಯಸ್ಸಿನ ಸ್ಲೈಡರ್ ಹೊಂದಿಸಿ ದಶಾ ಅಧ್ಯಾಯಗಳನ್ನು ಅನ್ವೇಷಿಸಿ.",
+    "bhuktiLayer": "ಚಾಲ್ತಿಯಲ್ಲಿರುವ {{bhukti}} ಭುಕ್ತಿ ದೊಡ್ಡ ದಶಾ ಕಥೆಯನ್ನು ವಾರದಿಂದ ವಾರಕ್ಕೆ ಮೃದು ಅಥವಾ ತೀಕ್ಷವಾಗಿ ಬಣ್ಣ ಹಾಕುತ್ತದೆ — ಭಾವನೆಗಳನ್ನು ಮಾಹಿತಿಯೆಂದು ಗ್ರಹಿಸಿ.",
+    "mahaTheme": {
+      "Ketu": "ಕೇತು ಅಧ್ಯಾಯ ಸರಳತೆಯ ಮೂಲಕ ಸ್ಪಷ್ಟತೆ ಕೇಳುತ್ತದೆ.",
+      "Venus": "ಶುಕ್ರ ಸಾಮರಸ್ಯ ಮತ್ತು ಸಂಪರ್ಕ ತೆರೆಯುತ್ತದೆ.",
+      "Sun": "ರವಿ ಅವಧಿ ಗೋಚರತೆ ಮತ್ತು ಶಕ್ತಿಗೆ.",
+      "Moon": "ಚಂದ್ರ ಭಾವನೆ ಮತ್ತು ಮನೆಯ ವಿಷಯಗಳ ಅಲೆಗಳನ್ನು ತರುತ್ತದೆ.",
+      "Mars": "ಕುಜ ಧೈರ್ಯ ಮತ್ತು ಮಿತಿಗಳನ್ನು ಉತ್ತೇಜಿಸುತ್ತದೆ.",
+      "Rahu": "ರಾಹು ಹೊಸ ಕ್ಷಿತಿಜಗಳ ಹಸಿವನ್ನು ಎಬ್ಬಿಸುತ್ತದೆ.",
+      "Jupiter": "ಗುರು ಬೆಳವಣಿಗೆ ಮತ್ತು ನೀತಿಗೆ ಬಾಗುತ್ತದೆ.",
+      "Saturn": "ಶನಿ ಸ್ಥಿರತೆ ಮತ್ತು ದುರಸ್ತಿಗೆ ಬಹುಮಾನ.",
+      "Mercury": "ಬುಧ ಸಂವಹನ ಮತ್ತು ಅಧ್ಯಯನಕ್ಕೆ ಅನುಕೂಲ."
     }
   },
   "settings": {
@@ -150,23 +249,262 @@
     "narrativeAllow": "ಆನ್‌ಲೈನ್ ಕಥನಕ್ಕೆ ಅನುಮತಿ"
   },
   "panchang": {
-    "tithi": "ತಿಥಿ", "nakshatra": "ನಕ್ಷತ್ರ", "yoga": "ಯೋಗ", "karana": "ಕರಣ", "paksha": "ಪಕ್ಷ", "sunrise": "ಸೂರ್ಯೋದಯ", "sunset": "ಸೂರ್ಯಾಸ್ತ"
+    "tithi": "ತಿಥಿ",
+    "nakshatra": "ನಕ್ಷತ್ರ",
+    "yoga": "ಯೋಗ",
+    "karana": "ಕರಣ",
+    "paksha": "ಪಕ್ಷ",
+    "sunrise": "ಸೂರ್ಯೋದಯ",
+    "sunset": "ಸೂರ್ಯಾಸ್ತ"
   },
   "rahuKaal": {
     "active": "ಈಗ ಸಕ್ರಿಯ",
     "inactive": "ಸಕ್ರಿಯವಿಲ್ಲ",
     "warning": "ರಾಹುಕಾಲದಲ್ಲಿ ಹೊಸ ಆರಂಭವನ್ನು ಅನೇಕರು ತಪ್ಪಿಸುತ್ತಾರೆ; ಇದನ್ನು ಭಯವಲ್ಲ, ಮೃದು ವಿರಾಮ ಎಂದು ತೆಗೆದುಕೊಳ್ಳಿ."
   },
-  "planets": { "Sun": "ಸೂರ್ಯ", "Moon": "ಚಂದ್ರ", "Mars": "ಕುಜ", "Mercury": "ಬುಧ", "Jupiter": "ಗುರು", "Venus": "ಶುಕ್ರ", "Saturn": "ಶನಿ", "Rahu": "ರಾಹು", "Ketu": "ಕೇತು" },
-  "rashis": { "Mesha": "ಮೇಷ", "Vrishabha": "ವೃಷಭ", "Mithuna": "ಮಿಥುನ", "Karka": "ಕರ್ಕ", "Simha": "ಸಿಂಹ", "Kanya": "ಕನ್ಯಾ", "Tula": "ತುಲಾ", "Vrischika": "ವೃಶ್ಚಿಕ", "Dhanu": "ಧನು", "Makara": "ಮಕರ", "Kumbha": "ಕುಂಭ", "Meena": "ಮೀನ" },
-  "nakshatras": {
-    "Ashwini": "ಅಶ್ವಿನಿ", "Bharani": "ಭರಣಿ", "Krittika": "ಕೃತ್ತಿಕಾ", "Rohini": "ರೋಹಿಣಿ", "Mrigashirsha": "ಮೃಗಶಿರ", "Ardra": "ಆರ್ದ್ರಾ",
-    "Punarvasu": "ಪುನರ್ವಸು", "Pushya": "ಪುಷ್ಯ", "Ashlesha": "ಆಶ್ಲೇಷಾ", "Magha": "ಮಘಾ", "PurvaPhalguni": "ಪೂರ್ವ ಫಲ್ಗುಣಿ",
-    "UttaraPhalguni": "ಉತ್ತರ ಫಲ್ಗುಣಿ", "Hasta": "ಹಸ್ತ", "Chitra": "ಚಿತ್ರಾ", "Swati": "ಸ್ವಾತಿ", "Vishakha": "ವಿಶಾಖಾ",
-    "Anuradha": "ಅನುರಾಧಾ", "Jyeshtha": "ಜ್ಯೇಷ್ಠಾ", "Mula": "ಮೂಲ", "PurvaAshadha": "ಪೂರ್ವಾಷಾಢಾ", "UttaraAshadha": "ಉತ್ತರಾಷಾಢಾ",
-    "Shravana": "ಶ್ರವಣ", "Dhanishtha": "ಧನಿಷ್ಠಾ", "Shatabhisha": "ಶತಭಿಷಾ", "PurvaBhadrapada": "ಪೂರ್ವಭಾದ್ರಪದ", "UttaraBhadrapada": "ಉತ್ತರಭಾದ್ರಪದ", "Revati": "ರೇವತಿ"
+  "planets": {
+    "Sun": "ಸೂರ್ಯ",
+    "Moon": "ಚಂದ್ರ",
+    "Mars": "ಕುಜ",
+    "Mercury": "ಬುಧ",
+    "Jupiter": "ಗುರು",
+    "Venus": "ಶುಕ್ರ",
+    "Saturn": "ಶನಿ",
+    "Rahu": "ರಾಹು",
+    "Ketu": "ಕೇತು"
   },
-  "common": { "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...", "error": "ಏನೋ ತಪ್ಪಾಗಿದೆ", "save": "ಉಳಿಸಿ", "cancel": "ರದ್ದು", "confirm": "ಖಚಿತಪಡಿಸಿ" },
+  "rashis": {
+    "Mesha": "ಮೇಷ",
+    "Vrishabha": "ವೃಷಭ",
+    "Mithuna": "ಮಿಥುನ",
+    "Karka": "ಕರ್ಕ",
+    "Simha": "ಸಿಂಹ",
+    "Kanya": "ಕನ್ಯಾ",
+    "Tula": "ತುಲಾ",
+    "Vrischika": "ವೃಶ್ಚಿಕ",
+    "Dhanu": "ಧನು",
+    "Makara": "ಮಕರ",
+    "Kumbha": "ಕುಂಭ",
+    "Meena": "ಮೀನ"
+  },
+  "nakshatras": {
+    "Ashwini": "ಅಶ್ವಿನಿ",
+    "Bharani": "ಭರಣಿ",
+    "Krittika": "ಕೃತ್ತಿಕಾ",
+    "Rohini": "ರೋಹಿಣಿ",
+    "Mrigashirsha": "ಮೃಗಶಿರ",
+    "Ardra": "ಆರ್ದ್ರಾ",
+    "Punarvasu": "ಪುನರ್ವಸು",
+    "Pushya": "ಪುಷ್ಯ",
+    "Ashlesha": "ಆಶ್ಲೇಷಾ",
+    "Magha": "ಮಘಾ",
+    "PurvaPhalguni": "ಪೂರ್ವ ಫಲ್ಗುಣಿ",
+    "UttaraPhalguni": "ಉತ್ತರ ಫಲ್ಗುಣಿ",
+    "Hasta": "ಹಸ್ತ",
+    "Chitra": "ಚಿತ್ರಾ",
+    "Swati": "ಸ್ವಾತಿ",
+    "Vishakha": "ವಿಶಾಖಾ",
+    "Anuradha": "ಅನುರಾಧಾ",
+    "Jyeshtha": "ಜ್ಯೇಷ್ಠಾ",
+    "Mula": "ಮೂಲ",
+    "PurvaAshadha": "ಪೂರ್ವಾಷಾಢಾ",
+    "UttaraAshadha": "ಉತ್ತರಾಷಾಢಾ",
+    "Shravana": "ಶ್ರವಣ",
+    "Dhanishtha": "ಧನಿಷ್ಠಾ",
+    "Shatabhisha": "ಶತಭಿಷಾ",
+    "PurvaBhadrapada": "ಪೂರ್ವಭಾದ್ರಪದ",
+    "UttaraBhadrapada": "ಉತ್ತರಭಾದ್ರಪದ",
+    "Revati": "ರೇವತಿ"
+  },
+  "insights": {
+    "title": "Chart insights",
+    "subtitle": "Classical-style rules coded in this app (whole-sign houses, Lahiri sidereal). For study and reflection — not a substitute for a qualified astrologer.",
+    "subtitleReader": "A gentle reading from your chart—meant to comfort and orient, not to label you.",
+    "disclaimerShort": "Sensitive choices deserve people you trust—family, counsellors, or a skilled jyotiṣī. This screen is an educational echo of classical themes.",
+    "segmentYogasTitle": "Yogas highlighted in your chart",
+    "segmentYogasEmpty": "No classical yoga from our small checklist lit up today—that does not dim your sky. Many strengths sit outside checklist names.",
+    "segmentYogasIntro": "These {{count}} combinations are named with care—each is one colour on your canvas, not the whole painting.",
+    "segmentSarpaTitle": "Serpent-axis pattern (sarpa / kālasarpa feeling)",
+    "segmentAncestralTitle": "Ancestors, blessings, and remembrance",
+    "segmentMarriageTitle": "Love, softness, and partnership",
+    "segmentTimingTitle": "When marriage themes may stir in time",
+    "segmentFamilyTitle": "Home, roots, and belonging",
+    "segmentCareerTitle": "Work, vocation, and steady name",
+    "segmentHealthTitle": "Body, breath, and daily rhythm",
+    "segmentLifePathTitle": "Your wider walk through life",
+    "yogaTapDetail": "Tap for meaning, why your chart shows it, and possible effects",
+    "narrativeSarpa": {
+      "none": "Your classical grahas spread more evenly around the wheel in this simple picture—there is no tight “serpent coil” clustering here. Seasons still visit you, but often from several directions rather than one repeating loop.",
+      "partial": "Several classical planets lean to one side of Rahu and Ketu’s axis—some traditions speak softly of a partial serpent pattern. Life may bring waves where lessons cluster, then release. Rituals that calm the heart, rest, and mentors you trust matter more than fear.",
+      "full": "Here, all seven classical planets gather on one side of the Rāhu–Ketu line in our simplified check—books sometimes associate this with intense karmic focus. Many lives with similar charts still move with courage. Slow decisions, loyal teachers, and honest self-care are your true allies."
+    },
+    "narrativeAncestral": {
+      "none": "Sun and ninth-house themes feel relatively open—ancestors may visit more as quiet blessings than as unfinished homework.",
+      "mild": "A soft whisper toward remembrance appears—lighting a lamp, feeding someone hungry, or honouring elders in simple ways may settle something tender inside you.",
+      "moderate": "A few patterns invite you toward gratitude in the family line. That is not a verdict of fear—it often means your heart is being asked to widen. Gentle charity, truthfulness, and wise counsel usually help more than worry."
+    },
+    "lifePath": {
+      "open": "Your chart suggests room to grow visibly: learning journeys, faith in tomorrow, and skills that make you proud at day’s end can be allies. Say yes to mentors who see your goodness.",
+      "woven": "Work, love, and duty may tug in realistic layers. You are not failing when life feels complex; you are weaving cloth that needs patience. Small honest steps beat perfect plans.",
+      "deep": "Some chapters ask you to walk with dignity through fog—Saturn-like stretches where rest, boundaries, and true friends carry you. Depth can become quiet strength when kindness includes you too."
+    },
+    "emptyTitle": "Save a Kundli first",
+    "emptyBody": "Generate your chart on the Kundli tab. This page reads your latest saved chart.",
+    "goToKundli": "Go to Kundli",
+    "disclaimer": "Many traditions and books describe grahas, yogas, Kaalsarpa, and pitṛkārya differently. This screen encodes widely used *approximate* checks so you can learn patterns from your own chart offline. Results are indicative only.",
+    "learnTitle": "Learn: grahas, friends & foes, yogas, Kaalsarpa, pitṛ",
+    "edu": {
+      "grahasTitle": "How grahas behave (short overview)",
+      "grahasBody": "Each graha has karakatwa (significations): Sun for vitality and authority, Moon for mind and nurture, Mars for courage and heat, Mercury for speech and skill, Jupiter for wisdom and grace, Venus for harmony and pleasure, Saturn for patience and limits, Rahu–Ketu for obsession and release. House placement and dignity colour how these themes show up in life.",
+      "mitraTitle": "Mitra graha and śatru graha",
+      "mitraBody": "Naisargika (natural) friendship is a fixed table between planets (e.g. Jupiter is friend to Sun, Moon, Mars). Mitra pairs tend to agree in effect; śatru pairs pull in different directions. Co-lordship, conjunction, and house strength modify this in real charts.",
+      "yogaTitle": "Yogas from the chart",
+      "yogaBody": "A yoga is a meaningful combination of grahas, houses, or dignities (Gajakesari, Mahāpuruṣa yogas, etc.). Texts list hundreds; here we detect a small set that can be inferred reliably from longitude and whole-sign houses.",
+      "kalasarTitle": "Kālasarpa / Kalasarpa",
+      "kalasarBody": "A common modern check: all seven classical planets lie on one side of the Rāhu–Ketu axis around the zodiac. Variants exist (partial, ascendant-based). We show a simple hemisphere test for learning.",
+      "pitruTitle": "Pitṛbādhā / pitṛkārya hints",
+      "pitruBody": "Remedial traditions link ancestors to the 9th house, the Sun, and Saturn. We flag *very rough* chart patterns (afflicted Sun, 9th lord in dusthāna) as conversation starters — not a verdict."
+    },
+    "sectionNatural": "Natural friendship table",
+    "sectionNaturalHint": "Rows = from-graha; columns = to-graha. Rāhu/Ketu use a simplified rule.",
+    "tableFrom": "From \\ To",
+    "sameSignTitle": "Co-tenants in the same sign (sample)",
+    "sectionYogas": "Yogas detected in your chart",
+    "yogasNone": "No named yoga from the small checklist matched — your chart can still hold many strengths.",
+    "yogaTitles": {
+      "gajakesari": "Gajakesari yoga",
+      "budhaditya": "Budhāditya yoga",
+      "ruchaka": "Ruchaka Mahāpuruṣa",
+      "bhadra": "Bhadra Mahāpuruṣa",
+      "hamsa": "Hamsa Mahāpuruṣa",
+      "malavya": "Malavya Mahāpuruṣa",
+      "sasha": "Śaśa Mahāpuruṣa",
+      "chandra_mangala": "Chandra–Maṅgala yoga",
+      "kemadruma": "Kemadruma yoga (indication)"
+    },
+    "yogaDescs": {
+      "gajakesari": "Jupiter occupies a kendra from the Moon — steadier judgement and support when other factors agree.",
+      "budhaditya": "Sun and Mercury share one sign — clarity of speech and learning potential.",
+      "ruchaka": "Mars in a kendra from lagna while strong (own/exalt sign) — courage and stamina when balanced.",
+      "bhadra": "Mercury in kendra from lagna while strong — skill and adaptability.",
+      "hamsa": "Jupiter in kendra from lagna while strong — guidance and growth themes.",
+      "malavya": "Venus in kendra from lagna while strong — harmony and arts.",
+      "sasha": "Saturn in kendra from lagna while strong — discipline and slow mastery.",
+      "chandra_mangala": "Moon and Mars together — emotional intensity and drive; channel through sport or craft.",
+      "kemadruma": "Moon without planets in adjacent signs (simplified check) — loneliness of mind unless cancelled by classics’ exceptions."
+    },
+    "yogaDialog": {
+      "whyHeading": "Why this chart shows it",
+      "impactHeading": "What it can mean in life",
+      "gajakesari": {
+        "what": "Gajakesari connects Guru (Jupiter) with Chandra (Moon) when Jupiter occupies a kendra counted from the Moon.",
+        "impact": "Traditions associate it with steadier judgement, supportive elders, and a calmer emotional compass when other factors agree.",
+        "whyThis": "Here the Moon sits in house {{moonHouse}} from lagna and Jupiter in house {{jupHouse}}; the app uses whole-sign houses and a simplified kendra-from-Moon check."
+      },
+      "budhaditya": {
+        "what": "Budhāditya is Sun and Mercury sharing one sign so speech and intelligence work together.",
+        "impact": "Often linked with learning, articulation, and practical cleverness when Mercury is not heavily afflicted.",
+        "whyThis": "Sun is in house {{sunHouse}} and Mercury in house {{merHouse}} from lagna; the yoga fires when both share the same sign in this engine."
+      },
+      "ruchaka": {
+        "what": "Ruchaka is one of the Mahāpuruṣa yogas: strong Mars in a kendra from lagna.",
+        "impact": "Classical texts tie it to courage, stamina, and leadership when anger is channelled constructively.",
+        "whyThis": "Mars occupies house {{marsHouse}} from lagna with own-sign or exaltation dignity in the current checklist."
+      },
+      "bhadra": {
+        "what": "Bhadra is strong Mercury in a kendra from lagna.",
+        "impact": "Associated with skill, adaptability, and clear communication in favourable charts.",
+        "whyThis": "Mercury is in house {{merHouse}} from lagna with own-sign or exaltation in this simplified test."
+      },
+      "hamsa": {
+        "what": "Hamsa is strong Jupiter in a kendra from lagna.",
+        "impact": "Linked to guidance, ethics, and growth-oriented opportunities.",
+        "whyThis": "Jupiter is in house {{jupHouse}} from lagna with own-sign or exaltation in this checklist."
+      },
+      "malavya": {
+        "what": "Malavya is strong Venus in a kendra from lagna.",
+        "impact": "Often read as harmony, aesthetics, and relational grace when balanced.",
+        "whyThis": "Venus is in house {{venHouse}} from lagna with own-sign or exaltation in this engine."
+      },
+      "sasha": {
+        "what": "Śaśa is strong Saturn in a kendra from lagna.",
+        "impact": "Tied to discipline, slow mastery, and responsibility when hardship is met with patience.",
+        "whyThis": "Saturn is in house {{satHouse}} from lagna with own-sign or exaltation in this simplified rule."
+      },
+      "chandra_mangala": {
+        "what": "Chandra–Maṅgala joins Moon and Mars in the same sign.",
+        "impact": "Can heighten drive and emotional heat—sport, craft, and honest movement help balance it.",
+        "whyThis": "Moon is in house {{moonHouse}} and Mars in house {{marsHouse}}; the yoga triggers when both share one sign."
+      },
+      "kemadruma": {
+        "what": "Kemadruma (simplified) appears when the Moon has no classical planet in the signs immediately before and after.",
+        "impact": "Texts describe a lonely or restless mind unless strong cancellations exist.",
+        "whyThis": "Moon is in house {{moonHouse}} from lagna and adjacent signs are empty of tara grahas in this rough scan."
+      }
+    },
+    "kaalsarpTitle": "Kālasarpa check",
+    "kaalsarp": {
+      "none": "No simple hemisphere clustering of all seven grahas on one side of the Rāhu–Ketu axis.",
+      "partial": "Several grahas cluster on one side of the axis — some texts call this partial; traditions disagree.",
+      "full": "All seven classical grahas fall on one open semicircle between Rāhu and Ketu in this simplified test — study calmly with a teacher; many charts still thrive."
+    },
+    "pitruCardTitle": "Pitṛ / ancestral hints",
+    "pitru": {
+      "none": "No strong pitṛ-style flag from the simple checklist.",
+      "mild": "One soft pattern (e.g. Sun with Saturn or 9th lord weak) — optional remembrance and ethical living matter more than fear.",
+      "moderate": "Multiple simple afflictions to Sun/9th themes — use as a prompt for gratitude and dharma, not anxiety."
+    },
+    "pitruReasons": {
+      "sun_with_rahu": "Sun and Rahu share a sign (eclipse symbolism — mixed visibility).",
+      "sun_with_saturn": "Sun and Saturn share a sign (duty vs vitality tension).",
+      "ninth_lord_dusthana": "Lord of the 9th occupies 6th, 8th, or 12th house.",
+      "sun_dusthana": "Sun occupies 6th, 8th, or 12th from lagna."
+    },
+    "sectionLife": "Life themes (very broad)",
+    "lifeMarriage": "Married life & partnership tone",
+    "lifeCareer": "Career & work tone",
+    "lifeFamily": "Family & home tone",
+    "lifeHealth": "Health & rhythm tone",
+    "life": {
+      "marriage": {
+        "uplift": "Venus/Jupiter or 7th lord mostly in supportive houses — nurture friendship inside marriage and keep honest dialogue.",
+        "mixed": "Mixed signals for Venus and 7th house — success grows through patience, boundaries, and shared routines.",
+        "care": "Challenging placements for Venus or 7th lord — go slow with commitments; counselling and clarity help more than superstition."
+      },
+      "career": {
+        "uplift": "Sun/Mercury/Jupiter favour 10th or kendras — build visible skill and steady reputation.",
+        "mixed": "Career path may shift; diversify skills and avoid burning bridges on impulse.",
+        "care": "10th themes under stress — prefer stable roles, document agreements, and invest in one craft deeply."
+      },
+      "family": {
+        "uplift": "Moon/Jupiter support family houses — gatherings and elders can be nourishing now.",
+        "mixed": "Family life has both warmth and friction — small rituals and listening prevent drift.",
+        "care": "Moon or 4th under strain — protect rest, simplify obligations, and seek mediation if needed."
+      },
+      "health": {
+        "uplift": "Moon and benefics relatively clear — steady sleep and meals keep you resilient.",
+        "mixed": "Energy swings possible — alternate effort with recovery; watch inflammation and stress.",
+        "care": "Malefics emphasise 6/8/12 — regular check-ups, gentle exercise, and calm pacing matter."
+      }
+    },
+    "marriageTimingTitle": "When marriage may come into focus (Vimśottari hint)",
+    "marriageTimingBody": "The next mahādasha led by {{planet}} between ages {{from}} and {{to}} years is one window texts often watch for Venus/Jupiter/7th-lord themes — not a guarantee.",
+    "marriageTimingNone": "No matching mahādasha segment before age 100 in this scan — try adjusting birth time accuracy.",
+    "marriageTimingHint": "Exact marriage age needs divisional charts, transits, and cultural context; use this only as a study anchor.",
+    "relation": {
+      "mitra": "Friend",
+      "shatru": "Rival",
+      "sama": "Neutral"
+    }
+  },
+  "common": {
+    "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    "error": "ಏನೋ ತಪ್ಪಾಗಿದೆ",
+    "save": "ಉಳಿಸಿ",
+    "cancel": "ರದ್ದು",
+    "confirm": "ಖಚಿತಪಡಿಸಿ",
+    "close": "बंद करें"
+  },
   "consent": {
     "title": "ಗೌಪ್ಯತೆ ಮೊದಲು",
     "message": "ನಿಮ್ಮ ಹುಟ್ಟಿನ ವಿವರಗಳು ಮತ್ತು ಕುಂಡಲಿ ಈ ಸಾಧನದಲ್ಲೇ ಉಳಿಯುತ್ತದೆ. ಒಪ್ಪಿದರೆ ಸ್ಥಳೀಯ ಅನಾಮಿಕ ಬಳಕೆ ಎಣಿಕೆ ಮಾತ್ರ.",
@@ -179,5 +517,7 @@
     "install": "ಇನ್‌ಸ್ಟಾಲ್",
     "dismiss": "ಮುಚ್ಚು"
   },
-  "location": { "loading": "ಸ್ಥಳಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…" }
+  "location": {
+    "loading": "ಸ್ಥಳಗಳು ಲೋಡ್ ಆಗುತ್ತಿವೆ…"
+  }
 }

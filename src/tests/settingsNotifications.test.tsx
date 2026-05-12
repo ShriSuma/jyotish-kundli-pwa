@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { I18nextProvider } from "react-i18next";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from "vitest";
+import * as SunApi from "../core/sunriseSunsetApi";
 import * as NotificationManager from "../core/NotificationManager";
 import * as NotificationScheduler from "../core/NotificationScheduler";
 import i18n from "../i18n";
@@ -14,8 +15,13 @@ describe("Settings notifications wiring", () => {
   const scheduleRahu = vi.spyOn(NotificationScheduler, "scheduleRahuKaal").mockResolvedValue();
   const cancelAll = vi.spyOn(NotificationScheduler, "cancelAllNotifications").mockResolvedValue();
   const getPermission = vi.spyOn(NotificationManager, "getPermissionStatus");
+  let sunSpy: MockInstance;
 
   beforeEach(async () => {
+    sunSpy = vi.spyOn(SunApi, "fetchSunriseSunsetUtc").mockResolvedValue({
+      sunrise: new Date("2026-05-12T00:34:45+00:00"),
+      sunset: new Date("2026-05-12T13:23:25+00:00")
+    });
     await db.settings.clear();
     vi.clearAllMocks();
     getPermission.mockReturnValue("granted");
@@ -35,6 +41,7 @@ describe("Settings notifications wiring", () => {
     scheduleRahu.mockRestore();
     cancelAll.mockRestore();
     getPermission.mockRestore();
+    sunSpy.mockRestore();
   });
 
   it("enabling daily Panchang calls scheduler with saved coordinates", async () => {
