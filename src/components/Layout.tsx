@@ -102,6 +102,7 @@ export default function Layout({ children }: Props): JSX.Element {
         <TabButton page="kundli" icon="◈" label={t("nav.kundli")} />
         <TabButton page="predictions" icon="✦" label={t("nav.predictions")} />
         <TabButton page="insights" icon="☍" label={t("nav.insights")} />
+        <TabButton page="melapak" icon="💞" label={t("nav.melapak")} />
         <TabButton page="settings" icon="⚙" label={t("nav.settings")} />
       </nav>
     </div>

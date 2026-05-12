@@ -1,6 +1,6 @@
 /**
  * Merges Hindi copy into hi.json insights (+ common.close).
- * kn/te/ta keep their own `insights` strings (sync from en.json); do not copy Hindi into regional files.
+ * For kn/te/ta insights, run `node scripts/translate-insights-gtx.mjs` (network).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -159,17 +159,9 @@ const HI_INSIGHTS_PATCH = {
 const read = (code) => JSON.parse(fs.readFileSync(path.join(dir, `${code}.json`), "utf8"));
 const write = (code, data) => fs.writeFileSync(path.join(dir, `${code}.json`), JSON.stringify(data, null, 2) + "\n", "utf8");
 
-const en = read("en");
-
 const hi = read("hi");
 hi.insights = deepMerge(hi.insights, HI_INSIGHTS_PATCH);
 hi.common = deepMerge(hi.common, { close: "बंद करें" });
 write("hi", hi);
 
-for (const code of ["kn", "te", "ta"]) {
-  const j = read(code);
-  j.insights = structuredClone(en.insights);
-  write(code, j);
-}
-
-console.log("Patched hi insights + reset kn/te/ta insights from en");
+console.log("Patched hi insights + common.close (kn/te/ta: run translate-insights-gtx.mjs)");

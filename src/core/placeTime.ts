@@ -23,12 +23,23 @@ export const panchangClockTimeZone = (lat: number, lng: number, pincode = ""): s
   }
 };
 
+/** BCP-47 tag for `Intl` time strings (avoids wrong hours when UI lang is `kn` vs `kn-IN`). */
+export const clockLocaleFromUiLang = (uiLang: string): string => {
+  const base = (uiLang || "en").split("-")[0] ?? "en";
+  if (base === "kn") return "kn-IN";
+  if (base === "hi") return "hi-IN";
+  if (base === "te") return "te-IN";
+  if (base === "ta") return "ta-IN";
+  return "en-IN";
+};
+
 export const formatClockAtPlace = (d: Date, locale: string, lat: number, lng: number, pincode = ""): string => {
   const tz = panchangClockTimeZone(lat, lng, pincode);
   return d.toLocaleTimeString(locale, {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
+    hourCycle: "h23",
     timeZone: tz
   });
 };

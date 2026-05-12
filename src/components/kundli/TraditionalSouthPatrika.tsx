@@ -8,6 +8,7 @@ import { wallClockBirthToUtc } from "../../core/birthTime";
 import {
   calendarYmdForPanchangPin,
   civilTimeZoneForPanchangHeader,
+  clockLocaleFromUiLang,
   formatClockAtPlace,
   panchangSolarAnchorDate
 } from "../../core/placeTime";
@@ -74,8 +75,9 @@ export default function TraditionalSouthPatrika({
   const { panchang, sunRise, sunSet, headerDate, metaKn } = useMemo(() => {
     const noonUtc = wallClockBirthToUtc(birthDate, "12:00", latitude, longitude);
     const anchor = panchangSolarAnchorDate(noonUtc, latitude, longitude, pin);
+    const clockLoc = clockLocaleFromUiLang(i18n.language);
     const p = calculatePanchang(anchor, latitude, longitude, {
-      locale: i18n.language === "kn" ? "kn-IN" : i18n.language === "hi" ? "hi-IN" : "en-IN",
+      locale: clockLoc,
       pincode: pin
     });
     const tz = civilTimeZoneForPanchangHeader(latitude, longitude, pin);
@@ -87,8 +89,8 @@ export default function TraditionalSouthPatrika({
       timeZone: tz
     });
     const times = SunCalc.getTimes(anchor, latitude, longitude);
-    const sr = formatClockAtPlace(times.sunrise, i18n.language, latitude, longitude, pin);
-    const ss = formatClockAtPlace(times.sunset, i18n.language, latitude, longitude, pin);
+    const sr = formatClockAtPlace(times.sunrise, clockLoc, latitude, longitude, pin);
+    const ss = formatClockAtPlace(times.sunset, clockLoc, latitude, longitude, pin);
     return { panchang: p, sunRise: sr, sunSet: ss, headerDate: hdr, metaKn: i18n.language.startsWith("kn") };
   }, [birthDate, latitude, longitude, pin, i18n.language]);
 
@@ -99,11 +101,12 @@ export default function TraditionalSouthPatrika({
     let cancelled = false;
     const noonUtc = wallClockBirthToUtc(birthDate, "12:00", latitude, longitude);
     const ymd = calendarYmdForPanchangPin(noonUtc, latitude, longitude, pin);
+    const clockLoc = clockLocaleFromUiLang(i18n.language);
     void fetchSunriseSunsetUtc(latitude, longitude, ymd).then((api) => {
       if (cancelled || !api) return;
       setApiSunClock({
-        rise: formatClockAtPlace(api.sunrise, i18n.language, latitude, longitude, pin),
-        set: formatClockAtPlace(api.sunset, i18n.language, latitude, longitude, pin)
+        rise: formatClockAtPlace(api.sunrise, clockLoc, latitude, longitude, pin),
+        set: formatClockAtPlace(api.sunset, clockLoc, latitude, longitude, pin)
       });
     });
     return () => {

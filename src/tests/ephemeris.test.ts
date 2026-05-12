@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { calculateKundli } from "../core/KundliEngine";
 import { siderealLongitudes } from "../core/EphemerisEngine";
 import { wallClockBirthToUtc } from "../core/birthTime";
+import { normalizeDegree } from "../core/AstroMath";
 
 describe("Ephemeris / sidereal pipeline", () => {
   it("sidereal Sun and Moon are in valid ranges for J2000 noon UTC", () => {
@@ -31,5 +32,12 @@ describe("Ephemeris / sidereal pipeline", () => {
     expect(k.planets).toHaveLength(9);
     expect(k.ascendant).toBeGreaterThanOrEqual(0);
     expect(k.ascendant).toBeLessThan(360);
+  });
+
+  it("Rahu and Ketu are 180° apart (sidereal)", () => {
+    const d = new Date("2010-06-15T08:00:00Z");
+    const L = siderealLongitudes(d);
+    const sep = Math.abs(normalizeDegree(L.ketu - L.rahu));
+    expect(Math.min(sep, 360 - sep)).toBeCloseTo(180, 5);
   });
 });

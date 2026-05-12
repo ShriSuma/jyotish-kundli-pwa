@@ -8,6 +8,7 @@
     "kundli": "Kundli",
     "predictions": "Predictions",
     "insights": "Insights",
+    "melapak": "Match",
     "settings": "Settings"
   },
   "layout": {
@@ -47,6 +48,11 @@
     "birthTime": "Birth Time",
     "birthPlace": "Birth Place",
     "gothra": "Gotra (optional)",
+    "gothraPlaceholder": "Select gotra (optional)",
+    "gotraNone": "— None —",
+    "gotraVasishtha": "Vasishtha gotra",
+    "gotraAngirasa": "Angirasa gotra",
+    "gotraVishvamitra": "Vishvamitra gotra",
     "pincodeOptional": "PIN code (India)",
     "pincodePlaceholder": "PIN code (required, 6 digits)",
     "pincodeRequired": "Enter a valid 6-digit Indian PIN code and pick your birth place from the list below.",
@@ -57,8 +63,8 @@
     "mapPickerPrivacy": "Google receives map interactions when this picker is open. Use only if you are comfortable sharing approximate location with Google.",
     "mapPickerNoKey": "Add VITE_GOOGLE_MAPS_API_KEY to your environment to enable the map.",
     "mapPickerOsmPrivacy": "Map tiles from OpenStreetMap; address lookup uses OSM Nominatim (no Google key required).",
-    "patrikaTitle": "Traditional South Indian birth sheet",
-    "patrikaNote": "Print-style layout. Amsha = 1–30 index within the sign (Lahiri sidereal). Graha longitudes follow this app’s ephemeris; handwritten patrikās often use the same signs but different amsha numbers if they use another ayanamsa, birth-time rounding, or local panchānga. Maandi uses daytime eighths from calculated sunrise (regional tables vary).",
+    "patrikaTitle": "Baggona Panchanga Creation",
+    "patrikaNote": "Print-style layout. Amsha = 1–12 (dwādaśāṁśa, twelfth-part of the sign, Lahiri sidereal). Rāhu/Ketu use the true lunar node (Meeus). Graha longitudes follow this app’s ephemeris; handwritten patrikās may still differ if they use another ayanamsa, mean node, birth-time rounding, or local panchānga. Maandi uses daytime eighths from calculated sunrise (regional tables vary).",
     "patrikaSunsetSide": "Sunset (approx.)",
     "patrikaSunriseSide": "Sunrise (approx.)",
     "patrikaSolar": "Solar",
@@ -102,6 +108,7 @@
     "dashaBalanceYmd": "{{years}} y, {{months}} m, {{days}} d (approx.)",
     "viewPredictions": "View predictions",
     "viewInsights": "Chart insights & yogas",
+    "closeChart": "Close chart",
     "detailsAboutMe": "Details about me",
     "detailsLoading": "Preparing your narrative…",
     "detailsError": "Could not load narrative.",
@@ -119,7 +126,7 @@
     "planetTable": {
       "planet": "Planet",
       "degree": "Degree",
-      "amsha": "Amsha (1–30 in sign)",
+      "amsha": "Amsha (1–12 in sign)",
       "rashi": "Sign",
       "nakshatra": "Nakshatra",
       "house": "House"
@@ -486,6 +493,39 @@
       "mitra": "Friend",
       "shatru": "Rival",
       "sama": "Neutral"
+    }
+  },
+  "melapak": {
+    "title": "Melapak (match)",
+    "subtitle": "Birth Moon of the girl and boy — Ashta Kuta (up to 36) with Rajju and Vedha checks. Many families use 18/36 as a rough minimum; 24+ is often read as strong.",
+    "disclaimer": "This is a simplified reference calculator. Real matching also considers Kuja/Māṅgala dosha, dasa balance, caste/regional rules, and family counsel.",
+    "boy": "Boy (groom)",
+    "girl": "Girl (bride)",
+    "required": "Choose date and time for both.",
+    "match": "Calculate match",
+    "scoreLabel": "Melapak score",
+    "cutoffHint": "Common cut-off: about 18/36 points; Rajju or Vedha dosha is often treated separately even when the point total is high.",
+    "kuta": "Kuta",
+    "points": "Points",
+    "boyChart": "Boy — Kundli",
+    "girlChart": "Girl — Kundli",
+    "rajjuWarn": "Rajju dosha: same body-line grouping in the Saravali-style table — many almanacs advise caution.",
+    "vedhaWarn": "Vedha dosha: nakṣatras form a harmful pair in the common 12-pair list.",
+    "verdict": {
+      "0": "Low match by this model — review calmly with elders or an astrologer.",
+      "1": "Moderate — crosses a common 18-point floor if doshas are absent.",
+      "2": "Good — solid Ashta Kuta total with no Rajju/Vedha flags here.",
+      "3": "Strong — high score and no Rajju/Vedha in this scan."
+    },
+    "kutas": {
+      "varna": "Varna",
+      "vashya": "Vashya",
+      "tara": "Tara (Dina)",
+      "yoni": "Yoni",
+      "grahaMaitri": "Graha Maitri",
+      "gana": "Gana",
+      "bhakoot": "Bhakoot",
+      "nadi": "Nadi"
     }
   },
   "common": {

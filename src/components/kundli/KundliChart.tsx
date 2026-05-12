@@ -13,10 +13,10 @@ export default function KundliChart({ kundli, chartStyle, personName, gothra }: 
   if (!kundli) {
     return <div className="rounded border border-dashed p-6 text-sm text-slate-500">Generate Kundli to view chart</div>;
   }
-  return chartStyle === "north" ? (
-    <NorthIndianChart kundli={kundli} />
-  ) : (
-    <SouthIndianChart kundli={kundli} personName={personName ?? ""} gothra={gothra} />
+  return (
+    <div className="flex w-full justify-center">
+      {chartStyle === "north" ? <NorthIndianChart kundli={kundli} /> : <SouthIndianChart kundli={kundli} personName={personName ?? ""} gothra={gothra} />}
+    </div>
   );
 }
 

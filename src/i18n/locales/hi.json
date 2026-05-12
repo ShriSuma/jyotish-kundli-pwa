@@ -7,7 +7,8 @@
     "home": "होम",
     "kundli": "कुंडली",
     "predictions": "भविष्यफल",
-    "insights": "Insights",
+    "insights": "अंतर्दृष्टि",
+    "melapak": "मेलापक",
     "settings": "सेटिंग्स"
   },
   "layout": {
@@ -47,6 +48,11 @@
     "birthTime": "जन्म समय",
     "birthPlace": "जन्म स्थान",
     "gothra": "गोत्र (वैकल्पिक)",
+    "gothraPlaceholder": "गोत्र चुनें (वैकल्पिक)",
+    "gotraNone": "— कोई नहीं —",
+    "gotraVasishtha": "वशिष्ठ गोत्र",
+    "gotraAngirasa": "अंगिरस गोत्र",
+    "gotraVishvamitra": "विश्वामित्र गोत्र",
     "pincodeOptional": "पिन कोड (वैकल्पिक, भारत)",
     "pincodePlaceholder": "PIN code (required, 6 digits)",
     "pincodeRequired": "Enter a valid 6-digit Indian PIN code and pick your birth place from the list below.",
@@ -57,7 +63,7 @@
     "mapPickerPrivacy": "यह पिकर खुला होने पर Google को मानचित्र इंटरैक्शन मिल सकते हैं। केवल तभी उपयोग करें जब आप सहमत हों।",
     "mapPickerNoKey": "मानचित्र के लिए अपने वातावरण में VITE_GOOGLE_MAPS_API_KEY जोड़ें।",
     "mapPickerOsmPrivacy": "मानचित्र टाइल OpenStreetMap से; पता खोज OSM Nominatim (Google कुंजी आवश्यक नहीं)।",
-    "patrikaTitle": "पारंपरिक दक्षिण भारतीय जन्म पत्रिका",
+    "patrikaTitle": "Baggona Panchanga Creation",
     "patrikaNote": "मुद्रण शैली; ग्रह स्थितियाँ इस ऐप की गणना पर आधारित हैं (हस्तलिखित पंचांग से थोड़ा भिन्न हो सकता है)।",
     "patrikaSunsetSide": "सूर्यास्त (अनुमानित)",
     "patrikaSunriseSide": "सूर्योदय (अनुमानित)",
@@ -102,6 +108,7 @@
     "dashaBalanceYmd": "{{years}} y, {{months}} m, {{days}} d (approx.)",
     "viewPredictions": "भविष्यफल देखें",
     "viewInsights": "Chart insights & yogas",
+    "closeChart": "चार्ट बंद करें",
     "detailsAboutMe": "मेरे बारे में विवरण",
     "detailsLoading": "कथा तैयार हो रही है…",
     "detailsError": "कथा लोड नहीं हो सकी।",
@@ -318,7 +325,7 @@
   },
   "insights": {
     "title": "कुंडली अंतर्दृष्टि",
-    "subtitle": "Classical-style rules coded in this app (whole-sign houses, Lahiri sidereal). For study and reflection — not a substitute for a qualified astrologer.",
+    "subtitle": "इस ऐप में शास्त्रीय शैली के नियमों को कोडित किया गया है (संपूर्ण-साइन हाउस, लाहिड़ी साइडरियल)। अध्ययन और चिंतन के लिए - किसी योग्य ज्योतिषी का विकल्प नहीं।",
     "subtitleReader": "आपकी कुंडली से एक कोमल, सहायक पाठ — लेबल नहीं, साथ है।",
     "disclaimerShort": "संवेदनशील निर्णय परिवार, परामर्शदाता या अनुभवी ज्योतिषी के साथ लें। यहाँ केवल शैक्षिक संकेत हैं।",
     "segmentYogasTitle": "आपकी कुंडली में योग",
@@ -351,26 +358,26 @@
     "emptyTitle": "पहले कुंडली सहेजें",
     "emptyBody": "कुंडली टैब पर चार्ट बनाएँ। यह पृष्ठ आपकी नवीनतम सहेजी कुंडली पढ़ता है।",
     "goToKundli": "कुंडली पर जाएँ",
-    "disclaimer": "Many traditions and books describe grahas, yogas, Kaalsarpa, and pitṛkārya differently. This screen encodes widely used *approximate* checks so you can learn patterns from your own chart offline. Results are indicative only.",
-    "learnTitle": "Learn: grahas, friends & foes, yogas, Kaalsarpa, pitṛ",
+    "disclaimer": "कई परंपराएँ और पुस्तकें ग्रह, योग, कालसर्प और पितृकार्य का अलग-अलग वर्णन करती हैं। यह स्क्रीन व्यापक रूप से उपयोग किए जाने वाले *अनुमानित* चेक को एनकोड करती है ताकि आप ऑफ़लाइन अपने चार्ट से पैटर्न सीख सकें। परिणाम केवल सांकेतिक हैं.",
+    "learnTitle": "जानें: ग्रह, मित्र और शत्रु, योग, कालसर्प, पितृ",
     "edu": {
-      "grahasTitle": "How grahas behave (short overview)",
-      "grahasBody": "Each graha has karakatwa (significations): Sun for vitality and authority, Moon for mind and nurture, Mars for courage and heat, Mercury for speech and skill, Jupiter for wisdom and grace, Venus for harmony and pleasure, Saturn for patience and limits, Rahu–Ketu for obsession and release. House placement and dignity colour how these themes show up in life.",
-      "mitraTitle": "Mitra graha and śatru graha",
-      "mitraBody": "Naisargika (natural) friendship is a fixed table between planets (e.g. Jupiter is friend to Sun, Moon, Mars). Mitra pairs tend to agree in effect; śatru pairs pull in different directions. Co-lordship, conjunction, and house strength modify this in real charts.",
-      "yogaTitle": "Yogas from the chart",
-      "yogaBody": "A yoga is a meaningful combination of grahas, houses, or dignities (Gajakesari, Mahāpuruṣa yogas, etc.). Texts list hundreds; here we detect a small set that can be inferred reliably from longitude and whole-sign houses.",
-      "kalasarTitle": "Kālasarpa / Kalasarpa",
-      "kalasarBody": "A common modern check: all seven classical planets lie on one side of the Rāhu–Ketu axis around the zodiac. Variants exist (partial, ascendant-based). We show a simple hemisphere test for learning.",
-      "pitruTitle": "Pitṛbādhā / pitṛkārya hints",
-      "pitruBody": "Remedial traditions link ancestors to the 9th house, the Sun, and Saturn. We flag *very rough* chart patterns (afflicted Sun, 9th lord in dusthāna) as conversation starters — not a verdict."
+      "grahasTitle": "ग्रह कैसे व्यवहार करते हैं (संक्षिप्त अवलोकन)",
+      "grahasBody": "प्रत्येक ग्रह का कारकत्व होता है: सूर्य जीवन शक्ति और अधिकार के लिए, चंद्रमा मन और पोषण के लिए, मंगल साहस और गर्मी के लिए, बुध वाणी और कौशल के लिए, बृहस्पति ज्ञान और अनुग्रह के लिए, शुक्र सद्भाव और आनंद के लिए, शनि धैर्य और सीमा के लिए, राहु-केतु जुनून और मुक्ति के लिए। घर का स्थान और गरिमा रंग देते हैं कि ये विषय जीवन में कैसे दिखाई देते हैं।",
+      "mitraTitle": "मित्र ग्रह और शत्रु ग्रह",
+      "mitraBody": "नैसर्गिक (प्राकृतिक) मित्रता ग्रहों के बीच एक निश्चित तालिका है (जैसे बृहस्पति सूर्य, चंद्रमा, मंगल का मित्र है)। मित्र जोड़े वास्तव में सहमत होते हैं; शत्रु जोड़े अलग-अलग दिशाओं में खींचते हैं। सह-आधिपत्य, संयोजन और घर की ताकत वास्तविक चार्ट में इसे संशोधित करती है।",
+      "yogaTitle": "कुंडली से योग",
+      "yogaBody": "योग ग्रह, घर या गरिमा (गजकेसरी, महापुरुष योग, आदि) का एक सार्थक संयोजन है। ग्रंथों की सूची सैकड़ों है; यहां हम एक छोटे से सेट का पता लगाते हैं जिसका अनुमान देशांतर और पूर्ण-चिह्न घरों से विश्वसनीय रूप से लगाया जा सकता है।",
+      "kalasarTitle": "कालसर्प / कालसर्प",
+      "kalasarBody": "एक सामान्य आधुनिक जाँच: सभी सात शास्त्रीय ग्रह राशि चक्र के चारों ओर राहु-केतु अक्ष के एक तरफ स्थित हैं। वेरिएंट मौजूद हैं (आंशिक, आरोही-आधारित)। हम सीखने के लिए एक सरल गोलार्ध परीक्षण दिखाते हैं।",
+      "pitruTitle": "पितृबाधा / पितृकार्य संकेत",
+      "pitruBody": "उपचारात्मक परंपराएँ पूर्वजों को 9वें घर, सूर्य और शनि से जोड़ती हैं। हम बातचीत की शुरुआत के रूप में *बहुत खराब* चार्ट पैटर्न (पीड़ित सूर्य, दुस्थान में नवम स्वामी) को चिह्नित करते हैं - निर्णय नहीं।"
     },
-    "sectionNatural": "Natural friendship table",
-    "sectionNaturalHint": "Rows = from-graha; columns = to-graha. Rāhu/Ketu use a simplified rule.",
-    "tableFrom": "From \\ To",
-    "sameSignTitle": "Co-tenants in the same sign (sample)",
-    "sectionYogas": "Yogas detected in your chart",
-    "yogasNone": "No named yoga from the small checklist matched — your chart can still hold many strengths.",
+    "sectionNatural": "प्राकृतिक मैत्री तालिका",
+    "sectionNaturalHint": "पंक्तियाँ = से-ग्रह; स्तम्भ = प्रति ग्रह. राहु/केतु एक सरल नियम का उपयोग करें।",
+    "tableFrom": "से",
+    "sameSignTitle": "एक ही चिह्न में सह-किरायेदार (नमूना)",
+    "sectionYogas": "आपके चार्ट में योगों का पता चला है",
+    "yogasNone": "छोटी चेकलिस्ट से कोई भी नामित योग मेल नहीं खाता - आपका चार्ट अभी भी कई ताकतें पकड़ सकता है।",
     "yogaTitles": {
       "gajakesari": "गजकेसरी योग",
       "budhaditya": "बुधादित्य योग",
@@ -442,29 +449,29 @@
         "whyThis": "चंद्र लग्न से घर {{moonHouse}} में; पड़ोस खाली पाए गए।"
       }
     },
-    "kaalsarpTitle": "Kālasarpa check",
+    "kaalsarpTitle": "कालसर्प जांच",
     "kaalsarp": {
-      "none": "No simple hemisphere clustering of all seven grahas on one side of the Rāhu–Ketu axis.",
-      "partial": "Several grahas cluster on one side of the axis — some texts call this partial; traditions disagree.",
-      "full": "All seven classical grahas fall on one open semicircle between Rāhu and Ketu in this simplified test — study calmly with a teacher; many charts still thrive."
+      "none": "राहु-केतु अक्ष के एक तरफ सभी सात ग्रहों का कोई सरल गोलार्ध समूहन नहीं।",
+      "partial": "धुरी के एक तरफ कई ग्रह समूह हैं - कुछ ग्रंथ इसे आंशिक कहते हैं; परंपराएँ असहमत हैं।",
+      "full": "इस सरलीकृत परीक्षा में सभी सात शास्त्रीय ग्रह राहु और केतु के बीच एक खुले अर्धवृत्त पर आते हैं - एक शिक्षक के साथ शांति से अध्ययन करें; कई चार्ट अभी भी फल-फूल रहे हैं।"
     },
-    "pitruCardTitle": "Pitṛ / ancestral hints",
+    "pitruCardTitle": "पितृ/पैतृक संकेत",
     "pitru": {
-      "none": "No strong pitṛ-style flag from the simple checklist.",
-      "mild": "One soft pattern (e.g. Sun with Saturn or 9th lord weak) — optional remembrance and ethical living matter more than fear.",
-      "moderate": "Multiple simple afflictions to Sun/9th themes — use as a prompt for gratitude and dharma, not anxiety."
+      "none": "साधारण चेकलिस्ट से कोई मजबूत पितृ-शैली का झंडा नहीं।",
+      "mild": "एक नरम पैटर्न (उदाहरण के लिए शनि के साथ सूर्य या नवमेश कमजोर) - वैकल्पिक स्मरण और नैतिक जीवन डर से अधिक मायने रखता है।",
+      "moderate": "सूर्य/9वीं थीम के लिए एकाधिक सरल कष्ट - कृतज्ञता और धर्म के लिए संकेत के रूप में उपयोग करें, चिंता के लिए नहीं।"
     },
     "pitruReasons": {
-      "sun_with_rahu": "Sun and Rahu share a sign (eclipse symbolism — mixed visibility).",
-      "sun_with_saturn": "Sun and Saturn share a sign (duty vs vitality tension).",
-      "ninth_lord_dusthana": "Lord of the 9th occupies 6th, 8th, or 12th house.",
-      "sun_dusthana": "Sun occupies 6th, 8th, or 12th from lagna."
+      "sun_with_rahu": "सूर्य और राहु एक राशि साझा करते हैं (ग्रहण प्रतीकवाद - मिश्रित दृश्यता)।",
+      "sun_with_saturn": "सूर्य और शनि एक राशि साझा करते हैं (कर्तव्य बनाम जीवन शक्ति तनाव)।",
+      "ninth_lord_dusthana": "9वें भाव का स्वामी 6वें, 8वें या 12वें भाव में होता है।",
+      "sun_dusthana": "सूर्य लग्न से 6वें, 8वें या 12वें स्थान पर होता है।"
     },
-    "sectionLife": "Life themes (very broad)",
-    "lifeMarriage": "Married life & partnership tone",
-    "lifeCareer": "Career & work tone",
-    "lifeFamily": "Family & home tone",
-    "lifeHealth": "Health & rhythm tone",
+    "sectionLife": "जीवन विषय (बहुत व्यापक)",
+    "lifeMarriage": "दाम्पत्य जीवन एवं साझेदारी स्वर",
+    "lifeCareer": "कैरियर एवं कार्यशैली",
+    "lifeFamily": "पारिवारिक और घरेलू स्वर",
+    "lifeHealth": "स्वास्थ्य एवं लय स्वर",
     "life": {
       "marriage": {
         "uplift": "शुक्र/गुरु व सप्तमेश अनुकूल घरों में — विवाह में मित्रता व ईमानदार संवाद निभाएँ।",
@@ -487,14 +494,47 @@
         "care": "षष्ठ/अष्टम/द्वादश पर पापक — नियमित जाँच व हल्का व्यायाम।"
       }
     },
-    "marriageTimingTitle": "When marriage may come into focus (Vimśottari hint)",
+    "marriageTimingTitle": "विवाह कब चर्चा में आ सकता है (विंशोत्तरी संकेत)",
     "marriageTimingBody": "आयु {{from}} से {{to}} वर्ष के बीच {{planet}} की महादशा विवाह/साझेदारी विषयों के लिए एक खिड़की मानी जाती है — यह नियत नहीं।",
     "marriageTimingNone": "इस स्कैन में 100 वर्ष से पहले मेल खाता खंड नहीं मिला — जन्म समय की सटीकता जाँचें।",
     "marriageTimingHint": "विवाह की सही आयु विभागीय चार्ट, गोचर और संस्कृति पर निर्भर करती है; यह केवल अध्ययन संकेत है।",
     "relation": {
-      "mitra": "Friend",
-      "shatru": "Rival",
-      "sama": "Neutral"
+      "mitra": "दोस्त",
+      "shatru": "प्रतिद्वंद्वी",
+      "sama": "तटस्थ"
+    }
+  },
+  "melapak": {
+    "title": "Melapak (match)",
+    "subtitle": "Birth Moon of the girl and boy — Ashta Kuta (up to 36) with Rajju and Vedha checks. Many families use 18/36 as a rough minimum; 24+ is often read as strong.",
+    "disclaimer": "This is a simplified reference calculator. Real matching also considers Kuja/Māṅgala dosha, dasa balance, caste/regional rules, and family counsel.",
+    "boy": "Boy (groom)",
+    "girl": "Girl (bride)",
+    "required": "Choose date and time for both.",
+    "match": "Calculate match",
+    "scoreLabel": "Melapak score",
+    "cutoffHint": "Common cut-off: about 18/36 points; Rajju or Vedha dosha is often treated separately even when the point total is high.",
+    "kuta": "Kuta",
+    "points": "Points",
+    "boyChart": "Boy — Kundli",
+    "girlChart": "Girl — Kundli",
+    "rajjuWarn": "Rajju dosha: same body-line grouping in the Saravali-style table — many almanacs advise caution.",
+    "vedhaWarn": "Vedha dosha: nakṣatras form a harmful pair in the common 12-pair list.",
+    "verdict": {
+      "0": "Low match by this model — review calmly with elders or an astrologer.",
+      "1": "Moderate — crosses a common 18-point floor if doshas are absent.",
+      "2": "Good — solid Ashta Kuta total with no Rajju/Vedha flags here.",
+      "3": "Strong — high score and no Rajju/Vedha in this scan."
+    },
+    "kutas": {
+      "varna": "Varna",
+      "vashya": "Vashya",
+      "tara": "Tara (Dina)",
+      "yoni": "Yoni",
+      "grahaMaitri": "Graha Maitri",
+      "gana": "Gana",
+      "bhakoot": "Bhakoot",
+      "nadi": "Nadi"
     }
   },
   "common": {

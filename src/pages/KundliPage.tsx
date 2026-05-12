@@ -8,6 +8,7 @@ import { exportSvgAsPdf, exportSvgAsPng } from "../core/ExportUtils";
 import { analytics } from "../core/analytics";
 import { saveKundli } from "../db/indexedDb";
 import { useAppStore } from "../stores/appStore";
+import { useKundliViewerStore } from "../stores/kundliViewerStore";
 import KundliChart from "../components/kundli/KundliChart";
 import TraditionalSouthPatrika from "../components/kundli/TraditionalSouthPatrika";
 import { DashaBhuktiExplorer, LifetimeDashaBar } from "../components/kundli/DashaLifetimeChart";
@@ -20,6 +21,25 @@ import { buildNarrativeSummary, fetchKundliNarrative, NarrativeApiError } from "
 import { formatPickerDateLocalYmd, formatPickerTimeLocalHm } from "../core/birthTime";
 import { formatRashiAmsha } from "../core/localeNumbers";
 
+const GOTRA_SELECT = [
+  { value: "", labelKey: "kundli.gotraNone" as const },
+  { value: "Vasishtha", labelKey: "kundli.gotraVasishtha" as const },
+  { value: "Angirasa", labelKey: "kundli.gotraAngirasa" as const },
+  { value: "Vishvamitra", labelKey: "kundli.gotraVishvamitra" as const }
+];
+
+const parseYmdToDate = (ymd: string): Date | null => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd.trim());
+  if (!m) return null;
+  return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]), 12, 0, 0, 0);
+};
+
+const parseHmToTimeDate = (hm: string): Date | null => {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(hm.trim());
+  if (!m) return null;
+  return new Date(1970, 0, 1, Number(m[1]), Number(m[2]), 0, 0);
+};
+
 export default function KundliPage(): JSX.Element {
   const { t, i18n } = useTranslation();
   const chartStyle = useAppStore((s) => s.chartStyle);
@@ -31,6 +51,9 @@ export default function KundliPage(): JSX.Element {
   const setDefaultLocation = useAppStore((s) => s.setDefaultLocation);
   const narrativeConsent = useAppStore((s) => s.narrativeConsent);
   const setPage = useAppStore((s) => s.setPage);
+  const setKundliSession = useKundliViewerStore((s) => s.setSession);
+  const clearKundliSession = useKundliViewerStore((s) => s.clearSession);
+  const kundliSession = useKundliViewerStore((s) => s.session);
   const svgHostRef = useRef<HTMLDivElement>(null);
   const [form, setForm] = useState<KundliInput>({
     name: "",
@@ -65,15 +88,31 @@ export default function KundliPage(): JSX.Element {
     void setDefaultLocation(lat, lng, label, pin && /^\d{6}$/.test(pin) ? pin : "");
   };
 
-  /** Sync map coords from saved settings only — never touch PIN here (avoids fighting the input + LocationSelector). */
+  /** Restore chart from in-memory session when returning to this tab. */
   useEffect(() => {
+    if (!kundliSession) return;
+    setForm(kundliSession.input);
+    setResult(kundliSession.result);
+    const bd = parseYmdToDate(kundliSession.birthDateYmd);
+    const bt = parseHmToTimeDate(kundliSession.birthTimeHm);
+    if (bd) setBirthDatePicker(bd);
+    if (bt) setBirthTimePicker(bt);
+    setHomePlaceName(kundliSession.homePlaceName);
+    setLocationCore(kundliSession.placeLabel);
+    setDasha(kundliSession.dasha);
+    setDailyPrediction(kundliSession.dailyPrediction);
+  }, [kundliSession]);
+
+  /** Sync default place from settings when no active chart session. */
+  useEffect(() => {
+    if (kundliSession) return;
     setForm((f) => ({
       ...f,
       latitude: defaultLat,
       longitude: defaultLng
     }));
     setLocationCore(placeLabelStore);
-  }, [defaultLat, defaultLng, placeLabelStore]);
+  }, [kundliSession, defaultLat, defaultLng, placeLabelStore]);
 
   const onGenerate = async () => {
     if (!form.name || !birthDatePicker || !birthTimePicker) {
@@ -104,8 +143,20 @@ export default function KundliPage(): JSX.Element {
       longitude: form.longitude
     };
     const dp = getDailyPrediction(output, new Date(), t, form.name, birthCtx);
-    setDailyPrediction([dp.summary, dp.dashaLine, dp.timingLine].filter(Boolean).join("\n\n"));
-    setDasha(generateDashaTimeline(output));
+    const dashaTimeline = generateDashaTimeline(output);
+    const predText = [dp.summary, dp.dashaLine, dp.timingLine].filter(Boolean).join("\n\n");
+    setDailyPrediction(predText);
+    setDasha(dashaTimeline);
+    setKundliSession({
+      result: output,
+      input: payload,
+      birthDateYmd: birthDate,
+      birthTimeHm: birthTime,
+      homePlaceName,
+      placeLabel: homePlaceName.trim() ? `${homePlaceName.trim()} · ${locationCore}` : locationCore,
+      dasha: dashaTimeline,
+      dailyPrediction: predText
+    });
     const id = await saveKundli(payload, output);
     setSavedId(id);
     setNarrative("");
@@ -121,6 +172,13 @@ export default function KundliPage(): JSX.Element {
       moon: t(`rashis.${result.moonSign.sanskrit}` as "rashis.Mesha")
     });
   }, [form.name, result, t]);
+
+  const gotraDisplay = useMemo(() => {
+    const v = (form.gothra ?? "").trim();
+    if (!v) return "";
+    const row = GOTRA_SELECT.find((o) => o.value === v);
+    return row ? t(row.labelKey) : v;
+  }, [form.gothra, t]);
 
   const narrativeUrlConfigured = Boolean(import.meta.env.VITE_NARRATIVE_API_URL);
 
@@ -157,12 +215,18 @@ export default function KundliPage(): JSX.Element {
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
-        <input
-          placeholder={t("kundli.gothra")}
+        <select
+          aria-label={t("kundli.gothra")}
           className="min-h-11 rounded-xl border border-slate-200 bg-white px-3 py-2 text-indigo-950 shadow-sm"
           value={form.gothra ?? ""}
           onChange={(e) => setForm({ ...form, gothra: e.target.value })}
-        />
+        >
+          {GOTRA_SELECT.map((opt) => (
+            <option key={opt.value || "none"} value={opt.value}>
+              {t(opt.labelKey)}
+            </option>
+          ))}
+        </select>
         <DatePicker selected={birthDatePicker} onChange={setBirthDatePicker} placeholderText={t("kundli.birthDate")} />
         <TimePicker selected={birthTimePicker} onChange={setBirthTimePicker} />
         <input
@@ -314,6 +378,20 @@ export default function KundliPage(): JSX.Element {
         <div className="mt-2 flex flex-wrap gap-3">
           <button
             type="button"
+            className="jk-btn rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800"
+            onClick={() => {
+              clearKundliSession();
+              setResult(null);
+              setDailyPrediction("");
+              setDasha([]);
+              setNarrative("");
+              setNarrativeError("");
+            }}
+          >
+            {t("kundli.closeChart")}
+          </button>
+          <button
+            type="button"
             className="jk-btn text-sm font-medium text-[color:var(--jk-accent)] underline-offset-2 hover:underline"
             onClick={() => setPage("predictions")}
           >
@@ -333,14 +411,14 @@ export default function KundliPage(): JSX.Element {
           kundli={result}
           chartStyle={chartStyle}
           personName={form.name}
-          gothra={form.gothra}
+          gothra={gotraDisplay}
         />
       </div>
       {result && chartStyle === "south" && birthDatePicker && birthTimePicker ? (
         <TraditionalSouthPatrika
           kundli={result}
           personName={form.name}
-          gothra={form.gothra}
+          gothra={gotraDisplay}
           birthDate={formatPickerDateLocalYmd(birthDatePicker)}
           birthTime={formatPickerTimeLocalHm(birthTimePicker)}
           latitude={form.latitude}

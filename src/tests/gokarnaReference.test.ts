@@ -28,17 +28,18 @@ describe("Gokarna 1993-05-31 09:25 IST (Lahiri)", () => {
     expect(pos(PlanetName.Venus).rashi.sanskrit).toBe("Mesha");
     expect(rashiAmshaFromDegree(pos(PlanetName.Venus).degree)).toBe(1);
     expect(pos(PlanetName.Mercury).rashi.sanskrit).toBe("Mithuna");
-    expect(rashiAmshaFromDegree(pos(PlanetName.Mercury).degree)).toBe(3);
+    expect(rashiAmshaFromDegree(pos(PlanetName.Mercury).degree)).toBe(2);
     expect(pos(PlanetName.Saturn).rashi.sanskrit).toBe("Kumbha");
-    expect([7, 8]).toContain(rashiAmshaFromDegree(pos(PlanetName.Saturn).degree));
+    expect(rashiAmshaFromDegree(pos(PlanetName.Saturn).degree)).toBe(3);
+
     expect(pos(PlanetName.Moon).rashi.sanskrit).toBe("Kanya");
     expect(pos(PlanetName.Jupiter).rashi.sanskrit).toBe("Kanya");
     expect(pos(PlanetName.Rahu).rashi.sanskrit).toBe("Vrischika");
     expect(pos(PlanetName.Ketu).rashi.sanskrit).toBe("Vrishabha");
 
     expect(k.maandi?.rashi.sanskrit).toBe("Kanya");
-    expect(rashiAmshaFromDegree(k.maandi!.degree)).toBeGreaterThanOrEqual(9);
-    expect(rashiAmshaFromDegree(k.maandi!.degree)).toBeLessThanOrEqual(11);
+    expect(rashiAmshaFromDegree(k.maandi!.degree)).toBeGreaterThanOrEqual(3);
+    expect(rashiAmshaFromDegree(k.maandi!.degree)).toBeLessThanOrEqual(5);
 
     const dasha = vimshottariBalanceAtBirth(k);
     expect(dasha.lord).toBe(PlanetName.Moon);

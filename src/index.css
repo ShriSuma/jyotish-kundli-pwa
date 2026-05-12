@@ -59,3 +59,28 @@ body {
 .jk-btn:active:not(:disabled) {
   transform: translateY(0);
 }
+
+@keyframes jk-melapak-burst {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.12) translateY(-2px);
+    filter: brightness(1.15);
+  }
+}
+
+.jk-melapak-celebrate span {
+  display: inline-block;
+  animation: jk-melapak-burst 1.1s ease-in-out infinite;
+}
+
+.jk-melapak-celebrate span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.jk-melapak-celebrate span:nth-child(3) {
+  animation-delay: 0.24s;
+}

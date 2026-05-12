@@ -1,3 +1,5 @@
+import { normalizeDegree } from "./AstroMath";
+
 /** Format small integers for chart labels (e.g. Kannada digits when supported). */
 export const formatChartHouseNumber = (n: number, lang: string): string => {
   const v = Math.round(n);
@@ -34,12 +36,15 @@ export const formatChartHouseNumber = (n: number, lang: string): string => {
 };
 
 /**
- * Rāśi kala / amsha within sign: whole degrees 1–30 (common handwritten patrikā style).
- * Maps floor(degree-in-sign) + 1 so 0°–0.99° → 1, 29°–29.99° → 30.
+ * Rāśy-amsha as 1–12: dwādaśāṁśa index (twelfth-part of the sign), each 2.5° wide.
+ * Boundaries: [0°,2.5°)→1 … [27.5°,30°)→12 (matches common patrikā numbering).
  */
 export const rashiAmshaFromDegree = (degree: number): number => {
-  const inSign = ((degree % 30) + 30) % 30;
-  return Math.min(30, Math.floor(inSign) + 1);
+  const d = normalizeDegree(degree);
+  const inSign = ((d % 30) + 30) % 30;
+  /** Stable bucket for dwādaśāṁśa (avoids 29.999… vs 30 edge cases). */
+  const idx = Math.min(11, Math.floor(inSign / 2.5 + 1e-12));
+  return idx + 1;
 };
 
 export const formatRashiAmsha = (degree: number, lang: string): string =>

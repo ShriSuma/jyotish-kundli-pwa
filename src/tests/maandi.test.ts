@@ -7,8 +7,8 @@ describe("MaandiEngine", () => {
     const birth = new Date("1993-05-31T09:25:00+05:30");
     const m = computeMaandi(birth, 14.5479, 74.3187, "581326");
     expect(m.rashi.sanskrit).toBe("Kanya");
-    expect(rashiAmshaFromDegree(m.degree)).toBeGreaterThanOrEqual(9);
-    expect(rashiAmshaFromDegree(m.degree)).toBeLessThanOrEqual(11);
+    expect(rashiAmshaFromDegree(m.degree)).toBeGreaterThanOrEqual(3);
+    expect(rashiAmshaFromDegree(m.degree)).toBeLessThanOrEqual(5);
   });
 
   it("returns degree in range and a non-empty window label", () => {

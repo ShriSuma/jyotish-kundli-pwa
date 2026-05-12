@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import PrivacyConsent from "./components/PrivacyConsent";
 import HomePage from "./pages/HomePage";
 import KundliPage from "./pages/KundliPage";
+import MelapakPage from "./pages/MelapakPage";
 import PredictionsPage from "./pages/PredictionsPage";
 import SettingsPage from "./pages/SettingsPage";
 import InsightsPage from "./pages/InsightsPage";
@@ -39,6 +40,7 @@ export default function App(): JSX.Element {
         {currentPage === "kundli" && <KundliPage />}
         {currentPage === "predictions" && <PredictionsPage />}
         {currentPage === "insights" && <InsightsPage />}
+        {currentPage === "melapak" && <MelapakPage />}
         {currentPage === "settings" && <SettingsPage />}
       </Layout>
     </ErrorBoundary>
