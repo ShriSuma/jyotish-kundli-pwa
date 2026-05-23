@@ -32,6 +32,7 @@ export default function HomePage(): JSX.Element {
   const [mapOpen, setMapOpen] = useState(false);
 
   const pincodeStore = useAppStore((s) => s.pincode);
+  const ayanamsaModel = useAppStore((s) => s.ayanamsaModel);
 
   const [panchangDayAnchor, setPanchangDayAnchor] = useState<Date | null>(null);
   const [displayLat, setDisplayLat] = useState(defaultLat);
@@ -84,13 +85,14 @@ export default function HomePage(): JSX.Element {
       setDisplayLng(lng);
       const ymd = calendarYmdForPanchangPin(new Date(), lat, lng, pincodeStore);
       const anchor = panchangSolarAnchorDate(new Date(), lat, lng, pincodeStore);
-      const cacheKey = `${ymd}_${lat.toFixed(2)},${lng.toFixed(2)},v5`;
+      const cacheKey = `${ymd}_${lat.toFixed(2)},${lng.toFixed(2)},v6-${ayanamsaModel}`;
       const cached = await getPanchangCache(ymd, cacheKey);
       let p =
         cached ??
         calculatePanchang(anchor, lat, lng, {
           locale: localeTag,
-          pincode: pincodeStore
+          pincode: pincodeStore,
+          ayanamsaModel
         });
 
       const apiTimes = await fetchSunriseSunsetUtc(lat, lng, ymd);
@@ -127,7 +129,7 @@ export default function HomePage(): JSX.Element {
       return;
     }
     void loadData(defaultLat, defaultLng);
-  }, [defaultLat, defaultLng, locationConfirmed, localeTag, pincodeStore, placeLabel]);
+  }, [defaultLat, defaultLng, locationConfirmed, localeTag, pincodeStore, placeLabel, ayanamsaModel]);
 
   const useDeviceLocation = () => {
     void new Promise<void>((resolve) => {

@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { getSettings, saveSettings } from "../db/indexedDb";
+import type { AyanamsaModel, NodeType } from "../core/AstroTypes";
 
 export type SupportedLanguage = "en" | "hi" | "kn" | "te" | "ta";
 export type AppPage = "home" | "kundli" | "predictions" | "insights" | "settings" | "melapak";
@@ -38,6 +39,8 @@ type AppState = {
   pincode: string;
   locationConfirmed: boolean;
   narrativeConsent: boolean;
+  ayanamsaModel: AyanamsaModel;
+  nodeType: NodeType;
   setPage: (page: AppPage) => void;
   setLanguage: (language: SupportedLanguage) => Promise<void>;
   setChartStyle: (style: "north" | "south") => Promise<void>;
@@ -46,6 +49,8 @@ type AppState = {
   setDefaultLocation: (lat: number, lng: number, placeLabel: string, pincode: string) => Promise<void>;
   setLocationConfirmed: (value: boolean) => Promise<void>;
   setNarrativeConsent: (value: boolean) => Promise<void>;
+  setAyanamsaModel: (value: AyanamsaModel) => Promise<void>;
+  setNodeType: (value: NodeType) => Promise<void>;
   hydrateSettings: () => Promise<void>;
 };
 
@@ -68,6 +73,8 @@ export const useAppStore = create<AppState>()(
       pincode: "",
       locationConfirmed: false,
       narrativeConsent: false,
+      ayanamsaModel: "lahiri",
+      nodeType: "mean",
       setPage: (page) => set({ currentPage: page }),
       setLanguage: async (language) => {
         localStorage.setItem("i18nextLng", language);
@@ -117,6 +124,22 @@ export const useAppStore = create<AppState>()(
         });
         set({ narrativeConsent: value });
       },
+      setAyanamsaModel: async (value: AyanamsaModel) => {
+        const existing = await getSettings();
+        await saveSettings({
+          language: existing?.language ?? "en",
+          ayanamsaModel: value
+        });
+        set({ ayanamsaModel: value });
+      },
+      setNodeType: async (value: NodeType) => {
+        const existing = await getSettings();
+        await saveSettings({
+          language: existing?.language ?? "en",
+          nodeType: value
+        });
+        set({ nodeType: value });
+      },
       hydrateSettings: async () => {
         const consentFromLocalStorage = localStorage.getItem("jk-consent");
         const hasLocalConsent =
@@ -134,7 +157,9 @@ export const useAppStore = create<AppState>()(
             placeLabel: settings.placeLabel ?? DEFAULT_LABEL,
             pincode: settings.pincode ?? "",
             locationConfirmed: inferLocationConfirmed(settings),
-            narrativeConsent: Boolean(settings.narrativeConsent)
+            narrativeConsent: Boolean(settings.narrativeConsent),
+            ayanamsaModel: settings.ayanamsaModel ?? "lahiri",
+            nodeType: settings.nodeType ?? "mean"
           });
           return;
         }
@@ -148,7 +173,9 @@ export const useAppStore = create<AppState>()(
             placeLabel: settings?.placeLabel ?? DEFAULT_LABEL,
             pincode: settings?.pincode ?? "",
             locationConfirmed: inferLocationConfirmed(settings),
-            narrativeConsent: Boolean(settings?.narrativeConsent)
+            narrativeConsent: Boolean(settings?.narrativeConsent),
+            ayanamsaModel: settings?.ayanamsaModel ?? "lahiri",
+            nodeType: settings?.nodeType ?? "mean"
           });
         }
       }
@@ -165,7 +192,9 @@ export const useAppStore = create<AppState>()(
         placeLabel: state.placeLabel,
         pincode: state.pincode,
         locationConfirmed: state.locationConfirmed,
-        narrativeConsent: state.narrativeConsent
+        narrativeConsent: state.narrativeConsent,
+        ayanamsaModel: state.ayanamsaModel,
+        nodeType: state.nodeType
       })
     }
   )

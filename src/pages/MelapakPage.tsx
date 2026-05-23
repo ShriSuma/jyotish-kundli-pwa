@@ -22,6 +22,8 @@ export default function MelapakPage(): JSX.Element {
   const defaultLng = useAppStore((s) => s.defaultLng);
   const placeLabelStore = useAppStore((s) => s.placeLabel);
   const pincodeStore = useAppStore((s) => s.pincode);
+  const ayanamsaModel = useAppStore((s) => s.ayanamsaModel);
+  const nodeType = useAppStore((s) => s.nodeType);
   const setDefaultLocation = useAppStore((s) => s.setDefaultLocation);
 
   const [boyDate, setBoyDate] = useState<Date | null>(null);
@@ -70,8 +72,8 @@ export default function MelapakPage(): JSX.Element {
     };
     const boyIn: KundliInput = { name: t("melapak.boy"), birthDate: boyBirth, birthTime: boyHm, ...base };
     const girlIn: KundliInput = { name: t("melapak.girl"), birthDate: girlBirth, birthTime: girlHm, ...base };
-    const bk = calculateKundli(boyIn);
-    const gk = calculateKundli(girlIn);
+    const bk = calculateKundli(boyIn, { ayanamsaModel, nodeType });
+    const gk = calculateKundli(girlIn, { ayanamsaModel, nodeType });
     setBoyK(bk);
     setGirlK(gk);
     const bm = moonFrom(bk);

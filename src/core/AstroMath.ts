@@ -1,5 +1,7 @@
-import { NAKSHATRAS, RASHIS, type Nakshatra, type Rashi } from "./AstroTypes";
-import { lahiriAyanamsaDegrees } from "./LahiriAyanamsa";
+import { NAKSHATRAS, RASHIS, type AyanamsaModel, type Nakshatra, type Rashi } from "./AstroTypes";
+import { ayanamsaForModel } from "./Ayanamsa";
+
+export type { AyanamsaModel } from "./AstroTypes";
 
 export const normalizeDegree = (deg: number): number => {
   const value = deg % 360;
@@ -9,8 +11,12 @@ export const normalizeDegree = (deg: number): number => {
 /** Julian Day (UT) from a JavaScript Date that represents a UTC instant. */
 export const dateToJulianUt = (d: Date): number => d.getTime() / 86400000 + 2440587.5;
 
-/** Lahiri ayanamsa (degrees) for the given UTC instant. */
-export const getAyanamsa = (date: Date): number => lahiriAyanamsaDegrees(dateToJulianUt(date));
+/** Ayanāṃśa (degrees, UT). Default: Drik Gaṇita (True Chitrā / Spica 180°). Pass `lahiri` for older tables. */
+export const getAyanamsa = (date: Date, model: AyanamsaModel = "lahiri"): number =>
+  ayanamsaForModel(date, model);
+
+const NAK_DEG = 360 / 27;
+const PADA_DEG = NAK_DEG / 4;
 
 export const degreeToRashi = (deg: number): Rashi => {
   const normalized = normalizeDegree(deg);
@@ -19,17 +25,17 @@ export const degreeToRashi = (deg: number): Rashi => {
 
 export const degreeToNakshatra = (deg: number): Nakshatra => {
   const normalized = normalizeDegree(deg);
-  return NAKSHATRAS[Math.floor(normalized / (360 / 27))];
+  const nakIdx = Math.min(26, Math.floor(normalized / NAK_DEG + 1e-12));
+  return NAKSHATRAS[nakIdx]!;
 };
-
-const NAK_DEG = 360 / 27;
-const PADA_DEG = NAK_DEG / 4;
 
 /** Pada 1–4 within the nakshatra of this sidereal longitude. */
 export const degreeToNakshatraPada = (deg: number): 1 | 2 | 3 | 4 => {
   const normalized = normalizeDegree(deg);
-  const within = normalized % NAK_DEG;
-  const p = Math.floor(within / PADA_DEG) + 1;
+  const nakIdx = Math.min(26, Math.floor(normalized / NAK_DEG + 1e-12));
+  const nakStart = nakIdx * NAK_DEG;
+  const within = Math.min(NAK_DEG - 1e-9, Math.max(0, normalized - nakStart));
+  const p = Math.floor(within / PADA_DEG + 1e-12) + 1;
   return Math.min(4, Math.max(1, p)) as 1 | 2 | 3 | 4;
 };
 

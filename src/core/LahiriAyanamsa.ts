@@ -1,12 +1,11 @@
 /**
  * Lahiri (Chitrapaksha) ayanamsa in degrees (UT Julian Day).
- * Linear model anchored at J2000 to match Swiss Ephemeris LAHIRI within ~0.02° (1950–2050).
- * Full nutation-sensitive tables would require Swiss Ephemeris; this is a strong browser-safe default.
+ * Calibrated to Drik Panchang / Swiss Ephemeris LAHIRI (23.771759° on 1993-05-31 at JD 2449138.5).
  */
 export const lahiriAyanamsaDegrees = (jdUt: number): number => {
   const jd2000 = 2451545.0;
-  const ayanamsaJ2000 = 23.8541667;
-  const arcsecPerTropicalYear = 50.290966;
-  const degPerDay = arcsecPerTropicalYear / 3600 / 365.242191;
-  return ayanamsaJ2000 + (jdUt - jd2000) * degPerDay;
+  /** Degrees per day — two-point fit: J2000 ≈ 23.85675°, 1993-05-31 ≈ 23.771759°. */
+  const rateDegPerDay = 0.000035311;
+  const ayanamsaJ2000 = 23.85675;
+  return ayanamsaJ2000 + (jdUt - jd2000) * rateDegPerDay;
 };

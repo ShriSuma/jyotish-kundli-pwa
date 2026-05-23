@@ -39,6 +39,7 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
   const [loading, setLoading] = useState(false);
   const pinDriveRef = useRef<PinDrive | null>(null);
   const onChangeRef = useRef(onChange);
+  const locationPushGen = useRef(0);
   onChangeRef.current = onChange;
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
       setVillageName("");
       return;
     }
+    locationPushGen.current += 1;
     let cancelled = false;
     setLoading(true);
     void fetchVillagesByPincode(filterPincode).then((list) => {
@@ -134,10 +136,12 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
   useEffect(() => {
     if (!filterPincode || !/^\d{6}$/.test(filterPincode)) return;
     if (!selectedVillage) return;
+    const pushGen = locationPushGen.current;
     const pushLocation = async () => {
       try {
         const query = `${selectedVillage.name}, ${selectedVillage.pincode}, ${districtLabel}, India`;
         const coords = await getCoordinates(query);
+        if (pushGen !== locationPushGen.current) return;
         onChangeRef.current({
           stateCode,
           districtCode,
@@ -147,6 +151,7 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
           pincode: selectedVillage.pincode
         });
       } catch {
+        if (pushGen !== locationPushGen.current) return;
         onChangeRef.current({
           stateCode,
           districtCode,

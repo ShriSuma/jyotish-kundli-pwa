@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 import html2canvas from "html2canvas";
-import type { KundliOutput, PlanetName, PlanetPosition, Rashi } from "../../core/AstroTypes";
+import type { AyanamsaModel, KundliOutput, PlanetName, PlanetPosition, Rashi } from "../../core/AstroTypes";
 import { RASHIS } from "../../core/AstroTypes";
 import { calculatePanchang } from "../../core/PanchangEngine";
 import { wallClockBirthToUtc } from "../../core/birthTime";
@@ -16,8 +16,9 @@ import { fetchSunriseSunsetUtc } from "../../core/sunriseSunsetApi";
 import { patrikaMetaForNakshatraIndex } from "../../core/nakshatraPatrikaMeta";
 import { getCellForRashiIndex } from "./southIndianLayout";
 import SunCalc from "suncalc";
-import { vimshottariBalanceAtBirth } from "../../core/DashaBhuktiEngine";
-import { formatRashiAmsha } from "../../core/localeNumbers";
+import { vimshottariBalanceAtBirth, vimshottariBalanceYmdPatrika } from "../../core/DashaBhuktiEngine";
+import { ghatiVighatiSinceSunrise } from "../../core/ghatiVighati";
+import { formatChartHouseNumber, formatGhatiVighati, formatPatrikaAmshaOnly, patrikaMaandiBracket } from "../../core/localeNumbers";
 
 type Props = {
   kundli: KundliOutput;
@@ -29,6 +30,8 @@ type Props = {
   longitude: number;
   placeLabel: string;
   pincode?: string;
+  /** Sidereal anchor for header panchānga line (matches chart). */
+  ayanamsaModel?: AyanamsaModel;
 };
 
 const rashiTKey = (sanskrit: string): string => `rashis.${sanskrit.replace(/\s+/g, "")}`;
@@ -43,22 +46,17 @@ export default function TraditionalSouthPatrika({
   latitude,
   longitude,
   placeLabel,
-  pincode
+  pincode,
+  ayanamsaModel
 }: Props): JSX.Element {
   const { t, i18n } = useTranslation();
+  const ayanModel = ayanamsaModel ?? "lahiri";
   const exportRef = useRef<HTMLDivElement>(null);
   const pin = pincode?.trim() ?? "";
 
   const lagnaIdx = kundli.lagnaRashi.index;
   const dashaBal = useMemo(() => vimshottariBalanceAtBirth(kundli), [kundli]);
-  const dashaBalYmd = useMemo(() => {
-    const total = dashaBal.balanceYears;
-    const y = Math.floor(total);
-    const remM = (total - y) * 12;
-    const m = Math.floor(remM);
-    const d = Math.min(29, Math.max(0, Math.round((remM - m) * 30)));
-    return { y, m, d };
-  }, [dashaBal.balanceYears]);
+  const dashaBalYmd = useMemo(() => vimshottariBalanceYmdPatrika(dashaBal.balanceYears), [dashaBal.balanceYears]);
 
   const byRashi = useMemo(() => {
     const map = new Map<number, PlanetPosition[]>();
@@ -78,7 +76,8 @@ export default function TraditionalSouthPatrika({
     const clockLoc = clockLocaleFromUiLang(i18n.language);
     const p = calculatePanchang(anchor, latitude, longitude, {
       locale: clockLoc,
-      pincode: pin
+      pincode: pin,
+      ayanamsaModel: ayanModel
     });
     const tz = civilTimeZoneForPanchangHeader(latitude, longitude, pin);
     const hdr = anchor.toLocaleDateString(i18n.language === "kn" ? "kn-IN" : i18n.language, {
@@ -92,7 +91,7 @@ export default function TraditionalSouthPatrika({
     const sr = formatClockAtPlace(times.sunrise, clockLoc, latitude, longitude, pin);
     const ss = formatClockAtPlace(times.sunset, clockLoc, latitude, longitude, pin);
     return { panchang: p, sunRise: sr, sunSet: ss, headerDate: hdr, metaKn: i18n.language.startsWith("kn") };
-  }, [birthDate, latitude, longitude, pin, i18n.language]);
+  }, [birthDate, latitude, longitude, pin, i18n.language, ayanModel]);
 
   /** USNO-style times (same as Home) — matches printed panchānga better than SunCalc alone. */
   const [apiSunClock, setApiSunClock] = useState<{ rise: string; set: string } | null>(null);
@@ -114,8 +113,21 @@ export default function TraditionalSouthPatrika({
     };
   }, [birthDate, latitude, longitude, pin, i18n.language]);
 
-  const displaySunrise = apiSunClock?.rise ?? sunRise;
-  const displaySunset = apiSunClock?.set ?? sunSet;
+  const displaySunrise = kundli.birthSunTimes?.sunrise ?? apiSunClock?.rise ?? sunRise;
+  const displaySunset = kundli.birthSunTimes?.sunset ?? apiSunClock?.set ?? sunSet;
+
+  const ghatiSinceSunrise = useMemo(() => {
+    const birthUtc = wallClockBirthToUtc(birthDate, birthTime, latitude, longitude);
+    let sunriseUtc: Date;
+    if (kundli.birthSunTimes?.sunriseUtc) {
+      sunriseUtc = new Date(kundli.birthSunTimes.sunriseUtc);
+    } else {
+      const noonUtc = wallClockBirthToUtc(birthDate, "12:00", latitude, longitude);
+      const anchor = panchangSolarAnchorDate(noonUtc, latitude, longitude, pin);
+      sunriseUtc = SunCalc.getTimes(anchor, latitude, longitude).sunrise;
+    }
+    return ghatiVighatiSinceSunrise(birthUtc, sunriseUtc);
+  }, [birthDate, birthTime, latitude, longitude, pin, kundli.birthSunTimes?.sunriseUtc]);
 
   const meta = patrikaMetaForNakshatraIndex(moon?.nakshatra.index ?? 0);
   const yoniVal = metaKn ? meta.yoniKn : meta.yoniEn;
@@ -218,6 +230,13 @@ export default function TraditionalSouthPatrika({
               <span className="jk-patrika-ink">{displaySunset}</span>
             </p>
             <p>
+              <span className="font-semibold">{t("kundli.patrikaGhatiSinceSunrise")}:</span>{" "}
+              <span className="jk-patrika-ink">
+                {formatGhatiVighati(ghatiSinceSunrise.ghati, ghatiSinceSunrise.vighati, i18n.language)}{" "}
+                {t("kundli.patrikaGhatiUnit")}
+              </span>
+            </p>
+            <p>
               <span className="font-semibold">{t("kundli.patrikaLagna")}:</span>{" "}
               <span className="jk-patrika-ink">{t(rashiTKey(kundli.lagnaRashi.sanskrit) as "rashis.Mesha")}</span>
             </p>
@@ -278,21 +297,22 @@ export default function TraditionalSouthPatrika({
                 if (rashi.index === lagnaIdx) {
                   cells.push(
                     <span key="lagna" className="jk-patrika-ink block">
-                      {t("kundli.lagnaPatrika")} {formatRashiAmsha(kundli.ascendant, lang)}
+                      {t("kundli.lagnaPatrika")} {formatPatrikaAmshaOnly(kundli.ascendant, lang)}
                     </span>
                   );
                 }
                 for (const pl of planetsHere) {
                   cells.push(
                     <span key={pl.name} className="jk-patrika-ink block">
-                      {t(`planets.${pl.name}` as "planets.Sun")} {formatRashiAmsha(pl.degree, lang)}
+                      {t(`planets.${pl.name}` as "planets.Sun")} {formatPatrikaAmshaOnly(pl.degree, lang)}
                     </span>
                   );
                 }
                 if (kundli.maandi && kundli.maandi.rashi.index === rashi.index) {
                   cells.push(
                     <span key="maandi" className="jk-patrika-ink block">
-                      {t("kundli.maandiShort")} {formatRashiAmsha(kundli.maandi.degree, lang)}
+                      {t("kundli.maandiShort")}{" "}
+                      ({formatChartHouseNumber(patrikaMaandiBracket(kundli.maandi.rashi.index), lang)})
                     </span>
                   );
                 }

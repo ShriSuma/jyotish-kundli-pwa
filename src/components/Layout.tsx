@@ -40,6 +40,7 @@ export default function Layout({ children }: Props): JSX.Element {
   const defaultLng = useAppStore((s) => s.defaultLng);
   const pincode = useAppStore((s) => s.pincode);
   const placeLabel = useAppStore((s) => s.placeLabel);
+  const ayanamsaModel = useAppStore((s) => s.ayanamsaModel);
   const [online, setOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -63,7 +64,8 @@ export default function Layout({ children }: Props): JSX.Element {
       const ymd = calendarYmdForPanchangPin(now, lat, lng, pincode);
       let panchang = calculatePanchang(anchor, lat, lng, {
         locale: "en-IN",
-        pincode
+        pincode,
+        ayanamsaModel
       });
       const apiTimes = await fetchSunriseSunsetUtc(lat, lng, ymd);
       const scTimes = SunCalc.getTimes(anchor, lat, lng);
@@ -77,7 +79,7 @@ export default function Layout({ children }: Props): JSX.Element {
       if (notifications.rahuKaal) await scheduleRahuKaal(rahu);
     };
     void run();
-  }, [notifications.dailyPanchang, notifications.rahuKaal, defaultLat, defaultLng, pincode, placeLabel]);
+  }, [notifications.dailyPanchang, notifications.rahuKaal, defaultLat, defaultLng, pincode, placeLabel, ayanamsaModel]);
 
   return (
     <div className="min-h-screen pb-24 text-[color:var(--jk-card-fg)]">

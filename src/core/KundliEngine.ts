@@ -1,5 +1,7 @@
 import {
   PlanetName,
+  type AyanamsaModel,
+  type NodeType,
   type KundliInput,
   type KundliOutput,
   type PlanetPosition
@@ -18,8 +20,11 @@ import {
   normalizeDegree
 } from "./AstroMath";
 import { computeMaandi } from "./MaandiEngine";
+import type { PlaceSunTimes } from "./birthSunTimes";
+import { resolveBirthSunTimes, sunTimesSyncForBirth } from "./birthSunTimes";
 import { getNakshatraPadaHint } from "../data/nakshatraPadaHints";
 import { wallClockBirthToUtc } from "./birthTime";
+import { formatClockAtPlace } from "./placeTime";
 
 const planetList = [
   PlanetName.Sun,
@@ -67,10 +72,23 @@ export const bhavaFromAscendant = (ascendant: number, degree: number): number =>
   return Math.floor(offset / 30) + 1;
 };
 
-export const calculateKundli = (input: KundliInput): KundliOutput => {
+export type CalculateKundliOptions = {
+  ayanamsaModel?: AyanamsaModel;
+  nodeType?: NodeType;
+  /** When omitted, sync SunCalc times for the birth civil day are used (async API path should pass resolved times). */
+  sunTimes?: PlaceSunTimes;
+};
+
+export const calculateKundli = (input: KundliInput, options?: CalculateKundliOptions): KundliOutput => {
   const birthUtc = wallClockBirthToUtc(input.birthDate, input.birthTime, input.latitude, input.longitude);
+  const pin = input.pincode ?? "";
+  const sunTimes =
+    options?.sunTimes ?? sunTimesSyncForBirth(birthUtc, input.latitude, input.longitude, pin);
+  const clockLoc = "en-IN";
   const jd = dateToJulianUt(birthUtc);
-  const longs = siderealLongitudes(birthUtc);
+  const ayanamsaModel = options?.ayanamsaModel ?? "lahiri";
+  const nodeType = options?.nodeType ?? "mean";
+  const longs = siderealLongitudes(birthUtc, ayanamsaModel, nodeType);
   const lst = calculateLocalSiderealTime(birthUtc, input.longitude);
   const eps = meanObliquityDegrees(jd);
   const ascTropical = ascendantTropicalDegrees(lst, input.latitude, eps);
@@ -98,7 +116,7 @@ export const calculateKundli = (input: KundliInput): KundliOutput => {
 
   let maandi;
   try {
-    const m = computeMaandi(birthUtc, input.latitude, input.longitude, input.pincode ?? "");
+    const m = computeMaandi(birthUtc, input.latitude, input.longitude, pin, ayanamsaModel, sunTimes);
     maandi = { degree: m.degree, rashi: m.rashi, windowLabel: m.windowLabel };
   } catch {
     maandi = undefined;
@@ -113,6 +131,23 @@ export const calculateKundli = (input: KundliInput): KundliOutput => {
     lagnaRashi,
     moonPada,
     nameSyllableHint: syllable,
-    maandi
+    maandi,
+    birthSunTimes: {
+      sunrise: formatClockAtPlace(sunTimes.sunrise, clockLoc, input.latitude, input.longitude, pin),
+      sunset: formatClockAtPlace(sunTimes.sunset, clockLoc, input.latitude, input.longitude, pin),
+      source: sunTimes.source,
+      sunriseUtc: sunTimes.sunrise.toISOString(),
+      sunsetUtc: sunTimes.sunset.toISOString()
+    }
   };
+};
+
+/** Resolve API/sunrise times then build the chart (preferred for Kundli page). */
+export const calculateKundliWithPlaceSun = async (
+  input: KundliInput,
+  options?: Omit<CalculateKundliOptions, "sunTimes">
+): Promise<KundliOutput> => {
+  const birthUtc = wallClockBirthToUtc(input.birthDate, input.birthTime, input.latitude, input.longitude);
+  const sunTimes = await resolveBirthSunTimes(birthUtc, input.latitude, input.longitude, input.pincode ?? "");
+  return calculateKundli(input, { ...options, sunTimes });
 };

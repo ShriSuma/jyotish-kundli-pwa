@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { KundliOutput, PlanetName, PlanetPosition } from "../../core/AstroTypes";
 import { RASHIS } from "../../core/AstroTypes";
-import { formatRashiAmsha } from "../../core/localeNumbers";
+import { formatPatrikaNavamsaOnly } from "../../core/localeNumbers";
 import southIndianFrameSvg from "../../assets/south-indian-kundli-frame.svg?raw";
 import {
   CHART_LAYOUT,
@@ -17,11 +17,6 @@ type Props = {
   kundli: KundliOutput;
   personName: string;
   gothra?: string;
-};
-
-const degInSign = (deg: number): string => {
-  const v = ((deg % 30) + 30) % 30;
-  return `${v.toFixed(1)}°`;
 };
 
 const rashiTKey = (sanskrit: string): string => `rashis.${sanskrit.replace(/\s+/g, "")}`;
@@ -122,13 +117,12 @@ export default function SouthIndianChart({ kundli, personName, gothra }: Props):
           ) : null}
           <p className="mt-1 text-[9px] text-slate-600">
             <span className="font-semibold">{t("kundli.centerLagna")}:</span> {t(rashiTKey(kundli.lagnaRashi.sanskrit) as "rashis.Mesha")}{" "}
-            {degInSign(kundli.ascendant)} · {t("kundli.rashiAmshaAbbr")}{" "}
-            {formatRashiAmsha(kundli.ascendant, i18n.language)}
+            {formatPatrikaNavamsaOnly(kundli.ascendant, i18n.language)}
           </p>
           {kundli.maandi ? (
             <p className="text-[9px] text-slate-600">
               <span className="font-semibold">{t("kundli.maandi")}:</span> {t(rashiTKey(kundli.maandi.rashi.sanskrit) as "rashis.Mesha")}{" "}
-              {degInSign(kundli.maandi.degree)} · {t("kundli.rashiAmshaAbbr")} {formatRashiAmsha(kundli.maandi.degree, i18n.language)}
+              {formatPatrikaNavamsaOnly(kundli.maandi.degree, i18n.language)}
               <span className="block text-[8px]">({kundli.maandi.windowLabel})</span>
             </p>
           ) : null}
@@ -142,14 +136,14 @@ export default function SouthIndianChart({ kundli, personName, gothra }: Props):
         const lang = i18n.language;
         const lines: string[] = [];
         if (rashi.index === lagnaIdx) {
-          lines.push(`${t("kundli.lagnaPatrika")} ${formatRashiAmsha(kundli.ascendant, lang)}`);
+          lines.push(`${t("kundli.lagnaPatrika")} ${formatPatrikaNavamsaOnly(kundli.ascendant, lang)}`);
         }
         for (const pl of planetsHere) {
           const label = t(`planets.${pl.name}`);
-          lines.push(`${label} ${formatRashiAmsha(pl.degree, lang)}`);
+          lines.push(`${label} ${formatPatrikaNavamsaOnly(pl.degree, lang)}`);
         }
         if (kundli.maandi && kundli.maandi.rashi.index === rashi.index) {
-          lines.push(`${t("kundli.maandiShort")} ${formatRashiAmsha(kundli.maandi.degree, lang)}`);
+          lines.push(`${t("kundli.maandiShort")} ${formatPatrikaNavamsaOnly(kundli.maandi.degree, lang)}`);
         }
         if (!lines.length) return null;
         return (

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { calculateKundli } from "../core/KundliEngine";
 import { siderealLongitudes } from "../core/EphemerisEngine";
+import { spicaTropicalEclipticLongitude, trueChitrapakshaAyanamsaDegrees } from "../core/DrikGanitaAyanamsa";
 import { wallClockBirthToUtc } from "../core/birthTime";
 import { normalizeDegree } from "../core/AstroMath";
 
@@ -32,6 +33,14 @@ describe("Ephemeris / sidereal pipeline", () => {
     expect(k.planets).toHaveLength(9);
     expect(k.ascendant).toBeGreaterThanOrEqual(0);
     expect(k.ascendant).toBeLessThan(360);
+  });
+
+  it("Drik Gaṇita (True Chitrā) keeps Spica sidereal near 180°", () => {
+    const d = new Date("2020-06-21T12:00:00Z");
+    const trop = spicaTropicalEclipticLongitude(d);
+    const ayan = trueChitrapakshaAyanamsaDegrees(d);
+    const sid = normalizeDegree(trop - ayan);
+    expect(sid).toBeCloseTo(180, 0);
   });
 
   it("Rahu and Ketu are 180° apart (sidereal)", () => {

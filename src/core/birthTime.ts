@@ -40,6 +40,20 @@ export const formatPickerTimeLocalHm = (d: Date): string => {
   return `${h}:${m}`;
 };
 
+/** Build HH:mm from explicit hour/minute (avoids browser timezone shifting birth place clock). */
+export const formatWallClockHm = (hour: number, minute: number): string =>
+  `${String(Math.min(23, Math.max(0, hour))).padStart(2, "0")}:${String(Math.min(59, Math.max(0, minute))).padStart(2, "0")}`;
+
+/** Parse HH:mm wall clock at birthplace (for dropdown time pickers). */
+export const parseWallClockHm = (hm: string): { hour: number; minute: number } | null => {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(hm.trim());
+  if (!m) return null;
+  const hour = Number(m[1]);
+  const minute = Number(m[2]);
+  if (hour < 0 || hour > 23 || minute < 0 || minute > 59) return null;
+  return { hour, minute };
+};
+
 /** Age in decimal years at `atUtc` from birth wall clock at birthplace. */
 export const ageDecimalYearsAt = (
   birthDate: string,

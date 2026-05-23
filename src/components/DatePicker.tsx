@@ -40,10 +40,11 @@ export default function DatePicker({ selected, onChange, placeholderText, id }: 
       maxDate={new Date()}
       dateFormat="dd/MM/yyyy"
       placeholderText={placeholderText ?? "DD/MM/YYYY"}
-      className="min-h-11 w-full rounded border border-amber-300 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none"
-      popperClassName="z-50"
-      calendarClassName="rounded-md border border-amber-200"
+      className="jk-touch-input min-h-[3rem] w-full rounded-xl border-2 border-amber-200 bg-white px-3 py-3 text-base font-medium text-indigo-950 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
+      popperClassName="z-50 jk-datepicker-popper"
+      calendarClassName="jk-datepicker-calendar rounded-lg border border-amber-200 text-base"
       showPopperArrow={false}
+      withPortal
       showMonthDropdown
       showYearDropdown
       dropdownMode="select"

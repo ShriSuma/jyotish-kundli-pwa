@@ -208,6 +208,51 @@ export const fetchVillages = async (districtCode: string, pincode?: string): Pro
   }
 };
 
+export type ResolvedPinPlace = {
+  villageName: string;
+  districtCode: string;
+  stateCode: string;
+  lat: number;
+  lng: number;
+  pincode: string;
+};
+
+/** Resolve first post office for a PIN to coordinates (API lat/lng or Nominatim). */
+export const resolvePlaceFromPincode = async (pincode: string): Promise<ResolvedPinPlace | null> => {
+  if (!/^[1-9]\d{5}$/.test(pincode)) return null;
+  const list = await fetchVillagesByPincode(pincode);
+  if (!list?.length) return null;
+  const v = list[0]!;
+  const stateCode = v.stateCode ?? "";
+  let lat = v.lat;
+  let lng = v.lng;
+  if (!lat || !lng) {
+    const fb = (villages as Village[]).find((x) => x.pincode === pincode);
+    if (fb) {
+      lat = fb.lat;
+      lng = fb.lng;
+    }
+  }
+  try {
+    const districtName =
+      (districts as District[]).find((d) => d.code === v.districtCode)?.name ?? "";
+    const query = `${v.name}, ${pincode}, ${districtName}, India`;
+    const coords = await getCoordinates(query);
+    lat = coords.lat;
+    lng = coords.lng;
+  } catch {
+    if (!lat || !lng) return null;
+  }
+  return {
+    villageName: v.name,
+    districtCode: v.districtCode,
+    stateCode,
+    lat,
+    lng,
+    pincode
+  };
+};
+
 export const getCoordinates = async (placeName: string): Promise<{ lat: number; lng: number }> => {
   const normalized = placeName.trim().toLowerCase();
   const cached = await getGeocode(normalized);

@@ -1,3 +1,9 @@
+/** Sidereal zero-point model: Lahiri linear Chitrapaksha vs. Drik (True Spica at 180°). */
+export type AyanamsaModel = "lahiri" | "drik_ganita";
+
+/** Rāhu/Ketu: mean node (most handwritten patrikās) vs. true (oscillating) node. */
+export type NodeType = "mean" | "true";
+
 export enum PlanetName {
   Sun = "Sun",
   Moon = "Moon",
@@ -55,6 +61,15 @@ export type KundliOutput = {
     degree: number;
     rashi: Rashi;
     windowLabel: string;
+  };
+  /** Sunrise/sunset at birth place on birth civil day (used for Maandi, patrikā, panchānga). */
+  birthSunTimes?: {
+    sunrise: string;
+    sunset: string;
+    source: "api" | "suncalc";
+    /** ISO UTC for ghaṭī/vighaṭī and weekday rules. */
+    sunriseUtc?: string;
+    sunsetUtc?: string;
   };
 };
 

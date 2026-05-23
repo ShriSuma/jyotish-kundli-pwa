@@ -1,9 +1,9 @@
-import SunCalc from "suncalc";
-import { inferBirthTimezoneIana } from "./birthTime";
-import { calculateLocalSiderealTime, dateToJulianUt, degreeToRashi, normalizeDegree } from "./AstroMath";
+import type { PlaceSunTimes } from "./birthSunTimes";
+import { vedicWeekdayAtBirth } from "./birthSunTimes";
+import { calculateLocalSiderealTime, dateToJulianUt, degreeToRashi, getAyanamsa, normalizeDegree } from "./AstroMath";
+import type { AyanamsaModel } from "./AstroTypes";
 import { ascendantTropicalDegrees, meanObliquityDegrees } from "./EphemerisEngine";
-import { lahiriAyanamsaDegrees } from "./LahiriAyanamsa";
-import { calendarYmdInTimeZone, formatClockAtPlace, weekdayInTimeZone } from "./placeTime";
+import { formatClockAtPlace } from "./placeTime";
 /**
  * Weekday 0=Sun … 6=Sat → 1-based segment index (1..8) for Gulika/Maandi start after sunrise.
  * Matches common panchānga tables (e.g. Sunday 7th eighth … Saturday 8th eighth).
@@ -19,36 +19,26 @@ const GULIKA_START_SEGMENT: Record<number, number> = {
 };
 
 /**
- * Solar noon on the birth **civil** day at birthplace (fixes SunCalc using UTC calendar day for sunrise).
- */
-const solarNoonForBirthCivilDay = (birthUtc: Date, lat: number, lng: number): Date => {
-  const tz = inferBirthTimezoneIana(lat, lng);
-  const ymd = calendarYmdInTimeZone(birthUtc, tz);
-  if (tz === "Asia/Kolkata") {
-    return new Date(`${ymd}T12:00:00+05:30`);
-  }
-  const [y, m, d] = ymd.split("-").map(Number);
-  return new Date(y, m - 1, d, 12, 0, 0, 0);
-};
-
-/**
  * Maandi (Gulika) ecliptic degree: sidereal ascendant early in the Gulika daytime segment
  * (common panchānga eighth from sunrise; a small offset from segment open matches many patrikās better than midpoint).
- * Uses the same ascendant model as KundliEngine (Lahiri + obliquity + RAMC).
+ * Uses the same ascendant model as KundliEngine (obliquity + RAMC) with the chosen ayanāṃśa.
  */
 export const computeMaandi = (
   birthUtc: Date,
   latitude: number,
   longitude: number,
-  pincode = ""
+  pincode = "",
+  ayanamsaModel: AyanamsaModel = "lahiri",
+  sunTimes?: PlaceSunTimes
 ): { degree: number; rashi: ReturnType<typeof degreeToRashi>; windowLabel: string } => {
-  const anchor = solarNoonForBirthCivilDay(birthUtc, latitude, longitude);
-  const times = SunCalc.getTimes(anchor, latitude, longitude);
-  const sunrise = times.sunrise.getTime();
-  const sunset = times.sunset.getTime();
+  if (!sunTimes) {
+    throw new Error("computeMaandi requires birthplace sunrise/sunset (resolveBirthSunTimes)");
+  }
+  const sunrise = sunTimes.sunrise.getTime();
+  const sunset = sunTimes.sunset.getTime();
   const dayMs = Math.max(1, sunset - sunrise);
   const segMs = dayMs / 8;
-  const wd = weekdayInTimeZone(birthUtc, inferBirthTimezoneIana(latitude, longitude));
+  const wd = vedicWeekdayAtBirth(birthUtc, sunTimes.sunrise, latitude, longitude);
   const seg = GULIKA_START_SEGMENT[wd] ?? 1;
   const startMs = sunrise + (seg - 1) * segMs;
   /** Ascendant early in Gulika segment (≈5% after open; midpoint overshoots many handwritten patrikās). */
@@ -58,7 +48,7 @@ export const computeMaandi = (
   const lst = calculateLocalSiderealTime(mid, longitude);
   const eps = meanObliquityDegrees(jd);
   const ascTropical = ascendantTropicalDegrees(lst, latitude, eps);
-  const ayan = lahiriAyanamsaDegrees(jd);
+  const ayan = getAyanamsa(mid, ayanamsaModel);
   const deg = normalizeDegree(ascTropical - ayan);
   const startClock = formatClockAtPlace(new Date(startMs), "en-IN", latitude, longitude, pincode);
   const endClock = formatClockAtPlace(new Date(startMs + segMs), "en-IN", latitude, longitude, pincode);

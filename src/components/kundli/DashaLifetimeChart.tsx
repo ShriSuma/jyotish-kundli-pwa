@@ -113,7 +113,7 @@ export function DashaBhuktiExplorer({ kundli, maxAge = 120 }: ExplorerProps): JS
           <div className="space-y-1 leading-relaxed text-slate-700">{significance}</div>
           <p className="text-[11px] leading-relaxed text-slate-600">
             <span className="font-semibold text-indigo-900">{t("kundli.dashaAntarSeries")}:</span>{" "}
-            {generateBhuktisInMahadasha(slice.maha.planet).map((s, i) => (
+            {generateBhuktisInMahadasha(slice.maha.planet, slice.maha.durationYears).map((s, i) => (
               <span key={`${s.planet}-${i}`}>
                 {i > 0 ? " → " : ""}
                 {t(`planets.${s.planet}`)}

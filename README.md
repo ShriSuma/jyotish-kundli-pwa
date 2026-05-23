@@ -34,15 +34,21 @@ Online narrative runs only if the user enables **Allow online narrative** in Set
 
 ## Astrology calculations
 
-Charts and Panchang use **geocentric ecliptic longitudes** from [`astronomy-engine`](https://github.com/cosinekitty/astronomy) (Sun, Moon, and major planets), converted to the **sidereal zodiac** with **Lahiri (Chitrapaksha) ayanamsa** (linear model anchored at J2000, within a few hundredths of a degree of Swiss Ephemeris LAHIRI for modern dates).
+Charts and Panchang use **geocentric ecliptic longitudes** from [`astronomy-engine`](https://github.com/cosinekitty/astronomy) (Sun, Moon, and major planets), converted to the **sidereal zodiac** using a user-selectable **ayanāṃśa** in **Settings**:
 
-- **Lagna (ascendant)** uses mean obliquity, local sidereal time from UT + longitude, and the standard ecliptic ascendant formula, then subtracts the same Lahiri ayanamsa.
+- **Drik Gaṇita (default)** — **True Chitrāpakṣa**: the ayanāṃśa at each instant is chosen so **Spica (α Vir)** has sidereal longitude **180°** (observational / “drik” anchor, similar in spirit to Swiss Ephemeris `TRUE_CITRA`).
+- **Lahiri** — linear **Chitrapaksha** model anchored at J2000 (close to Swiss Ephemeris `LAHIRI` for modern dates).
+
+**Lagna** uses mean obliquity, local sidereal time from UT + longitude, and the standard ecliptic ascendant formula, then subtracts the same ayanāṃśa as the planets.
+
 - **Houses** are **whole sign from sidereal lagna** (each rāśi = one house).
-- **Rahu** uses the **mean lunar node** (Meeus); **Ketu** is Rahu + 180°. Many commercial apps use the **true** node; values can differ by ~1–2°. A future option can switch to true node via moon-node search.
-- **Birth time**: for birth places inside India (rough bounding box), date and time from the form are read as **Asia/Kolkata (IST)** civil time. Outside that box they are read as **UTC** until a timezone control is added—convert non-IST births before comparing to desktop software.
-- **Panchang** tithi / yoga / nakṣatra at “now” use the same sidereal Sun/Moon; sunrise/sunset use SunCalc at the saved coordinates.
+- **Rāhu / Ketu** use the **true** lunar ascending node (Meeus-style correction to the mean node); **Ketu** is Rāhu + 180°.
+- **Birth time**: for birth places inside India (rough bounding box), date and time from the form are read as **Asia/Kolkata (IST)** civil time. Outside that box they are read as **UTC** until a timezone control is added.
+- **Panchang** tithi / yoga / nakṣatra use the same sidereal Sun/Moon; sunrise/sunset use SunCalc (and optional USNO-style API on Home).
 
-For **legal-grade** agreement with a given desktop program (e.g. Astrosage), match their **ayanamsa**, **node type**, **house system**, and **timezone**; this app documents its choices above.
+South chart and downloaded patrikā **do not show degree/minute text** on grahas—only **navāṁśa pada (1–9)** in parentheses. The planet table on the Kundli page lists **navāṁśa** and **dvādaśāṁśa** without the full ecliptic degree column.
+
+For **legal-grade** agreement with a given desktop program, match their **ayanāṃśa**, **node type**, **house system**, and **timezone**; this app documents its choices above.
 
 ## 🔄 Development Workflow (MANDATORY)
 

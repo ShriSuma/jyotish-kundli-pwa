@@ -35,6 +35,10 @@ export default function SettingsPage(): JSX.Element {
   const pincode = useAppStore((s) => s.pincode);
   const narrativeConsent = useAppStore((s) => s.narrativeConsent);
   const setNarrativeConsent = useAppStore((s) => s.setNarrativeConsent);
+  const ayanamsaModel = useAppStore((s) => s.ayanamsaModel);
+  const setAyanamsaModel = useAppStore((s) => s.setAyanamsaModel);
+  const nodeType = useAppStore((s) => s.nodeType);
+  const setNodeType = useAppStore((s) => s.setNodeType);
   const permission = getPermissionStatus();
 
   const permissionLabel =
@@ -57,7 +61,8 @@ export default function SettingsPage(): JSX.Element {
     const ymd = calendarYmdForPanchangPin(now, lat, lng, pincode);
     let p = calculatePanchang(anchor, lat, lng, {
       locale: "en-IN",
-      pincode
+      pincode,
+      ayanamsaModel
     });
     const apiTimes = await fetchSunriseSunsetUtc(lat, lng, ymd);
     const scTimes = SunCalc.getTimes(anchor, lat, lng);
@@ -119,6 +124,64 @@ export default function SettingsPage(): JSX.Element {
             onClick={() => void setChartStyle("south")}
           >
             {t("settings.chartSouth")}
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <p className="text-sm font-medium text-indigo-950">{t("settings.ayanamsaTitle")}</p>
+        <p className="mt-1 text-xs leading-relaxed text-slate-600">{t("settings.ayanamsaHint")}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button
+            type="button"
+            className={`jk-btn rounded-xl border px-4 py-2 text-sm ${
+              ayanamsaModel === "drik_ganita"
+                ? "border-[color:var(--jk-accent)] bg-[color:var(--jk-accent-soft)]"
+                : "border-slate-200 bg-white"
+            }`}
+            onClick={() => void setAyanamsaModel("drik_ganita")}
+          >
+            {t("settings.ayanamsaDrik")}
+          </button>
+          <button
+            type="button"
+            className={`jk-btn rounded-xl border px-4 py-2 text-sm ${
+              ayanamsaModel === "lahiri"
+                ? "border-[color:var(--jk-accent)] bg-[color:var(--jk-accent-soft)]"
+                : "border-slate-200 bg-white"
+            }`}
+            onClick={() => void setAyanamsaModel("lahiri")}
+          >
+            {t("settings.ayanamsaLahiri")}
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <p className="text-sm font-medium text-indigo-950">{t("settings.nodeTypeTitle")}</p>
+        <p className="mt-1 text-xs leading-relaxed text-slate-600">{t("settings.nodeTypeHint")}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button
+            type="button"
+            className={`jk-btn rounded-xl border px-4 py-2 text-sm ${
+              nodeType === "mean"
+                ? "border-[color:var(--jk-accent)] bg-[color:var(--jk-accent-soft)]"
+                : "border-slate-200 bg-white"
+            }`}
+            onClick={() => void setNodeType("mean")}
+          >
+            {t("settings.nodeTypeMean")}
+          </button>
+          <button
+            type="button"
+            className={`jk-btn rounded-xl border px-4 py-2 text-sm ${
+              nodeType === "true"
+                ? "border-[color:var(--jk-accent)] bg-[color:var(--jk-accent-soft)]"
+                : "border-slate-200 bg-white"
+            }`}
+            onClick={() => void setNodeType("true")}
+          >
+            {t("settings.nodeTypeTrue")}
           </button>
         </div>
       </div>

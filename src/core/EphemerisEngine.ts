@@ -1,6 +1,8 @@
 import * as Astronomy from "astronomy-engine";
 import { dateToJulianUt, normalizeDegree } from "./AstroMath";
+import type { AyanamsaModel, NodeType } from "./AstroTypes";
 import { lahiriAyanamsaDegrees } from "./LahiriAyanamsa";
+import { trueChitrapakshaAyanamsaDegrees } from "./DrikGanitaAyanamsa";
 
 const toRad = (deg: number): number => (deg * Math.PI) / 180;
 
@@ -91,10 +93,15 @@ export type SiderealLongitudes = {
   ketu: number;
 };
 
-/** Geocentric apparent sidereal ecliptic longitudes (Lahiri), degrees [0,360). */
-export const siderealLongitudes = (utc: Date): SiderealLongitudes => {
+/** Geocentric apparent sidereal ecliptic longitudes, degrees [0,360). */
+export const siderealLongitudes = (
+  utc: Date,
+  model: AyanamsaModel = "lahiri",
+  nodeType: NodeType = "mean"
+): SiderealLongitudes => {
   const jdUt = dateToJulianUt(utc);
-  const ayanamsa = lahiriAyanamsaDegrees(jdUt);
+  const ayanamsa =
+    model === "lahiri" ? lahiriAyanamsaDegrees(jdUt) : trueChitrapakshaAyanamsaDegrees(utc);
 
   const sun = normalizeDegree(tropicalGeoLongitude(Astronomy.Body.Sun, utc) - ayanamsa);
   const moon = normalizeDegree(tropicalGeoLongitude(Astronomy.Body.Moon, utc) - ayanamsa);
@@ -103,7 +110,9 @@ export const siderealLongitudes = (utc: Date): SiderealLongitudes => {
   const jupiter = normalizeDegree(tropicalGeoLongitude(Astronomy.Body.Jupiter, utc) - ayanamsa);
   const venus = normalizeDegree(tropicalGeoLongitude(Astronomy.Body.Venus, utc) - ayanamsa);
   const saturn = normalizeDegree(tropicalGeoLongitude(Astronomy.Body.Saturn, utc) - ayanamsa);
-  const rahu = normalizeDegree(trueLunarAscendingNodeTropical(jdUt) - ayanamsa);
+  const nodeTropical =
+    nodeType === "true" ? trueLunarAscendingNodeTropical(jdUt) : meanLunarAscendingNodeTropical(jdUt);
+  const rahu = normalizeDegree(nodeTropical - ayanamsa);
   const ketu = normalizeDegree(rahu + 180);
 
   return { jdUt, ayanamsa, sun, moon, mars, mercury, jupiter, venus, saturn, rahu, ketu };

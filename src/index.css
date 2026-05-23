@@ -84,3 +84,29 @@ body {
 .jk-melapak-celebrate span:nth-child(3) {
   animation-delay: 0.24s;
 }
+
+/* Larger touch targets for birth date/time on phones */
+.jk-datepicker-popper .react-datepicker {
+  font-size: 1rem;
+  border-radius: 0.75rem;
+}
+.jk-datepicker-calendar .react-datepicker__day {
+  width: 2.25rem;
+  line-height: 2.25rem;
+  margin: 0.2rem;
+  font-size: 0.95rem;
+}
+.jk-datepicker-calendar .react-datepicker__day-name {
+  width: 2.25rem;
+  line-height: 2rem;
+  margin: 0.2rem;
+}
+.jk-touch-input {
+  font-size: 1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 640px) {
+  .jk-datepicker-popper {
+    width: min(100vw - 1.5rem, 22rem);
+  }
+}

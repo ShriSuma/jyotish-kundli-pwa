@@ -1,5 +1,5 @@
 import type { TFunction } from "i18next";
-import type { KundliOutput, PlanetName, PredictionOutput } from "./AstroTypes";
+import type { AyanamsaModel, KundliOutput, PlanetName, PredictionOutput } from "./AstroTypes";
 import { PlanetName as PN } from "./AstroTypes";
 import { siderealLongitudes } from "./EphemerisEngine";
 import { degreeToRashi, normalizeDegree } from "./AstroMath";
@@ -13,6 +13,8 @@ export type PredictionBirthContext = {
   birthTime: string;
   latitude: number;
   longitude: number;
+  /** Matches chart / panchānga sidereal anchor (default Lahiri). */
+  ayanamsaModel?: AyanamsaModel;
 };
 
 type Tone = "positive" | "neutral" | "caution";
@@ -76,8 +78,8 @@ const vimshottariContext = (
   };
 };
 
-const transitMoonSignIndex = (date: Date): number => {
-  const moonDeg = siderealLongitudes(noonUtcForCalendarDate(date)).moon;
+const transitMoonSignIndex = (date: Date, model: AyanamsaModel): number => {
+  const moonDeg = siderealLongitudes(noonUtcForCalendarDate(date), model).moon;
   return degreeToRashi(moonDeg).index;
 };
 
@@ -93,9 +95,9 @@ const angularSep = (degA: number, degB: number): number => {
 const nearAspect = (sep: number, target: number, orb = 8): boolean => Math.abs(sep - target) <= orb;
 
 /** Extra signals from sidereal transits at local noon vs natal Moon / Lagna. */
-const transitGeometrySignals = (kundli: KundliOutput, date: Date): number => {
+const transitGeometrySignals = (kundli: KundliOutput, date: Date, model: AyanamsaModel): number => {
   let s = 0;
-  const longs = siderealLongitudes(noonUtcForCalendarDate(date));
+  const longs = siderealLongitudes(noonUtcForCalendarDate(date), model);
   const moonNatal = kundli.planets.find((p) => p.name === PN.Moon)?.degree ?? kundli.ascendant;
   const lagnaDeg = kundli.ascendant;
 
@@ -130,11 +132,12 @@ const buildIntegratedReading = (
   personName: string | undefined,
   planetLabel: string,
   birth: PredictionBirthContext | undefined,
-  at: Date
+  at: Date,
+  model: AyanamsaModel
 ): string => {
   const name = (personName?.trim() || t("predictions.seeker")) as string;
   const moonRashi = t(rashiTKey(kundli.moonSign.sanskrit) as "rashis.Mesha");
-  const longs = siderealLongitudes(noonUtcForCalendarDate(at));
+  const longs = siderealLongitudes(noonUtcForCalendarDate(at), model);
   const transitMoon = t(rashiTKey(degreeToRashi(longs.moon).sanskrit) as "rashis.Mesha");
   let maha = t("predictions.na");
   let bhukti = t("predictions.na");
@@ -195,6 +198,7 @@ export const getDailyPrediction = (
   personName?: string,
   birth?: PredictionBirthContext
 ): PredictionOutput => {
+  const model = birth?.ayanamsaModel ?? "lahiri";
   const baseTone = moonTone(kundli);
   const dow = date.getDay();
   const lord = weekdayLords[dow] ?? PN.Sun;
@@ -205,12 +209,12 @@ export const getDailyPrediction = (
   if (wh && isKendra(wh)) signals += 1;
   if (wh && (wh === 6 || wh === 8 || wh === 12)) signals -= 1;
 
-  const tm = transitMoonSignIndex(date);
+  const tm = transitMoonSignIndex(date, model);
   const diff = (tm - kundli.moonSign.index + 12) % 12;
   if (diff === 0 || diff === 3 || diff === 4 || diff === 6 || diff === 8 || diff === 11) signals += 1;
   if (diff === 2 || diff === 5 || diff === 7) signals -= 1;
 
-  signals += Math.max(-2, Math.min(2, transitGeometrySignals(kundli, date)));
+  signals += Math.max(-2, Math.min(2, transitGeometrySignals(kundli, date, model)));
 
   const vim = vimshottariContext(kundli, date, birth, t);
   if (vim) {
@@ -224,7 +228,7 @@ export const getDailyPrediction = (
   const tone = scoreToneFromSignals(signals);
   const rating = tone === "positive" ? 5 : tone === "neutral" ? 4 : 2;
   const extras = vim ? { dashaLine: vim.dashaLine, timingLine: vim.timingLine } : undefined;
-  const integratedReading = buildIntegratedReading("daily", tone, kundli, t, personName, planetLabel, birth, date);
+  const integratedReading = buildIntegratedReading("daily", tone, kundli, t, personName, planetLabel, birth, date, model);
   return applyTone(tone, kundli, t, personName, planetLabel, rating, { ...extras, integratedReading });
 };
 
@@ -235,11 +239,18 @@ export const getWeeklyPrediction = (
   personName?: string,
   birth?: PredictionBirthContext
 ): PredictionOutput => {
+  const model = birth?.ayanamsaModel ?? "lahiri";
   let signals = 0;
   for (let i = 0; i < 7; i += 1) {
     const d = new Date(startDate);
     d.setDate(d.getDate() + i);
-    const dayPred = getDailyPrediction(kundli, d, t, personName, birth);
+    const dayPred = getDailyPrediction(
+      kundli,
+      d,
+      t,
+      personName,
+      birth ? { ...birth, ayanamsaModel: model } : undefined
+    );
     signals += dayPred.rating - 3;
   }
   const tone = scoreToneFromSignals(signals);
@@ -256,7 +267,8 @@ export const getWeeklyPrediction = (
     personName,
     t("predictions.focus.moonTransit"),
     birth,
-    mid
+    mid,
+    model
   );
   return applyTone(tone, kundli, t, personName, t("predictions.focus.moonTransit"), rating, {
     ...extras,
@@ -272,14 +284,15 @@ export const getMonthlyPrediction = (
   personName?: string,
   birth?: PredictionBirthContext
 ): PredictionOutput => {
+  const model = birth?.ayanamsaModel ?? "lahiri";
   const mid = new Date(Date.UTC(year, month - 1, 15, 12, 0, 0));
-  const sunIdx = degreeToRashi(siderealLongitudes(mid).sun).index;
+  const sunIdx = degreeToRashi(siderealLongitudes(mid, model).sun).index;
   const relation = (sunIdx - kundli.sunSign.index + 12) % 12;
   let signals = moonTone(kundli) === "positive" ? 1 : 0;
   if (relation === 0 || relation === 3 || relation === 6 || relation === 9) signals += 1;
   if (relation === 1 || relation === 2 || relation === 5 || relation === 7) signals -= 1;
 
-  signals += Math.max(-2, Math.min(2, transitGeometrySignals(kundli, mid)));
+  signals += Math.max(-2, Math.min(2, transitGeometrySignals(kundli, mid, model)));
 
   const vim = vimshottariContext(kundli, mid, birth, t);
   if (vim) {
@@ -300,7 +313,8 @@ export const getMonthlyPrediction = (
     personName,
     t("predictions.focus.sunTransit"),
     birth,
-    mid
+    mid,
+    model
   );
   return applyTone(tone, kundli, t, personName, t("predictions.focus.sunTransit"), rating, {
     ...extras,

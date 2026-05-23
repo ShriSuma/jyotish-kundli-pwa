@@ -19,61 +19,92 @@ type Tab = "daily" | "weekly" | "monthly";
 export default function PredictionsPage(): JSX.Element {
   const { t, i18n } = useTranslation();
   const setPage = useAppStore((s) => s.setPage);
+  const ayanamsaModel = useAppStore((s) => s.ayanamsaModel);
   const [tab, setTab] = useState<Tab>("daily");
   const [prediction, setPrediction] = useState<PredictionOutput | null>(null);
-  const [empty, setEmpty] = useState(false);
+  /** null = still checking for a saved chart */
+  const [empty, setEmpty] = useState<boolean | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
+    let cancelled = false;
     const load = async () => {
-      const kundli = await getLatestKundliRecord();
-      if (!kundli) {
-        setEmpty(true);
-        return;
-      }
-      setEmpty(false);
-      const lang = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
-      const key =
-        tab === "daily"
-          ? new Date().toISOString().slice(0, 10)
-          : tab === "weekly"
-            ? `${new Date().getFullYear()}-W${Math.ceil(new Date().getDate() / 7)}`
-            : `${new Date().getFullYear()}-${new Date().getMonth() + 1}`;
-      const cached = await getPredictionCache(kundli.id!, tab, key, lang);
-      if (cached) {
-        setPrediction(cached);
-        return;
-      }
+      setLoading(true);
+      setLoadError(null);
+      setPrediction(null);
+      try {
+        const kundli = await getLatestKundliRecord();
+        if (!kundli) {
+          if (!cancelled) {
+            setEmpty(true);
+            setLoading(false);
+          }
+          return;
+        }
+        if (!cancelled) setEmpty(false);
+        const lang = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
+        const key =
+          (tab === "daily"
+            ? new Date().toISOString().slice(0, 10)
+            : tab === "weekly"
+              ? `${new Date().getFullYear()}-W${Math.ceil(new Date().getDate() / 7)}`
+              : `${new Date().getFullYear()}-${new Date().getMonth() + 1}`) + `-${ayanamsaModel}`;
+        const cached = kundli.id ? await getPredictionCache(kundli.id, tab, key, lang) : null;
+        if (cached) {
+          if (!cancelled) {
+            setPrediction(cached);
+            setLoading(false);
+          }
+          return;
+        }
 
-      const birth = {
-        birthDate: kundli.birthDate,
-        birthTime: kundli.birthTime,
-        latitude: kundli.latitude,
-        longitude: kundli.longitude
-      };
+        const birth = {
+          birthDate: kundli.birthDate,
+          birthTime: kundli.birthTime,
+          latitude: kundli.latitude,
+          longitude: kundli.longitude,
+          ayanamsaModel
+        };
 
-      const now = new Date();
-      const ageYears = ageDecimalYearsAt(kundli.birthDate, kundli.birthTime, kundli.latitude, kundli.longitude, now);
-      const vb = findBhuktiAtAge(kundli.kundliData, ageYears);
-      const apiUrl = import.meta.env.VITE_PREDICTION_API_URL as string | undefined;
+        const now = new Date();
+        const ageYears = ageDecimalYearsAt(kundli.birthDate, kundli.birthTime, kundli.latitude, kundli.longitude, now);
+        const vb = findBhuktiAtAge(kundli.kundliData, ageYears);
+        const apiUrl = import.meta.env.VITE_PREDICTION_API_URL as string | undefined;
 
-      let generated: PredictionOutput;
-      if (apiUrl?.trim()) {
-        try {
-          generated = await fetchPredictionFromApi({
-            lang,
-            period: tab,
-            periodKey: key,
-            name: kundli.name,
-            kundliSummary: {
-              lagnaSanskrit: kundli.kundliData.lagnaRashi.sanskrit,
-              moonSignSanskrit: kundli.kundliData.moonSign.sanskrit,
-              moonPada: kundli.kundliData.moonPada,
-              dashaMaha: vb?.maha.planet,
-              dashaBhukti: vb?.bhukti,
-              ageYears
-            }
-          });
-        } catch {
+        let generated: PredictionOutput;
+        if (apiUrl?.trim()) {
+          try {
+            generated = await fetchPredictionFromApi({
+              lang,
+              period: tab,
+              periodKey: key,
+              name: kundli.name,
+              kundliSummary: {
+                lagnaSanskrit: kundli.kundliData.lagnaRashi.sanskrit,
+                moonSignSanskrit: kundli.kundliData.moonSign.sanskrit,
+                moonPada: kundli.kundliData.moonPada,
+                dashaMaha: vb?.maha.planet,
+                dashaBhukti: vb?.bhukti,
+                ageYears
+              }
+            });
+          } catch {
+            generated =
+              tab === "daily"
+                ? getDailyPrediction(kundli.kundliData, new Date(), t, kundli.name, birth)
+                : tab === "weekly"
+                  ? getWeeklyPrediction(kundli.kundliData, new Date(), t, kundli.name, birth)
+                  : getMonthlyPrediction(
+                      kundli.kundliData,
+                      new Date().getFullYear(),
+                      new Date().getMonth() + 1,
+                      t,
+                      kundli.name,
+                      birth
+                    );
+          }
+        } else {
           generated =
             tab === "daily"
               ? getDailyPrediction(kundli.kundliData, new Date(), t, kundli.name, birth)
@@ -88,27 +119,35 @@ export default function PredictionsPage(): JSX.Element {
                     birth
                   );
         }
-      } else {
-        generated =
-          tab === "daily"
-            ? getDailyPrediction(kundli.kundliData, new Date(), t, kundli.name, birth)
-            : tab === "weekly"
-              ? getWeeklyPrediction(kundli.kundliData, new Date(), t, kundli.name, birth)
-              : getMonthlyPrediction(
-                  kundli.kundliData,
-                  new Date().getFullYear(),
-                  new Date().getMonth() + 1,
-                  t,
-                  kundli.name,
-                  birth
-                );
+        if (kundli.id) {
+          await savePredictionCache(kundli.id, tab, key, lang, generated);
+        }
+        if (!cancelled) {
+          setPrediction(generated);
+          await analytics.track("prediction_viewed", { tab });
+        }
+      } catch (e) {
+        if (!cancelled) {
+          const msg = e instanceof Error ? e.message : String(e);
+          setLoadError(msg || t("predictions.loadError"));
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-      await savePredictionCache(kundli.id!, tab, key, lang, generated);
-      setPrediction(generated);
-      await analytics.track("prediction_viewed", { tab });
     };
     void load();
-  }, [tab, i18n.language, i18n.resolvedLanguage, t]);
+    return () => {
+      cancelled = true;
+    };
+  }, [tab, i18n.language, i18n.resolvedLanguage, t, ayanamsaModel]);
+
+  if (empty === null) {
+    return (
+      <Card>
+        <p className="text-sm text-slate-600">{t("common.loading")}</p>
+      </Card>
+    );
+  }
 
   if (empty) {
     return (
@@ -157,7 +196,14 @@ export default function PredictionsPage(): JSX.Element {
           {t("predictions.monthly")}
         </button>
       </div>
-      {prediction && (
+      {loadError ? (
+        <div className="rounded-xl border border-red-200 bg-red-50/80 p-3 text-sm text-red-900">
+          <p>{loadError}</p>
+          <p className="mt-2 text-xs text-red-800">{t("predictions.loadErrorHint")}</p>
+        </div>
+      ) : null}
+      {loading ? <p className="text-sm text-slate-600">{t("common.loading")}</p> : null}
+      {!loading && prediction ? (
         <div className="space-y-2 text-sm text-slate-800">
           <h3 className="text-lg font-semibold text-indigo-950">{prediction.title}</h3>
           <p>{prediction.summary}</p>
@@ -201,7 +247,7 @@ export default function PredictionsPage(): JSX.Element {
           </p>
           <p className="text-xs text-slate-500">{t("predictions.apiHint")}</p>
         </div>
-      )}
+      ) : null}
     </Card>
   );
 }

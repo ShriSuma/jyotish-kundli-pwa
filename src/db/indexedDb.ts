@@ -21,6 +21,10 @@ export type SettingsRecord = {
   locationConfirmed?: boolean;
   /** Allow POSTing chart summary to optional narrative API. */
   narrativeConsent?: boolean;
+  /** Sidereal zero-point for charts, panchānga, and predictions. */
+  ayanamsaModel?: "lahiri" | "drik_ganita";
+  /** Rāhu/Ketu node: mean (patrikā) vs true (modern software). */
+  nodeType?: "mean" | "true";
 };
 
 export type KundliRecord = {
@@ -140,7 +144,9 @@ export const saveSettings = async (
     placeLabel: data.placeLabel !== undefined ? data.placeLabel : (existing?.placeLabel ?? "Mumbai"),
     pincode: data.pincode !== undefined ? data.pincode : (existing?.pincode ?? ""),
     locationConfirmed: data.locationConfirmed ?? existing?.locationConfirmed,
-    narrativeConsent: data.narrativeConsent ?? existing?.narrativeConsent
+    narrativeConsent: data.narrativeConsent ?? existing?.narrativeConsent,
+    ayanamsaModel: data.ayanamsaModel ?? existing?.ayanamsaModel ?? "lahiri",
+    nodeType: data.nodeType ?? existing?.nodeType ?? "mean"
   };
 
   if (existing?.id) {

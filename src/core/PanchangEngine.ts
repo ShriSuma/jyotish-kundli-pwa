@@ -1,7 +1,7 @@
 import SunCalc from "suncalc";
 import * as Astronomy from "astronomy-engine";
 import { degreeToNakshatra, getAyanamsa, normalizeDegree } from "./AstroMath";
-import type { PanchangOutput } from "./AstroTypes";
+import type { AyanamsaModel, PanchangOutput } from "./AstroTypes";
 import { panchangClockTimeZone } from "./placeTime";
 
 const TITHIS = [
@@ -76,6 +76,8 @@ export type PanchangCalcOptions = {
   clockTimeZone?: string;
   /** Indian PIN etc. — drives IST when postal lat/lng are missing */
   pincode?: string;
+  /** Sidereal zero-point: default Drik Gaṇita (True Spica 180°). */
+  ayanamsaModel?: AyanamsaModel;
 };
 
 export const calculatePanchang = (date: Date, lat: number, lng: number, opts?: PanchangCalcOptions): PanchangOutput => {
@@ -93,7 +95,7 @@ export const calculatePanchang = (date: Date, lat: number, lng: number, opts?: P
 
   const times = SunCalc.getTimes(date, lat, lng);
   const moonTimes = SunCalc.getMoonTimes(date, lat, lng);
-  const ayanamsa = getAyanamsa(date);
+  const ayanamsa = getAyanamsa(date, opts?.ayanamsaModel ?? "lahiri");
 
   const sunTropical = normalizeDegree(Astronomy.SunPosition(date).elon);
   const moonTropical = normalizeDegree(Astronomy.EclipticGeoMoon(date).lon);

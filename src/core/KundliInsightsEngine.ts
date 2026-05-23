@@ -164,6 +164,20 @@ export type YogaId =
   | "chandra_mangala"
   | "kemadruma";
 
+export type YogaPolarity = "benefic" | "malefic";
+
+export const YOGA_POLARITY: Record<YogaId, YogaPolarity> = {
+  gajakesari: "benefic",
+  budhaditya: "benefic",
+  ruchaka: "benefic",
+  bhadra: "benefic",
+  hamsa: "benefic",
+  malavya: "benefic",
+  sasha: "benefic",
+  chandra_mangala: "malefic",
+  kemadruma: "malefic"
+};
+
 const detectYogas = (k: KundliOutput): YogaId[] => {
   const out: YogaId[] = [];
   const lag = k.lagnaRashi.index;
@@ -198,6 +212,11 @@ const detectYogas = (k: KundliOutput): YogaId[] => {
 
   return out;
 };
+
+export const detectChartYogas = (k: KundliOutput): YogaId[] => detectYogas(k);
+
+export const chartYogasWithPolarity = (k: KundliOutput): Array<{ id: YogaId; polarity: YogaPolarity }> =>
+  detectYogas(k).map((id) => ({ id, polarity: YOGA_POLARITY[id] }));
 
 export type LifeTone = "uplift" | "mixed" | "care";
 
