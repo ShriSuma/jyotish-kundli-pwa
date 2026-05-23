@@ -52,14 +52,11 @@ export const resolveBirthSunTimes = async (
 ): Promise<PlaceSunTimes> => {
   const ymd = calendarYmdForPanchangPin(birthUtc, lat, lng, pincode);
   const api = await fetchSunriseSunsetUtc(lat, lng, ymd);
-  const astronomical = api ?? sunTimesSyncForBirth(birthUtc, lat, lng, pincode);
-  const jyotish = resolveSunTimesForJyotish(
-    { sunrise: astronomical.sunrise, sunset: astronomical.sunset },
-    lat,
-    lng,
-    pincode
-  );
-  return { sunrise: jyotish.sunrise, sunset: jyotish.sunset, source: astronomical.source };
+  if (api) {
+    const jyotish = resolveSunTimesForJyotish(api, lat, lng, pincode);
+    return { sunrise: jyotish.sunrise, sunset: jyotish.sunset, source: "api" };
+  }
+  return sunTimesSyncForBirth(birthUtc, lat, lng, pincode);
 };
 
 /**
