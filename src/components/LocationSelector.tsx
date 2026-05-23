@@ -59,21 +59,23 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
     locationPushGen.current += 1;
     let cancelled = false;
     setLoading(true);
-    void fetchVillagesByPincode(filterPincode).then((list) => {
-      if (cancelled) return;
-      if (!list?.length) {
-        pinDriveRef.current = null;
-        setLoading(false);
-        return;
-      }
-      const v0 = list[0]!;
-      pinDriveRef.current = { pin: filterPincode, districtCode: v0.districtCode };
-      setStateCode(v0.stateCode ?? "");
-      setDistrictCode(v0.districtCode);
-      setVillages(list);
-      setVillageName(v0.name);
-      setLoading(false);
-    });
+    void fetchVillagesByPincode(filterPincode)
+      .then((list) => {
+        if (cancelled) return;
+        if (!list?.length) {
+          pinDriveRef.current = null;
+          return;
+        }
+        const v0 = list[0]!;
+        pinDriveRef.current = { pin: filterPincode, districtCode: v0.districtCode };
+        setStateCode(v0.stateCode ?? v0.districtCode.split("-")[0] ?? "");
+        setDistrictCode(v0.districtCode);
+        setVillages(list);
+        setVillageName(v0.name);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
     return () => {
       cancelled = true;
     };
@@ -138,6 +140,18 @@ export default function LocationSelector({ onChange, filterPincode }: Props): JS
     if (!selectedVillage) return;
     const pushGen = locationPushGen.current;
     const pushLocation = async () => {
+      if (selectedVillage.lat && selectedVillage.lng) {
+        if (pushGen !== locationPushGen.current) return;
+        onChangeRef.current({
+          stateCode,
+          districtCode,
+          villageName: selectedVillage.name,
+          lat: selectedVillage.lat,
+          lng: selectedVillage.lng,
+          pincode: selectedVillage.pincode
+        });
+        return;
+      }
       try {
         const query = `${selectedVillage.name}, ${selectedVillage.pincode}, ${districtLabel}, India`;
         const coords = await getCoordinates(query);

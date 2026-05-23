@@ -9,6 +9,7 @@
   { "code": "KA-BLR", "stateCode": "KA", "name": "Bengaluru Urban" },
   { "code": "KA-MYS", "stateCode": "KA", "name": "Mysuru" },
   { "code": "KA-DHA", "stateCode": "KA", "name": "Dharwad" },
+  { "code": "KA-UKN", "stateCode": "KA", "name": "Uttara Kannada" },
   { "code": "TN-CHE", "stateCode": "TN", "name": "Chennai" },
   { "code": "TN-CBE", "stateCode": "TN", "name": "Coimbatore" },
   { "code": "TN-MDU", "stateCode": "TN", "name": "Madurai" },

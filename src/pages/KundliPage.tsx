@@ -96,25 +96,36 @@ export default function KundliPage(): JSX.Element {
     setLocationEpoch((e) => e + 1);
     setPinResolving(true);
     setLocationCore(`${pin} · ${t("location.loading")}`);
-    void resolvePlaceFromPincode(pin).then((place) => {
-      if (!place || gen !== pinResolveGen.current) return;
-      const core = `${place.villageName} (${place.pincode})`;
-      setForm((f) => ({
-        ...f,
-        latitude: place.lat,
-        longitude: place.lng,
-        pincode: place.pincode
-      }));
-      setLocationCore(core);
-      setResult(null);
-      void setDefaultLocation(
-        place.lat,
-        place.lng,
-        homePlaceName.trim() ? `${homePlaceName.trim()} · ${core}` : core,
-        place.pincode
-      );
-      setPinResolving(false);
-    });
+    void resolvePlaceFromPincode(pin)
+      .then((place) => {
+        if (gen !== pinResolveGen.current) return;
+        if (!place) {
+          setLocationCore(`${pin} · ${t("location.pinNotFound")}`);
+          return;
+        }
+        const core = `${place.villageName} (${place.pincode})`;
+        setForm((f) => ({
+          ...f,
+          latitude: place.lat,
+          longitude: place.lng,
+          pincode: place.pincode
+        }));
+        setLocationCore(core);
+        setResult(null);
+        void setDefaultLocation(
+          place.lat,
+          place.lng,
+          homePlaceName.trim() ? `${homePlaceName.trim()} · ${core}` : core,
+          place.pincode
+        );
+      })
+      .catch(() => {
+        if (gen !== pinResolveGen.current) return;
+        setLocationCore(`${pin} · ${t("location.pinNotFound")}`);
+      })
+      .finally(() => {
+        if (gen === pinResolveGen.current) setPinResolving(false);
+      });
   }, [form.pincode, setDefaultLocation, t]);
 
   const birthTimeZoneHint = useMemo(() => {
@@ -139,16 +150,18 @@ export default function KundliPage(): JSX.Element {
     setDailyPrediction(kundliSession.dailyPrediction);
   }, [kundliSession]);
 
-  /** Sync default place from settings when no active chart session. */
+  /** Sync default place from settings when no active chart session (skip while PIN is resolving). */
   useEffect(() => {
-    if (kundliSession) return;
+    if (kundliSession || pinResolving) return;
+    const pin = form.pincode?.trim() ?? "";
+    if (/^[1-9]\d{5}$/.test(pin)) return;
     setForm((f) => ({
       ...f,
       latitude: defaultLat,
       longitude: defaultLng
     }));
     setLocationCore(placeLabelStore);
-  }, [kundliSession, defaultLat, defaultLng, placeLabelStore]);
+  }, [kundliSession, pinResolving, form.pincode, defaultLat, defaultLng, placeLabelStore]);
 
   const onGenerate = async () => {
     if (!form.name || !birthDatePicker || !birthTimeHm.trim()) {

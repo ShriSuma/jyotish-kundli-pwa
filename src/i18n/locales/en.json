@@ -588,7 +588,8 @@
     "dismiss": "Dismiss"
   },
   "location": {
-    "loading": "Loading places…"
+    "loading": "Loading places…",
+    "pinNotFound": "Could not resolve this PIN — check the code or pick place manually"
   },
   "gotras": {
     "Agastya": "Agastya gotra",

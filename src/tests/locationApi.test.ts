@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { db } from "../db/indexedDb";
-import { fetchDistricts, fetchStates, fetchVillages, getCoordinates } from "../services/locationApi";
+import { fetchDistricts, fetchStates, fetchVillages, fetchVillagesByPincode, getCoordinates, resolvePlaceFromPincode } from "../services/locationApi";
 
 describe("locationApi", () => {
   beforeEach(async () => {
@@ -23,6 +23,17 @@ describe("locationApi", () => {
     vi.stubGlobal("fetch", vi.fn(async () => ({ ok: false })));
     const villages = await fetchVillages("MH-PUN", "411005");
     expect(villages.length).toBeGreaterThan(0);
+    vi.unstubAllGlobals();
+  });
+
+  it("Gokarna PIN 581326 resolves instantly from bundled catalog", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ({ ok: false })));
+    const list = await fetchVillagesByPincode("581326");
+    expect(list?.[0]?.name).toBe("Gokarna");
+    expect(list?.[0]?.stateCode).toBe("KA");
+    const place = await resolvePlaceFromPincode("581326");
+    expect(place?.lat).toBeCloseTo(14.5479, 3);
+    expect(place?.lng).toBeCloseTo(74.3187, 3);
     vi.unstubAllGlobals();
   });
 

@@ -1,6 +1,7 @@
 import states from "../data/india-states.json";
 import districts from "../data/india-districts.json";
 import villages from "../data/india-villages.json";
+import { staticVillagesByPincode } from "../data/pincodeFallback";
 import { cacheGeocode, getGeocode } from "../db/indexedDb";
 
 export type State = {
@@ -24,7 +25,8 @@ export type Village = {
   pincode: string;
 };
 
-const REQUEST_TIMEOUT_MS = 10000;
+const REQUEST_TIMEOUT_MS = 8000;
+const NOMINATIM_TIMEOUT_MS = 6000;
 let lastNominatimCallMs = 0;
 
 const withTimeout = async <T>(promise: Promise<T>, timeoutMs = REQUEST_TIMEOUT_MS): Promise<T> => {
@@ -91,6 +93,13 @@ export const findDistrictCodeForPostal = (stateCode: string, postalDistrict: str
     const blr = dists.find((d) => d.code === "KA-BLR");
     if (blr) return blr.code;
   }
+  if (
+    stateCode === "KA" &&
+    (pd.includes("uttara") || pd.includes("karwar") || pd.includes("kumta") || pd.includes("honnavar") || pd.includes("sirsi"))
+  ) {
+    const ukn = dists.find((d) => d.code === "KA-UKN");
+    if (ukn) return ukn.code;
+  }
   if (stateCode === "MH" && (pd.includes("mumbai") || pd.includes("thane") || pd.includes("navi mumbai"))) {
     const m = dists.find((d) => d.code === "MH-MUM" || d.name.toLowerCase().includes("mumbai"));
     if (m) return m.code;
@@ -120,15 +129,32 @@ type PostalPincodeResponse = {
   }>;
 };
 
+/** Bundled villages + offline PIN catalog for a 6-digit PIN. */
+export const bundledVillagesByPincode = (pincode: string): Village[] => {
+  const fromJson = (villages as Village[]).filter((v) => v.pincode === pincode);
+  const fromFallback = staticVillagesByPincode(pincode);
+  const merged = new Map<string, Village>();
+  for (const v of [...fromJson, ...fromFallback]) {
+    merged.set(`${v.name}|${v.pincode}`, v);
+  }
+  return [...merged.values()];
+};
+
 /** When pincode is valid, returns post offices with state/district aligned to local catalog (or null). */
 export const fetchVillagesByPincode = async (pincode: string): Promise<Village[] | null> => {
   if (!/^\d{6}$/.test(pincode)) return null;
+
+  const bundled = bundledVillagesByPincode(pincode);
+  if (bundled.length) return bundled;
+
   try {
     const response = await withTimeout(fetch(`https://api.postalpincode.in/pincode/${encodeURIComponent(pincode)}`));
     if (!response.ok) throw new Error("Postal API request failed");
     const payload = (await response.json()) as PostalPincodeResponse[];
     const first = payload[0];
-    if (first?.Status !== "Success" || !first.PostOffice?.length) return null;
+    if (first?.Status !== "Success" || !first.PostOffice?.length) {
+      return bundled.length ? bundled : null;
+    }
 
     const out: Village[] = [];
     for (const po of first.PostOffice) {
@@ -140,18 +166,21 @@ export const fetchVillagesByPincode = async (pincode: string): Promise<Village[]
       const districtCode = findDistrictCodeForPostal(stateCode, districtLabel);
       const lat = Number(po.Latitude);
       const lng = Number(po.Longitude);
+      const apiLat = Number.isFinite(lat) && lat !== 0 ? lat : 0;
+      const apiLng = Number.isFinite(lng) && lng !== 0 ? lng : 0;
+      const fb = bundled.find((b) => b.name === po.Name) ?? bundled[0];
       out.push({
         name: po.Name,
         districtCode,
         stateCode,
-        lat: Number.isFinite(lat) && lat !== 0 ? lat : 0,
-        lng: Number.isFinite(lng) && lng !== 0 ? lng : 0,
+        lat: apiLat || fb?.lat || 0,
+        lng: apiLng || fb?.lng || 0,
         pincode: po.Pincode || pincode
       });
     }
-    return out.length ? out : null;
+    return out.length ? out : bundled.length ? bundled : null;
   } catch {
-    return null;
+    return bundled.length ? bundled : null;
   }
 };
 
@@ -217,27 +246,46 @@ export type ResolvedPinPlace = {
   pincode: string;
 };
 
-/** Resolve first post office for a PIN to coordinates (API lat/lng or Nominatim). */
+/** Resolve first post office for a PIN to coordinates (bundled catalog, API, or Nominatim). */
 export const resolvePlaceFromPincode = async (pincode: string): Promise<ResolvedPinPlace | null> => {
   if (!/^[1-9]\d{5}$/.test(pincode)) return null;
   const list = await fetchVillagesByPincode(pincode);
   if (!list?.length) return null;
   const v = list[0]!;
-  const stateCode = v.stateCode ?? "";
+  const stateCode = v.stateCode ?? v.districtCode.split("-")[0] ?? "";
   let lat = v.lat;
   let lng = v.lng;
-  if (!lat || !lng) {
-    const fb = (villages as Village[]).find((x) => x.pincode === pincode);
-    if (fb) {
-      lat = fb.lat;
-      lng = fb.lng;
-    }
+
+  if (lat && lng) {
+    return {
+      villageName: v.name,
+      districtCode: v.districtCode,
+      stateCode,
+      lat,
+      lng,
+      pincode
+    };
   }
+
+  const fb = bundledVillagesByPincode(pincode)[0];
+  if (fb?.lat && fb?.lng) {
+    lat = fb.lat;
+    lng = fb.lng;
+    return {
+      villageName: v.name,
+      districtCode: v.districtCode,
+      stateCode,
+      lat,
+      lng,
+      pincode
+    };
+  }
+
   try {
     const districtName =
       (districts as District[]).find((d) => d.code === v.districtCode)?.name ?? "";
     const query = `${v.name}, ${pincode}, ${districtName}, India`;
-    const coords = await getCoordinates(query);
+    const coords = await withTimeout(getCoordinates(query), NOMINATIM_TIMEOUT_MS);
     lat = coords.lat;
     lng = coords.lng;
   } catch {

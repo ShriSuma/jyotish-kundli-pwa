@@ -8,6 +8,7 @@
   { "name": "Banashankari", "districtCode": "KA-BLR", "lat": 12.9255, "lng": 77.5468, "pincode": "560070" },
   { "name": "Whitefield", "districtCode": "KA-BLR", "lat": 12.9698, "lng": 77.75, "pincode": "560066" },
   { "name": "Malleswaram", "districtCode": "KA-BLR", "lat": 13.0035, "lng": 77.5713, "pincode": "560003" },
+  { "name": "Gokarna", "districtCode": "KA-UKN", "stateCode": "KA", "lat": 14.5479, "lng": 74.3187, "pincode": "581326" },
   { "name": "T Nagar", "districtCode": "TN-CHE", "lat": 13.0418, "lng": 80.2341, "pincode": "600017" },
   { "name": "Velachery", "districtCode": "TN-CHE", "lat": 12.9791, "lng": 80.2182, "pincode": "600042" },
   { "name": "Tambaram", "districtCode": "TN-CHE", "lat": 12.9249, "lng": 80.1000, "pincode": "600045" },
