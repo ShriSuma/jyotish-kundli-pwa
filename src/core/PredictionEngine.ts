@@ -5,6 +5,8 @@ import { siderealLongitudes } from "./EphemerisEngine";
 import { degreeToRashi, normalizeDegree } from "./AstroMath";
 import { ageDecimalYearsAt } from "./birthTime";
 import { findBhuktiAtAge } from "./DashaBhuktiEngine";
+import { lifeAreaInsight, natalHousePredictionSignal, planetHouseScore } from "./ChartPredictionKnowledge";
+import { computeDoshaLifeReport } from "./DoshaLifeEngine";
 
 const weekdayLords: PlanetName[] = [PN.Sun, PN.Moon, PN.Mars, PN.Mercury, PN.Jupiter, PN.Venus, PN.Saturn];
 
@@ -161,7 +163,22 @@ const buildIntegratedReading = (
     maha,
     bhukti,
     period: t(periodKey)
-  });
+  }) + doshaReadingSuffix(kundli, t);
+};
+
+const doshaReadingSuffix = (kundli: KundliOutput, t: TFunction): string => {
+  const report = computeDoshaLifeReport(kundli);
+  const parts: string[] = [];
+  if (report.doshaFlags.hasKaalsarp && report.kaalsarp.kind === "full") {
+    parts.push(t("predictions.doshaNote.kaalsarpFull"));
+  } else if (report.doshaFlags.hasKaalsarp) {
+    parts.push(t("predictions.doshaNote.kaalsarpPartial"));
+  }
+  if (report.doshaFlags.hasSarpa) parts.push(t("predictions.doshaNote.sarpa"));
+  if (report.doshaFlags.hasPitru) parts.push(t("predictions.doshaNote.pitru"));
+  if (report.doshaFlags.hasGuruChandal) parts.push(t("predictions.doshaNote.guruChandal"));
+  if (!parts.length) return "";
+  return ` ${t("predictions.doshaNote.prefix")} ${parts.join(" ")} ${t("predictions.doshaNote.contact", { phone: "9972339362" })}`;
 };
 
 const applyTone = (
@@ -208,6 +225,13 @@ export const getDailyPrediction = (
   const wh = natalHouseOfPlanet(kundli, lord);
   if (wh && isKendra(wh)) signals += 1;
   if (wh && (wh === 6 || wh === 8 || wh === 12)) signals -= 1;
+  if (wh) signals += Math.round(planetHouseScore(lord, wh) / 2);
+  signals += Math.round(natalHousePredictionSignal(kundli, lord) / 2);
+
+  const careerArea = lifeAreaInsight(kundli, "career");
+  const marriageArea = lifeAreaInsight(kundli, "marriage");
+  if (careerArea.score >= 2) signals += 1;
+  if (marriageArea.score <= -2) signals -= 1;
 
   const tm = transitMoonSignIndex(date, model);
   const diff = (tm - kundli.moonSign.index + 12) % 12;

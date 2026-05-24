@@ -28,8 +28,8 @@
     "locationGateBody": "पंचांग और सूर्योदय समय अक्षांश व देशांतर पर निर्भर करते हैं। कृपया वह स्थान चुनें जहाँ आप हैं।",
     "openMapPicker": "मानचित्र पर चुनें",
     "goToKundli": "कुंडली पर जाएं",
-    "pincodeGateTitle": "Add your PIN code",
-    "pincodeGateBody": "Sunrise, sunset, and Panchang are aligned to India when you save a 6-digit PIN with your place. Open Kundli, enter your PIN, choose State → District → Village, then Generate once so your place is saved here too."
+    "pincodeGateTitle": "अपना पिन कोड जोड़ें",
+    "pincodeGateBody": "जब आप अपने स्थान के साथ 6 अंकों का पिन सहेजते हैं तो सूर्योदय, सूर्यास्त और पंचांग भारत से संरेखित होते हैं। कुंडली खोलें, अपना पिन दर्ज करें, राज्य → जिला → गांव चुनें, फिर एक बार जेनरेट करें ताकि आपका स्थान यहां भी सुरक्षित रहे।"
   },
   "weekday": {
     "0": "रविवार सूर्य से जुड़ा है। धीमी गति और कृतज्ञता अच्छी रहती है।",
@@ -46,10 +46,10 @@
     "name": "नाम",
     "birthDate": "जन्म तिथि",
     "birthTime": "जन्म समय",
-    "birthHour": "Hour (24h)",
-    "birthMinute": "Minute",
-    "birthTimeIst": "Wall clock at birthplace (IST — India Standard Time)",
-    "birthTimeLocal": "Wall clock at birthplace",
+    "birthHour": "घंटा (24 घंटे)",
+    "birthMinute": "मिनट",
+    "birthTimeIst": "जन्मस्थान पर दीवार घड़ी (आईएसटी - भारतीय मानक समय)",
+    "birthTimeLocal": "जन्मस्थान पर दीवार घड़ी",
     "birthPlace": "जन्म स्थान",
     "gothra": "गोत्र (वैकल्पिक)",
     "gothraPlaceholder": "गोत्र चुनें (वैकल्पिक)",
@@ -58,19 +58,19 @@
     "gotraAngirasa": "अंगिरस गोत्र",
     "gotraVishvamitra": "विश्वामित्र गोत्र",
     "pincodeOptional": "पिन कोड (वैकल्पिक, भारत)",
-    "pincodePlaceholder": "PIN code (required, 6 digits)",
-    "pincodeRequired": "Enter a valid 6-digit Indian PIN code and pick your birth place from the list below.",
-    "pincodeHint": "Sunrise, Panchang, and saved location all use your PIN with the village you select. Enter six digits first; the lists will narrow.",
+    "pincodePlaceholder": "पिन कोड (आवश्यक, 6 अंक)",
+    "pincodeRequired": "एक वैध 6-अंकीय भारतीय पिन कोड दर्ज करें और नीचे दी गई सूची से अपना जन्म स्थान चुनें।",
+    "pincodeHint": "आपके द्वारा चुने गए गांव के साथ सूर्योदय, पंचांग और सहेजा गया स्थान सभी आपके पिन का उपयोग करते हैं। पहले छह अंक दर्ज करें; सूचियाँ संकीर्ण हो जाएंगी.",
     "homePlaceName": "घर / क्षेत्र लेबल (वैकल्पिक)",
     "openMap": "मानचित्र पर चुनें",
     "mapPickerTitle": "मानचित्र पर जन्म स्थान चुनें",
     "mapPickerPrivacy": "यह पिकर खुला होने पर Google को मानचित्र इंटरैक्शन मिल सकते हैं। केवल तभी उपयोग करें जब आप सहमत हों।",
     "mapPickerNoKey": "मानचित्र के लिए अपने वातावरण में VITE_GOOGLE_MAPS_API_KEY जोड़ें।",
     "mapPickerOsmPrivacy": "मानचित्र टाइल OpenStreetMap से; पता खोज OSM Nominatim (Google कुंजी आवश्यक नहीं)।",
-    "patrikaTitle": "Baggona Panchanga Creation",
+    "patrikaTitle": "बग्गोना पंचांग निर्माण",
     "patrikaNote": "मुद्रण शैली; ग्रह स्थितियाँ इस ऐप की गणना पर आधारित हैं (हस्तलिखित पंचांग से थोड़ा भिन्न हो सकता है)।",
-    "patrikaGhatiSinceSunrise": "Ghaṭī since sunrise",
-    "patrikaGhatiUnit": "ghaṭī–vighaṭī",
+    "patrikaGhatiSinceSunrise": "सूर्योदय से घटी",
+    "patrikaGhatiUnit": "घटि-विघाती",
     "patrikaSunsetSide": "सूर्यास्त (अनुमानित)",
     "patrikaSunriseSide": "सूर्योदय (अनुमानित)",
     "patrikaSolar": "सौर",
@@ -93,35 +93,35 @@
     "download": "PNG डाउनलोड",
     "downloadPdf": "PDF डाउनलोड",
     "share": "चार्ट शेयर करें",
-    "shareSummary": "Kundli for {{name}}\nLagna rāśi: {{lagna}}\nMoon rāśi: {{moon}}\nGenerated with Jyotish Kundli",
+    "shareSummary": "{{name}} के लिए कुंडली\nलग्न राशि: {{lagna}}\nचंद्र राशि: {{moon}}\nज्योतिष कुंडली से उत्पन्न",
     "requiredFields": "कृपया सभी आवश्यक फ़ील्ड भरें।",
     "savedPrefix": "सहेजा गया",
     "todayPrediction": "आज का संक्षिप्त फल",
     "dashaTitle": "दशा झलक",
     "dashaYearsUnit": "y",
-    "dashaLifetimeTitle": "Lifetime mahadashas (to age 120)",
-    "dashaLifetimeHint": "Bar width is proportional to each mahadasha length; colours follow the dasha lord.",
-    "dashaExplorerTitle": "Interactive Dasha–Bhukti",
-    "dashaExplorerAge": "Age",
-    "dashaMaha": "Mahadasha",
-    "dashaBhukti": "Antardasha (Bhukti)",
-    "dashaAntarSeries": "Antar dasha sequence in this mahadasha (Ketu→Venus→Sun→… cycle)",
-    "dashaTableToggle": "Mahadasha list",
-    "lagnaPatrika": "Lagna",
+    "dashaLifetimeTitle": "जीवनकाल महादशा (120 वर्ष की आयु तक)",
+    "dashaLifetimeHint": "बार की चौड़ाई प्रत्येक महादशा की लंबाई के समानुपाती होती है; रंग दशा स्वामी का अनुसरण करते हैं।",
+    "dashaExplorerTitle": "इंटरैक्टिव दशा-भुक्ति",
+    "dashaExplorerAge": "आयु",
+    "dashaMaha": "महादशा",
+    "dashaBhukti": "अंतर्दशा (भुक्ति)",
+    "dashaAntarSeries": "इस महादशा में अन्तर्दशा क्रम (केतु→शुक्र→सूर्य→…चक्र)",
+    "dashaTableToggle": "महादशा सूची",
+    "lagnaPatrika": "लग्न",
     "rashiAmshaAbbr": "amsha",
-    "maandiShort": "Maandi",
-    "dashaBalanceAtBirth": "Dasha balance at birth:",
+    "maandiShort": "मांडी",
+    "dashaBalanceAtBirth": "जन्म के समय दशा संतुलन:",
     "dashaBalanceYmd": "{{years}} y, {{months}} m, {{days}} d (approx.)",
     "viewPredictions": "भविष्यफल देखें",
-    "viewInsights": "Chart insights & yogas",
+    "viewInsights": "चार्ट अंतर्दृष्टि और योग",
     "closeChart": "चार्ट बंद करें",
     "detailsAboutMe": "मेरे बारे में विवरण",
     "detailsLoading": "कथा तैयार हो रही है…",
     "detailsError": "कथा लोड नहीं हो सकी।",
     "detailsConsentHint": "सेटिंग्स में “ऑनलाइन कथा अनुमति” चालू करें और VITE_NARRATIVE_API_URL सेट करें।",
-    "detailsNarrativeNeedConsent": "Turn on “Allow online narrative” in Settings to enable this button.",
-    "detailsNarrativeNeedUrl": "This app build has no narrative server URL. Add one for developers (see README) — the feature is optional.",
-    "detailsMissingUrl": "Narrative URL is not configured for this build. See README.",
+    "detailsNarrativeNeedConsent": "इस बटन को सक्षम करने के लिए सेटिंग्स में \"ऑनलाइन कथा की अनुमति दें\" चालू करें।",
+    "detailsNarrativeNeedUrl": "इस ऐप बिल्ड में कोई नैरेटिव सर्वर यूआरएल नहीं है। डेवलपर्स के लिए एक जोड़ें (README देखें) - सुविधा वैकल्पिक है।",
+    "detailsMissingUrl": "इस बिल्ड के लिए नैरेटिव यूआरएल कॉन्फ़िगर नहीं किया गया है। रीडमे देखें.",
     "syllableHintTitle": "नाम के स्वर (वैकल्पिक)",
     "syllableHintBody": "लोकप्रिय परंपराओं से सामान्य सुझाव — कोई नियम नहीं। कई परिवार अलग व्यवस्था मानते हैं।",
     "southChartAria": "दक्षिण भारतीय शैली जन्म कुंडली",
@@ -132,21 +132,21 @@
     "centerLagna": "लग्न",
     "pada": "पाद",
     "maandi": "मांदी (गुलिक)",
-    "birthSunriseLine": "Birth place sunrise {{sunrise}}, sunset {{sunset}} ({{source}})",
-    "chartYogasTitle": "Yogas in this chart",
-    "yogaBenefic": "auspicious (śubha)",
-    "yogaMalefic": "challenging (aśubha)",
+    "birthSunriseLine": "जन्म स्थान सूर्योदय {{sunrise}}, सूर्यास्त {{sunset}} ({{source}})",
+    "chartYogasTitle": "इस चार्ट में योग",
+    "yogaBenefic": "शुभ (शुभा)",
+    "yogaMalefic": "चुनौतीपूर्ण (अशुभा)",
     "sunSource": {
-      "api": "place sunrise API",
-      "suncalc": "calculated fallback"
+      "api": "सूर्योदय एपीआई रखें",
+      "suncalc": "परिकलित फ़ॉलबैक"
     },
     "planetTable": {
       "planet": "ग्रह",
       "degree": "अंश",
       "amsha": "राशि में अंश (1–30)",
-      "navamsha": "Navāṁśa pada (1–9)",
+      "navamsha": "नवांश पद (1-9)",
       "patrikaAmsha": "Patrikā amsha (° in sign)",
-      "dvadashamsha": "Dvādaśāṁśa (1–12)",
+      "dvadashamsha": "द्वादशांश (1-12)",
       "rashi": "राशि",
       "nakshatra": "नक्षत्र",
       "house": "भाव"
@@ -223,13 +223,63 @@
     "periodWeek": "इस सप्ताह",
     "periodMonth": "इस माह",
     "completeReadingLabel": "पूर्ण पठन (संश्लेषण)",
-    "loadError": "Could not load this reading.",
-    "loadErrorHint": "If this keeps happening, try another tab (Daily / Weekly / Monthly), switch language once in Settings, or clear this site’s stored data — your chart stays in Kundli after you generate again.",
+    "loadError": "यह रीडिंग लोड नहीं की जा सकी.",
+    "loadErrorHint": "यदि ऐसा होता रहता है, तो एक और टैब (दैनिक / साप्ताहिक / मासिक) आज़माएं, सेटिंग्स में एक बार भाषा बदलें, या इस साइट के संग्रहीत डेटा को साफ़ करें - आपके दोबारा तैयार होने के बाद आपका चार्ट कुंडली में रहता है।",
     "apiHint": "वैकल्पिक: VITE_PREDICTION_API_URL सेट करें ताकि आपका बैकएंड समृद्ध पाठ लौटा सके (README देखें)। ऊपर के भाग अभी भी ऑफलाइन गोचर, विंशोत्तरी और चंद्र राशि मिलाते हैं।",
+    "doshaNote": {
+      "prefix": "Chart note:",
+      "kaalsarpFull": "Full Kālasarpa pattern — Kaal Sarp puja at Trimbakeshwar or Rahu–Ketu pooja at Kalahasti may be discussed with a pandit.",
+      "kaalsarpPartial": "Partial serpent-axis clustering — gentle Rahu–Ketu śānti is often suggested.",
+      "sarpa": "Sarpa-dosha hint (Rahu/Ketu in 6–8) — Rahu–Ketu remedies may help.",
+      "pitru": "Pitṛ themes appear — Tripindi or ancestral gratitude may be considered.",
+      "guruChandal": "Guru Chaṇḍāla hint — Guru/Vishnu worship supports balance.",
+      "contact": "Pooja guidance: call {{phone}}."
+    },
     "integrated": {
       "positive": "{{name}}, {{period}} आकाश सहायक है: दिन के स्वामी {{planet}} और {{transitMoon}} में चंद्र गोचर, जबकि आपकी {{moonRashi}} चंद्र राशि परिचित सुकून चाहती है। विंशोत्तरी {{maha}} महादशा और {{bhukti}} अंतर्दशा में है — बड़े अध्याय की आवाज़ तय करने दें; एक सार्थक जीत और एक कोमल सुधार करें।",
       "neutral": "{{name}}, {{period}} मिश्रित है: {{planet}} दिन का रंग, चंद्र {{transitMoon}} में, और {{moonRashi}} कुंडली स्थिर गति माँगती है। {{maha}} / {{bhukti}} में सुधार — एक बातचीत स्पष्ट करें, नींद बचाएँ।",
       "caution": "{{name}}, {{period}} कोमलता चाहिए: {{planet}} किनारे तेज कर सकता है, {{transitMoon}} चंद्र पुरानी कहानियाँ हिला सकता है, {{moonRashi}} संवेदनशीलता की रक्षा करें। {{maha}} / {{bhukti}} में रात देर से बहस से बचें; अपरिवर्तनीय निर्णय टालें यदि मन घुमे।"
+    },
+    "knowledge": {
+      "house1": {
+        "name": "प्रथम - स्व (लग्न)"
+      },
+      "house2": {
+        "name": "दूसरा - धन और परिवार"
+      },
+      "house3": {
+        "name": "तीसरा - प्रयास और भाई-बहन"
+      },
+      "house4": {
+        "name": "चौथा - घर और माँ"
+      },
+      "house5": {
+        "name": "5वां - रचनात्मकता और बच्चे"
+      },
+      "house6": {
+        "name": "छठा - चुनौतियाँ और सेवा"
+      },
+      "house7": {
+        "name": "सातवां - साझेदारी"
+      },
+      "house8": {
+        "name": "आठवाँ - परिवर्तन"
+      },
+      "house9": {
+        "name": "नौवां - भाग्य और धर्म"
+      },
+      "house10": {
+        "name": "10वां - करियर और स्थिति"
+      },
+      "house11": {
+        "name": "11वां - लाभ और नेटवर्क"
+      },
+      "house12": {
+        "name": "12वां - मोक्ष और व्यय"
+      },
+      "kendraNote": "केंद्र भाव (1, 4, 7, 10) मजबूती और दृश्यता देते हैं।",
+      "dusthanaNote": "दुशाना घर (6, 8, 12) परीक्षण लाते हैं - बुद्धिमानी से संभाले जाने पर गहरी वृद्धि भी।",
+      "mitraNote": "प्राकृतिक मित्र (मित्र) एक-दूसरे के विषयों का समर्थन करते हैं; शत्रु (शत्रु) अलग हो जाते हैं।"
     }
   },
   "dashas": {
@@ -249,10 +299,10 @@
   },
   "settings": {
     "language": "भाषा",
-    "langName_en": "English",
+    "langName_en": "अंग्रेज़ी",
     "langName_hi": "हिन्दी",
-    "langName_kn": "ಕನ್ನಡ",
-    "langName_te": "తెలుగు",
+    "langName_kn": "ठीक है",
+    "langName_te": "ठीक है",
     "langName_ta": "தமிழ்",
     "chartStyle": "चार्ट शैली",
     "chartNorth": "उत्तर भारतीय",
@@ -276,14 +326,14 @@
     "narrativeTitle": "ऑनलाइन कथा (वैकल्पिक)",
     "narrativeHelp": "सक्षम होने पर “मेरे बारे में विवरण” एक संक्षिप्त चार्ट सारांश आपके API को भेज सकता है (README देखें)। दस्तावेज़ स्कैन अपलोड न करें।",
     "narrativeAllow": "ऑनलाइन कथा की अनुमति दें",
-    "ayanamsaTitle": "Sidereal calculation (ayanāṃśa)",
-    "ayanamsaDrik": "Drik Gaṇita (True Chitrā — Spica at 180° sidereal)",
-    "ayanamsaLahiri": "Lahiri (linear Chitrapaksha, J2000 tabular)",
-    "ayanamsaHint": "Applies to kundali, Home Panchang on this device, Maandi, and prediction transits. Regenerate the chart after changing.",
-    "nodeTypeTitle": "Rāhu / Ketu (lunar node)",
-    "nodeTypeMean": "Mean node (patrikā style)",
-    "nodeTypeTrue": "True node (modern ephemeris)",
-    "nodeTypeHint": "Handwritten Karnataka patrikās usually use the mean node. True node oscillates slightly and shifts Rāhu/Ketu amsha."
+    "ayanamsaTitle": "नाक्षत्र गणना (अयनांश)",
+    "ayanamsaDrik": "ड्रिक गनिता (सच्चा चित्र - 180° नाक्षत्र पर स्पिका)",
+    "ayanamsaLahiri": "लाहिड़ी (रैखिक चित्रपक्ष, J2000 सारणीबद्ध)",
+    "ayanamsaHint": "इस उपकरण पर कुंडली, गृह पंचांग, ​​मंडी और भविष्यवाणी पारगमन पर लागू होता है। बदलने के बाद चार्ट को पुन: जनरेट करें।",
+    "nodeTypeTitle": "राहु / केतु (चंद्र नोड)",
+    "nodeTypeMean": "मीन नोड (पत्रिका शैली)",
+    "nodeTypeTrue": "सच्चा नोड (आधुनिक पंचांग)",
+    "nodeTypeHint": "हस्तलिखित कर्नाटक पत्रिकाएँ आमतौर पर माध्य नोड का उपयोग करती हैं। ट्रू नोड थोड़ा दोलन करता है और राहु/केतु अमशा को स्थानांतरित करता है।"
   },
   "panchang": {
     "tithi": "तिथि",
@@ -532,39 +582,388 @@
       "mitra": "दोस्त",
       "shatru": "प्रतिद्वंद्वी",
       "sama": "तटस्थ"
+    },
+    "tabs": {
+      "overview": "Now",
+      "houses": "12 Houses",
+      "doshas": "Doshas",
+      "marriage": "Marriage",
+      "family": "Family",
+      "longevity": "Life span",
+      "remedies": "Remedies"
+    },
+    "currentScenarioTitle": "Your current life scenario",
+    "currentScenario": {
+      "tone": {
+        "uplift": "Overall themes lean supportive — this is a good season to build on what is working and share good news with people you trust.",
+        "mixed": "Life is in a mixed phase — some areas ask patience while others open doors. Focus on one clear priority at a time.",
+        "care": "A heavier chapter may be active — move slowly, protect rest, and lean on mentors. Remedies and honest routines help more than haste."
+      },
+      "ageLine": "Current age (approx.): {{age}} years.",
+      "dashaLine": "Vimshottari now: {{maha}} mahādasha, {{bhukti}} bhukti — this colours mood, opportunities, and delays.",
+      "dashaWeight": {
+        "supportive": "The running dasha lords are generally considered gentle — favour learning, relationships, and steady work.",
+        "mixed": "The running dasha mix is neutral — outcomes depend on your choices and daily discipline.",
+        "heavy": "Saturn/Rahu/Mars-type periods ask extra care — avoid rash vows; pooja and patience are traditional allies."
+      }
+    },
+    "doshaFlags": {
+      "kaalsarp": "Kālasarpa",
+      "sarpa": "Sarpa",
+      "pitru": "Pitṛ",
+      "guruChandal": "Guru Chaṇḍāla"
+    },
+    "doshaSummaryTitle": "Dosha scan from your Kundli",
+    "doshaTabIntro": "From your saved Kundli only — each block shows whether this dosha is present and what it may mean in life. Confirm with a pandit before remedies.",
+    "doshaStatus": {
+      "found": "Present in your chart",
+      "notFound": "Not found in your chart"
+    },
+    "doshaAllClearTitle": "No major dosha in this scan",
+    "doshaAllClearBody": "Kaal Sarp, Sarpa, Pitṛ, and Guru Chaṇḍāla patterns from our checklist did not light up. You may still do general śānti for peace — see Remedies tab.",
+    "doshaKaalsarp": {
+      "title": "Kaal Sarp (Kālasarpa) dosha",
+      "clear": "All seven classical grahas are not trapped on one side of the Rahu–Ketu axis in this check — Kaal Sarp dosha is not indicated.",
+      "implication": {
+        "none": "Not applicable.",
+        "partial": "Some grahas lean to one side of Rahu–Ketu — partial Kaal Sarp is suggested. Life may bring clustered lessons then relief. Avoid fear; slow decisions and honest routines help.",
+        "full": "All seven classical grahas sit on one side of Rahu–Ketu — full Kaal Sarp is indicated. Traditions link this to intense karmic focus, delays, and sudden turns. Remedies at Gokarna and Guru guidance are often sought."
+      }
+    },
+    "doshaSarpa": {
+      "title": "Sarpa dosha (Rahu/Ketu in 6–7–8)",
+      "clear": "Rahu and Ketu are not in the 6th, 7th, or 8th from Lagna, Sun, or Moon in this rule — Sarpa dosha is not indicated.",
+      "implication": "Rahu or Ketu sits in a sensitive house (6/7/8) from Lagna, Sun, or Moon. This can bring hidden fears, relationship tests, or health swings. Rahu–Ketu śānti at Gokarna is traditionally done."
+    },
+    "doshaPitru": {
+      "title": "Pitṛ dosha (ancestral)",
+      "clear": "Sun and 9th-house themes look relatively open — strong Pitṛ dosha is not indicated in this scan.",
+      "implication": {
+        "mild": "A mild Pitṛ hint — simple remembrance of elders, charity, or Tripindi-style rituals may bring peace of mind.",
+        "moderate": "Clearer Pitṛ pattern — ancestors may need gratitude through śrāddha, dāna, or pitṛkārya. This is a call to widen the heart, not a curse."
+      }
+    },
+    "doshaGuruChandal": {
+      "title": "Guru Chaṇḍāla dosha",
+      "clear": "Jupiter does not share a sign with Rahu or Ketu — Guru Chaṇḍāla is not indicated.",
+      "implication": "Jupiter sits with Rahu or Ketu — wisdom may clash with illusion or sudden turns. Guru vandana, truthfulness, and Vishnu/Guru remedies are traditional supports."
+    },
+    "kaalsarpDetailTitle": "Kālasarpa / serpent-axis check",
+    "kaalsarpTypeLabel": "Type (when full)",
+    "kaalsarpHowTo": "Full Kālasarpa means all seven classical grahas sit on one side of the Rāhu–Ketu axis. Twelve names (Anant to Sheshnag) depend on Rahu’s house from lagna. Verify with a qualified jyotiṣī before booking pooja.",
+    "kalaSarpaTypes": {
+      "anant": "Anant Kālasarpa (Rahu in 1st house)",
+      "kulik": "Kulik Kālasarpa (Rahu in 2nd house)",
+      "vasuki": "Vasuki Kālasarpa (Rahu in 3rd house)",
+      "shankhpal": "Shankhpal Kālasarpa (Rahu in 4th house)",
+      "padma": "Padma Kālasarpa (Rahu in 5th house)",
+      "mahapadma": "Mahapadma Kālasarpa (Rahu in 6th house)",
+      "takshak": "Takshak Kālasarpa (Rahu in 7th house)",
+      "karkotak": "Karkotak Kālasarpa (Rahu in 8th house)",
+      "shankhachud": "Shankhachud Kālasarpa (Rahu in 9th house)",
+      "ghatak": "Ghatak Kālasarpa (Rahu in 10th house)",
+      "vishdhar": "Vishdhar Kālasarpa (Rahu in 11th house)",
+      "sheshnag": "Sheshnag Kālasarpa (Rahu in 12th house)"
+    },
+    "sarpaDoshaTitle": "Sarpa dosha (Rahu/Ketu in 6–8)",
+    "sarpaDoshaActive": "Rahu or Ketu occupies the 6th, 7th, or 8th house from lagna, Sun, or Moon — traditions link this to sarpa/special Rahu–Ketu remedies.",
+    "sarpaDoshaNone": "No sarpa-dosha pattern from this rule in your chart.",
+    "sarpaDoshaHit": "{{node}} in the {{house}}th house from {{ref}}.",
+    "sarpaRef": {
+      "lagna": "Lagna (Ascendant)",
+      "sun": "Sun",
+      "moon": "Moon"
+    },
+    "guruChandalTitle": "Guru Chaṇḍāla dosha",
+    "guruChandalYes": "Jupiter shares a sign with Rahu or Ketu — some texts suggest Guru/Vishnu-centric remedies and ethical living.",
+    "guruChandalNo": "No Guru Chaṇḍāla conjunction in this chart.",
+    "doshaConsultNote": "Always confirm doshas with a Tamrapatra-certified pandit or trusted jyotiṣī before booking travel or pooja.",
+    "seventhLordTitle": "7th house lord",
+    "seventhLordBody": "Your 7th lord is {{lord}} — marriage tone follows this graha’s house, dignity, and dasha periods.",
+    "familyDashaNoteTitle": "Family mood and dasha",
+    "familyDashaNoteBody": "Home and elders are coloured by {{maha}} mahādasha and {{bhukti}} bhukti — gentleness at home multiplies blessings.",
+    "longevityTitle": "Indicative life span (traditional estimate)",
+    "longevityRange": "Rough indicative range: {{low}} – {{high}} years (midpoint about {{mid}}). Not a medical prediction.",
+    "longevityDisclaimer": "Classical texts use 8th-house strength, Saturn, and Moon for broad life-phase hints only. This is educational — consult doctors for health and a jyotiṣī for personal readings.",
+    "longevityFactors": {
+      "eighthLordStrong": "8th lord in a supportive house adds stability to life-phase estimates.",
+      "eighthLordDusthana": "8th lord in a dusthāna house suggests more transformative life chapters.",
+      "jupiterSupport": "Jupiter in trikona/kendra supports resilience.",
+      "moonKendra": "Moon in kendra supports emotional steadiness.",
+      "saturnEighth": "Saturn in the 8th house — traditions emphasise discipline and care.",
+      "marsEighth": "Mars in the 8th house — watch heat, accidents, and impulsive risk."
+    },
+    "poojaContactTitle": "Book pooja — contact pandit",
+    "poojaContactBody": "For Kaal Sarp, Rahu–Ketu, Pitṛ, and related remedies, call our recommended contact:",
+    "poojaContactHint": "Mention your name, birth details, and which dosha the app flagged. Verify chart with pandit before payment.",
+    "poojaWhere": "Where",
+    "poojaCost": "Typical cost",
+    "poojaBookCall": "Call {{phone}} to book",
+    "poojaNoneTitle": "No major dosha flag from our checklist",
+    "poojaNoneBody": "General śānti or yearly pooja may still be done for peace of mind — call if you want guidance.",
+    "poojaVerifyNote": "Locations: Trimbakeshwar (Nashik) for Kaal Sarp; Sri Kalahasti (near Tirupati) for Rahu–Ketu. Prices are indicative (₹300–₹5,000).",
+    "remediesDoshaTitle": "Doshas found in your chart",
+    "remediesContactTitle": "Remedies & resolution — call pandit",
+    "remediesContactBody": "For Kaal Sarp, Rahu–Ketu, Pitṛ, Guru Chaṇḍāla and related remedies, call for a personal reading and pooja guidance:",
+    "remediesContactHint": "Share your name, birth details, and which dosha the app flagged. A qualified jyotiṣī will confirm before any payment or travel.",
+    "poojas": {
+      "items": {
+        "kaalSarpaTrimbakeshwar": "Kaal Sarpa Dosh Puja",
+        "kaalSarpaTrimbakeshwarDesc": "Homa and mantra to Lord Shiva, Rahu, and Ketu — famous at Trimbakeshwar Jyotirlinga.",
+        "kaalSarpaTrimbakeshwarLoc": "Trimbakeshwar Temple, Nashik, Maharashtra (Trimbakeshwar Purohit Sangh)",
+        "kaalSarpaTrimbakeshwarCost": "About ₹1,500 – ₹5,000 depending on setup",
+        "rahuKetuKalahasti": "Rahu Ketu Pooja",
+        "rahuKetuKalahastiDesc": "Special Rahu–Ketu pooja at one of India’s most visited temples for nodal remedies.",
+        "rahuKetuKalahastiLoc": "Sri Kalahasti Temple, near Tirupati, Andhra Pradesh",
+        "rahuKetuKalahastiCost": "About ₹300 – ₹2,500 (ticket tiers)",
+        "rahuKetuShanti": "Rahu–Ketu Shanti",
+        "rahuKetuShantiDesc": "Mantra, dāna, and śānti for partial serpent-axis or sarpa patterns.",
+        "rahuKetuShantiLoc": "Local Shiva/Rahu temple or Trimbakeshwar / Kalahasti",
+        "rahuKetuShantiCost": "Varies; discuss with pandit on call",
+        "tripindiShradh": "Tripindi Shradh",
+        "tripindiShradhDesc": "Ancestral ritual for pitṛ peace when Sun/9th house themes are afflicted.",
+        "tripindiShradhLoc": "Trimbakeshwar, Gaya, or authorised pitṛ kṣetra",
+        "tripindiShradhCost": "Discuss with pandit — often ₹2,000+",
+        "narayanNagbali": "Narayan Nagbali",
+        "narayanNagbaliDesc": "Combined ritual for pitṛ and sarpa karmas in some traditions.",
+        "narayanNagbaliLoc": "Trimbakeshwar or specialist kṣetra",
+        "narayanNagbaliCost": "Premium ritual — confirm on call",
+        "guruChandalRemedy": "Guru / Vishnu remedy",
+        "guruChandalRemedyDesc": "Guru vandana, Vishnu sahasranāma, or yellow dāna when Jupiter meets Rahu/Ketu.",
+        "guruChandalRemedyLoc": "Local temple or home pooja with pandit guidance",
+        "guruChandalRemedyCost": "Varies"
+      }
     }
   },
+  "reading": {
+    "intro": "From your generated Kundli: Lagna (1st house) is in {{rashi}}. All houses are counted clockwise from this point.",
+    "lagnaLine": "Lagna is {{rashi}}. Lagna lord {{lord}} sits in the {{lordHouse}}th house {{relation}}. Planets with Lagna: {{withPlanets}}.",
+    "lagnaAlone": "none (Lagna sign alone)",
+    "ageLine": "From your Kundli chart age: about {{age}} years now.",
+    "dashaLine": "Vimshottari running now: {{maha}} mahadasha, {{bhukti}} bhukti.",
+    "unknown": "not computed",
+    "houseN": "{{n}}th house",
+    "emptyHouse": "no classical graha",
+    "relation": {
+      "mitra": "in a friendly sign",
+      "shatru": "in an enemy sign",
+      "sama": "in a neutral sign",
+      "own": "in own sign"
+    },
+    "tone": {
+      "uplift": "supportive",
+      "mixed": "mixed",
+      "care": "needs care"
+    },
+    "phase": {
+      "supportive": "Current phase is {{tone}}: {{maha}} mahadasha and {{bhukti}} bhukti favour steady progress.",
+      "mixed": "Current phase is {{tone}}: {{maha}} / {{bhukti}} dasha — balance effort with rest.",
+      "heavy": "Current phase is {{tone}}: {{maha}} / {{bhukti}} period — move slowly; remedies and patience help."
+    },
+    "marriage": {
+      "strong": "From your Kundli: 7th lord {{seventhLord}} and Venus in {{venusInChart}} support partnership when you communicate clearly.",
+      "mixed": "From your Kundli: marriage themes are mixed — 7th lord {{seventhLord}}, Venus in {{venusInChart}}; patience and honesty matter.",
+      "care": "From your Kundli: 7th lord {{seventhLord}} and Venus in {{venusInChart}} ask for slow commitments and family counsel."
+    },
+    "family": {
+      "strong": "From your Kundli: 4th lord {{fourthLord}} and Moon in house {{moonHouse}} support home peace and elders.",
+      "mixed": "From your Kundli: family life needs listening — 4th lord {{fourthLord}}, Moon in house {{moonHouse}}."
+    },
+    "career": {
+      "strong": "From your Kundli: 10th lord {{tenthLord}} in house {{tenthLordHouse}} supports visible work and reputation.",
+      "mixed": "From your Kundli: career path may shift — 10th lord {{tenthLord}} in house {{tenthLordHouse}}; build skills steadily.",
+      "care": "From your Kundli: 10th lord {{tenthLord}} in house {{tenthLordHouse}} prefers stable roles and documented agreements."
+    },
+    "careerJobs": "Work areas suited from your chart: {{jobs}}.",
+    "careerJobsNone": "No strong career karaka flag — diversify skills from your 10th house lord placement.",
+    "health": {
+      "strong": "From your Kundli: Moon in house {{moonHouse}} supports routine and recovery when you protect sleep.",
+      "mixed": "From your Kundli: Moon in house {{moonHouse}} — alternate work with rest.",
+      "care": "From your Kundli: Moon in house {{moonHouse}} — regular check-ups and calm pacing matter."
+    },
+    "caution": {
+      "dusthana": "{{planet}} in {{house}}th house (dusthana) — avoid rash decisions in this area.",
+      "kaalsarp": "Kālasarpa pattern in your Kundli — Kaal Sarp / Rahu–Ketu śānti may be discussed with pandit.",
+      "sarpa": "Sarpa dosha hint in your Kundli — Rahu–Ketu care is traditional.",
+      "pitru": "Pitṛ themes in your Kundli — ancestral gratitude helps.",
+      "guruChandal": "Guru Chaṇḍāla hint — Guru worship supports balance."
+    },
+    "strength": {
+      "strong": "{{planet}} strong in {{house}}th house {{relation}}.",
+      "lagnaLord": "Lagna lord {{lord}} well placed in {{house}}th house."
+    },
+    "houseGood": "{{house}}th house ({{rashi}}): lord {{lord}} in {{lordHouse}}th; grahas: {{occupants}} — supportive area.",
+    "houseWatch": "{{house}}th house ({{rashi}}): lord {{lord}} in {{lordHouse}}th — watch this life area with patience.",
+    "housesGuideIntro": "In the South Indian chart, rāśi signs are fixed in the grid; bhāvas are counted clockwise from your Lagna (1st house). Each score (0–100) comes from your house lord's placement, friendly/enemy sign, and grahas sitting in that bhāva.",
+    "houseBodyLabel": "Body areas linked to this bhāva",
+    "scoreLabel": "{{score}}/100 · {{stars}} stars",
+    "dashaCautionTitle": "Ages to move carefully (Vimśottari dasha / bhukti)",
+    "elements": {
+      "fire": "fire",
+      "earth": "earth",
+      "air": "air",
+      "water": "water"
+    },
+    "houseNames": {
+      "h1": "Tanu Bhava — Self",
+      "h2": "Dhana Bhava — Wealth & Family",
+      "h3": "Sahaja Bhava — Courage & Effort",
+      "h4": "Matru & Sukha — Mother & Happiness",
+      "h5": "Putra Bhava — Creativity & Children",
+      "h6": "Ari Bhava — Obstacles & Service",
+      "h7": "Yuvati Bhava — Partnerships",
+      "h8": "Randhra Bhava — Transformation",
+      "h9": "Dharma Bhava — Fortune & Faith",
+      "h10": "Karma Bhava — Career",
+      "h11": "Labha Bhava — Gains",
+      "h12": "Vyaya Bhava — Expenses & Moksha"
+    },
+    "houseSections": {
+      "h1": "Who you are — body, mind, confidence, and life direction",
+      "h2": "Money, family, speech, food, and childhood support",
+      "h3": "Courage, siblings, short travel, skills, and effort",
+      "h4": "Mother, home, land, vehicles, peace, and schooling",
+      "h5": "Children, love, creativity, intelligence, and merit",
+      "h6": "Enemies, debts, illness, daily work, and service",
+      "h7": "Spouse, marriage, business partners, and public deals",
+      "h8": "Life span, sudden events, inheritance, and transformation",
+      "h9": "Father, guru, luck, dharma, and long journeys",
+      "h10": "Job, reputation, government, and visible success",
+      "h11": "Profit, fulfilled dreams, friends, and elder siblings",
+      "h12": "Expenses, foreign lands, sleep, charity, and liberation"
+    },
+    "houseThemes": {
+      "h1": "identity, physical body, confidence, vitality, and the overall direction of life",
+      "h2": "money, savings, family of birth, speech, food habits, and early upbringing",
+      "h3": "courage, younger siblings, short travel, writing, hobbies, and hands-on skills",
+      "h4": "mother, home peace, land, vehicles, emotional comfort, and early schooling",
+      "h5": "children, creativity, romance, speculation, mantras, and past-life merit (puṇya)",
+      "h6": "enemies, debts, daily work, illness, service, and pets",
+      "h7": "marriage, spouse, business partners, public dealings, and legal contracts",
+      "h8": "longevity, sudden events, inheritance, occult study, and deep transformation",
+      "h9": "father, guru, dharma, higher education, luck, and long journeys",
+      "h10": "career, reputation, government, bosses, and visible karma in society",
+      "h11": "profits, fulfilled wishes, elder siblings, networks, and social gains",
+      "h12": "expenses, foreign lands, sleep, isolation, charity, and spiritual liberation"
+    },
+    "houseBody": {
+      "h1": "head, brain, skull",
+      "h2": "face, right eye, teeth, tongue, mouth, throat",
+      "h3": "shoulders, arms, hands, right ear, upper chest",
+      "h4": "chest, lungs, heart, breasts",
+      "h5": "stomach, upper abdomen, liver, gallbladder",
+      "h6": "lower abdomen, intestines, digestion",
+      "h7": "kidneys, lower back, urinary tract, reproductive organs",
+      "h8": "chronic illness zones, excretory system, external sexual organs",
+      "h9": "hips, thighs",
+      "h10": "knees, kneecaps",
+      "h11": "shins, calves, ankles, left ear",
+      "h12": "feet, toes, left eye"
+    },
+    "lordContext": {
+      "ownSign": "The lord sits in its own sign — a clear strength for this life area.",
+      "kendra": "The lord sits in a kendra (angular house) — results show openly in the world.",
+      "trikona": "The lord sits in a trikona — dharmic support and natural grace.",
+      "upachaya": "The lord sits in an upachaya house — results grow with age and effort.",
+      "dusthana": "The lord sits in a dusthāna (6/8/12) — this area needs patience, remedies, and realistic expectations.",
+      "general": "The lord's house colours how easily this bhāva gives results."
+    },
+    "housePrediction": {
+      "noGraha": "No classical graha occupies this bhāva — the house lord alone decides the story.",
+      "grahaInHouse": "{{planet}} {{relation}}",
+      "excellent": "Your {{houseName}} is strong (score {{score}}/100, {{stars}} stars). It falls in {{rashi}}, a {{element}} sign, ruling {{themes}}. Lord {{lord}} sits in the {{lordHouse}}th house {{lordRelation}} — {{lordContext}} {{occupants}} You can lean on this area for growth and confidence.",
+      "good": "Your {{houseName}} is generally supportive (score {{score}}/100, {{stars}} stars). {{rashi}} ({{element}} sign) governs {{themes}}. Lord {{lord}} in the {{lordHouse}}th house {{lordRelation}} — {{lordContext}} {{occupants}} Stay consistent here and results improve steadily.",
+      "average": "Your {{houseName}} is mixed (score {{score}}/100, {{stars}} stars). {{rashi}} sign covers {{themes}}. Lord {{lord}} in the {{lordHouse}}th house {{lordRelation}} — {{lordContext}} {{occupants}} Neither fully blocked nor fully free — your choices and dasha timing matter most.",
+      "weak": "Your {{houseName}} needs attention (score {{score}}/100, {{stars}} stars). In {{rashi}} ({{element}}), this bhāva rules {{themes}}. Lord {{lord}} in the {{lordHouse}}th house {{lordRelation}} — {{lordContext}} {{occupants}} Avoid hasty decisions here; small daily discipline helps more than big gambles.",
+      "challenging": "Your {{houseName}} is under pressure (score {{score}}/100, {{stars}} stars). {{rashi}} sign links to {{themes}}. Lord {{lord}} in the {{lordHouse}}th house {{lordRelation}} — {{lordContext}} {{occupants}} Traditional remedies, honest routines, and consulting a jyotiṣī are wise for this bhāva."
+    },
+    "dashaCaution": {
+      "line": "Ages {{from}}–{{to}} years: {{reason}}{{danger}}{{current}}",
+      "dangerSuffix": " — be extra careful about {{dangers}}.",
+      "currentNow": " (You are in this period now.)",
+      "reason": {
+        "heavyMaha": "{{maha}} mahādāśa often slows plans and tests patience — do not force major risks.",
+        "heavyBhukti": "Within the running mahādāśa, {{bhukti}} bhukti adds friction — read contracts twice and protect health.",
+        "heavyStack": "{{maha}} mahādāśa with {{bhukti}} bhukti together is a heavy stretch — postpone risky travel and big loans if you can.",
+        "dusthanaMaha": "{{maha}} mahādāśa rules a dusthāna in your chart — health, debts, or hidden matters need extra care.",
+        "dusthanaBoth": "{{maha}} mahādāśa and {{bhukti}} bhukti both touch difficult houses — this is a key age band for caution and remedies."
+      }
+    },
+    "danger": {
+      "fire": "fire, heat, kitchen safety, and electrical burns",
+      "accidents": "road accidents and sharp injuries",
+      "surgery": "surgery or blood-related procedures",
+      "heat": "sunstroke, fever, and inflammation",
+      "falls": "falls, fractures, and joint pain",
+      "bones": "bone and teeth issues",
+      "chronic": "chronic fatigue and long illnesses",
+      "delays": "delays, legal blocks, and depression spells",
+      "poison": "food poisoning, toxins, and allergy flare-ups",
+      "deception": "fraud, betrayal, and unclear contracts",
+      "sudden": "sudden shocks, theft, or unexpected losses",
+      "snake": "snake fear, insect bites, and phobias (traditional Rahu karakatva)",
+      "cuts": "cuts, minor surgeries, and skin issues",
+      "isolation": "loneliness, hospital stays, or remote travel alone",
+      "water": "water accidents, drowning fear, and chest congestion",
+      "travel": "night travel and long journeys without rest",
+      "chest": "chest, lungs, and emotional swings",
+      "heart": "heart, eyes, and ego clashes with authority",
+      "authority": "clashes with bosses or government offices"
+    },
+    "doshaSummary": "From your Kundli dosha scan: {{list}}.",
+    "doshaClear": "From your Kundli: no major dosha flag in our checklist.",
+    "dosha": {
+      "kaalsarp": "Kālasarpa / serpent-axis",
+      "sarpa": "Sarpa dosha",
+      "pitru": "Pitṛ dosha hint",
+      "guruChandal": "Guru Chaṇḍāla"
+    },
+    "longevity": "From your Kundli (indicative only): life span band about {{low}}–{{high}} years (mid ~{{mid}}). Not medical advice.",
+    "jobs": {
+      "mercury": "Mercury-strong — writing, accounts, IT, teaching",
+      "jupiter": "Jupiter-strong — law, advisory, education, dharma work",
+      "mars": "Mars-strong — engineering, defence, surgery, sports",
+      "venus": "Venus-strong — arts, design, hospitality, luxury trade",
+      "saturn": "Saturn-strong — administration, labour, long projects",
+      "sun": "Sun-strong — leadership, government, medicine",
+      "tenthLord": "10th lord {{lord}} in {{house}}th house — vocation follows this graha's karakatva"
+    },
+    "strengthsTitle": "Strengths from your chart",
+    "cautionsTitle": "Be careful about",
+    "housesTitle": "House highlights (from Lagna)",
+    "fromKundliLabel": "From your generated Kundli"
+  },
   "melapak": {
-    "title": "Melapak (match)",
-    "subtitle": "Birth Moon of the girl and boy — Ashta Kuta (up to 36) with Rajju and Vedha checks. Many families use 18/36 as a rough minimum; 24+ is often read as strong.",
-    "disclaimer": "This is a simplified reference calculator. Real matching also considers Kuja/Māṅgala dosha, dasa balance, caste/regional rules, and family counsel.",
-    "boy": "Boy (groom)",
-    "girl": "Girl (bride)",
-    "required": "Choose date and time for both.",
-    "match": "Calculate match",
-    "scoreLabel": "Melapak score",
-    "cutoffHint": "Common cut-off: about 18/36 points; Rajju or Vedha dosha is often treated separately even when the point total is high.",
-    "kuta": "Kuta",
-    "points": "Points",
-    "boyChart": "Boy — Kundli",
-    "girlChart": "Girl — Kundli",
-    "rajjuWarn": "Rajju dosha: same body-line grouping in the Saravali-style table — many almanacs advise caution.",
-    "vedhaWarn": "Vedha dosha: nakṣatras form a harmful pair in the common 12-pair list.",
+    "title": "मेलापाक (मैच)",
+    "subtitle": "लड़की और लड़के का जन्म चंद्रमा - अष्ट कुटा (36 तक) रज्जू और वेधा जांच के साथ। कई परिवार मोटे न्यूनतम के रूप में 18/36 का उपयोग करते हैं; 24+ को अक्सर मजबूत पढ़ा जाता है।",
+    "disclaimer": "यह एक सरलीकृत संदर्भ कैलकुलेटर है. वास्तविक मिलान कुज/मंगल दोष, दशा संतुलन, जाति/क्षेत्रीय नियमों और पारिवारिक परामर्श पर भी विचार करता है।",
+    "boy": "लड़का (दूल्हा)",
+    "girl": "लड़की (दुल्हन)",
+    "required": "दोनों के लिए दिनांक और समय चुनें.",
+    "match": "मिलान की गणना करें",
+    "scoreLabel": "मेलापक स्कोर",
+    "cutoffHint": "सामान्य कट-ऑफ़: लगभग 18/36 अंक; कुल अंक अधिक होने पर भी रज्जू या वेध दोष का अक्सर अलग से इलाज किया जाता है।",
+    "kuta": "कूटा",
+    "points": "अंक",
+    "boyChart": "लड़का- कुंडली",
+    "girlChart": "कन्या- कुंडली",
+    "rajjuWarn": "रज्जु दोष: सारावली-शैली तालिका में समान शरीर-रेखा समूहन - कई पंचांग सावधानी बरतने की सलाह देते हैं।",
+    "vedhaWarn": "वेध दोष: नक्षत्र सामान्य 12-जोड़ी सूची में एक हानिकारक जोड़ी बनाते हैं।",
     "verdict": {
-      "0": "Low match by this model — review calmly with elders or an astrologer.",
-      "1": "Moderate — crosses a common 18-point floor if doshas are absent.",
-      "2": "Good — solid Ashta Kuta total with no Rajju/Vedha flags here.",
-      "3": "Strong — high score and no Rajju/Vedha in this scan."
+      "0": "इस मॉडल द्वारा कम मिलान - बड़ों या किसी ज्योतिषी के साथ शांति से समीक्षा करें।",
+      "1": "मध्यम - दोष अनुपस्थित होने पर सामान्य 18-बिंदु मंजिल को पार कर जाता है।",
+      "2": "अच्छा - ठोस अष्ट कूट कुल, यहां कोई रज्जू/वेधा ध्वज नहीं है।",
+      "3": "मजबूत - उच्च स्कोर और इस स्कैन में कोई रज्जू/वेधा नहीं।"
     },
     "kutas": {
-      "varna": "Varna",
-      "vashya": "Vashya",
-      "tara": "Tara (Dina)",
-      "yoni": "Yoni",
-      "grahaMaitri": "Graha Maitri",
-      "gana": "Gana",
-      "bhakoot": "Bhakoot",
-      "nadi": "Nadi"
+      "varna": "वार्ना",
+      "vashya": "वश्य",
+      "tara": "तारा (दीना)",
+      "yoni": "योनि",
+      "grahaMaitri": "ग्रह मैत्री",
+      "gana": "गण",
+      "bhakoot": "भकूट",
+      "nadi": "नाड़ी"
     }
   },
   "common": {
@@ -588,7 +987,8 @@
     "dismiss": "बंद करें"
   },
   "location": {
-    "loading": "स्थान लोड हो रहे हैं…"
+    "loading": "स्थान लोड हो रहे हैं…",
+    "pinNotFound": "इस पिन का समाधान नहीं किया जा सका - कोड की जाँच करें या मैन्युअल रूप से स्थान चुनें"
   },
   "gotras": {
     "Agastya": "अगस्त्य गोत्र",

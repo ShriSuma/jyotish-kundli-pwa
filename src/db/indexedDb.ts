@@ -81,6 +81,14 @@ export type GeocodeCacheRecord = {
   cachedAt: string;
 };
 
+export type TranslationCacheRecord = {
+  id: string;
+  lang: string;
+  sourceText: string;
+  translatedText: string;
+  cachedAt: string;
+};
+
 class AppDatabase extends Dexie {
   settings!: Table<SettingsRecord>;
   kundlis!: Table<KundliRecord>;
@@ -89,6 +97,7 @@ class AppDatabase extends Dexie {
   scheduledNotifications!: Table<ScheduledNotificationRecord>;
   analyticsEvents!: Table<AnalyticsEventRecord>;
   geocodeCache!: Table<GeocodeCacheRecord>;
+  translationCache!: Table<TranslationCacheRecord>;
 
   constructor() {
     super("jyotish-kundli-db");
@@ -103,6 +112,16 @@ class AppDatabase extends Dexie {
       scheduledNotifications: "id,type,scheduledTime,fired",
       analyticsEvents: "++id,eventName,timestamp",
       geocodeCache: "placeName,cachedAt"
+    });
+    this.version(8).stores({
+      settings: "++id,language,createdAt,consentChoice,analyticsEnabled,chartStyle",
+      kundlis: "id,userId,name,createdAt",
+      panchangCache: "id,date,location,cachedAt",
+      predictionCache: "id,kundliId,period,periodKey,cachedAt",
+      scheduledNotifications: "id,type,scheduledTime,fired",
+      analyticsEvents: "++id,eventName,timestamp",
+      geocodeCache: "placeName,cachedAt",
+      translationCache: "id,lang,cachedAt"
     });
   }
 }
@@ -289,4 +308,32 @@ export const getGeocode = async (placeName: string): Promise<{ lat: number; lng:
     return null;
   }
   return { lat: row.lat, lng: row.lng };
+};
+
+const TRANSLATION_CACHE_TTL_MS = 180 * 24 * 60 * 60 * 1000;
+
+export const getTranslationCache = async (id: string): Promise<string | null> => {
+  const row = await db.translationCache.get(id);
+  if (!row) return null;
+  const ageMs = Date.now() - new Date(row.cachedAt).getTime();
+  if (ageMs > TRANSLATION_CACHE_TTL_MS) {
+    await db.translationCache.delete(id);
+    return null;
+  }
+  return row.translatedText;
+};
+
+export const setTranslationCache = async (
+  id: string,
+  lang: string,
+  sourceText: string,
+  translatedText: string
+): Promise<void> => {
+  await db.translationCache.put({
+    id,
+    lang,
+    sourceText,
+    translatedText,
+    cachedAt: new Date().toISOString()
+  });
 };

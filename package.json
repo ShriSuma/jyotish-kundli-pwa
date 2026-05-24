@@ -12,6 +12,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "i18n:sync": "node scripts/sync-i18n-from-en.mjs",
+    "i18n:translate": "node scripts/translate-untranslated-locale.mjs",
     "kill-ports": "npx kill-port 5173 3000 8080 || true",
     "check": "npm run kill-ports && npm run test && echo \"\\n✅ Tests passed. Starting dev server...\\n\" && npm run dev"
   },

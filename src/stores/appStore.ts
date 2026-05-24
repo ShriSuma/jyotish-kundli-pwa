@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { getSettings, saveSettings } from "../db/indexedDb";
+import { hydrateMissingTranslations } from "../services/i18nHydrate";
 import type { AyanamsaModel, NodeType } from "../core/AstroTypes";
 
 export type SupportedLanguage = "en" | "hi" | "kn" | "te" | "ta";
@@ -79,6 +80,13 @@ export const useAppStore = create<AppState>()(
       setLanguage: async (language) => {
         localStorage.setItem("i18nextLng", language);
         await i18n.changeLanguage(language);
+        if (language !== "en") {
+          try {
+            await hydrateMissingTranslations(language);
+          } catch {
+            /* offline or API unavailable — language still switches */
+          }
+        }
         await saveSettings({ language });
         set({ language });
       },
@@ -147,6 +155,9 @@ export const useAppStore = create<AppState>()(
         const settings = await getSettings();
         if (settings?.language && isSupportedLanguage(settings.language)) {
           await i18n.changeLanguage(settings.language);
+          if (settings.language !== "en") {
+            void hydrateMissingTranslations(settings.language).catch(() => {});
+          }
           set({
             language: settings.language,
             chartStyle: settings.chartStyle ?? "north",

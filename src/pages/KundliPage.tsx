@@ -19,6 +19,7 @@ import LocationSelector, { type SelectedLocation } from "../components/LocationS
 import MapLocationPicker from "../components/MapLocationPicker";
 import Card from "../components/ui/Card";
 import { buildNarrativeSummary, fetchKundliNarrative, NarrativeApiError } from "../services/kundliNarrativeApi";
+import { localizeNarrativeText } from "../services/localizeContent";
 import { formatPickerDateLocalYmd } from "../core/birthTime";
 import { GOTRA_OPTIONS, gotraI18nKey } from "../data/gotras";
 import { formatNavamsaPada, formatRashiAmsha, patrikaNavamshaFromDegree } from "../core/localeNumbers";
@@ -253,7 +254,8 @@ export default function KundliPage(): JSX.Element {
       const birthTime = birthTimeHm.trim();
       const body = buildNarrativeSummary({ name: form.name, birthDate, birthTime }, result, i18n.language);
       const text = await fetchKundliNarrative(body);
-      setNarrative(text);
+      const localized = await localizeNarrativeText(text, i18n.language);
+      setNarrative(localized);
     } catch (e) {
       let msg = e instanceof NarrativeApiError ? e.message : (e as Error).message;
       if (e instanceof NarrativeApiError && /missing/i.test(msg)) {

@@ -4,6 +4,11 @@ import { getDailyPrediction, getMonthlyPrediction, getWeeklyPrediction } from ".
 import { ageDecimalYearsAt } from "../core/birthTime";
 import { findBhuktiAtAge } from "../core/DashaBhuktiEngine";
 import { fetchPredictionFromApi } from "../services/predictionApi";
+import { hydrateMissingTranslations } from "../services/i18nHydrate";
+import {
+  localizePredictionOutput,
+  predictionNeedsLocalization
+} from "../services/localizeContent";
 import { analytics } from "../core/analytics";
 import {
   getLatestKundliRecord,
@@ -44,6 +49,9 @@ export default function PredictionsPage(): JSX.Element {
         }
         if (!cancelled) setEmpty(false);
         const lang = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
+        if (lang !== "en") {
+          await hydrateMissingTranslations(lang);
+        }
         const key =
           (tab === "daily"
             ? new Date().toISOString().slice(0, 10)
@@ -52,8 +60,12 @@ export default function PredictionsPage(): JSX.Element {
               : `${new Date().getFullYear()}-${new Date().getMonth() + 1}`) + `-${ayanamsaModel}`;
         const cached = kundli.id ? await getPredictionCache(kundli.id, tab, key, lang) : null;
         if (cached) {
+          const localized =
+            lang !== "en" && predictionNeedsLocalization(cached, lang)
+              ? await localizePredictionOutput(cached, lang)
+              : cached;
           if (!cancelled) {
-            setPrediction(cached);
+            setPrediction(localized);
             setLoading(false);
           }
           return;
@@ -118,6 +130,9 @@ export default function PredictionsPage(): JSX.Element {
                     kundli.name,
                     birth
                   );
+        }
+        if (lang !== "en" && predictionNeedsLocalization(generated, lang)) {
+          generated = await localizePredictionOutput(generated, lang);
         }
         if (kundli.id) {
           await savePredictionCache(kundli.id, tab, key, lang, generated);

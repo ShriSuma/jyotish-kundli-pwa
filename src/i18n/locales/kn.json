@@ -28,8 +28,8 @@
     "locationGateBody": "ಪಂಚಾಂಗ ಮತ್ತು ಸೂರ್ಯೋದಯ ಸಮಯ ಅಕ್ಷಾಂಶ ಮತ್ತು ರೇಖಾಂಶವನ್ನು ಅವಲಂಬಿಸುತ್ತದೆ. ನೀವು ಇರುವ ಸ್ಥಳವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
     "openMapPicker": "ನಕ್ಷೆ ಆಯ್ಕೆಮಾಡಿ",
     "goToKundli": "ಕುಂಡಲಿಗೆ ಹೋಗಿ",
-    "pincodeGateTitle": "Add your PIN code",
-    "pincodeGateBody": "Sunrise, sunset, and Panchang are aligned to India when you save a 6-digit PIN with your place. Open Kundli, enter your PIN, choose State → District → Village, then Generate once so your place is saved here too."
+    "pincodeGateTitle": "ನಿಮ್ಮ ಪಿನ್ ಕೋಡ್ ಸೇರಿಸಿ",
+    "pincodeGateBody": "ನಿಮ್ಮ ಸ್ಥಳದಲ್ಲಿ ನೀವು 6-ಅಂಕಿಯ ಪಿನ್ ಅನ್ನು ಉಳಿಸಿದಾಗ ಸೂರ್ಯೋದಯ, ಸೂರ್ಯಾಸ್ತ ಮತ್ತು ಪಂಚಾಂಗ್ ಅನ್ನು ಭಾರತಕ್ಕೆ ಜೋಡಿಸಲಾಗುತ್ತದೆ. ಕುಂಡ್ಲಿ ತೆರೆಯಿರಿ, ನಿಮ್ಮ ಪಿನ್ ನಮೂದಿಸಿ, ರಾಜ್ಯ → ಜಿಲ್ಲೆ → ಗ್ರಾಮವನ್ನು ಆಯ್ಕೆಮಾಡಿ, ನಂತರ ಒಮ್ಮೆ ರಚಿಸಿ ಇದರಿಂದ ನಿಮ್ಮ ಸ್ಥಳವನ್ನು ಇಲ್ಲಿಯೂ ಉಳಿಸಲಾಗುತ್ತದೆ."
   },
   "weekday": {
     "0": "ಭಾನುವಾರ ಸೂರ್ಯನೊಂದಿಗೆ ಬೆರೆತಿದೆ. ನಿಧಾನ ಮತ್ತು ಕೃತಜ್ಞತೆ ಒಳ್ಳೆಯದು.",
@@ -46,10 +46,10 @@
     "name": "ಹೆಸರು",
     "birthDate": "ಹುಟ್ಟಿದ ದಿನಾಂಕ",
     "birthTime": "ಹುಟ್ಟಿದ ಸಮಯ",
-    "birthHour": "Hour (24h)",
-    "birthMinute": "Minute",
-    "birthTimeIst": "Wall clock at birthplace (IST — India Standard Time)",
-    "birthTimeLocal": "Wall clock at birthplace",
+    "birthHour": "ಗಂಟೆ (24ಗಂ)",
+    "birthMinute": "ನಿಮಿಷ",
+    "birthTimeIst": "ಜನ್ಮಸ್ಥಳದಲ್ಲಿ ಗೋಡೆ ಗಡಿಯಾರ (IST - ಭಾರತದ ಪ್ರಮಾಣಿತ ಸಮಯ)",
+    "birthTimeLocal": "ಜನ್ಮಸ್ಥಳದಲ್ಲಿ ಗೋಡೆ ಗಡಿಯಾರ",
     "birthPlace": "ಹುಟ್ಟಿದ ಸ್ಥಳ",
     "gothra": "ಗೋತ್ರ (ಐಚ್ಛಿಕ)",
     "gothraPlaceholder": "ಗೋತ್ರ ಆಯ್ಕೆ (ಐಚ್ಛಿಕ)",
@@ -58,19 +58,19 @@
     "gotraAngirasa": "ಅಂಗಿರಸ ಗೋತ್ರ",
     "gotraVishvamitra": "ವಿಶ್ವಾಮಿತ್ರ ಗೋತ್ರ",
     "pincodeOptional": "ಪಿನ್ ಕೋಡ್ (ಐಚ್ಛಿಕ, ಭಾರತ)",
-    "pincodePlaceholder": "PIN code (required, 6 digits)",
-    "pincodeRequired": "Enter a valid 6-digit Indian PIN code and pick your birth place from the list below.",
-    "pincodeHint": "Sunrise, Panchang, and saved location all use your PIN with the village you select. Enter six digits first; the lists will narrow.",
+    "pincodePlaceholder": "ಪಿನ್ ಕೋಡ್ (ಅಗತ್ಯವಿದೆ, 6 ಅಂಕೆಗಳು)",
+    "pincodeRequired": "ಮಾನ್ಯವಾದ 6-ಅಂಕಿಯ ಭಾರತೀಯ ಪಿನ್ ಕೋಡ್ ಅನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಕೆಳಗಿನ ಪಟ್ಟಿಯಿಂದ ನಿಮ್ಮ ಜನ್ಮ ಸ್ಥಳವನ್ನು ಆರಿಸಿ.",
+    "pincodeHint": "ಸೂರ್ಯೋದಯ, ಪಂಚಾಂಗ ಮತ್ತು ಉಳಿಸಿದ ಸ್ಥಳ ಎಲ್ಲವೂ ನೀವು ಆಯ್ಕೆ ಮಾಡಿದ ಹಳ್ಳಿಯೊಂದಿಗೆ ನಿಮ್ಮ ಪಿನ್ ಅನ್ನು ಬಳಸುತ್ತವೆ. ಮೊದಲು ಆರು ಅಂಕೆಗಳನ್ನು ನಮೂದಿಸಿ; ಪಟ್ಟಿಗಳು ಕಿರಿದಾಗುತ್ತವೆ.",
     "homePlaceName": "ಮನೆ / ಪ್ರದೇಶದ ಹೆಸರು (ಐಚ್ಛಿಕ)",
     "openMap": "ನಕ್ಷೆಯಲ್ಲಿ ಆಯ್ಕೆ",
     "mapPickerTitle": "ನಕ್ಷೆಯಲ್ಲಿ ಹುಟ್ಟಿದ ಸ್ಥಳ ಆಯ್ಕೆ",
     "mapPickerPrivacy": "ಈ ಪಿಕರ್ ತೆರೆದಿರುವಾಗ Google ಗೆ ನಕ್ಷೆ ಸಂವಹನಗಳು ಬಹುಶಃ ತಲುಪಬಹುದು.",
     "mapPickerNoKey": "ನಕ್ಷೆಗಾಗಿ VITE_GOOGLE_MAPS_API_KEY ಸೇರಿಸಿ.",
     "mapPickerOsmPrivacy": "ನಕ್ಷೆ ಟೈಲ್‌ಗಳು OpenStreetMap; ವಿಳಾಸ ಹುಡುಕಾಟ OSM Nominatim (Google ಕೀ ಬೇಕಿಲ್ಲ).",
-    "patrikaTitle": "Baggona Panchanga Creation",
+    "patrikaTitle": "ಬಗ್ಗೋಣ ಪಂಚಾಂಗ ಸೃಷ್ಟಿ",
     "patrikaNote": "ಮುದ್ರಣ ಶೈಲಿ. ಚಾರ್ಟ್‌ನ ಗ್ರಹಗಳ ಅಂಕೆಗಳು ಕೆಳಗಿನ ಪಟ್ಟಿಯ ನವಾಂಶ ಪಾದ (೧–೯) — ಇನ್ನೊಂದು ಪತ್ರಿಕೆಯೊಂದಿಗೆ ಹೋಲಿಸುವಾಗ ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿನ ಆಯನಾಂಶ (ದೃಕ್ ಗಣಿತ / ಲಹಿರಿ) ಒಂದೇ ಆಗಿರಲಿ. ವಿಂಶೋತ್ತರಿ ಶೇಷದ ವರ್ಷ/ತಿಂಗಳು/ದಿನಗಳು ಸಾಮಾನ್ಯ ೩೬೦-ದಿನ ಸವನ ವರ್ಷ (೧೨×೩೦) ಭಾಗಗಳಾಗಿ; ನಾಗರೀಕ ಕ್ಯಾಲೆಂಡರ್ ಅಲ್ಲ. ರಾಹು/ಕೇತು: ಸತ್ಯ ಗಂಟು. ಮಾಂಡಿ: ಸೂರ್ಯೋದಯದಿಂದ ಹಗಲಿನ ಎಂಟನೇ ಭಾಗ. ಪಂಚಾಂಗ ಸೂರ್ಯೋದಯ/ಅಸ್ತಮಯ ಪಟ್ಟಿಗಳನ್ನು ಅವಲಂಬಿಸುತ್ತದೆ.",
-    "patrikaGhatiSinceSunrise": "Ghaṭī since sunrise",
-    "patrikaGhatiUnit": "ghaṭī–vighaṭī",
+    "patrikaGhatiSinceSunrise": "ಸೂರ್ಯೋದಯದಿಂದ ಘಾಟಿ",
+    "patrikaGhatiUnit": "ಘಾಟಿ–ವಿಘಾಟಿ",
     "patrikaSunsetSide": "ಸೂ. ಅ. ಘಂಟೆ",
     "patrikaSunriseSide": "ಸೂ. ಉ. ಘಂಟೆ",
     "patrikaSolar": "ಸೌರ",
@@ -93,7 +93,7 @@
     "download": "PNG ಡೌನ್‌ಲೋಡ್",
     "downloadPdf": "PDF ಡೌನ್‌ಲೋಡ್",
     "share": "ಚಾರ್ಟ್ ಹಂಚಿಕೆ",
-    "shareSummary": "Kundli for {{name}}\nLagna rāśi: {{lagna}}\nMoon rāśi: {{moon}}\nGenerated with Jyotish Kundli",
+    "shareSummary": "{{name}} ಗಾಗಿ ಕುಂಡ್ಲಿ\nಲಗ್ನ ರಾಶಿ: {{lagna}}\nಚಂದ್ರ ರಾಶಿ: {{moon}}\nಜ್ಯೋತಿಶ್ ಕುಂಡ್ಲಿಯೊಂದಿಗೆ ರಚಿಸಲಾಗಿದೆ",
     "requiredFields": "ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯ ಕ್ಷೇತ್ರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ.",
     "savedPrefix": "ಉಳಿಸಲಾಗಿದೆ",
     "todayPrediction": "ಇಂದಿನ ಓದು",
@@ -105,7 +105,7 @@
     "dashaExplorerAge": "ವಯಸ್ಸು",
     "dashaMaha": "ಮಹಾದಶಾ",
     "dashaBhukti": "ಅಂತರ್ದಶಾ (ಭುಕ್ತಿ)",
-    "dashaAntarSeries": "Antar dasha sequence in this mahadasha (Ketu→Venus→Sun→… cycle)",
+    "dashaAntarSeries": "ಈ ಮಹಾದಶದಲ್ಲಿ ಅಂತರ ದಶಾ ಅನುಕ್ರಮ (ಕೇತು→ಶುಕ್ರ→ಸೂರ್ಯ→… ಚಕ್ರ)",
     "dashaTableToggle": "ಮಹಾದಶಾ ಪಟ್ಟಿ",
     "lagnaPatrika": "ಲಗ್ನ",
     "rashiAmshaAbbr": "ದ್ವಾ",
@@ -113,7 +113,7 @@
     "dashaBalanceAtBirth": "ಜನ್ಮದಲ್ಲಿ ದಶಾ ಶೇಷ:",
     "dashaBalanceYmd": "{{years}} ವ, {{months}} ತಿ, {{days}} ದಿ (೩೬೦-ದಿನ ಸವನ)",
     "viewPredictions": "ಭವಿಷ್ಯ ವೀಕ್ಷಿಸಿ",
-    "viewInsights": "Chart insights & yogas",
+    "viewInsights": "ಚಾರ್ಟ್ ಒಳನೋಟಗಳು ಮತ್ತು ಯೋಗಗಳು",
     "closeChart": "ಚಾರ್ಟ್ ಮುಚ್ಚಿ",
     "detailsAboutMe": "ನನ್ನ ಬಗ್ಗೆ ವಿವರಗಳು",
     "detailsLoading": "ಕಥನ ಸಿದ್ಧವಾಗುತ್ತಿದೆ…",
@@ -132,13 +132,13 @@
     "centerLagna": "ಲಗ್ನ",
     "pada": "ಪಾದ",
     "maandi": "ಮಾಂಡಿ (ಗುಲಿಕ)",
-    "birthSunriseLine": "Birth place sunrise {{sunrise}}, sunset {{sunset}} ({{source}})",
-    "chartYogasTitle": "Yogas in this chart",
-    "yogaBenefic": "auspicious (śubha)",
-    "yogaMalefic": "challenging (aśubha)",
+    "birthSunriseLine": "ಹುಟ್ಟಿದ ಸ್ಥಳ ಸೂರ್ಯೋದಯ {{sunrise}}, ಸೂರ್ಯಾಸ್ತ {{sunset}} ({{source}})",
+    "chartYogasTitle": "ಈ ಪಟ್ಟಿಯಲ್ಲಿ ಯೋಗಗಳು",
+    "yogaBenefic": "ಮಂಗಳಕರ (śubha)",
+    "yogaMalefic": "ಸವಾಲಿನ (aśubha)",
     "sunSource": {
-      "api": "place sunrise API",
-      "suncalc": "calculated fallback"
+      "api": "ಸ್ಥಳ ಸೂರ್ಯೋದಯ API",
+      "suncalc": "ಲೆಕ್ಕಾಚಾರದ ಹಿನ್ನಡೆ"
     },
     "planetTable": {
       "planet": "ಗ್ರಹ",
@@ -226,10 +226,60 @@
     "loadError": "ಈ ಓದನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.",
     "loadErrorHint": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಲು ಬೇರೆ ಟ್ಯಾಬ್ (ಇಂದು / ವಾರ / ತಿಂಗಳು) ತೆರೆಯಿರಿ, ಅಥವಾ ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಒಮ್ಮೆ ಭಾಷೆ ಬದಲಿಸಿ, ಅಥವಾ ಈ ತಾಣದ ಡೇಟಾ ತೆರವುಗೊಳಿಸಿ — ಕುಂಡಲಿಯಲ್ಲಿ ಮತ್ತೆ ರಚಿಸಿದರೆ ಚಾರ್ಟ್ ಉಳಿಯುತ್ತದೆ.",
     "apiHint": "ಐಚ್ಛಿಕ: ನಿಮ್ಮ ಭಾಷೆಯಲ್ಲಿ ಧನೀಯ ಪಠ್ಯಕ್ಕೆ VITE_PREDICTION_API_URL ಹೊಂದಿಸಿ (README ನೋಡಿ). ಮೇಲಿನ ವಿಭಾಗಗಳು ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಗೋಚರ, ವಿಂಶೋತ್ತರಿ ಮತ್ತು ಚಂದ್ರ ರಾಶಿಯನ್ನು ಸೇರಿಸುತ್ತವೆ.",
+    "doshaNote": {
+      "prefix": "Chart note:",
+      "kaalsarpFull": "Full Kālasarpa pattern — Kaal Sarp puja at Trimbakeshwar or Rahu–Ketu pooja at Kalahasti may be discussed with a pandit.",
+      "kaalsarpPartial": "Partial serpent-axis clustering — gentle Rahu–Ketu śānti is often suggested.",
+      "sarpa": "Sarpa-dosha hint (Rahu/Ketu in 6–8) — Rahu–Ketu remedies may help.",
+      "pitru": "Pitṛ themes appear — Tripindi or ancestral gratitude may be considered.",
+      "guruChandal": "Guru Chaṇḍāla hint — Guru/Vishnu worship supports balance.",
+      "contact": "Pooja guidance: call {{phone}}."
+    },
     "integrated": {
       "positive": "{{name}}, {{period}} ಆಕಾಶ ಸಾಮಾನ್ಯವಾಗಿ ಅನುಕೂಲ: ವಾರದ {{planet}} ಟೋನ್ ಮತ್ತು {{transitMoon}} ರಾಶಿಯಲ್ಲಿ ಚಂದ್ರ ಗೋಚರ; ನಿಮ್ಮ ಜನ್ಮ ಚಂದ್ರ {{moonRashi}} ಸ್ಥಿರತೆ ಇಷ್ಟಪಡುತ್ತದೆ. ವಿಂಶೋತ್ತರಿಯಲ್ಲಿ {{maha}} ಮಹಾದಶಾ, {{bhukti}} ಭುಕ್ತಿ — ದೊಡ್ಡ ಅಧ್ಯಾಯದ ಲಯವನ್ನು ಗೌರವಿಸಿ; ಒಂದು ಸ್ಪಷ್ಟ ಗೆಲುವು ಮತ್ತು ಒಂದು ಮೃದು ಸರಿಪಡಿಸುವಿಕೆ ಸಾಕು. ಭರವಸೆ: ಚಿಕ್ಕ ಕ್ರಿಯೆಗಳೇ ದೊಡ್ಡ ಪ್ರತಿಜ್ಞೆಗಳಿಗಿಂತ ಬೆಲೆಬಾಳುವವು.",
       "neutral": "{{name}}, {{period}} ಮಿಶ್ರ ಚಿಹ್ನೆ: {{planet}} ವಾರದ ಬಣ್ಣ, ಚಂದ್ರ {{transitMoon}} ರಾಶಿಯಲ್ಲಿ, ನಿಮ್ಮ {{moonRashi}} ಚಾರ್ಟ್ ಸ್ಥಿರ ಗತಿಯನ್ನು ಕೇಳುತ್ತದೆ. {{maha}} ಮಹಾದಶಾ ಮತ್ತು {{bhukti}} ಭುಕ್ತಿ — ಒಂದು ಸಂವಾದ ಸ್ಪಷ್ಟಪಡಿಸಿ, ನಿದ್ರೆ ಕಾಯ್ದುಕೊಳ್ಳಿ. ನಿರಪೇಕ್ಷತೆ ಖಾಲಿಯಲ್ಲ; ತಲೆ ಮತ್ತು ಹೃದಯ ಎರಡರಿಂದ ಆಯ್ಕೆಗೆ ಜಾಗ.",
       "caution": "{{name}}, {{period}} ಮೃದತೆ ಬೇಕು: {{planet}} ಅಂಚುಗಳನ್ನು ತೀಕ್ಷಗೊಳಿಸಬಹುದು; {{transitMoon}} ಚಂದ್ರ ಹಳೆಯ ಕಥೆಗಳನ್ನು ಎಬ್ಬಿಸಬಹುದು; {{moonRashi}} ಸೂಕ್ಷ್ಮತೆ ರಕ್ಷಿಸಿ. {{maha}} / {{bhukti}} ವಿಂಶೋತ್ತರಿಯಲ್ಲಿ ರಾತ್ರಿ ವಾದ ಬೇಡ; ತಲೆಸುತ್ತಿದ್ದರೆ ತಿರುಗಲಾಗದ ನಿರ್ಧಾರ ಮುಂದೂಡಿ. ನೀರು, ವಿರಾಮ, ಪ್ರಾಮಾಣಿಕ ವೇಗ — ಧೈರ್ಯ \"ಇನ್ನೂ ಅಲ್ಲ\" ಎಂದೂ ಹೇಳಬಹುದು."
+    },
+    "knowledge": {
+      "house1": {
+        "name": "1 ನೇ - ಸ್ವಯಂ (ಲಗ್ನ)"
+      },
+      "house2": {
+        "name": "2 ನೇ - ಸಂಪತ್ತು ಮತ್ತು ಕುಟುಂಬ"
+      },
+      "house3": {
+        "name": "3 ನೇ - ಪ್ರಯತ್ನ ಮತ್ತು ಒಡಹುಟ್ಟಿದವರು"
+      },
+      "house4": {
+        "name": "4 ನೇ - ಮನೆ ಮತ್ತು ತಾಯಿ"
+      },
+      "house5": {
+        "name": "5 ನೇ - ಸೃಜನಶೀಲತೆ ಮತ್ತು ಮಕ್ಕಳು"
+      },
+      "house6": {
+        "name": "6 ನೇ - ಸವಾಲುಗಳು ಮತ್ತು ಸೇವೆ"
+      },
+      "house7": {
+        "name": "7 ನೇ - ಪಾಲುದಾರಿಕೆ"
+      },
+      "house8": {
+        "name": "8 ನೇ - ರೂಪಾಂತರ"
+      },
+      "house9": {
+        "name": "9 ನೇ - ಅದೃಷ್ಟ ಮತ್ತು ಧರ್ಮ"
+      },
+      "house10": {
+        "name": "10 ನೇ - ವೃತ್ತಿ ಮತ್ತು ಸ್ಥಿತಿ"
+      },
+      "house11": {
+        "name": "11 ನೇ - ಲಾಭಗಳು ಮತ್ತು ನೆಟ್‌ವರ್ಕ್‌ಗಳು"
+      },
+      "house12": {
+        "name": "12 ನೇ - ಮೋಕ್ಷ ಮತ್ತು ವೆಚ್ಚಗಳು"
+      },
+      "kendraNote": "ಕೇಂದ್ರ ಮನೆಗಳು (1, 4, 7, 10) ಶಕ್ತಿ ಮತ್ತು ಗೋಚರತೆಯನ್ನು ನೀಡುತ್ತದೆ.",
+      "dusthanaNote": "ದುಸ್ತಾನ ಮನೆಗಳು (6, 8, 12) ಪರೀಕ್ಷೆಗಳನ್ನು ತರುತ್ತವೆ - ಬುದ್ಧಿವಂತಿಕೆಯಿಂದ ನಿರ್ವಹಿಸಿದಾಗ ಆಳವಾದ ಬೆಳವಣಿಗೆ.",
+      "mitraNote": "ನೈಸರ್ಗಿಕ ಸ್ನೇಹಿತರು (ಮಿತ್ರ) ಪರಸ್ಪರರ ವಿಷಯಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತಾರೆ; ಶತ್ರುಗಳು (śatru) ಬೇರೆಯಾಗುತ್ತಾರೆ."
     }
   },
   "dashas": {
@@ -249,11 +299,11 @@
   },
   "settings": {
     "language": "ಭಾಷೆ",
-    "langName_en": "English",
-    "langName_hi": "हिन्दी",
+    "langName_en": "ಇಂಗ್ಲೀಷ್",
+    "langName_hi": "ಹಿಂದಿ",
     "langName_kn": "ಕನ್ನಡ",
-    "langName_te": "తెలుగు",
-    "langName_ta": "தமிழ்",
+    "langName_te": "ತೆಲುಗು",
+    "langName_ta": "ತಮಿಳು",
     "chartStyle": "ಚಾರ್ಟ್ ಶೈಲಿ",
     "chartNorth": "ಉತ್ತರ ಭಾರತೀಯ",
     "chartSouth": "ದಕ್ಷಿಣ ಭಾರತೀಯ",
@@ -280,10 +330,10 @@
     "ayanamsaDrik": "ದೃಕ್ ಗಣಿತ (ಸತ್ಯ ಚಿತ್ರಾ — ಸ್ಪೈಕಾ ೧೮೦°)",
     "ayanamsaLahiri": "ಲಹಿರಿ (ರೇಖೀಯ ಚಿತ್ರಾಪಕ್ಷ, J2000)",
     "ayanamsaHint": "ಕುಂಡಲಿ, ಮುಖಪುಟ ಪಂಚಾಂಗ, ಮಾಂಡಿ, ಭವಿಷ್ಯ ಚಲನೆಗಳಿಗೆ ಅನ್ವಯ. ಬದಲಾಯಿಸಿದ ನಂತರ ಚಾರ್ಟ್ ಮತ್ತೆ ರಚಿಸಿ.",
-    "nodeTypeTitle": "Rāhu / Ketu (lunar node)",
-    "nodeTypeMean": "Mean node (patrikā style)",
-    "nodeTypeTrue": "True node (modern ephemeris)",
-    "nodeTypeHint": "Handwritten Karnataka patrikās usually use the mean node. True node oscillates slightly and shifts Rāhu/Ketu amsha."
+    "nodeTypeTitle": "ರಾಹು / ಕೇತು (ಚಂದ್ರನ ನೋಡ್)",
+    "nodeTypeMean": "ಮೀನ್ ನೋಡ್ (ಪತ್ರಿಕಾ ಶೈಲಿ)",
+    "nodeTypeTrue": "ನಿಜವಾದ ನೋಡ್ (ಆಧುನಿಕ ಎಫೆಮೆರಿಸ್)",
+    "nodeTypeHint": "ಕೈಬರಹದ ಕರ್ನಾಟಕ ಪತ್ರಿಕಾಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಸರಾಸರಿ ನೋಡ್ ಅನ್ನು ಬಳಸುತ್ತವೆ. ನಿಜವಾದ ನೋಡ್ ಸ್ವಲ್ಪ ಆಂದೋಲನಗೊಳ್ಳುತ್ತದೆ ಮತ್ತು ರಾಹು/ಕೇತು ಅಂಶವನ್ನು ಬದಲಾಯಿಸುತ್ತದೆ."
   },
   "panchang": {
     "tithi": "ತಿಥಿ",
@@ -532,39 +582,388 @@
       "mitra": "ಸ್ನೇಹಿತ",
       "shatru": "ಪ್ರತಿಸ್ಪರ್ಧಿ",
       "sama": "ತಟಸ್ಥ"
+    },
+    "tabs": {
+      "overview": "ಈಗ",
+      "houses": "೧೨ ಭಾವಗಳು",
+      "doshas": "ದೋಷ",
+      "marriage": "ವಿವಾಹ",
+      "family": "ಕುಟುಂಬ",
+      "longevity": "ಆಯು",
+      "remedies": "ಪರಿಹಾರ"
+    },
+    "currentScenarioTitle": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಜೀವನ ಸನ್ನಿವೇಶ",
+    "currentScenario": {
+      "tone": {
+        "uplift": "Overall themes lean supportive — this is a good season to build on what is working and share good news with people you trust.",
+        "mixed": "Life is in a mixed phase — some areas ask patience while others open doors. Focus on one clear priority at a time.",
+        "care": "A heavier chapter may be active — move slowly, protect rest, and lean on mentors. Remedies and honest routines help more than haste."
+      },
+      "ageLine": "Current age (approx.): {{age}} years.",
+      "dashaLine": "Vimshottari now: {{maha}} mahādasha, {{bhukti}} bhukti — this colours mood, opportunities, and delays.",
+      "dashaWeight": {
+        "supportive": "The running dasha lords are generally considered gentle — favour learning, relationships, and steady work.",
+        "mixed": "The running dasha mix is neutral — outcomes depend on your choices and daily discipline.",
+        "heavy": "Saturn/Rahu/Mars-type periods ask extra care — avoid rash vows; pooja and patience are traditional allies."
+      }
+    },
+    "doshaFlags": {
+      "kaalsarp": "ಕಾಲಸರ್ಪ",
+      "sarpa": "ಸರ್ಪ",
+      "pitru": "ಪಿತೃ",
+      "guruChandal": "ಗುರು ಚಂಡಾಲ"
+    },
+    "doshaSummaryTitle": "ನಿಮ್ಮ ಕುಂಡಲಿಯ ದೋಷ ಪರಿಶೀಲನೆ",
+    "doshaTabIntro": "ನಿಮ್ಮ ಉಳಿಸಿದ ಕುಂಡಲಿಯಿಂದ ಮಾತ್ರ — ಪ್ರತಿ ದೋಷ ಇದೆಯೇ ಅಥವಾ ಇಲ್ಲವೇ ಎಂದು ಹಾಗೂ ಜೀವನದಲ್ಲಿ ಅದರ ಅರ್ಥ ಏನು ಎಂದು ಇಲ್ಲಿ ತೋರಿಸಲಾಗಿದೆ. ಪರಿಹಾರಕ್ಕೂ ಮೊದಲು ಪಂಡಿತರಿಂದ ದೃಢೀಕರಿಸಿ.",
+    "doshaStatus": {
+      "found": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಇದೆ",
+      "notFound": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಸಿಗಲಿಲ್ಲ"
+    },
+    "doshaAllClearTitle": "ಈ ಪರಿಶೀಲನೆಯಲ್ಲಿ ಪ್ರಮುಖ ದೋಷ ಸಿಗಲಿಲ್ಲ",
+    "doshaAllClearBody": "ನಮ್ಮ ಪಟ್ಟಿಯಲ್ಲಿ ಕಾಲಸರ್ಪ, ಸರ್ಪ, ಪಿತೃ, ಗುರು ಚಂಡಾಲ ದೋಷಗಳು ಸಕ್ರಿಯವಾಗಿಲ್ಲ. ಶಾಂತಿಗಾಗಿ ಸಾಮಾನ್ಯ ಶಾಂತಿ ಪೂಜೆ ಮಾಡಬಹುದು — ಪರಿಹಾರ ಟ್ಯಾಬ್ ನೋಡಿ.",
+    "doshaKaalsarp": {
+      "title": "ಕಾಲಸರ್ಪ ದೋಷ",
+      "clear": "ಏಳು ಶಾಸ್ತ್ರೀಯ ಗ್ರಹಗಳು ರಾಹು–ಕೇತು ಅಚ್ಚಿನ ಒಂದೇ ಬದಿಯಲ್ಲಿ ಸಿಕ್ಕಿಲ್ಲ — ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಕಾಲಸರ್ಪ ದೋಷ ಸೂಚಿಸಲಾಗಿಲ್ಲ.",
+      "implication": {
+        "none": "ಅನ್ವಯಿಸುವುದಿಲ್ಲ.",
+        "partial": "ಕೆಲವು ಗ್ರಹಗಳು ರಾಹು–ಕೇತು ಅಚ್ಚಿನ ಒಂದು ಬದಿಗೆ incline ಆಗಿವೆ — ಅಂಶಿಕ ಕಾಲಸರ್ಪ ಸೂಚನೆ. ಜೀವನದಲ್ಲಿ ಪಾಠಗಳು ಗುಂಪಾಗಿ ಬರುವುದು, ನಂತರ ವಿಶ್ರಾಂತಿ. ಭಯ ಬೇಡ; ನಿಧಾನ ನಿರ್ಧಾರ ಮತ್ತು ಪ್ರಾಮಾಣಿಕ ದಿನಚರಿ ಸಹಾಯ.",
+        "full": "ಏಳು ಶಾಸ್ತ್ರೀಯ ಗ್ರಹಗಳು ರಾಹು–ಕೇತು ಅಚ್ಚಿನ ಒಂದೇ ಬದಿಯಲ್ಲಿವೆ — ಪೂರ್ಣ ಕಾಲಸರ್ಪ ದೋಷ. ವಿಳಂಬ, ಹಠಾತ್ ಬದಲಾವಣೆ, ಕರ್ಮದ ಗಟ್ಟಿ ಪಾಠಗಳಿಗೆ ಪರಂಪರೆ ಸಂಬಂಧಿಸುತ್ತದೆ. ಗೋಕರ್ಣದಲ್ಲಿ ಪರಿಹಾರ ಮತ್ತು ಗುರು ಮಾರ್ಗದರ್ಶನ ಸಾಮಾನ್ಯ."
+      }
+    },
+    "doshaSarpa": {
+      "title": "ಸರ್ಪ ದೋಷ (ರಾಹು/ಕೇತು ೬–೭–೮)",
+      "clear": "ಲಗ್ನ, ಸೂರ್ಯ ಅಥವಾ ಚಂದ್ರದಿಂದ ೬, ೭, ೮ನೇ ಭಾವಗಳಲ್ಲಿ ರಾಹು–ಕೇತು ಇಲ್ಲ — ಸರ್ಪ ದೋಷ ಸೂಚಿಸಲಾಗಿಲ್ಲ.",
+      "implication": "ರಾಹು ಅಥವಾ ಕೇತು ಲಗ್ನ/ಸೂರ್ಯ/ಚಂದ್ರದಿಂದ ೬, ೭ ಅಥವಾ ೮ನೇ ಭಾವದಲ್ಲಿದೆ. ಗುಪ್ತ ಭಯ, ಸಂಬಂಧ ಪರೀಕ್ಷೆ, ಆರೋಗ್ಯ ಏರು–ಇಳಿಕೆ ಬರಬಹುದು. ಗೋಕರ್ಣದಲ್ಲಿ ರಾಹು–ಕೇತು ಶಾಂತಿ ಪರಂಪರೆಯಾಗಿ ಮಾಡಲಾಗುತ್ತದೆ."
+    },
+    "doshaPitru": {
+      "title": "ಪಿತೃ ದೋಷ (ಪೂರ್ವಜ)",
+      "clear": "ಸೂರ್ಯ ಮತ್ತು ೯ನೇ ಭಾವ ಭಾವಗಳು ತೆರೆದಿವೆ — ಬಲವಾದ ಪಿತೃ ದೋಷ ಈ ಪರಿಶೀಲನೆಯಲ್ಲಿ ಸೂಚಿಸಲಾಗಿಲ್ಲ.",
+      "implication": {
+        "mild": "ಸೌಮ್ಯ ಪಿತೃ ಸೂಚನೆ — ಹಿರಿಯರ ಸ್ಮರಣೆ, ದಾನ, ಅಥವಾ ಸರಳ ಶ್ರಾದ್ಧ ಮನಸ್ಸಿಗೆ ಶಾಂತಿ ತರುತ್ತದೆ.",
+        "moderate": "ಸ್ಪಷ್ಟ ಪಿತೃ ಮಾದರಿ — ಪೂರ್ವಜರಿಗೆ ಕೃತಜ್ಞತೆ, ಶ್ರಾದ್ಧ, ದಾನ ಅಥವಾ ತ್ರಿಪಿಂಡಿ ಪರಿಹಾರ ಅಗತ್ಯವಿರಬಹುದು. ಇದು ಶಾಪ ಅಲ್ಲ — ಹೃದಯ ವಿಸ್ತರಿಸಲು ಆಹ್ವಾನ."
+      }
+    },
+    "doshaGuruChandal": {
+      "title": "ಗುರು ಚಂಡಾಲ ದೋಷ",
+      "clear": "ಗುರು ರಾಹು ಅಥವಾ ಕೇತುವಿನೊಂದಿಗೆ ಒಂದೇ ರಾಶಿಯಲ್ಲಿಲ್ಲ — ಗುರು ಚಂಡಾಲ ದೋಷ ಸೂಚಿಸಲಾಗಿಲ್ಲ.",
+      "implication": "ಗುರು ರಾಹು/ಕೇತುವಿನೊಂದಿಗೆ — ಜ್ಞಾನ ಮತ್ತು ಮಾಯೆ/ಹಠಾತ್ ಬದಲಾವಣೆ clash ಆಗಬಹುದು. ಗುರು ವಂದನೆ, ಸತ್ಯ ಜೀವನ, ವಿಷ್ಣು/ಗುರು ಪರಿಹಾರ ಪರಂಪರೆಯ ಸಹಾಯ."
+    },
+    "kaalsarpDetailTitle": "ಕಾಲಸರ್ಪ / ಸರ್ಪಾಕ್ಷ ಪರಿಶೀಲನೆ",
+    "kaalsarpTypeLabel": "ಪ್ರಕಾರ (ಪೂರ್ಣ ಆದಾಗ)",
+    "kaalsarpHowTo": "Full Kālasarpa means all seven classical grahas sit on one side of the Rāhu–Ketu axis. Twelve names (Anant to Sheshnag) depend on Rahu’s house from lagna. Verify with a qualified jyotiṣī before booking pooja.",
+    "kalaSarpaTypes": {
+      "anant": "Anant Kālasarpa (Rahu in 1st house)",
+      "kulik": "Kulik Kālasarpa (Rahu in 2nd house)",
+      "vasuki": "Vasuki Kālasarpa (Rahu in 3rd house)",
+      "shankhpal": "Shankhpal Kālasarpa (Rahu in 4th house)",
+      "padma": "Padma Kālasarpa (Rahu in 5th house)",
+      "mahapadma": "Mahapadma Kālasarpa (Rahu in 6th house)",
+      "takshak": "Takshak Kālasarpa (Rahu in 7th house)",
+      "karkotak": "Karkotak Kālasarpa (Rahu in 8th house)",
+      "shankhachud": "Shankhachud Kālasarpa (Rahu in 9th house)",
+      "ghatak": "Ghatak Kālasarpa (Rahu in 10th house)",
+      "vishdhar": "Vishdhar Kālasarpa (Rahu in 11th house)",
+      "sheshnag": "Sheshnag Kālasarpa (Rahu in 12th house)"
+    },
+    "sarpaDoshaTitle": "ಸರ್ಪ ದೋಷ (ರಾಹು/ಕೇತು ೬–೮)",
+    "sarpaDoshaActive": "ಲಗ್ನ, ಸೂರ್ಯ ಅಥವಾ ಚಂದ್ರದಿಂದ ೬, ೭, ೮ನೇ ಭಾವದಲ್ಲಿ ರಾಹು ಅಥವಾ ಕೇತು — ಸರ್ಪ ದೋಷ ಪರಿಹಾರ ಪರಂಪರೆ.",
+    "sarpaDoshaNone": "ಈ ನಿಯಮದಿಂದ ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಸರ್ಪ ದೋಷ ಮಾದರಿ ಸಿಗಲಿಲ್ಲ.",
+    "sarpaDoshaHit": "{{ref}}ದಿಂದ {{house}} {{node}} ಇದ್ದಾರೆ.",
+    "sarpaRef": {
+      "lagna": "ಲಗ್ನ",
+      "sun": "ಸೂರ್ಯ",
+      "moon": "ಚಂದ್ರ"
+    },
+    "guruChandalTitle": "ಗುರು ಚಂಡಾಲ ದೋಷ",
+    "guruChandalYes": "ಗುರು ರಾಹು ಅಥವಾ ಕೇತುವಿನೊಂದಿಗೆ ಒಂದೇ ರಾಶಿ — ಗುರು/ವಿಷ್ಣು ಪರಿಹಾರ ಮತ್ತು ನೈತಿಕ ಜೀವನ ಸಹಾಯ.",
+    "guruChandalNo": "ಈ ಕುಂಡಲಿಯಲ್ಲಿ ಗುರು ಚಂಡಾಲ ಯೋಗ ಸಿಗಲಿಲ್ಲ.",
+    "doshaConsultNote": "ಪೂಜೆ ಅಥವಾ ಪ್ರಯಾಣಕ್ಕೂ ಮೊದಲು ಅರ್ಹ ಪಂಡಿತ ಅಥವಾ ಜ್ಯೋತಿಷಿಯಿಂದ ದೋಷ ದೃಢೀಕರಿಸಿ. ನಮ್ಮ ಸಂಪರ್ಕ: ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ.",
+    "seventhLordTitle": "7th house lord",
+    "seventhLordBody": "Your 7th lord is {{lord}} — marriage tone follows this graha’s house, dignity, and dasha periods.",
+    "familyDashaNoteTitle": "Family mood and dasha",
+    "familyDashaNoteBody": "Home and elders are coloured by {{maha}} mahādasha and {{bhukti}} bhukti — gentleness at home multiplies blessings.",
+    "longevityTitle": "Indicative life span (traditional estimate)",
+    "longevityRange": "Rough indicative range: {{low}} – {{high}} years (midpoint about {{mid}}). Not a medical prediction.",
+    "longevityDisclaimer": "Classical texts use 8th-house strength, Saturn, and Moon for broad life-phase hints only. This is educational — consult doctors for health and a jyotiṣī for personal readings.",
+    "longevityFactors": {
+      "eighthLordStrong": "8th lord in a supportive house adds stability to life-phase estimates.",
+      "eighthLordDusthana": "8th lord in a dusthāna house suggests more transformative life chapters.",
+      "jupiterSupport": "Jupiter in trikona/kendra supports resilience.",
+      "moonKendra": "Moon in kendra supports emotional steadiness.",
+      "saturnEighth": "Saturn in the 8th house — traditions emphasise discipline and care.",
+      "marsEighth": "Mars in the 8th house — watch heat, accidents, and impulsive risk."
+    },
+    "poojaContactTitle": "Book pooja — contact pandit",
+    "poojaContactBody": "For Kaal Sarp, Rahu–Ketu, Pitṛ, and related remedies, call our recommended contact:",
+    "poojaContactHint": "Mention your name, birth details, and which dosha the app flagged. Verify chart with pandit before payment.",
+    "poojaWhere": "Where",
+    "poojaCost": "Typical cost",
+    "poojaBookCall": "Call {{phone}} to book",
+    "poojaNoneTitle": "No major dosha flag from our checklist",
+    "poojaNoneBody": "General śānti or yearly pooja may still be done for peace of mind — call if you want guidance.",
+    "poojaVerifyNote": "ಎಲ್ಲಾ ಪೂಜೆಗಳು ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕ (ಮಹಾಬಲೇಶ್ವರ / ಕೋಟಿತೀರ್ಥ ಪ್ರದೇಶ). ದರ ಸುಮಾರು ₹300–₹5,000. ಕರೆ: 9972339362.",
+    "remediesDoshaTitle": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಕಂಡ ದೋಷಗಳು",
+    "remediesContactTitle": "ಪರಿಹಾರ ಮತ್ತು ವಿವರ — ಗೋಕರ್ಣ ಪಂಡಿತ",
+    "remediesContactBody": "ಕಾಲಸರ್ಪ, ರಾಹು–ಕೇತು, ಪಿತೃ ಮತ್ತು ಸಂಬಂಧಿತ ಪೂಜೆಗಳು ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕದಲ್ಲಿ ನಡೆಯುತ್ತವೆ. ವೈಯಕ್ತಿಕ ಓದು ಮತ್ತು ಪರಿಹಾರಕ್ಕಾಗಿ ಕರೆ ಮಾಡಿ:",
+    "remediesContactHint": "ನಿಮ್ಮ ಹೆಸರು, ಜನ್ಮ ವಿವರ, ಆ್ಯಪ್ ಸೂಚಿಸಿದ ದೋಷ ಹಂಚಿಕೊಳ್ಳಿ. ಗೋಕರ್ಣದ ಪಂಡಿತರು ಪಾವತಿಗೂ ಮೊದಲು ಕುಂಡಲಿ ದೃಢೀಕರಿಸುತ್ತಾರೆ.",
+    "poojas": {
+      "items": {
+        "kaalSarpaTrimbakeshwar": "Kaal Sarpa Dosh Puja",
+        "kaalSarpaTrimbakeshwarDesc": "ಶಿವ, ರಾಹು, ಕೇತುಗೆ ಹೋಮ ಮತ್ತು ಮಂತ್ರ — ಗೋಕರ್ಣದ ಅನುಭವಿ ಪಂಡಿತರಿಂದ.",
+        "kaalSarpaTrimbakeshwarLoc": "ಮಹಾಬಲೇಶ್ವರ ದೇವಾಲಯ ಪ್ರದೇಶ, ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕ",
+        "kaalSarpaTrimbakeshwarCost": "About ₹1,500 – ₹5,000 depending on setup",
+        "rahuKetuKalahasti": "Rahu Ketu Pooja",
+        "rahuKetuKalahastiDesc": "ರಾಹು–ಕೇತು ಶಾಂತಿ — ಗೋಕರ್ಣದ ಪವಿತ್ರ ತೀರ್ಥದಲ್ಲಿ.",
+        "rahuKetuKalahastiLoc": "ಕೋಟಿತೀರ್ಥ / ರಾಹು–ಕೇತು ಕ್ಷೇತ್ರ, ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕ",
+        "rahuKetuKalahastiCost": "About ₹300 – ₹2,500 (ticket tiers)",
+        "rahuKetuShanti": "Rahu–Ketu Shanti",
+        "rahuKetuShantiDesc": "Mantra, dāna, and śānti for partial serpent-axis or sarpa patterns.",
+        "rahuKetuShantiLoc": "ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕ",
+        "rahuKetuShantiCost": "Varies; discuss with pandit on call",
+        "tripindiShradh": "Tripindi Shradh",
+        "tripindiShradhDesc": "Ancestral ritual for pitṛ peace when Sun/9th house themes are afflicted.",
+        "tripindiShradhLoc": "ಗೋಕರ್ಣ ಪಿತೃ ಕ್ಷೇತ್ರ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕ",
+        "tripindiShradhCost": "Discuss with pandit — often ₹2,000+",
+        "narayanNagbali": "Narayan Nagbali",
+        "narayanNagbaliDesc": "Combined ritual for pitṛ and sarpa karmas in some traditions.",
+        "narayanNagbaliLoc": "ಗೋಕರ್ಣ, ಉತ್ತರ ಕನ್ನಡ, ಕರ್ನಾಟಕ",
+        "narayanNagbaliCost": "Premium ritual — confirm on call",
+        "guruChandalRemedy": "Guru / Vishnu remedy",
+        "guruChandalRemedyDesc": "Guru vandana, Vishnu sahasranāma, or yellow dāna when Jupiter meets Rahu/Ketu.",
+        "guruChandalRemedyLoc": "ಗೋಕರ್ಣ ದೇವಾಲಯ ಅಥವಾ ಮನೆ ಪೂಜೆ — ಸ್ಥಳೀಯ ಪಂಡಿತ ಮಾರ್ಗದರ್ಶನ",
+        "guruChandalRemedyCost": "Varies"
+      }
     }
   },
+  "reading": {
+    "intro": "ನಿಮ್ಮ ರಚಿಸಿದ ಕುಂಡಲಿಯ ಪ್ರಕಾರ: ಲಗ್ನ (1ನೇ ಭಾವ) {{rashi}} ರಾಶಿಯಲ್ಲಿದೆ. ಇಲ್ಲಿಂದ ಗಡಿಯಾರದ ದಿಕ್ಕಿನಲ್ಲಿ 12 ಭಾವಗಳನ್ನು ಎಣಿಸಲಾಗುತ್ತದೆ.",
+    "lagnaLine": "ಲಗ್ನ {{rashi}}. ಲಗ್ನ ಅಧಿಪತಿ {{lord}} {{lordHouse}}ನೇ ಭಾವದಲ್ಲಿ {{relation}}. ಲಗ್ನದೊಂದಿಗೆ: {{withPlanets}}.",
+    "lagnaAlone": "ಯಾವುದೇ ಗ್ರಹ ಇಲ್ಲ (ಲಗ್ನ ರಾಶಿ ಮಾತ್ರ)",
+    "ageLine": "ನಿಮ್ಮ ಕುಂಡಲಿಯ ಪ್ರಕಾರ ಪ್ರಸ್ತುತ ವಯಸ್ಸು ಸುಮಾರು {{age}} ವರ್ಷ.",
+    "dashaLine": "ವಿಂಶೋತ್ತರಿ ಈಗ: {{maha}} ಮಹಾದಶೆ, {{bhukti}} ಭುಕ್ತಿ.",
+    "unknown": "ಲೆಕ್ಕ ಮಾಡಲಾಗಿಲ್ಲ",
+    "houseN": "{{n}}ನೇ ಭಾವ",
+    "emptyHouse": "ಯಾವುದೇ ಶಾಸ್ತ್ರೀಯ ಗ್ರಹ ಇಲ್ಲ",
+    "relation": {
+      "mitra": "ಮಿತ್ರ ರಾಶಿಯಲ್ಲಿ",
+      "shatru": "ಶತ್ರು ರಾಶಿಯಲ್ಲಿ",
+      "sama": "ಸಾಮ ರಾಶಿಯಲ್ಲಿ",
+      "own": "ಸ್ವಕೀಯ ರಾಶಿಯಲ್ಲಿ"
+    },
+    "tone": {
+      "uplift": "ಅನುಕೂಲ",
+      "mixed": "ಮಿಶ್ರ",
+      "care": "ಎಚ್ಚರಿಕೆ ಬೇಕು"
+    },
+    "phase": {
+      "supportive": "ಪ್ರಸ್ತುತ ಹಂತ {{tone}}: {{maha}} ಮಹಾದಶೆ ಮತ್ತು {{bhukti}} ಭುಕ್ತಿ ಸ್ಥಿರ ಪ್ರಗತಿಗೆ ಸಹಾಯ.",
+      "mixed": "ಪ್ರಸ್ತುತ ಹಂತ {{tone}}: {{maha}} / {{bhukti}} ದಶೆ — ಶ್ರಮ ಮತ್ತು ವಿಶ್ರಾಂತಿ ಸಮತೋಲನ.",
+      "heavy": "ಪ್ರಸ್ತುತ ಹಂತ {{tone}}: {{maha}} / {{bhukti}} — ನಿಧಾನವಾಗಿ; ಪೂಜೆ ಮತ್ತು ತಾಳ್ಮೆ."
+    },
+    "marriage": {
+      "strong": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: 7ನೇ ಅಧಿಪತಿ {{seventhLord}}, ಶುಕ್ರ {{venusInChart}} — ಸ್ಪಷ್ಟ ಸಂವಾದದಿಂದ ವಿವಾಹ ಅನುಕೂಲ.",
+      "mixed": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: ವಿವಾಹ ಭಾವ ಮಿಶ್ರ — 7ನೇ ಅಧಿಪತಿ {{seventhLord}}, ಶುಕ್ರ {{venusInChart}}; ತಾಳ್ಮೆ ಮತ್ತು ಪ್ರಾಮಾಣಿಕತೆ.",
+      "care": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: 7ನೇ ಅಧಿಪತಿ {{seventhLord}}, ಶುಕ್ರ {{venusInChart}} — ನಿಧಾನ ನಿರ್ಧಾರ, ಕುಟುಂಬ ಸಲಹೆ ಒಳಿತು."
+    },
+    "family": {
+      "strong": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: 4ನೇ ಅಧಿಪತಿ {{fourthLord}}, ಚಂದ್ರ {{moonHouse}}ನೇ ಭಾವ — ಮನೆ ಮತ್ತು ಹಿರಿಯರ ಆಶೀರ್ವಾದ.",
+      "mixed": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: ಕುಟುಂಬ ಜೀವನಕ್ಕೆ ಕೇಳಿ-ಕೇಳಿ — 4ನೇ ಅಧಿಪತಿ {{fourthLord}}, ಚಂದ್ರ {{moonHouse}}ನೇ ಭಾವ."
+    },
+    "career": {
+      "strong": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: 10ನೇ ಅಧಿಪತಿ {{tenthLord}} {{tenthLordHouse}}ನೇ ಭಾವದಲ್ಲಿ — ಕೆಲಸ ಮತ್ತು ಗೌರವ.",
+      "mixed": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: ವೃತ್ತಿ ಬದಲಾವಣೆ ಸಾಧ್ಯ — 10ನೇ ಅಧಿಪತಿ {{tenthLord}} {{tenthLordHouse}}ನೇ ಭಾವ; ಕೌಶಲ್ಯ ವೃದ್ಧಿ.",
+      "care": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: 10ನೇ ಅಧಿಪತಿ {{tenthLord}} {{tenthLordHouse}}ನೇ ಭಾವ — ಸ್ಥಿರ ಉದ್ಯೋಗ, ದಾಖಲೆಗಳು."
+    },
+    "careerJobs": "ನಿಮ್ಮ ಕುಂಡಲಿಯಿಂದ ಸೂಕ್ತ ವೃತ್ತಿ: {{jobs}}.",
+    "careerJobsNone": "ಪ್ರಬಲ ಕರಕಾರಕ ಸಿಗಲಿಲ್ಲ — 10ನೇ ಭಾವ ಅಧಿಪತಿಯಿಂದ ಕೌಶಲ್ಯ ವೈವಿಧ್ಯ.",
+    "health": {
+      "strong": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: ಚಂದ್ರ {{moonHouse}}ನೇ ಭಾವ — ನಿದ್ರೆ ಮತ್ತು ದಿನಚರಿ ಕಾಪಾಡಿದರೆ ಆರೋಗ್ಯ.",
+      "mixed": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: ಚಂದ್ರ {{moonHouse}}ನೇ ಭಾವ — ಶ್ರಮ ಮತ್ತು ವಿಶ್ರಾಂತಿ ಸಮತೋಲನ.",
+      "care": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ: ಚಂದ್ರ {{moonHouse}}ನೇ ಭಾವ — ವೈದ್ಯ ಪರೀಕ್ಷೆ, ಶಾಂತ ವೇಗ."
+    },
+    "caution": {
+      "dusthana": "{{planet}} {{house}}ನೇ ಭಾವ (ದುಃಸ್ಥಾನ) — ಆ ಕ್ಷೇತ್ರದಲ್ಲಿ ಹಠಾತ್ ನಿರ್ಧಾರ ತಪ್ಪಿಸಿ.",
+      "kaalsarp": "ಕುಂಡಲಿಯಲ್ಲಿ ಕಾಲಸರ್ಪ — ತ್ರ್ಯಂಬಕೇಶ್ವರ ಅಥವಾ ರಾಹು-ಕೇತು ಶಾಂತಿ.",
+      "sarpa": "ಸರ್ಪ ದೋಷ ಸೂಚನೆ — ರಾಹು-ಕೇತು ಪರಿಹಾರ.",
+      "pitru": "ಪಿತೃ ದೋಷ ಸೂಚನೆ — ಪೂರ್ವಜರ ಸ್ಮರಣೆ.",
+      "guruChandal": "ಗುರು ಚಂಡಾಲ — ಗುರು ಪೂಜೆ ಒಳಿತು."
+    },
+    "strength": {
+      "strong": "{{planet}} {{house}}ನೇ ಭಾವದಲ್ಲಿ ಬಲ {{relation}}.",
+      "lagnaLord": "ಲಗ್ನ ಅಧಿಪತಿ {{lord}} {{house}}ನೇ ಭಾವದಲ್ಲಿ ಒಳಿತು."
+    },
+    "houseGood": "{{house}}ನೇ ಭಾವ ({{rashi}}): ಅಧಿಪತಿ {{lord}} {{lordHouse}}ನೇ ಭಾವ; ಗ್ರಹ: {{occupants}} — ಅನುಕೂಲ.",
+    "houseWatch": "{{house}}ನೇ ಭಾವ ({{rashi}}): ಅಧಿಪತಿ {{lord}} {{lordHouse}}ನೇ ಭಾವ — ತಾಳ್ಮೆಯಿಂದ ನೋಡಿ.",
+    "housesGuideIntro": "ದಕ್ಷಿಣ ಭಾರತೀಯ ಕುಂಡಲಿಯಲ್ಲಿ ರಾಶಿಗಳು ಚೌಕದಲ್ಲಿ ಸ್ಥಿರ. ಲಗ್ನ (೧ನೇ ಭಾವ)ದಿಂದ ಗಡಿಯಾರದ ದಿಕ್ಕಿನಲ್ಲಿ ೧೨ ಭಾವಗಳನ್ನು ಎಣಿಸಲಾಗುತ್ತದೆ. ಪ್ರತಿ ಅಂಕ (೦–೧೦೦) ಭಾವಾಧಿಪತಿಯ ಸ್ಥಾನ, ಮಿತ್ರ/ಶತ್ರು ರಾಶಿ, ಮತ್ತು ಆ ಭಾವದಲ್ಲಿರುವ ಗ್ರಹಗಳಿಂದ ಬರುತ್ತದೆ.",
+    "houseBodyLabel": "ಈ ಭಾವಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ದೇಹ ಪ್ರದೇಶಗಳು",
+    "scoreLabel": "ಅಂಕ {{score}}/೧೦೦ · {{stars}} ನಕ್ಷತ್ರ",
+    "dashaCautionTitle": "ಎಚ್ಚರಿಕೆಯಿಂದ ನಡೆಯಬೇಕಾದ ವಯಸ್ಸು (ವಿಂಶೋತ್ತರಿ ದಶೆ/ಭುಕ್ತಿ)",
+    "elements": {
+      "fire": "ಅಗ್ನಿ",
+      "earth": "ಭೂ",
+      "air": "ವಾಯು",
+      "water": "ಜಲ"
+    },
+    "houseNames": {
+      "h1": "೧ — ತನು ಭಾವ (ಸ್ವಯಂ)",
+      "h2": "೨ — ಧನ ಭಾವ (ಸಂಪತ್ತು ಮತ್ತು ಕುಟುಂಬ)",
+      "h3": "೩ — ಸಹಜ ಭಾವ (ಧೈರ್ಯ ಮತ್ತು ಪ್ರಯತ್ನ)",
+      "h4": "೪ — ಮಾತೃ ಭಾವ (ತಾಯಿ ಮತ್ತು ಮನೆ)",
+      "h5": "೫ — ಪುತ್ರ ಭಾವ (ಮಕ್ಕಳು ಮತ್ತು ಸೃಜನಶೀಲತೆ)",
+      "h6": "೬ — ಅರಿ ಭಾವ (ಶತ್ರು ಮತ್ತು ಸೇವೆ)",
+      "h7": "೭ — ಯುವತಿ ಭಾವ (ವಿವಾಹ ಮತ್ತು ಜೀವನ ಸಂಗಾತ)",
+      "h8": "೮ — ರಂಧ್ರ ಭಾವ (ಆಯು ಮತ್ತು ರಹಸ್ಯ)",
+      "h9": "೯ — ಧರ್ಮ ಭಾವ (ಭಾಗ್ಯ ಮತ್ತು ತಂದೆ)",
+      "h10": "೧೦ — ಕರ್ಮ ಭಾವ (ವೃತ್ತಿ ಮತ್ತು ಗೌರವ)",
+      "h11": "೧೧ — ಲಾಭ ಭಾವ (ಲಾಭ ಮತ್ತು ಆಸೆಗಳು)",
+      "h12": "೧೨ — ವ್ಯಯ ಭಾವ (ಖರ್ಚು ಮತ್ತು ಮೋಕ್ಷ)"
+    },
+    "houseSections": {
+      "h1": "ನೀವು ಯಾರು — ದೇಹ, ಮನ, ಆತ್ಮವಿಶ್ವಾಸ, ಜೀವನ ದಿಕ್ಕು",
+      "h2": "ಹಣ, ಕುಟುಂಬ, ಮಾತು, ಆಹಾರ, ಬಾಲ್ಯದ ಆಧಾರ",
+      "h3": "ಧೈರ್ಯ, ಸಹೋದರರು, ಚಿಕ್ಕ ಪ್ರಯಾಣ, ಕೌಶಲ್ಯ, ಪ್ರಯತ್ನ",
+      "h4": "ತಾಯಿ, ಮನೆ, ಭೂಮಿ, ವಾಹನ, ಶಾಂತಿ, ಶಾಲಾ ಶಿಕ್ಷಣ",
+      "h5": "ಮಕ್ಕಳು, ಪ್ರೇಮ, ಕಲೆ, ಬುದ್ಧಿ, ಪುಣ್ಯ",
+      "h6": "ಶತ್ರು, ಸಾಲ, ರೋಗ, ದೈನಂದಿನ ಕೆಲಸ, ಸೇವೆ",
+      "h7": "ಜೀವನ ಸಂಗಾತ, ವಿವಾಹ, ವ್ಯಾಪಾರ ಪಾಲುದಾರ, ಒಪ್ಪಂದ",
+      "h8": "ಆಯು, ಹಠಾತ್ ಘಟನೆ, ವಾರಸು, ಆತ್ಮ ಪರಿವರ್ತನೆ",
+      "h9": "ತಂದೆ, ಗುರು, ಭಾಗ್ಯ, ಧರ್ಮ, ದೂರ ಪ್ರಯಾಣ",
+      "h10": "ಉದ್ಯೋಗ, ಪ್ರತಿಷ್ಠೆ, ಸರ್ಕಾರ, ಸಮಾಜದಲ್ಲಿ ಹೆಸರು",
+      "h11": "ಲಾಭ, ಕನಸು ನೆರವೇರಿಕೆ, ಸ್ನೇಹಿತರು, ದೊಡ್ಡ ಸಹೋದರರು",
+      "h12": "ಖರ್ಚು, ವಿದೇಶ, ನಿದ್ರೆ, ದಾನ, ಮೋಕ್ಷ"
+    },
+    "houseThemes": {
+      "h1": "ವ್ಯಕ್ತಿತ್ವ, ದೇಹ, ಆತ್ಮವಿಶ್ವಾಸ, ಶಕ್ತಿ, ಜೀವನದ ದಿಕ್ಕು",
+      "h2": "ಹಣ, ಉಳಿತ, ಜನ್ಮ ಕುಟುಂಬ, ಮಾತು, ಆಹಾರ ಅಭಿರುಚಿ, ಬಾಲ್ಯ",
+      "h3": "ಧೈರ್ಯ, ಚಿಕ್ಕ ಸಹೋದರರು, ಚಿಕ್ಕ ಪ್ರಯಾಣ, ಬರವಣಿಗೆ, ಹವ್ಯಾಸ, ಕೈ ಕೌಶಲ್ಯ",
+      "h4": "ತಾಯಿ, ಮನೆ ಶಾಂತಿ, ಭೂಮಿ, ವಾಹನ, ಮನಸ್ಸಿನ ಸಂತೋಷ, ಶಾಲಾ ಶಿಕ್ಷಣ",
+      "h5": "ಮಕ್ಕಳು, ಸೃಜನಶೀಲತೆ, ಪ್ರೇಮ, ಹೂಡಿಕೆ/ಜೂಜು, ಮಂತ್ರ, ಪೂರ್ವ ಜನ್ಮ ಪುಣ್ಯ",
+      "h6": "ಶತ್ರು, ಸಾಲ, ದೈನಂದಿನ ಕೆಲಸ, ಅನಾರೋಗ್ಯ, ಸೇವೆ, ಸಾಕು ಪ್ರಾಣಿ",
+      "h7": "ವಿವಾಹ, ಜೀವನ ಸಂಗಾತ, ವ್ಯಾಪಾರ ಪಾಲುದಾರಿಕೆ, ಜನರೊಂದಿಗೆ ವ್ಯವಹಾರ",
+      "h8": "ದೀರ್ಘಾಯು, ಹಠಾತ್ ಘಟನೆ, ವಾರಸು, ಗುಪ್ತ ವಿಜ್ಞಾನ, ಆತ್ಮ ಪರಿವರ್ತನೆ",
+      "h9": "ತಂದೆ, ಗುರು, ಧರ್ಮ, ಉನ್ನತ ಶಿಕ್ಷಣ, ಭಾಗ್ಯ, ದೂರ ಪ್ರಯಾಣ",
+      "h10": "ವೃತ್ತಿ, ಪ್ರತಿಷ್ಠೆ, ಸರ್ಕಾರ, ಮೇಲಧಿಕಾರಿ, ಸಮಾಜದ ಕರ್ಮ",
+      "h11": "ಲಾಭ, ಆಸೆ ನೆರವೇರಿಕೆ, ದೊಡ್ಡ ಸಹೋದರರು, ಜಾಲ, ಸಾಮಾಜಿಕ ಲಾಭ",
+      "h12": "ಖರ್ಚು, ವಿದೇಶ, ನಿದ್ರೆ, ಏಕಾಂತ, ದಾನ, ಆಧ್ಯಾತ್ಮಿಕ ಮುಕ್ತಿ"
+    },
+    "houseBody": {
+      "h1": "ತಲೆ, ಮೆದುಳು, ತಲೆಬುರುಡೆ",
+      "h2": "ಮುಖ, ಬಲಗಣ್ಣು, ಹಲ್ಲು, ನಾಲಿಗೆ, ಬಾಯಿ, ಗಂಟಲು",
+      "h3": "ಭುಜ, ಕೈ, ಹাত, ಬಲ ಕಿವಿ, ಮೇಲಿನ ಶ್ವಾಸಕೋಶ",
+      "h4": "ಎದೆ, ಶ್ವಾಸಕೋಶ, ಹೃದಯ, ಸ್ತನ",
+      "h5": "ಹೊಟ್ಟೆ, ಮೇಲಿನ ಹೊಟ್ಟೆ, ಕಾಲೇಯ, ಪಿತ್ತಾಶಯ",
+      "h6": "ಕೆಳ ಹೊಟ್ಟೆ ಮತ್ತು ಜೀರ್ಣ ವ್ಯವಸ್ಥೆ",
+      "h7": "ಮೂತ್ರಪಿಂಡ, ಕೆಳ ಬೆನ್ನು, ಮೂತ್ರ ಮಾರ್ಗ, ಪ್ರಜನನ ಅಂಗ",
+      "h8": "ದೀರ್ಘಕಾಲದ ಅನಾರೋಗ್ಯ ಮತ್ತು malapravashta",
+      "h9": "ಸೊಂಟ ಪ್ರದೇಶ",
+      "h10": "ಮೊಣಕಾಲು, ಮೊಣಕಾಲಿನ ಮಣಿ",
+      "h11": "Antara, Antara, Antara, ಎಡ ಕಿವಿ",
+      "h12": "ಪಾದ, ಬೆರಳು, ಎಡ ಕಣ್ಣು"
+    },
+    "lordContext": {
+      "ownSign": "ಅಧಿಪತಿ ಸ್ವಕೀಯ ರಾಶಿಯಲ್ಲಿದೆ — ಈ ಜೀವನ ವಲಯಕ್ಕೆ ಸ್ಪಷ್ಟ ಬಲ.",
+      "kendra": "ಅಧಿಪತಿ ಕendra (೧, ೪, ೭, ೧೦) ಭಾವದಲ್ಲಿದೆ — ಫಲಗಳು ಜಗತ್ತಿಗೆ ಸ್ಪಷ್ಟವಾಗಿ ಕಾಣುತ್ತವೆ.",
+      "trikona": "ಅಧಿಪತಿ trikona (೧, ೫, ೯) ಭಾವದಲ್ಲಿದೆ — ಧರ್ಮದ ಆಶೀರ್ವಾದ ಮತ್ತು ಸಹಜ ಅನುಗ್ರಹ.",
+      "upachaya": "ಅಧಿಪತಿ upachaya (೩, ೧೧) ಭಾವದಲ್ಲಿದೆ — ವಯಸ್ಸು ಮತ್ತು ಪ್ರಯತ್ನದೊಂದಿಗೆ ಫಲ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
+      "dusthana": "ಅಧಿಪತಿ dusthāna (೬/೮/೧೨) ಭಾವದಲ್ಲಿದೆ — ತಾಳ್ಮೆ, ಪರಿಹಾರ, ನಿಜವಾದ ನಿರೀಕ್ಷೆ ಅಗತ್ಯ.",
+      "general": "ಅಧಿಪತಿಯ ಭಾವ ಈ ಭಾವದ ಫಲಗಳನ್ನು ಹೇಗೆ ನೀಡುತ್ತದೆ ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ."
+    },
+    "housePrediction": {
+      "noGraha": "ಈ ಭಾವದಲ್ಲಿ ಶಾಸ್ತ್ರೀಯ ಗ್ರಹ ಇಲ್ಲ — ಭಾವಾಧಿಪತಿಯೇ ಕಥೆ ಹೇಳುತ್ತಾರೆ.",
+      "grahaInHouse": "{{planet}} {{relation}} ಇದ್ದಾರೆ",
+      "excellent": "ನಿಮ್ಮ {{houseName}} ಬಲವಾಗಿದೆ (ಅಂಕ {{score}}/೧೦೦, {{stars}} ನಕ್ಷತ್ರ). {{rashi}} ({{element}} ತತ್ವ) ರಾಶಿಯಲ್ಲಿ — {{themes}}. ಭಾವಾಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{lordRelation}}. {{lordContext}} {{occupants}} ಈ ಜೀವನ ವಿಭಾಗದಲ್ಲಿ ನಿಜವಾಗಿ ನಂಬಿಕೆ ಇಡಬಹುದು.",
+      "good": "ನಿಮ್ಮ {{houseName}} ಸಾಮಾನ್ಯವಾಗಿ ಅನುಕೂಲ (ಅಂಕ {{score}}/೧೦೦, {{stars}} ನಕ್ಷತ್ರ). {{rashi}} ({{element}} ತತ್ವ) — {{themes}}. ಅಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{lordRelation}}. {{lordContext}} {{occupants}} ಸ್ಥಿರ ಪ್ರಯತ್ನದಿಂದ ಫಲ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
+      "average": "ನಿಮ್ಮ {{houseName}} ಮಿಶ್ರ (ಅಂಕ {{score}}/೧೦೦, {{stars}} ನಕ್ಷತ್ರ). {{rashi}} — {{themes}}. ಅಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{lordRelation}}. {{lordContext}} {{occupants}} ಸಂಪೂರ್ಣ ಅಡಚಣೆ ಅಲ್ಲ, ಸಂಪೂರ್ಣ ಸುಲಭವೂ ಅಲ್ಲ — ನಿಮ್ಮ ಆಯ್ಕೆ ಮತ್ತು ದಶೆ ಮುಖ್ಯ.",
+      "weak": "ನಿಮ್ಮ {{houseName}} ಗಮನ ಬೇಕು (ಅಂಕ {{score}}/೧೦೦, {{stars}} ನಕ್ಷತ್ರ). {{rashi}} ({{element}}) — {{themes}}. ಅಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{lordRelation}}. {{lordContext}} {{occupants}} ಇಲ್ಲಿ ಹಠಾತ್ ನಿರ್ಧಾರ ತಪ್ಪಿಸಿ; ದಿನಚರಿ ಶಿಸ್ತು ದೊಡ್ಡ ಜೂಜಿಗಿಂತ ಒಳಿತು.",
+      "challenging": "ನಿಮ್ಮ {{houseName}} ಒತ್ತಡದಲ್ಲಿದೆ (ಅಂಕ {{score}}/೧೦೦, {{stars}} ನಕ್ಷತ್ರ). {{rashi}} — {{themes}}. ಅಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{lordRelation}}. {{lordContext}} {{occupants}} ಪರಂಪರೆಯ ಪರಿಹಾರ, ಪ್ರಾಮಾಣಿಕ ದಿನಚರಿ, ಜ್ಯೋತಿಷಿ ಸಲಹೆ ಒಳಿತು."
+    },
+    "dashaCaution": {
+      "line": "ವಯಸ್ಸು {{from}}–{{to}}: {{reason}}{{danger}}{{current}}",
+      "dangerSuffix": " — {{dangers}} ಬಗ್ಗೆ ವಿಶೇಷ ಎಚ್ಚರಿಕೆ.",
+      "currentNow": " (ನೀವು ಈಗ ಈ ಅವಧಿಯಲ್ಲಿದ್ದೀರಿ.)",
+      "reason": {
+        "heavyMaha": "{{maha}} ಮಹಾದಶೆ ಯojನೆಗಳನ್ನು ನಿಧಾನಗೊಳಿಸಬಹುದು — ದೊಡ್ಡ ಅಪಾಯ ತಪ್ಪಿಸಿ.",
+        "heavyBhukti": "ಚಾಲ್ತಿ ಮಹಾದಶೆಯಲ್ಲಿ {{bhukti}} ಭುಕ್ತಿ ಒತ್ತಡ — ಒಪ್ಪಂದ ಎರಡು ಬಾರಿ ಓದಿ, ಆರೋಗ್ಯ ಕಾಪಾಡಿ.",
+        "heavyStack": "{{maha}} ಮಹಾದಶೆ + {{bhukti}} ಭುಕ್ತಿ ಒಟ್ಟಿಗೆ ಭಾರ — ಅಪಾಯಕಾರಿ ಪ್ರಯಾಣ/ಸಾಲ ಮುಂದೂ ಮಾಡಬೇಡಿ.",
+        "dusthanaMaha": "{{maha}} ಮಹಾದಶೆ dusthāna ಅಧಿಪತಿ — ಆರೋಗ್ಯ, ಸಾಲ, ಗುಪ್ತ ವಿಷಯಗಳಿಗೆ ಎಚ್ಚರ.",
+        "dusthanaBoth": "{{maha}} ಮಹಾದಶೆ ಮತ್ತು {{bhukti}} ಭುಕ್ತಿ ಇಬ್ಬರೂ ಕಷ್ಟದ ಭಾವ — ಎಚ್ಚರಿಕೆ ಮತ್ತು ಪರಿಹಾರ ಅಗತ್ಯ."
+      }
+    },
+    "danger": {
+      "fire": "ಬೆಂಕಿ, ಶಾಖ, kitchen, ವಿದ್ಯುತ್ ಸುಟ್ಟಗಾಯ",
+      "accidents": "ರಸ್ತೆ ಅಪಘಾತ, sharp ಗಾಯ",
+      "surgery": "ಶಸ್ತ್ರಚಿಕಿತ್ಸೆ, ರಕ್ತ ಸಂಬಂಧಿತ",
+      "heat": "sunstroke, ಜ್ವರ, inflammation",
+      "falls": "ಬೀಳುವಿಕೆ, ಮುರಿತ, joint ನೋವ",
+      "bones": "ಮೂಳೆ, ಹಲ್ಲು ಸಮಸ್ಯೆ",
+      "chronic": "ದೀರ್ಘಕಾಲದ ಆಯಾಸ, ದೀರ್ಘ ರೋಗ",
+      "delays": "ವಿಳಂಬ, ಕಾನೂನು ಅಡ್ಡಿ, depression",
+      "poison": "food poisoning, ವಿಷ, allergy",
+      "deception": "ಮೋಸ, betray, unclear ಒಪ್ಪಂದ",
+      "sudden": "ಹಠಾತ್ shock, theft, loss",
+      "snake": "ಹಾವು ಭಯ, insect ಕಚ್ಚು (ರಾಹು karakatva)",
+      "cuts": "cuts, minor ಶಸ್ತ್ರ, skin",
+      "isolation": "ಏಕಾಂತ, hospital, ಒಬ್ಬರ ಪ್ರಯಾಣ",
+      "water": "ನೀರು ಅಪಾಘಾತ, drowning ಭಯ, chest",
+      "travel": "ರಾತ್ರಿ ಪ್ರಯಾಣ, rest ಇಲ್ಲದ ದೂರ",
+      "chest": "chest, lungs, emotion swings",
+      "heart": "heart, eyes, boss clash",
+      "authority": "boss/government clash"
+    },
+    "doshaSummary": "ನಿಮ್ಮ ಕುಂಡಲಿ ದೋಷ: {{list}}.",
+    "doshaClear": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಪ್ರಮುಖ ದೋಷ ಸಿಗಲಿಲ್ಲ.",
+    "dosha": {
+      "kaalsarp": "ಕಾಲಸರ್ಪ",
+      "sarpa": "ಸರ್ಪ ದೋಷ",
+      "pitru": "ಪಿತೃ ದೋಷ",
+      "guruChandal": "ಗುರು ಚಂಡಾಲ"
+    },
+    "longevity": "ನಿಮ್ಮ ಕುಂಡಲಿ (ಸೂಚನಾಮಾತ್ರ): ಆಯು {{low}}–{{high}} ವರ್ಷ (ಮಧ್ಯ ~{{mid}}). ವೈದ್ಯಕೀಯ ಸಲಹೆ ಅಲ್ಲ.",
+    "jobs": {
+      "mercury": "ಬುಧ ಬಲ — ಲೇಖನ, ಲೆಕ್ಕ, IT, ಬೋಧನೆ",
+      "jupiter": "ಗುರು ಬಲ — ಕಾನೂನು, ಸಲಹೆ, ಶಿಕ್ಷಣ, ಧರ್ಮ",
+      "mars": "ಕುಜ ಬಲ — ಅಭಿಯಂತ್ರ, ರಕ್ಷಣೆ, ಶಸ್ತ್ರ, ಕ್ರೀಡೆ",
+      "venus": "ಶುಕ್ರ ಬಲ — ಕಲೆ, ವಿನ್ಯಾಸ, ಆತಿಥ್ಯ",
+      "saturn": "ಶನಿ ಬಲ — ಆಡಳಿತ, ದೀರ್ಘ ಕೆಲಸ",
+      "sun": "ಸೂರ್ಯ ಬಲ — ನಾಯಕತ್ವ, ಸರ್ಕಾರ, ವೈದ್ಯ",
+      "tenthLord": "10ನೇ ಅಧಿಪತಿ {{lord}} {{house}}ನೇ ಭಾವ — ವೃತ್ತಿ ಇದೇ ಗ್ರಹದ ಕರಕತ್ವ"
+    },
+    "strengthsTitle": "ನಿಮ್ಮ ಕುಂಡಲಿಯ ಬಲಗಳು",
+    "cautionsTitle": "ಎಚ್ಚರಿಕೆ",
+    "housesTitle": "ಭಾವಗಳ ಸಾರಾಂಶ (ಲಗ್ನದಿಂದ)",
+    "fromKundliLabel": "ನಿಮ್ಮ ರಚಿಸಿದ ಕುಂಡಲಿಯಿಂದ"
+  },
   "melapak": {
-    "title": "Melapak (match)",
-    "subtitle": "Birth Moon of the girl and boy — Ashta Kuta (up to 36) with Rajju and Vedha checks. Many families use 18/36 as a rough minimum; 24+ is often read as strong.",
-    "disclaimer": "This is a simplified reference calculator. Real matching also considers Kuja/Māṅgala dosha, dasa balance, caste/regional rules, and family counsel.",
-    "boy": "Boy (groom)",
-    "girl": "Girl (bride)",
-    "required": "Choose date and time for both.",
-    "match": "Calculate match",
-    "scoreLabel": "Melapak score",
-    "cutoffHint": "Common cut-off: about 18/36 points; Rajju or Vedha dosha is often treated separately even when the point total is high.",
-    "kuta": "Kuta",
-    "points": "Points",
-    "boyChart": "Boy — Kundli",
-    "girlChart": "Girl — Kundli",
-    "rajjuWarn": "Rajju dosha: same body-line grouping in the Saravali-style table — many almanacs advise caution.",
-    "vedhaWarn": "Vedha dosha: nakṣatras form a harmful pair in the common 12-pair list.",
+    "title": "ಮೆಲಪಾಕ್ (ಪಂದ್ಯ)",
+    "subtitle": "ಹುಡುಗಿ ಮತ್ತು ಹುಡುಗನ ಜನ್ಮ ಚಂದ್ರ - ಅಷ್ಟ ಕೂಟ (36 ರವರೆಗೆ) ರಜ್ಜು ಮತ್ತು ವೇಧ ತಪಾಸಣೆಗಳೊಂದಿಗೆ. ಅನೇಕ ಕುಟುಂಬಗಳು 18/36 ಅನ್ನು ಒರಟು ಕನಿಷ್ಠವಾಗಿ ಬಳಸುತ್ತವೆ; 24+ ಅನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಬಲವಾಗಿ ಓದಲಾಗುತ್ತದೆ.",
+    "disclaimer": "ಇದು ಸರಳೀಕೃತ ಉಲ್ಲೇಖ ಕ್ಯಾಲ್ಕುಲೇಟರ್ ಆಗಿದೆ. ನಿಜವಾದ ಹೊಂದಾಣಿಕೆಯು ಕುಜ/ಮಾಂಗಲ ದೋಷ, ದಶಾ ಸಮತೋಲನ, ಜಾತಿ/ಪ್ರಾದೇಶಿಕ ನಿಯಮಗಳು ಮತ್ತು ಕುಟುಂಬದ ಸಲಹೆಯನ್ನು ಸಹ ಪರಿಗಣಿಸುತ್ತದೆ.",
+    "boy": "ಹುಡುಗ (ವರ)",
+    "girl": "ಹುಡುಗಿ (ವಧು)",
+    "required": "ಎರಡಕ್ಕೂ ದಿನಾಂಕ ಮತ್ತು ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    "match": "ಹೊಂದಾಣಿಕೆಯನ್ನು ಲೆಕ್ಕಾಚಾರ ಮಾಡಿ",
+    "scoreLabel": "ಮೇಳಪಾಕ್ ಅಂಕ",
+    "cutoffHint": "ಸಾಮಾನ್ಯ ಕಟ್-ಆಫ್: ಸುಮಾರು 18/36 ಅಂಕಗಳು; ರಜ್ಜು ಅಥವಾ ವೇಧ ದೋಷವನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಪಾಯಿಂಟ್ ಟೋಟಲ್ ಹೆಚ್ಚಿರುವಾಗ ಪ್ರತ್ಯೇಕವಾಗಿ ಪರಿಗಣಿಸಲಾಗುತ್ತದೆ.",
+    "kuta": "ಕುಟಾ",
+    "points": "ಅಂಕಗಳು",
+    "boyChart": "ಹುಡುಗ - ಕುಂಡ್ಲಿ",
+    "girlChart": "ಹುಡುಗಿ - ಕುಂಡ್ಲಿ",
+    "rajjuWarn": "ರಜ್ಜು ದೋಷ: ಸಾರಾವಳಿ-ಶೈಲಿಯ ಕೋಷ್ಟಕದಲ್ಲಿ ಒಂದೇ ರೀತಿಯ ದೇಹ-ರೇಖೆಯ ಗುಂಪು - ಅನೇಕ ಪಂಚಾಂಗಗಳು ಎಚ್ಚರಿಕೆಯನ್ನು ಸೂಚಿಸುತ್ತವೆ.",
+    "vedhaWarn": "ವೇಧ ದೋಷ: ಸಾಮಾನ್ಯ 12-ಜೋಡಿ ಪಟ್ಟಿಯಲ್ಲಿ ನಕ್ಷತ್ರಗಳು ಹಾನಿಕಾರಕ ಜೋಡಿಯನ್ನು ರೂಪಿಸುತ್ತವೆ.",
     "verdict": {
-      "0": "Low match by this model — review calmly with elders or an astrologer.",
-      "1": "Moderate — crosses a common 18-point floor if doshas are absent.",
-      "2": "Good — solid Ashta Kuta total with no Rajju/Vedha flags here.",
-      "3": "Strong — high score and no Rajju/Vedha in this scan."
+      "0": "ಈ ಮಾದರಿಯಿಂದ ಕಡಿಮೆ ಹೊಂದಾಣಿಕೆ — ಹಿರಿಯರು ಅಥವಾ ಜ್ಯೋತಿಷಿಗಳೊಂದಿಗೆ ಶಾಂತವಾಗಿ ಪರಿಶೀಲಿಸಿ.",
+      "1": "ಮಧ್ಯಮ - ದೋಷಗಳು ಇಲ್ಲದಿದ್ದಲ್ಲಿ ಸಾಮಾನ್ಯ 18-ಪಾಯಿಂಟ್ ಮಹಡಿಯನ್ನು ದಾಟುತ್ತದೆ.",
+      "2": "ಒಳ್ಳೆಯದು — ಇಲ್ಲಿ ರಜ್ಜು/ವೇದ ಧ್ವಜಗಳಿಲ್ಲದ ಘನ ಅಷ್ಟ ಕೂಟ ಒಟ್ಟು.",
+      "3": "ಪ್ರಬಲ — ಹೆಚ್ಚಿನ ಸ್ಕೋರ್ ಮತ್ತು ಈ ಸ್ಕ್ಯಾನ್‌ನಲ್ಲಿ ರಜ್ಜು/ವೇಧಾ ಇಲ್ಲ."
     },
     "kutas": {
-      "varna": "Varna",
-      "vashya": "Vashya",
-      "tara": "Tara (Dina)",
-      "yoni": "Yoni",
-      "grahaMaitri": "Graha Maitri",
-      "gana": "Gana",
-      "bhakoot": "Bhakoot",
-      "nadi": "Nadi"
+      "varna": "ವರ್ಣ",
+      "vashya": "ವಶ್ಯ",
+      "tara": "ತಾರಾ (ದಿನ)",
+      "yoni": "ಯೋನಿ",
+      "grahaMaitri": "ಗ್ರಹ ಮೈತ್ರಿ",
+      "gana": "ಗಣ",
+      "bhakoot": "ಭಕೂತ್",
+      "nadi": "ನಾಡಿ"
     }
   },
   "common": {
