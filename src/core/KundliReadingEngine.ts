@@ -106,7 +106,7 @@ const analyzeBhava = (k: KundliOutput, house: number): BhavaReading => {
   const lordRelation = lordP ? relationToSignLord(lord, lordP.rashi.index) : "sama";
   const lordScore = houseLordPlacementScore(k, house);
   const occupants = k.planets
-    .filter((p) => p.house === house && p.name !== PN.Rahu && p.name !== PN.Ketu)
+    .filter((p) => p.house === house)
     .map((p) => grahaPlacement(k, p.name)!)
     .filter(Boolean);
   const occScore = occupants.reduce((s, o) => s + o.score, 0);
@@ -196,6 +196,7 @@ const collectStrengths = (k: KundliOutput, t: TFunction): string[] => {
         t("reading.strength.strong", {
           planet: planetT(t, p),
           house: g.house,
+          houseLabel: fmtHouse(t, g.house),
           relation: relationPhrase(t, g.relationToSignLord)
         })
       );
@@ -207,7 +208,8 @@ const collectStrengths = (k: KundliOutput, t: TFunction): string[] => {
     out.push(
       t("reading.strength.lagnaLord", {
         lord: planetT(t, lagnaLord),
-        house: ll.house
+        house: ll.house,
+        houseLabel: fmtHouse(t, ll.house)
       })
     );
   }
@@ -223,7 +225,8 @@ export const generateKundliReading = (
   k: KundliOutput,
   birth: { birthDate: string; birthTime: string; latitude: number; longitude: number } | undefined,
   t: TFunction,
-  dosha: DoshaLifeReport
+  dosha: DoshaLifeReport,
+  lang = "en"
 ): KundliReading => {
   const houses = Array.from({ length: 12 }, (_, i) => analyzeBhava(k, i + 1));
   const lagnaLord = signLord(k.lagnaRashi.index);
@@ -235,11 +238,7 @@ export const generateKundliReading = (
   const bhuktiLabel = dasha.bhukti ? planetT(t, dasha.bhukti) : t("reading.unknown");
 
   const ageLine =
-    dasha.age != null
-      ? t("reading.ageLine", { age: dasha.age.toFixed(1) })
-      : "";
-
-  const dashaLine = t("reading.dashaLine", { maha: mahaLabel, bhukti: bhuktiLabel });
+    dasha.age != null ? t("reading.overviewLong.age", { age: dasha.age.toFixed(1) }) : "";
 
   const marriageArea = lifeAreaInsight(k, "marriage");
   const careerArea = lifeAreaInsight(k, "career");
@@ -252,12 +251,20 @@ export const generateKundliReading = (
   const cautions = collectCautions(k, dosha, t);
   const strengths = collectStrengths(k, t);
 
-  const intro = t("reading.intro", { rashi: rashiT(t, k.lagnaRashi) });
+  const phaseHintKey =
+    dosha.currentScenario.dashaWeight === "supportive"
+      ? "reading.overviewLong.phaseSupportive"
+      : dosha.currentScenario.dashaWeight === "heavy"
+        ? "reading.overviewLong.phaseHeavy"
+        : "reading.overviewLong.phaseMixed";
+  const phaseHint = t(phaseHintKey as "reading.overviewLong.phaseMixed");
 
-  const lagnaLine = t("reading.lagnaLine", {
+  const intro = t("reading.overviewLong.intro", { rashi: rashiT(t, k.lagnaRashi) });
+
+  const lagnaLine = t("reading.overviewLong.lagna", {
     rashi: rashiT(t, k.lagnaRashi),
     lord: planetT(t, lagnaLord),
-    lordHouse: lagnaLordP?.house ?? 1,
+    lordHouseLabel: fmtHouse(t, lagnaLordP?.house ?? 1),
     relation: lagnaLordP ? relationPhrase(t, lagnaLordP.relationToSignLord) : relationPhrase(t, "sama"),
     withPlanets:
       lagnaOcc.length > 0
@@ -265,14 +272,16 @@ export const generateKundliReading = (
         : t("reading.lagnaAlone")
   });
 
-  const currentPhase = t(
-    `reading.phase.${dosha.currentScenario.dashaWeight}` as "reading.phase.supportive",
-    {
-      maha: mahaLabel,
-      bhukti: bhuktiLabel,
-      tone: t(`reading.tone.${dosha.currentScenario.overallTone}` as "reading.tone.mixed")
-    }
-  );
+  const dashaLine =
+    dasha.age != null
+      ? t("reading.overviewLong.dasha", {
+          maha: mahaLabel,
+          bhukti: bhuktiLabel,
+          phaseHint
+        })
+      : t("reading.overviewLong.dashaNoAge", { maha: mahaLabel, bhukti: bhuktiLabel, phaseHint });
+
+  const currentPhase = phaseHint;
 
   const marriage = t(
     marriageArea.score >= 2 ? "reading.marriage.strong" : marriageArea.score <= -2 ? "reading.marriage.care" : "reading.marriage.mixed",
@@ -326,7 +335,7 @@ export const generateKundliReading = (
     high: dosha.longevity.highYears
   });
 
-  const housePredictions = buildHousePredictions(houses, t);
+  const housePredictions = buildHousePredictions(k, houses, t, lang);
   const dashaCautions = generateDashaCautions(k, dasha.age, t);
   const dashaCautionLines = dashaCautions.map((p) => formatDashaCautionLine(p, t));
 

@@ -1,4 +1,5 @@
 import type { KundliOutput } from "../core/AstroTypes";
+import { buildChartFactSheet } from "../core/PersonalizedNarrativeEngine";
 
 export type NarrativeChartSummary = {
   lang: string;
@@ -81,4 +82,51 @@ export async function fetchKundliNarrative(
     /* plain text */
   }
   return raw.trim();
+}
+
+const narrativeApiBase = (): string | undefined => {
+  const url = import.meta.env.VITE_NARRATIVE_API_URL as string | undefined;
+  if (url) return url.replace(/\/$/, "");
+  if (import.meta.env.DEV) return "/api/kundli-narrative";
+  return undefined;
+};
+
+/**
+ * Optional AI polish for 12 bhāva sentences. Uses VITE_NARRATIVE_API_URL or dev /api/kundli-narrative
+ * when GEMINI_API_KEY or OPENAI_API_KEY is set on the server.
+ */
+export async function fetchHouseNarrativesPolish(
+  kundli: KundliOutput,
+  lang: string,
+  opts?: { signal?: AbortSignal }
+): Promise<string[]> {
+  const base = narrativeApiBase();
+  if (!base) {
+    throw new NarrativeApiError("Missing narrative API URL", 0);
+  }
+  const factSheet = buildChartFactSheet(kundli, lang);
+  const key = import.meta.env.VITE_NARRATIVE_API_KEY as string | undefined;
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+    Accept: "application/json"
+  };
+  if (key) {
+    headers.Authorization = `Bearer ${key}`;
+    headers["X-Api-Key"] = key;
+  }
+  const res = await fetch(base, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ factSheet, lang }),
+    signal: opts?.signal
+  });
+  const raw = await res.text();
+  if (!res.ok) {
+    throw new NarrativeApiError(raw || res.statusText, res.status);
+  }
+  const parsed = JSON.parse(raw) as { houses?: string[] };
+  if (!Array.isArray(parsed.houses) || parsed.houses.length !== 12) {
+    throw new NarrativeApiError("Invalid houses array in response", res.status);
+  }
+  return parsed.houses.map(String);
 }

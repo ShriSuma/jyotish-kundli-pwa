@@ -13,7 +13,7 @@ import { useKundliViewerStore } from "../stores/kundliViewerStore";
 import KundliChart from "../components/kundli/KundliChart";
 import TraditionalSouthPatrika from "../components/kundli/TraditionalSouthPatrika";
 import { DashaBhuktiExplorer, LifetimeDashaBar } from "../components/kundli/DashaLifetimeChart";
-import DatePicker from "../components/DatePicker";
+import BirthDateCascadePicker from "../components/BirthDateCascadePicker";
 import BirthTimePicker from "../components/BirthTimePicker";
 import LocationSelector, { type SelectedLocation } from "../components/LocationSelector";
 import MapLocationPicker from "../components/MapLocationPicker";
@@ -293,7 +293,7 @@ export default function KundliPage(): JSX.Element {
         </select>
         <div className="md:col-span-2">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-amber-900/70">{t("kundli.birthDate")}</p>
-          <DatePicker selected={birthDatePicker} onChange={setBirthDatePicker} placeholderText={t("kundli.birthDate")} />
+          <BirthDateCascadePicker value={birthDatePicker} onChange={setBirthDatePicker} />
         </div>
         <div className="md:col-span-2">
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-emerald-900/70">{t("kundli.birthTime")}</p>

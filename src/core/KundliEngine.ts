@@ -66,10 +66,19 @@ const siderealDegreeFor = (
   }
 };
 
-/** Bhāva (1–12) from whole-sign ascendant. */
+/**
+ * Bhāva (1–12) using **whole-sign** houses (Karnataka / South Indian patrikā style):
+ * House 1 = entire Lagna rāśi, House 2 = entire next rāśi, etc. Degree within the
+ * sign does not move the planet to another house.
+ *
+ * (The earlier implementation used equal-house from ascendant degree which could
+ * push a planet sitting in the same sign as Lagna but just before the asc. cusp
+ * into house 12 — incorrect for whole-sign patrikā charts.)
+ */
 export const bhavaFromAscendant = (ascendant: number, degree: number): number => {
-  const offset = normalizeDegree(degree - ascendant);
-  return Math.floor(offset / 30) + 1;
+  const lagnaSign = Math.floor(normalizeDegree(ascendant) / 30);
+  const planetSign = Math.floor(normalizeDegree(degree) / 30);
+  return ((planetSign - lagnaSign + 12) % 12) + 1;
 };
 
 export type CalculateKundliOptions = {

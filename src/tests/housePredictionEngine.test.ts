@@ -55,7 +55,7 @@ describe("HousePredictionEngine", () => {
     await i18n.changeLanguage("en");
     const k = calculateKundli({ name: "Test", ...birth });
     const reading = generateKundliReading(k, birth, i18n.t.bind(i18n), computeDoshaLifeReport(k, birth));
-    const preds = buildHousePredictions(reading.houses, i18n.t.bind(i18n));
+    const preds = buildHousePredictions(k, reading.houses, i18n.t.bind(i18n), "en");
     expect(preds).toHaveLength(12);
 
     const cautions = generateDashaCautions(k, 32, i18n.t.bind(i18n));

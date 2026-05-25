@@ -79,8 +79,11 @@ export default function SouthIndianChart({ kundli, personName, gothra }: Props):
             <text x={x + 6} y={y + 14} fontSize="9" fill="#7f1d1d" fontWeight="600">
               {t(rashiTKey(rashi.sanskrit) as "rashis.Mesha")}
             </text>
+            <text x={x + cw - 6} y={y + cw - 8} fontSize="8" fill="#64748b" textAnchor="end">
+              {t("kundli.bhavaBadge", { n: house })}
+            </text>
             {isLagna && (
-              <text x={x + cw - 8} y={y + 14} fontSize="9" fill="#b45309" textAnchor="end" fontWeight="700">
+              <text x={x + cw - 8} y={y + 22} fontSize="9" fill="#b45309" textAnchor="end" fontWeight="700">
                 {t("kundli.lagnaMark")}
               </text>
             )}

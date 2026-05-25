@@ -8,7 +8,8 @@ import { PlanetName as PN } from "./AstroTypes";
 import { generateBhuktiTimeline } from "./DashaBhuktiEngine";
 import type { BhavaReading } from "./KundliReadingEngine";
 import { rashiIndexInHouse, signLord } from "./KundliInsightsEngine";
-import { houseMeta, SIGN_ELEMENTS } from "../data/southIndianHouseGuide";
+import { houseMeta } from "../data/southIndianHouseGuide";
+import { composeHouseNarrative } from "./PersonalizedNarrativeEngine";
 
 export type ScoreTier = "excellent" | "good" | "average" | "weak" | "challenging";
 
@@ -38,12 +39,6 @@ const HEAVY_GRAHAS: PlanetName[] = [PN.Saturn, PN.Rahu, PN.Ketu, PN.Mars];
 const planetT = (t: TFunction, p: PlanetName): string =>
   t(`planets.${p}` as "planets.Sun") || String(p);
 
-const rashiT = (t: TFunction, r: BhavaReading["rashi"]): string =>
-  t(`rashis.${r.sanskrit.replace(/\s+/g, "")}` as "rashis.Mesha") || r.english;
-
-const relationPhrase = (t: TFunction, rel: BhavaReading["lordRelation"]): string =>
-  t(`reading.relation.${rel}` as "reading.relation.mitra");
-
 export const netScoreToPercent = (netScore: number): number =>
   Math.round(Math.min(95, Math.max(15, 50 + netScore * 8)));
 
@@ -55,27 +50,6 @@ export const scoreTier = (score: number): ScoreTier => {
   if (score >= 45) return "average";
   if (score >= 30) return "weak";
   return "challenging";
-};
-
-const lordContextKey = (lordHouse: number, lordRelation: BhavaReading["lordRelation"]): string => {
-  if (lordRelation === "own") return "ownSign";
-  if (lordHouse === 6 || lordHouse === 8 || lordHouse === 12) return "dusthana";
-  if (lordHouse === 1 || lordHouse === 4 || lordHouse === 7 || lordHouse === 10) return "kendra";
-  if (lordHouse === 5 || lordHouse === 9) return "trikona";
-  if (lordHouse === 3 || lordHouse === 11) return "upachaya";
-  return "general";
-};
-
-const occupantLine = (bhava: BhavaReading, t: TFunction): string => {
-  if (bhava.occupants.length === 0) return t("reading.housePrediction.noGraha");
-  return bhava.occupants
-    .map((o) =>
-      t("reading.housePrediction.grahaInHouse", {
-        planet: planetT(t, o.planet),
-        relation: relationPhrase(t, o.relationToSignLord)
-      })
-    )
-    .join(" ");
 };
 
 const dusthanaLords = (k: KundliOutput): PlanetName[] =>
@@ -151,34 +125,18 @@ const periodReason = (
   });
 };
 
-export const buildHousePredictions = (bhavas: BhavaReading[], t: TFunction): HousePrediction[] =>
+export const buildHousePredictions = (
+  k: KundliOutput,
+  bhavas: BhavaReading[],
+  t: TFunction,
+  lang = "en"
+): HousePrediction[] =>
   bhavas.map((bhava) => {
     const meta = houseMeta(bhava.house);
     const score = netScoreToPercent(bhava.netScore);
     const tier = scoreTier(score);
     const stars = percentToStars(score);
-    const element = t(`reading.elements.${SIGN_ELEMENTS[bhava.rashi.index]}` as "reading.elements.fire");
-    const lordCtx = t(
-      `reading.lordContext.${lordContextKey(bhava.lordHouse, bhava.lordRelation)}` as "reading.lordContext.kendra"
-    );
-
-    const lordHouseLabel = t("reading.houseN", { n: bhava.lordHouse });
-
-    const prediction = t(`reading.housePrediction.${tier}` as "reading.housePrediction.good", {
-      house: bhava.house,
-      houseName: t(meta.nameKey as "reading.houseNames.h1"),
-      rashi: rashiT(t, bhava.rashi),
-      element,
-      score,
-      stars,
-      lord: planetT(t, bhava.lord),
-      lordHouse: bhava.lordHouse,
-      lordHouseLabel,
-      lordRelation: relationPhrase(t, bhava.lordRelation),
-      lordContext: lordCtx,
-      occupants: occupantLine(bhava, t),
-      themes: t(meta.themeKey as "reading.houseThemes.h1")
-    });
+    const prediction = composeHouseNarrative(k, bhava, t, lang);
 
     return {
       house: bhava.house,

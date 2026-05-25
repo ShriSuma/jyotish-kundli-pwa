@@ -45,6 +45,11 @@
     "subtitle": "Enter your name, birth date and time, then a valid 6-digit Indian PIN. Choose State → District → Village so coordinates match your area.",
     "name": "Name",
     "birthDate": "Birth Date",
+    "birthYear": "Year",
+    "birthMonth": "Month",
+    "birthDay": "Day",
+    "birthDateCascadeHint": "Choose year, then month, then day. Type to filter the list.",
+    "bhavaBadge": "Bhāva {{n}}",
     "birthTime": "Birth Time",
     "birthHour": "Hour (24h)",
     "birthMinute": "Minute",
@@ -765,8 +770,8 @@
       "guruChandal": "Guru Chaṇḍāla hint — Guru worship supports balance."
     },
     "strength": {
-      "strong": "{{planet}} strong in {{house}}th house {{relation}}.",
-      "lagnaLord": "Lagna lord {{lord}} well placed in {{house}}th house."
+      "strong": "{{planet}} in {{houseLabel}} is strong ({{relation}}) — helpful in this area.",
+      "lagnaLord": "Lagna lord {{lord}} in {{houseLabel}} supports your personality."
     },
     "houseGood": "{{house}}th house ({{rashi}}): lord {{lord}} in {{lordHouse}}th; grahas: {{occupants}} — supportive area.",
     "houseWatch": "{{house}}th house ({{rashi}}): lord {{lord}} in {{lordHouse}}th — needs steady effort; avoid rushing big decisions here.",
@@ -843,6 +848,65 @@
       "upachaya": "The lord sits in an upachaya house — results grow with age and effort.",
       "dusthana": "The lord sits in a dusthāna (6/8/12) — this area needs patience, remedies, and realistic expectations.",
       "general": "The lord's house colours how easily this bhāva gives results."
+    },
+    "houseOpen": {
+      "h1": "Your personality, body, and life direction —",
+      "h2": "Wealth, family speech, food, and values —",
+      "h3": "Courage, siblings, skills, and short journeys —",
+      "h4": "Mother, home, land, and inner peace —",
+      "h5": "Children, romance, intelligence, and merit —",
+      "h6": "Enemies, debt, illness, and daily service —",
+      "h7": "Marriage, partner, and agreements —",
+      "h8": "Longevity, sudden events, and hidden matters —",
+      "h9": "Father, guru, luck, and dharma —",
+      "h10": "Career, status, and public reputation —",
+      "h11": "Gains, hopes, and friends —",
+      "h12": "Expenses, sleep, foreign lands, and moksha —"
+    },
+    "grahaAmshaLine": "{{planet}} (navāṁśa amsha {{amsha}})",
+    "overviewLong": {
+      "intro": "Your chart uses whole-sign houses from {{rashi}} Lagna: the Lagna sign is always the 1st house, and each next sign clockwise is the next house.",
+      "lagna": "Lagna is in {{rashi}}. Lagna lord {{lord}} sits in {{lordHouseLabel}} {{relation}}. Planets with Lagna: {{withPlanets}}.",
+      "age": "You are about {{age}} years old now.",
+      "dasha": "Vimshottari dasha now: {{maha}} mahādasha and {{bhukti}} bhukti. {{phaseHint}}",
+      "dashaNoAge": "Vimshottari dasha now: {{maha}} mahādasha and {{bhukti}} bhukti. {{phaseHint}}",
+      "phaseSupportive": "This period generally supports steady work, learning and relationships if you keep a calm pace.",
+      "phaseMixed": "This period is mixed — balance effort with rest; avoid forcing big decisions when tired.",
+      "phaseHeavy": "This period asks patience — remedies, routine and avoiding risky leaps help more than rushing."
+    },
+    "houseLong": {
+      "noGraha": "No classical graha sits in this bhāva, so the house lord shapes the story here.",
+      "grahaPresent": "Grahas placed here: {{grahas}}. Their qualities colour this part of life.",
+      "lord": "The bhāva lord {{lord}} is sitting in {{lordHouseLabel}}, {{lordRelation}}. {{lordContext}}",
+      "intro": {
+        "h1": "Your 1st bhāva paints who you are — your body, your personality, your overall direction in life.",
+        "h2": "Your 2nd bhāva is about money you keep, your immediate family, your speech and your food habits.",
+        "h3": "Your 3rd bhāva shows courage, siblings, short trips, hobbies and the everyday skills your hands learn.",
+        "h4": "Your 4th bhāva is the mother, the home, peace of mind, the land and vehicles you live around.",
+        "h5": "Your 5th bhāva carries children, romance, your intelligence and the merit you bring from past lives.",
+        "h6": "Your 6th bhāva covers competitors, daily work, debts and any health niggles you have to manage.",
+        "h7": "Your 7th bhāva is about marriage, your life partner and any partnerships or contracts you sign.",
+        "h8": "Your 8th bhāva looks at lifespan, sudden changes, inheritances and matters kept private.",
+        "h9": "Your 9th bhāva is the father, teachers, long journeys, higher learning and how lucky life feels.",
+        "h10": "Your 10th bhāva is career, the work the world sees, your reputation and the respect you earn.",
+        "h11": "Your 11th bhāva is income, gains, the friend circle around you and the wishes you want to come true.",
+        "h12": "Your 12th bhāva is expenses, foreign lands, retreat, charity and your inner spiritual life."
+      },
+      "tier": {
+        "excellent": "{{intro}} In this chart the bhāva is in {{rashi}} sign and scores {{score}}/100 ({{stars}} of 5 stars) — a clearly strong area. {{lordSentence}} {{grahaSentence}} You can lean on this side of life with confidence.",
+        "good": "{{intro}} In your chart it is in {{rashi}} sign with a score of {{score}}/100 ({{stars}}/5) — a generally supportive area. {{lordSentence}} {{grahaSentence}} Stay consistent and the results here grow steadily.",
+        "average": "{{intro}} In your chart it falls in {{rashi}} sign and scores {{score}}/100 ({{stars}}/5) — mixed signals. {{lordSentence}} {{grahaSentence}} Your own effort and the running dasha decide most of what you get here.",
+        "weak": "{{intro}} In your chart it is in {{rashi}} sign and scores only {{score}}/100 ({{stars}}/5) — this area needs care. {{lordSentence}} {{grahaSentence}} Avoid hasty moves; small steady habits help much more than big risks.",
+        "challenging": "{{intro}} In your chart it is in {{rashi}} sign with a low score of {{score}}/100 ({{stars}}/5) — a pressured zone. {{lordSentence}} {{grahaSentence}} Patience, honest routines and a few traditional remedies will serve you better than fighting it."
+      }
+    },
+    "housePredictionComposed": {
+      "noGraha": "No graha sits in this bhāva — results come mainly from the house lord.",
+      "excellent": "{{houseOpen}} Bhāva {{house}} ({{rashi}} sign) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} This is a strong zone — you can lean on it.",
+      "good": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} Steady effort here brings reliable results.",
+      "average": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} Mixed results — your choices and dasha timing matter most.",
+      "weak": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} Go slow here; small daily habits help more than big gambles.",
+      "challenging": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} This area needs patience, remedies, and realistic expectations."
     },
     "housePrediction": {
       "noGraha": "No classical graha occupies this bhāva — the house lord alone decides the story.",

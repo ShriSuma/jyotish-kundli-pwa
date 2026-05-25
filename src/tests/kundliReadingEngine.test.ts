@@ -18,7 +18,7 @@ describe("KundliReadingEngine", () => {
     const report = computeDoshaLifeReport(k, birth);
     const reading = generateKundliReading(k, birth, i18n.t.bind(i18n), report);
 
-    expect(reading.intro).toContain("Kundli");
+    expect(reading.intro).toMatch(/chart|Kundli|whole-sign/i);
     expect(reading.ageLine).toMatch(/\d+\.\d/);
     expect(reading.dashaLine).not.toContain("undefined");
     expect(reading.dashaLine).not.toContain("not computed");

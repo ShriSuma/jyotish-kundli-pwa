@@ -45,6 +45,11 @@
     "subtitle": "ಹುಟ್ಟಿನ ವಿವರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ ಮತ್ತು ಪಟ್ಟಿಯಿಂದ ಸ್ಥಳ ಆಯ್ಕೆಮಾಡಿ.",
     "name": "ಹೆಸರು",
     "birthDate": "ಹುಟ್ಟಿದ ದಿನಾಂಕ",
+    "birthYear": "ವರ್ಷ",
+    "birthMonth": "ತಿಂಗಳು",
+    "birthDay": "ದಿನ",
+    "birthDateCascadeHint": "ಮೊದಲು ವರ್ಷ, ನಂತರ ತಿಂಗಳು, ನಂತರ ದಿನ ಆಯ್ಕೆ ಮಾಡಿ. ಟೈಪ್ ಮಾಡಿದರೆ ಪಟ್ಟಿ ಸೋಸುತ್ತದೆ.",
+    "bhavaBadge": "{{n}} ನೇ ಭಾವ",
     "birthTime": "ಹುಟ್ಟಿದ ಸಮಯ",
     "birthHour": "ಗಂಟೆ (24ಗಂ)",
     "birthMinute": "ನಿಮಿಷ",
@@ -789,8 +794,8 @@
       "guruChandal": "ಗುರು ಚಂಡಾಲ — ಗುರು ಪೂಜೆ ಒಳಿತು."
     },
     "strength": {
-      "strong": "{{planet}} {{house}}ನೇ ಭಾವದಲ್ಲಿ ಬಲ {{relation}}.",
-      "lagnaLord": "ಲಗ್ನ ಅಧಿಪತಿ {{lord}} {{house}}ನೇ ಭಾವದಲ್ಲಿ ಒಳಿತು."
+      "strong": "{{planet}} {{houseLabel}} ಬಲವಾಗಿದ್ದಾರೆ ({{relation}}) — ಈ ವಿಭಾಗದಲ್ಲಿ ಸಹಾಯಕ.",
+      "lagnaLord": "ಲಗ್ನ ಅಧಿಪತಿ {{lord}} {{houseLabel}} — ವ್ಯಕ್ತಿತ್ವಕ್ಕೆ ಒಳಿತು."
     },
     "houseGood": "{{house}}ನೇ ಭಾವ ({{rashi}}): ಅಧಿಪತಿ {{lord}} {{lordHouse}}ನೇ ಭಾವ; ಗ್ರಹ: {{occupants}} — ಅನುಕೂಲ.",
     "houseWatch": "{{house}}ನೇ ಭಾವ ({{rashi}}): ಅಧಿಪತಿ {{lord}} {{lordHouse}}ನೇ ಭಾವ — ತಾಳ್ಮೆಯಿಂದ ನೋಡಿ.",
@@ -867,6 +872,65 @@
       "upachaya": "ಅಧಿಪತಿ upachaya (೩, ೧೧) ಭಾವದಲ್ಲಿದೆ — ವಯಸ್ಸು ಮತ್ತು ಪ್ರಯತ್ನದೊಂದಿಗೆ ಫಲ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
       "dusthana": "ಅಧಿಪತಿ dusthāna (೬/೮/೧೨) ಭಾವದಲ್ಲಿದೆ — ತಾಳ್ಮೆ, ಪರಿಹಾರ, ನಿಜವಾದ ನಿರೀಕ್ಷೆ ಅಗತ್ಯ.",
       "general": "ಅಧಿಪತಿಯ ಭಾವ ಈ ಭಾವದ ಫಲಗಳನ್ನು ಹೇಗೆ ನೀಡುತ್ತದೆ ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ."
+    },
+    "houseOpen": {
+      "h1": "Your personality, body, and life direction —",
+      "h2": "Wealth, family speech, food, and values —",
+      "h3": "Courage, siblings, skills, and short journeys —",
+      "h4": "Mother, home, land, and inner peace —",
+      "h5": "Children, romance, intelligence, and merit —",
+      "h6": "Enemies, debt, illness, and daily service —",
+      "h7": "Marriage, partner, and agreements —",
+      "h8": "Longevity, sudden events, and hidden matters —",
+      "h9": "Father, guru, luck, and dharma —",
+      "h10": "Career, status, and public reputation —",
+      "h11": "Gains, hopes, and friends —",
+      "h12": "Expenses, sleep, foreign lands, and moksha —"
+    },
+    "grahaAmshaLine": "{{planet}} (ನವಾಂಶ ಅಂಶ {{amsha}})",
+    "overviewLong": {
+      "intro": "ನಿಮ್ಮ ಕುಂಡಲಿಯಲ್ಲಿ ಲಗ್ನ {{rashi}} ರಾಶಿಯಲ್ಲಿದೆ. ಲಗ್ನದ ರಾಶಿಯೇ ೧ನೇ ಭಾವ; ಅದರಿಂದ ಗಡಿಯಾರದ ದಿಕ್ಕಿನಲ್ಲಿ ಮುಂದಿನ ಪ್ರತಿ ರಾಶಿ ೨, ೩, … ೧೨ನೇ ಭಾವ.",
+      "lagna": "ಲಗ್ನ {{rashi}}. ಲಗ್ನ ಅಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{relation}}. ಲಗ್ನದೊಂದಿಗೆ: {{withPlanets}}.",
+      "age": "ಈಗ ನಿಮ್ಮ ವಯಸ್ಸು ಸುಮಾರು {{age}} ವರ್ಷ.",
+      "dasha": "ವಿಂಶೋತ್ತರಿ: {{maha}} ಮಹಾದಶೆ, {{bhukti}} ಭುಕ್ತಿ. {{phaseHint}}",
+      "dashaNoAge": "ವಿಂಶೋತ್ತರಿ: {{maha}} ಮಹಾದಶೆ, {{bhukti}} ಭುಕ್ತಿ. {{phaseHint}}",
+      "phaseSupportive": "ಈ ಅವಧಿ ಸಾಮಾನ್ಯವಾಗಿ ನಿಧಾನ ಕೆಲಸ, ಕಲಿಕೆ ಮತ್ತು ಸಂಬಂಧಗಳಿಗೆ ಅನುಕೂಲ — ಆತುರ ತಪ್ಪಿಸಿ.",
+      "phaseMixed": "ಈ ಅವಧಿ ಮಿಶ್ರ — ಶ್ರಮ ಮತ್ತು ವಿಶ್ರಾಂತಿ ಸಮತೋಲನ; ದಣಿದಾಗ ದೊಡ್ಡ ನಿರ್ಧಾರ ಮಾಡಬೇಡಿ.",
+      "phaseHeavy": "ಈ ಅವಧಿ ತಾಳ್ಮೆ ಕೇಳುತ್ತದೆ — ಪರಿಹಾರ, ದಿನಚರಿ; ಅಪಾಯಕಾರಿ ಹೆಜ್ಜೆಗಳನ್ನು ಮುಂದೂ ಮಾಡಬೇಡಿ."
+    },
+    "houseLong": {
+      "noGraha": "ಈ ಭಾವದಲ್ಲಿ ಯಾವುದೇ ಶಾಸ್ತ್ರೀಯ ಗ್ರಹ ಇಲ್ಲ — ಫಲಗಳು ಮುಖ್ಯವಾಗಿ ಭಾವಾಧಿಪತಿಯಿಂದ ಬರುತ್ತವೆ.",
+      "grahaPresent": "ಈ ಭಾವದಲ್ಲಿರುವ ಗ್ರಹಗಳು: {{grahas}}. ಇವರ ಶಕ್ತಿ ಈ ಜೀವನ ವಿಭಾಗದ ಮೇಲೆ ಪ್ರಭಾವ ಬೀರುತ್ತದೆ.",
+      "lord": "ಭಾವಾಧಿಪತಿ {{lord}} {{lordHouseLabel}} {{lordRelation}}. {{lordContext}}",
+      "intro": {
+        "h1": "೧ನೇ ಭಾವ ನಿಮ್ಮ ವ್ಯಕ್ತಿತ್ವ, ದೇಹ ಮತ್ತು ಜೀವನದ ಮುಖ್ಯ ದಿಕ್ಕನ್ನು ತೋರಿಸುತ್ತದೆ.",
+        "h2": "೨ನೇ ಭಾವ ಹಣ, ಕುಟುಂಬ, ಮಾತು ಮತ್ತು ಆಹಾರದ ಬಗ್ಗೆ.",
+        "h3": "೩ನೇ ಭಾವ ಧೈರ್ಯ, ಸಹೋದರರು, ಚಿಕ್ಕ ಪ್ರಯಾಣ ಮತ್ತು ಕೈ ಕೌಶಲ್ಯ.",
+        "h4": "೪ನೇ ಭಾವ ತಾಯಿ, ಮನೆ, ಭೂಮಿ ಮತ್ತು ಮನಸ್ಸಿನ ಶಾಂತಿ.",
+        "h5": "೫ನೇ ಭಾವ ಮಕ್ಕಳು, ಪ್ರೇಮ, ಬುದ್ಧಿ ಮತ್ತು ಪುಣ್ಯ.",
+        "h6": "೬ನೇ ಭಾವ ಶತ್ರು, ಸಾಲ, ರೋಗ ಮತ್ತು ದೈನಂದಿನ ಸೇವೆ.",
+        "h7": "೭ನೇ ಭಾವ ವಿವಾಹ, ಜೀವನ ಸಂಗಾತ ಮತ್ತು ಒಪ್ಪಂದಗಳು.",
+        "h8": "೮ನೇ ಭಾವ ಆಯು, ಹಠಾತ್ ಘಟನೆ ಮತ್ತು ಗುಪ್ತ ವಿಷಯಗಳು.",
+        "h9": "೯ನೇ ಭಾವ ತಂದೆ, ಗುರು, ಭಾಗ್ಯ ಮತ್ತು ಧರ್ಮ.",
+        "h10": "೧೦ನೇ ಭಾವ ಉದ್ಯೋಗ, ಗೌರವ ಮತ್ತು ಸಮಾಜದಲ್ಲಿ ಹೆಸರು.",
+        "h11": "೧೧ನೇ ಭಾವ ಲಾಭ, ಆಸೆಗಳು ಮತ್ತು ಸ್ನೇಹಿತರ ಜಾಲ.",
+        "h12": "೧೨ನೇ ಭಾವ ಖರ್ಚು, ವಿದೇಶ, ನಿದ್ರೆ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಮುಕ್ತಿ."
+      },
+      "tier": {
+        "excellent": "{{intro}} ಈ ಭಾವ {{rashi}} ರಾಶಿಯಲ್ಲಿದೆ; ಅಂಕ {{score}}/೧೦೦ ({{stars}} ನಕ್ಷತ್ರ) — ಬಲವಾದ ಭಾಗ. {{lordSentence}} {{grahaSentence}} ಈ ವಿಷಯದಲ್ಲಿ ನಂಬಿಕೆ ಇಡಬಹುದು.",
+        "good": "{{intro}} {{rashi}} ರಾಶಿಯಲ್ಲಿ ಅಂಕ {{score}}/೧೦೦ ({{stars}} ನಕ್ಷತ್ರ) — ಸಾಮಾನ್ಯವಾಗಿ ಅನುಕೂಲ. {{lordSentence}} {{grahaSentence}} ಸ್ಥಿರ ಪ್ರಯತ್ನದಿಂದ ಫಲ ಉತ್ತಮವಾಗುತ್ತದೆ.",
+        "average": "{{intro}} {{rashi}} ರಾಶಿಯಲ್ಲಿ ಅಂಕ {{score}}/೧೦೦ ({{stars}} ನಕ್ಷತ್ರ) — ಮಿಶ್ರ ಫಲ. {{lordSentence}} {{grahaSentence}} ನಿಮ್ಮ ಪ್ರಯತ್ನ ಮತ್ತು ಈಗಿನ ದಶೆ ಮುಖ್ಯ.",
+        "weak": "{{intro}} {{rashi}} ರಾಶಿಯಲ್ಲಿ ಅಂಕ {{score}}/೧೦೦ ({{stars}} ನಕ್ಷತ್ರ) — ಗಮನ ಬೇಕು. {{lordSentence}} {{grahaSentence}} ಹಠಾತ್ ನಿರ್ಧಾರ ತಪ್ಪಿಸಿ; ದಿನಚರಿ ಶಿಸ್ತು ಒಳಿತು.",
+        "challenging": "{{intro}} {{rashi}} ರಾಶಿಯಲ್ಲಿ ಅಂಕ {{score}}/೧೦೦ ({{stars}} ನಕ್ಷತ್ರ) — ಒತ್ತಡದ ಭಾಗ. {{lordSentence}} {{grahaSentence}} ತಾಳ್ಮೆ, ಪರಿಹಾರ ಮತ್ತು ನಿಜವಾದ ನಿರೀಕ್ಷೆ ಅಗತ್ಯ."
+      }
+    },
+    "housePredictionComposed": {
+      "noGraha": "No graha sits in this bhāva — results come mainly from the house lord.",
+      "excellent": "{{houseOpen}} Bhāva {{house}} ({{rashi}} sign) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} This is a strong zone — you can lean on it.",
+      "good": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} Steady effort here brings reliable results.",
+      "average": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} Mixed results — your choices and dasha timing matter most.",
+      "weak": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} Go slow here; small daily habits help more than big gambles.",
+      "challenging": "{{houseOpen}} Bhāva {{house}} ({{rashi}}) scores {{score}}/100 ({{stars}} stars). Themes: {{themes}}. Lord {{lord}} in {{lordHouseLabel}} {{lordRelation}}. {{grahas}} This area needs patience, remedies, and realistic expectations."
     },
     "housePrediction": {
       "noGraha": "ಈ ಭಾವದಲ್ಲಿ ಶಾಸ್ತ್ರೀಯ ಗ್ರಹ ಇಲ್ಲ — ಭಾವಾಧಿಪತಿಯೇ ಕಥೆ ಹೇಳುತ್ತಾರೆ.",

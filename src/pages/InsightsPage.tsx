@@ -7,8 +7,12 @@ import YogaDetailDialog from "../components/YogaDetailDialog";
 import InsightTabPanel, { type InsightTabId } from "../components/insights/InsightTabPanel";
 import { computeDoshaLifeReport } from "../core/DoshaLifeEngine";
 import { generateKundliReading } from "../core/KundliReadingEngine";
+import { normalizeKundliHouses } from "../core/houseNormalize";
 import { type YogaId } from "../core/KundliInsightsEngine";
+import { calculateKundliWithPlaceSun } from "../core/KundliEngine";
+import type { KundliOutput } from "../core/AstroTypes";
 import { POOJA_CONTACT_PHONE, POOJA_CONTACT_TEL } from "../data/poojaRecommendations";
+import { fetchHouseNarrativesPolish } from "../services/kundliNarrativeApi";
 
 const sectionCard = (title: string, body: ReactNode, extraClass = "") => (
   <section
@@ -34,7 +38,12 @@ const listSection = (title: string, items: string[]) =>
 export default function InsightsPage(): JSX.Element {
   const { t, i18n } = useTranslation();
   const setPage = useAppStore((s) => s.setPage);
+  const narrativeConsent = useAppStore((s) => s.narrativeConsent);
+  const ayanamsaModel = useAppStore((s) => s.ayanamsaModel);
+  const nodeType = useAppStore((s) => s.nodeType);
   const [record, setRecord] = useState<KundliRecord | null | undefined>(undefined);
+  const [liveKundli, setLiveKundli] = useState<KundliOutput | null>(null);
+  const [aiHouseTexts, setAiHouseTexts] = useState<string[] | null>(null);
   const [yogaDialogId, setYogaDialogId] = useState<YogaId | null>(null);
   const [tab, setTab] = useState<InsightTabId>("overview");
 
@@ -55,15 +64,67 @@ export default function InsightsPage(): JSX.Element {
     [record]
   );
 
+  // Recompute chart from birth data with CURRENT ayanamsa/node settings
+  // (fixes cases where stored kundli was generated with a previous setting)
+  useEffect(() => {
+    if (!record) {
+      setLiveKundli(null);
+      return;
+    }
+    let cancelled = false;
+    void calculateKundliWithPlaceSun(
+      {
+        name: record.name,
+        birthDate: record.birthDate,
+        birthTime: record.birthTime,
+        latitude: record.latitude,
+        longitude: record.longitude,
+        gothra: record.gothra,
+        pincode: record.pincode
+      },
+      { ayanamsaModel, nodeType }
+    )
+      .then((k) => {
+        if (!cancelled) setLiveKundli(k);
+      })
+      .catch(() => {
+        if (!cancelled) setLiveKundli(record.kundliData);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [record, ayanamsaModel, nodeType]);
+
+  const activeKundli = liveKundli ?? record?.kundliData ?? null;
+
   const report = useMemo(() => {
-    if (!record) return null;
-    return computeDoshaLifeReport(record.kundliData, birth);
-  }, [record, birth]);
+    if (!activeKundli) return null;
+    return computeDoshaLifeReport(activeKundli, birth);
+  }, [activeKundli, birth]);
 
   const reading = useMemo(() => {
-    if (!record || !report) return null;
-    return generateKundliReading(record.kundliData, birth, t, report);
-  }, [record, report, birth, t, i18n.language]);
+    if (!activeKundli || !report) return null;
+    return generateKundliReading(activeKundli, birth, t, report, i18n.language);
+  }, [activeKundli, report, birth, t, i18n.language]);
+
+  useEffect(() => {
+    if (!activeKundli || !narrativeConsent) {
+      setAiHouseTexts(null);
+      return;
+    }
+    let cancelled = false;
+    setAiHouseTexts(null);
+    void fetchHouseNarrativesPolish(activeKundli, i18n.language)
+      .then((houses) => {
+        if (!cancelled) setAiHouseTexts(houses);
+      })
+      .catch(() => {
+        if (!cancelled) setAiHouseTexts(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [activeKundli, narrativeConsent, i18n.language]);
 
   if (record === undefined) {
     return (
@@ -132,8 +193,10 @@ export default function InsightsPage(): JSX.Element {
                   <p>{reading.intro}</p>
                   <p className="mt-2">{reading.lagnaLine}</p>
                   {reading.ageLine ? <p className="mt-2">{reading.ageLine}</p> : null}
-                  <p className="mt-2">{reading.dashaLine}</p>
-                  <p className="mt-2">{reading.currentPhase}</p>
+                  <p className="mt-2 font-medium text-indigo-900">{reading.dashaLine}</p>
+                  {reading.currentPhase && reading.currentPhase !== reading.dashaLine ? (
+                    <p className="mt-2">{reading.currentPhase}</p>
+                  ) : null}
                 </>
               )}
               {listSection(t("reading.strengthsTitle"), reading.strengths)}
@@ -208,7 +271,9 @@ export default function InsightsPage(): JSX.Element {
                       style={{ width: `${hp.score}%` }}
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-800">{hp.prediction}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-800">
+                    {aiHouseTexts?.[hp.house - 1] ?? hp.prediction}
+                  </p>
                   <p className="mt-2 text-xs text-slate-500">
                     <span className="font-medium text-slate-600">{t("reading.houseBodyLabel")}: </span>
                     {hp.bodyParts}
@@ -451,7 +516,7 @@ export default function InsightsPage(): JSX.Element {
       <YogaDetailDialog
         open={yogaDialogId !== null}
         yogaId={yogaDialogId}
-        kundli={record.kundliData}
+        kundli={activeKundli}
         onClose={() => setYogaDialogId(null)}
       />
     </Card>
